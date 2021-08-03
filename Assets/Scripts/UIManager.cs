@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LevelsPanel = GameObject.Find("LevelsPanel");
+        LevelsPanel = GameObject.Find("Panel_Levels");
         LevelsPanel.SetActive(false);
     }
 
@@ -28,10 +28,10 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void GoTo(Button button)
+    private void SwitchPanels(GameObject newPanel)//, GameObject oldPanel)
     {
-       
-        Debug.Log(button.gameObject);
+        
+        Debug.Log(newPanel);
         //switch (button.name)
         //{
         //    case UIManager.MAIN_MENU:
@@ -57,5 +57,15 @@ public class UIManager : MonoBehaviour
                 //console.log("need addView", type);
         //}
         //LevelsPanel.SetActive(true);
+    }
+
+    public void ShowNewWindow(GameObject window)
+    {
+        window.SetActive(true);
+    }
+
+    public void HideOldWindow(GameObject window)
+    {
+        window.SetActive(false);
     }
 }
