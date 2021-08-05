@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,14 +12,19 @@ public class UIManager : MonoBehaviour
     //public const INTRO: string = "intro";
     //public const ACHS: string = "achs";
 
-    private GameObject LevelsPanel;
+    private GameObject _levelsPanel;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        LevelsPanel = GameObject.Find("Panel_Levels");
-        LevelsPanel.SetActive(false);
+        if(!_levelsPanel)
+            _levelsPanel = GameObject.Find("Panel_Levels");
+
+        if (_levelsPanel)
+            _levelsPanel.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -67,5 +72,15 @@ public class UIManager : MonoBehaviour
     public void HideOldWindow(GameObject window)
     {
         window.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 }
