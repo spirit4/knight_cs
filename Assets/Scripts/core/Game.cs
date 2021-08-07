@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,11 +8,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.core
 {
-    public class Game : MonoBehaviour //the script of GamePanel
+    /** <summary>the script of GameContainer (Sprite)</summary> */
+    public class Game : MonoBehaviour 
 
     {
-        //    private _grid: Tile[];
-        //    private _model: Model;
+            private Tile[]_grid;
+            private Model _model;
 
         //    private _buttonMenu: Button;
         //    private _buttonSound: Button;
@@ -37,55 +39,95 @@ namespace Assets.Scripts.core
 
         //private _isStartArrowCheck: boolean = false;
 
-        //constructor()
-        //    {
-        //    super();
-        //    this._model = Core.instance.model;
-        //    this._grid = this._model.grid;
+        public static Sprite sprite = null;// test
+        public Game()
+        {
+            //those came from app.ts, they were first ones -----------------------------------------------------
+            var managerBg = new ManagerBg();
+            //this._bgStage.addChild(this._managerBg);
+            new Core(managerBg);
+            //this._mainStage.addChild(this._core);
 
-        //    this.x = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
-        //    this.y = Config.MARGIN_TOP;
 
-        //    this.createGUI();
+            this._model = Core.instance.model;
+            this._grid = this._model.grid;
 
-        //    this._level = new Level(this, this._model);
-        //    this._hero = this._level.hero;
-        //    this._mill = this._level.mill;
+           
+            
 
-        //    this._units = this._level.units;
-        //    this._items = this._level.items;
+            //this.x = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
+            //this.y = Config.MARGIN_TOP;
 
-        //    this._pathfinder = new Pathfinder();
+            //this.createGUI();
 
-        //    var g: createjs.Graphics = new createjs.Graphics();
-        //    var shape: createjs.Shape = new createjs.Shape();
-        //    g.beginFill('rgba(255,255,255, 1)');
-        //    g.drawRect(0, 0, Config.WIDTH * Config.SIZE_W, Config.HEIGHT * Config.SIZE_H);
-        //    g.endFill();
-        //    shape.snapToPixel = true;
-        //    shape.hitArea = new createjs.Shape(g);
-        //    this.addChildAt(shape, 0);
-        //    this.on(GUIEvent.MOUSE_DOWN, this.movedownHandler, this);
+            //this._level = new Level(this, this._model);
+            //this._hero = this._level.hero;
+            //this._mill = this._level.mill;
 
-        //    this.on(GameEvent.COLLISION, this.collisionProcess, this);
-        //    this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
-        //    this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
-        //    this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
-        //    this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
+            //this._units = this._level.units;
+            //this._items = this._level.items;
 
-        //    this._targetMark = new TargetMark();
-        //    this.addChild(this._targetMark);
+            //this._pathfinder = new Pathfinder();
 
-        //    for (var i: number = 0; i < 15; i++)   //put on pool
-        //        {
-        //        this.createPathPoint();
-        //    }
+            //var g: createjs.Graphics = new createjs.Graphics();
+            //var shape: createjs.Shape = new createjs.Shape();
+            //g.beginFill('rgba(255,255,255, 1)');
+            //g.drawRect(0, 0, Config.WIDTH * Config.SIZE_W, Config.HEIGHT * Config.SIZE_H);
+            //g.endFill();
+            //shape.snapToPixel = true;
+            //shape.hitArea = new createjs.Shape(g);
+            //this.addChildAt(shape, 0);
+            //this.on(GUIEvent.MOUSE_DOWN, this.movedownHandler, this);
 
-        //    if (Core.instance.ga)
-        //    {
-        //        Core.instance.ga.send('pageview', "/StartLevel-" + (Progress.currentLevel + 1));
-        //    }
-        //}
+            //this.on(GameEvent.COLLISION, this.collisionProcess, this);
+            //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
+            //this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
+            //this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
+            //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
+
+            //this._targetMark = new TargetMark();
+            //this.addChild(this._targetMark);
+
+            //for (var i: number = 0; i < 15; i++)   //put on pool
+            //    {
+            //    this.createPathPoint();
+            //}
+
+        }
+
+        void Awake()
+        {
+            // load all frames in fruitsSprites array
+            //Game.sprite = Resources.Load<Sprite>("tiles/grass_0");
+            //Debug.Log("Model awake: " + Game.sprite.texture);
+//#if UNITY_EDITOR
+//            UnityEditor.AssetDatabase.Refresh();
+//#endif
+
+        }
+
+        private void Start()
+        {
+            
+            Debug.Log(File.Exists("Assets/Resources/images/grass_0.png"));
+            
+            Debug.Log("sprite: ", Game.sprite);
+
+            Debug.Log(Resources.Load<Sprite>("images/grass_0"));
+            StartCoroutine(MoveTank());
+            
+        }
+        System.Collections.IEnumerator MoveTank()
+        {
+            
+            yield return new WaitForSeconds(2);
+
+            Game.sprite = Resources.Load<Sprite>("images/grass_0");
+
+            Debug.Log(Game.sprite);
+            //from Level.ts ---------------------------------------------------------
+            Core.instance.bg.addTiles(this, new List<GameObject>(1)); //this._tilesBg);
+        }
 
         //private getTrapHandler(e: GameEvent): void
         //{

@@ -18,8 +18,8 @@ namespace Assets.Scripts.core
 
         private void createGrid()
         {
-            int xCell = 0;
-            int yCell = 0;
+            int xCell;
+            int yCell;
 
             for (int i = 0; i < this._grid.Length; i++)
             {
@@ -27,7 +27,7 @@ namespace Assets.Scripts.core
                 xCell = (i - i / Config.WIDTH * Config.WIDTH) * Config.SIZE_W;
                 this._grid[i] = new Tile(xCell, yCell, i);
 
-                Debug.Log(xCell + "   " + yCell);//test absence math.floor
+                //Debug.Log("Model i: " + i + "   " + xCell + "   " + yCell);
             }
         }
 
@@ -72,5 +72,9 @@ namespace Assets.Scripts.core
         //{
         //    return this._grid;
         //}
+        public Tile[] grid
+        {
+            get { return _grid; }
+        }
     }
 }
