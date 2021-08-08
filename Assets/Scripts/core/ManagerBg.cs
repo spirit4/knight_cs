@@ -1,9 +1,8 @@
-﻿
-using Assets.Scripts.consts;
+﻿using Assets.Scripts.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.core
+namespace Assets.Scripts.Core
 {
     public class ManagerBg
     {
@@ -24,8 +23,12 @@ namespace Assets.Scripts.core
         private List<GameObject> _levelBitmaps;
         private List<GameObject> _decorBitmaps;
 
-        public ManagerBg()
+        private readonly Game _game;
+
+        /** <summary>Game is a script of GameContainer (Sprite on Unity GameScene)</summary> */
+        public ManagerBg(Game game)
         {
+            this._game = game;
             //super();
             //this.snapToPixel = true;
             //this.mouseEnabled = false;
@@ -111,10 +114,11 @@ namespace Assets.Scripts.core
         //    this.getStage().update();
         //}
 
-        public void addTiles(Component containter, List<GameObject> bitmaps, bool isDecor = false)
+        /** <summary>Game is container</summary> Component containter,*/
+        public void addTiles(List<GameObject> bitmaps, bool isDecor = false)
         {
-            float dx = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
-            float dy = Config.MARGIN_TOP + Config.PADDING;
+            //float dx = 0;// (Config.STAGE_W - Config.WIDTH * Config.SIZE_W) / 2;
+            //float dy = 0;// Config.MARGIN_TOP + Config.PADDING;
             if (isDecor)
             {
                 this._decorBitmaps = new List<GameObject> { };
@@ -124,7 +128,7 @@ namespace Assets.Scripts.core
                 this._levelBitmaps = new List<GameObject> { };
             }
             
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < bitmaps.Count; i++)
             {
                 //if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)
                 //{
@@ -136,7 +140,7 @@ namespace Assets.Scripts.core
                 //}
                 //else
                 //{
-                //    this.addChild(bitmaps[i]);
+                    bitmaps[i].transform.SetParent(_game.gameObject.transform);
                 //}
 
                 //bitmaps[i].transform.position.x += dx;
@@ -144,20 +148,19 @@ namespace Assets.Scripts.core
 
 
 
-                // add a "SpriteRenderer" component to the newly created object
-                bitmaps.Add(new GameObject());
-                bitmaps[i].AddComponent<SpriteRenderer>();
-                bitmaps[i].GetComponent<SpriteRenderer>().sprite = Game.sprite;
-                bitmaps[i].name = "Test_Tile";
-                bitmaps[i].isStatic = true;
-                bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
+                ////// add a "SpriteRenderer" component to the newly created object
+                //////bitmaps.Add(new GameObject());
+                //////bitmaps[i].AddComponent<SpriteRenderer>();
+                //////bitmaps[i].GetComponent<SpriteRenderer>().sprite = Game.sprite;
+                //////bitmaps[i].name = "Tile_" + i;
+                //////bitmaps[i].isStatic = true;
+                //////bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+                //////bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
 
 
-                bitmaps[i].transform.SetParent(containter.gameObject.transform);
-                bitmaps[i].transform.position = new Vector3(dx/100, dy/100, 0);
-                Debug.Log("mbg: " + dx/100 + "x: " + dy/100 + "y " + bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName);
-                Debug.Log("mbg: " + dx + "x: " + dy + "y ");
+                //////bitmaps[i].transform.SetParent(containter.gameObject.transform);
+                //////bitmaps[i].transform.position = new Vector3(dx, dy, 0);
+                //////Debug.Log("mbg: " + dx + "x: " + dy + "y ");
                 if (isDecor)
                 {
                     this._decorBitmaps.Add(bitmaps[i]);

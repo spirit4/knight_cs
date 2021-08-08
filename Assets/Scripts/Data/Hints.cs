@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Assets.Scripts.consts
+namespace Assets.Scripts.Data
 {
     public static class Hints
     {

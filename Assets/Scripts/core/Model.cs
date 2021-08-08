@@ -1,9 +1,9 @@
-using Assets.Scripts.consts;
+using Assets.Scripts.Data;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.core
+namespace Assets.Scripts.Core
 {
     public class Model
     {
@@ -18,8 +18,8 @@ namespace Assets.Scripts.core
 
         private void createGrid()
         {
-            int xCell;
-            int yCell;
+            float xCell;
+            float yCell;
 
             for (int i = 0; i < this._grid.Length; i++)
             {
@@ -27,7 +27,7 @@ namespace Assets.Scripts.core
                 xCell = (i - i / Config.WIDTH * Config.WIDTH) * Config.SIZE_W;
                 this._grid[i] = new Tile(xCell, yCell, i);
 
-                //Debug.Log("Model i: " + i + "   " + xCell + "   " + yCell);
+               //Debug.Log("Model i: " + i + "   " + xCell + "   " + yCell);
             }
         }
 

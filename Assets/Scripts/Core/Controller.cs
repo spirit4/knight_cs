@@ -1,6 +1,6 @@
-﻿namespace Assets.Scripts.core
+﻿namespace Assets.Scripts.Core
 {
-    class Core
+    class Controller
     {
         //    //-------------------------------
         //    //public editor: Editor;
@@ -10,7 +10,7 @@
         public ManagerBg bg;
         public Model model;
 
-        public static Core instance;
+        public static Controller instance;
 
         //    private _preloader: Preloader;
 
@@ -22,9 +22,9 @@
         //    public ga: any;
         //    public api: any;
 
-        public Core(ManagerBg bg)
+        public Controller(ManagerBg bg)
         {
-            Core.instance = this;
+            Controller.instance = this;
             //this.snapToPixel = true;
 
             //this.ga = window["gaTracker"];

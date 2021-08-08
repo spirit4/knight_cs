@@ -1,4 +1,7 @@
-﻿namespace Assets.Scripts.core
+﻿using Assets.Scripts.Core;
+using UnityEngine;
+
+namespace Assets.Scripts.Data
 {
     public static class ImagesRes
     {
@@ -24,7 +27,7 @@
         //    static BOULDER_MARK: string = "boulderMark";
         //    static TARGET_MARK: string = "targetMark";
 
-        //    static DECOR: string = "Decor";
+        public const string DECOR = "Decor";
 
         //    //gui
         //    static MAIN_BG: string = "MainBack";   //in preloader
@@ -286,8 +289,8 @@
         //    ImagesRes.A_ITEMs =  { star0: "helmet", star1: "shield", star2: "sword" };
         //}
 
-        //static getImage(name: string): HTMLImageElement
-        //{
+        public static Sprite getImage(string name)
+        {
         //    var bd: HTMLImageElement;
         //    var index: number = 0;
         //    if (ImagesRes.numberImages[name])
@@ -301,9 +304,9 @@
         //    }
 
         //    //console.log("[getImage] ", name, index)
-        //    return bd;
+            return Game.sprite;
         //}
-        //} 
+        } 
     }
 
 

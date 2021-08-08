@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.core
+namespace Assets.Scripts.Core
 {
-    /** <summary>the script of GameContainer (Sprite)</summary> */
+    /** <summary>the script of GameContainer (Sprite on Unity GameScene)</summary> */
     public class Game : MonoBehaviour 
 
     {
@@ -19,7 +19,7 @@ namespace Assets.Scripts.core
         //    private _buttonSound: Button;
         //    private _buttonRestart: Button;
 
-        //    private _level: Level;
+            private Level _level;
         //    private _hero: Hero;
         //    private _mill: MillPress;
 
@@ -43,13 +43,13 @@ namespace Assets.Scripts.core
         public Game()
         {
             //those came from app.ts, they were first ones -----------------------------------------------------
-            var managerBg = new ManagerBg();
+            var managerBg = new ManagerBg(this);
             //this._bgStage.addChild(this._managerBg);
-            new Core(managerBg);
+            new Controller(managerBg);
             //this._mainStage.addChild(this._core);
 
 
-            this._model = Core.instance.model;
+            this._model = Controller.instance.model;
             this._grid = this._model.grid;
 
            
@@ -60,7 +60,7 @@ namespace Assets.Scripts.core
 
             //this.createGUI();
 
-            //this._level = new Level(this, this._model);
+            //move to awake from here ------------------------------->>>>>>>>>>>>>>>>>
             //this._hero = this._level.hero;
             //this._mill = this._level.mill;
 
@@ -97,37 +97,10 @@ namespace Assets.Scripts.core
 
         void Awake()
         {
-            // load all frames in fruitsSprites array
-            //Game.sprite = Resources.Load<Sprite>("tiles/grass_0");
-            //Debug.Log("Model awake: " + Game.sprite.texture);
-//#if UNITY_EDITOR
-//            UnityEditor.AssetDatabase.Refresh();
-//#endif
-
+            Game.sprite = Resources.Load<Sprite>("images/tiles/grass_0");
+            this._level = new Level(this, this._model);
         }
 
-        private void Start()
-        {
-            
-            Debug.Log(File.Exists("Assets/Resources/images/grass_0.png"));
-            
-            Debug.Log("sprite: ", Game.sprite);
-
-            Debug.Log(Resources.Load<Sprite>("images/grass_0"));
-            StartCoroutine(MoveTank());
-            
-        }
-        System.Collections.IEnumerator MoveTank()
-        {
-            
-            yield return new WaitForSeconds(2);
-
-            Game.sprite = Resources.Load<Sprite>("images/grass_0");
-
-            Debug.Log(Game.sprite);
-            //from Level.ts ---------------------------------------------------------
-            Core.instance.bg.addTiles(this, new List<GameObject>(1)); //this._tilesBg);
-        }
 
         //private getTrapHandler(e: GameEvent): void
         //{

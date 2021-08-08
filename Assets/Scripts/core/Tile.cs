@@ -1,22 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.core
+namespace Assets.Scripts.Core
 {
     public class Tile
     {
 
-        public int x;
-            public int y;
-            public int index;
+        public float x;
+        public float y;
+        public int index;
 
-            public List<GameObject> objects;
-            public List<string> types;
+        public List<GameObject> objects;
+        public List<string> types;
 
-            public bool isWall = true;//for pathfinder
-            public bool isDear = false;//for pathfinder  for mill
+        public bool isWall = true;//for pathfinder
+        public bool isDear = false;//for pathfinder  for mill
 
-        public Tile(int x, int y, int index)
+        public Tile(float x, float y, int index)
         {
             this.x = x;
             this.y = y;
@@ -25,153 +26,138 @@ namespace Assets.Scripts.core
             this.types = new List<string>();
         }
 
-        //public add(type: string, container: createjs.Container, grid: Tile[] = null, isEditor: boolean = false) : createjs.DisplayObject
-        //    {
-        //        this.types.push(type);
-        //        var dObject: createjs.DisplayObject = this.getAlignedDO(type);
-        //        this.objects.push(dObject);
+        public GameObject add(string type, Component container, Tile[] grid = null)
+        {
+            this.types.Add(type);
+            GameObject dObject = this.GetAlignedGameObject(type);
+            this.objects.Add(dObject);
 
-        //       // console.log("+++add", type, type.indexOf(ImagesRes.DECOR))
-        //        if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.indexOf(ImagesRes.DECOR) == -1)
-        //        {
-        //            container.addChild(dObject);
-        //        }
+            // console.log("+++add", type, type.indexOf(ImagesRes.DECOR))
+            if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
+            {
+                dObject.transform.SetParent(container.gameObject.transform);
+            }
 
-        //        if (isEditor)
-        //        {
-        //            this.setCorrectIndex(dObject, container, grid);    //only EDITOR!
-        //    }
+            return dObject;
+        }
 
-        //        return dObject;
-        //    }
+        private GameObject GetAlignedGameObject(string type)
+        {
+            GameObject dObject = new GameObject();
+            dObject.AddComponent<SpriteRenderer>();
+            //Sprite bd = 
+            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
-        //private getAlignedDO(type: string): createjs.DisplayObject
-        //    {
-        //    var bd: HTMLImageElement = ImagesRes.getImage(type);
-        //    var dObject: createjs.DisplayObject;
-        //    var sprite: createjs.Sprite;
+            dObject.name = type + index;
+            dObject.transform.position = new Vector3(this.x, this.y, 0);
+            Debug.Log("+++add" + type + "  " + index + "  " + x + "  " + y);
+            switch (type)
+            {
+                //        case ImagesRes.HERO:  //editor
+                //        case ImagesRes.MONSTER:  //editor
+                //            dObject = new createjs.Bitmap(bd);
+                //            dObject.x = this.x;
+                //            dObject.y = this.y + Config.SIZE_H - bd.height - 10;
+                //            break;
 
-        //    switch (type)
-        //    {
-        //        case ImagesRes.HERO:  //editor
-        //        case ImagesRes.MONSTER:  //editor
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x;
-        //            dObject.y = this.y + Config.SIZE_H - bd.height - 10;
-        //            break;
+                case ImagesRes.GRASS:
+                    this.isWall = false;
 
-        //        case ImagesRes.GRASS:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x;// + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y;// + (Config.SIZE_H - bd.height >> 1);
-        //            this.isWall = false;
-        //            break;
+                    dObject.isStatic = true;
+                    dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+                    dObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    break;
 
-        //        case ImagesRes.WATER:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x;// + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y;// + (Config.SIZE_H - bd.height >> 1);
-        //            dObject.name = ImagesRes.WATER;
-        //            break;
+                case ImagesRes.WATER:
+                    dObject.isStatic = true;
+                    dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+                    dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                    break;
 
-        //        case ImagesRes.STAR + 0:
-        //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-        //            sprite.framerate = 30;
-        //            sprite.x = this.x - 10;
-        //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 35;
-        //            dObject = sprite;
-        //            break;
-        //        case ImagesRes.STAR + 1:
-        //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-        //            sprite.framerate = 20;
-        //            sprite.x = this.x + 0;
-        //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 15;
-        //            dObject = sprite;
-        //            break;
-        //        case ImagesRes.STAR + 2:
-        //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-        //            sprite.framerate = 15;
-        //            sprite.x = this.x + 20;
-        //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 5;
-        //            dObject = sprite;
-        //            break;
+                    //        case ImagesRes.STAR + 0:
+                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                    //            sprite.framerate = 30;
+                    //            sprite.x = this.x - 10;
+                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 35;
+                    //            dObject = sprite;
+                    //            break;
+                    //        case ImagesRes.STAR + 1:
+                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                    //            sprite.framerate = 20;
+                    //            sprite.x = this.x + 0;
+                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 15;
+                    //            dObject = sprite;
+                    //            break;
+                    //        case ImagesRes.STAR + 2:
+                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                    //            sprite.framerate = 15;
+                    //            sprite.x = this.x + 20;
+                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 5;
+                    //            dObject = sprite;
+                    //            break;
 
-        //        case ImagesRes.TRAP:
-        //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
-        //            sprite.framerate = 30;
-        //            sprite.x = this.x + 6;
-        //            sprite.y = this.y + 9;
-        //            dObject = sprite;
-        //            break;
+                    //        case ImagesRes.TRAP:
+                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
+                    //            sprite.framerate = 30;
+                    //            sprite.x = this.x + 6;
+                    //            sprite.y = this.y + 9;
+                    //            dObject = sprite;
+                    //            break;
 
-        //        case ImagesRes.PINE + 0:
-        //        case ImagesRes.PINE + 1:
-        //        case ImagesRes.PINE + 2:
-        //        case ImagesRes.STONE + 0:
-        //        case ImagesRes.STONE + 1:
-        //        case ImagesRes.STUMP:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
-        //            this.isWall = true;
-        //            break;
+                    //        case ImagesRes.PINE + 0:
+                    //        case ImagesRes.PINE + 1:
+                    //        case ImagesRes.PINE + 2:
+                    //        case ImagesRes.STONE + 0:
+                    //        case ImagesRes.STONE + 1:
+                    //        case ImagesRes.STUMP:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                    //            this.isWall = true;
+                    //            break;
 
-        //        case ImagesRes.BRIDGE + 0:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
-        //            this.isWall = false;
-        //            break;
-        //        case ImagesRes.BRIDGE + 1:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y - 10;
-        //            this.isWall = false;
-        //            break;
+                    //        case ImagesRes.BRIDGE + 0:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                    //            this.isWall = false;
+                    //            break;
+                    //        case ImagesRes.BRIDGE + 1:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //            dObject.y = this.y - 10;
+                    //            this.isWall = false;
+                    //            break;
 
-        //        case ImagesRes.SPIKES + 0:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + 2;
-        //            dObject.y = this.y + 2;
-        //            break;
+                    //        case ImagesRes.SPIKES + 0:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + 2;
+                    //            dObject.y = this.y + 2;
+                    //            break;
 
-        //        case ImagesRes.BOULDER:
-        //        case ImagesRes.TOWER:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x;
-        //            dObject.y = this.y;
-        //            break;
+                    //        case ImagesRes.BOULDER:
+                    //        case ImagesRes.TOWER:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x;
+                    //            dObject.y = this.y;
+                    //            break;
 
-        //        case ImagesRes.EXIT:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + 3;
-        //            dObject.y = this.y - 13;
-        //            break;
+                    //        case ImagesRes.EXIT:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + 3;
+                    //            dObject.y = this.y - 13;
+                    //            break;
 
-        //        default:
-        //            dObject = new createjs.Bitmap(bd);
-        //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-        //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
-        //    }
+                    //        default:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+            }
 
-        //    dObject.snapToPixel = true;
-        //    return dObject;
-        //}
+            //    dObject.snapToPixel = true;
+            return dObject;
+        }
 
-        //private setCorrectIndex(dObject: createjs.DisplayObject, container: createjs.Container, grid: Tile[]): void
-        //{
-        //    var displayIndex: number = 0;
-        //    var len: number = grid.length;
-        //    for (var i: number = 0; i < len; i++)
-        //        {
-        //        displayIndex += grid[i].objects.length;
-        //        if (i == this.index)
-        //        {
-        //            container.addChildAt(dObject, displayIndex);
-        //            break;
-        //        }
-        //    }
-        //}
 
         //public remove(type: string): void
         //{
