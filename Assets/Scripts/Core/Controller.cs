@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Core
+﻿using Assets.Scripts.Data;
+
+namespace Assets.Scripts.Core
 {
     class Controller
     {
@@ -48,7 +50,12 @@
             //this._preloader.removeAllEventListeners();
             this.model = new Model();
 
-            //ImagesRes.init();
+
+
+            //ImagesRes.init();-- moved to Game.Awake()
+
+
+
             //        this._preloader.initProgress();
             //        this._preloader.on(GameEvent.COMPLETE, this.initCompleted, this);
         }

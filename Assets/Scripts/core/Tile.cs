@@ -30,12 +30,16 @@ namespace Assets.Scripts.Core
         {
             this.types.Add(type);
             GameObject dObject = this.GetAlignedGameObject(type);
+            //dObject.transform.SetParent(container.gameObject.transform);
+            
+
+           // Debug.Log("TILE i: " + index + "   " + x + "   " + y);
             this.objects.Add(dObject);
 
             // console.log("+++add", type, type.indexOf(ImagesRes.DECOR))
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
             {
-                dObject.transform.SetParent(container.gameObject.transform);
+                //dObject.transform.SetParent(container.gameObject.transform);
             }
 
             return dObject;
@@ -48,9 +52,9 @@ namespace Assets.Scripts.Core
             //Sprite bd = 
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
-            dObject.name = type + index;
+            dObject.name = type;// + index; seems I need only water
             dObject.transform.position = new Vector3(this.x, this.y, 0);
-            Debug.Log("+++add" + type + "  " + index + "  " + x + "  " + y);
+           // Debug.Log("+++add" + type + "  " + index + "  " + x + "  " + y);
             switch (type)
             {
                 //        case ImagesRes.HERO:  //editor
@@ -64,14 +68,14 @@ namespace Assets.Scripts.Core
                     this.isWall = false;
 
                     dObject.isStatic = true;
-                    dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                    dObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                    //dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Back";
+                    //dObject.GetComponent<SpriteRenderer>().sortingOrder = index + 1;
                     break;
 
                 case ImagesRes.WATER:
                     dObject.isStatic = true;
-                    dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                    dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                    //dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Back";
+                    //dObject.GetComponent<SpriteRenderer>().sortingOrder = index + 1;
                     break;
 
                     //        case ImagesRes.STAR + 0:

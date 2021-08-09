@@ -25,7 +25,7 @@ namespace Assets.Scripts.Core
             {
                 yCell = (i / Config.WIDTH) * Config.SIZE_H;
                 xCell = (i - i / Config.WIDTH * Config.WIDTH) * Config.SIZE_W;
-                this._grid[i] = new Tile(xCell, yCell, i);
+                this._grid[i] = new Tile(xCell, -yCell, i);
 
                //Debug.Log("Model i: " + i + "   " + xCell + "   " + yCell);
             }

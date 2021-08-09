@@ -114,11 +114,11 @@ namespace Assets.Scripts.Core
         //    this.getStage().update();
         //}
 
-        /** <summary>Game is container</summary> Component containter,*/
-        public void addTiles(List<GameObject> bitmaps, bool isDecor = false)
+
+        /** <summary>Adding grass, water, decor to Background, Game is container</summary> Component containter,*/
+        public void addTiles(List<GameObject> bitmaps, Tile[] grid, bool isDecor = false)
         {
-            //float dx = 0;// (Config.STAGE_W - Config.WIDTH * Config.SIZE_W) / 2;
-            //float dy = 0;// Config.MARGIN_TOP + Config.PADDING;
+
             if (isDecor)
             {
                 this._decorBitmaps = new List<GameObject> { };
@@ -127,39 +127,35 @@ namespace Assets.Scripts.Core
             {
                 this._levelBitmaps = new List<GameObject> { };
             }
-            
+
+            int waterIndex = 0;
             for (int i = 0; i < bitmaps.Count; i++)
             {
-                //if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)
-                //{
-                //    this.addChildAt(bitmaps[i], this.getChildIndex(bitmaps[i - Config.WIDTH]));
-                //}
-                //else if (bitmaps[i].name == ImagesRes.WATER && i - 1 >= 0)
-                //{
-                //    this.addChildAt(bitmaps[i], this.getChildIndex(bitmaps[i - 1]));
-                //}
+                bitmaps[i].transform.SetParent(_game.gameObject.transform);
+                bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName = "Back";
+                bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
+                bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
+
+                // Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
+
+                if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)
+                {
+                    waterIndex++;
+                    // this.addChildAt(bitmaps[i], this.getChildIndex(bitmaps[i - Config.WIDTH]));
+                    bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = waterIndex + 1;
+                }
+                else if (bitmaps[i].name == ImagesRes.WATER && i - 1 >= 0)
+                {
+                    waterIndex++;
+                    //this.addChildAt(bitmaps[i], this.getChildIndex(bitmaps[i - 1]));
+                    bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = waterIndex + 1;
+                }
                 //else
                 //{
-                    bitmaps[i].transform.SetParent(_game.gameObject.transform);
+
+
                 //}
 
-                //bitmaps[i].transform.position.x += dx;
-                //bitmaps[i].y += dy;
-
-
-
-                ////// add a "SpriteRenderer" component to the newly created object
-                //////bitmaps.Add(new GameObject());
-                //////bitmaps[i].AddComponent<SpriteRenderer>();
-                //////bitmaps[i].GetComponent<SpriteRenderer>().sprite = Game.sprite;
-                //////bitmaps[i].name = "Tile_" + i;
-                //////bitmaps[i].isStatic = true;
-                //////bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                //////bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = 2;
-
-
-                //////bitmaps[i].transform.SetParent(containter.gameObject.transform);
-                //////bitmaps[i].transform.position = new Vector3(dx, dy, 0);
                 //////Debug.Log("mbg: " + dx + "x: " + dy + "y ");
                 if (isDecor)
                 {

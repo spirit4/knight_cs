@@ -15,9 +15,9 @@ namespace Assets.Scripts.Data
         public const float STAGE_H_MAX = STAGE_W * 1138 / 640;
 
         /**SIZE_W: number = 60*/
-        public const float SIZE_W = STAGE_W * 60 / 640;
+        public const float SIZE_W = 0.614f;// STAGE_W * 60 / 640;
         /**SIZE_H: number = 60*/
-        public const float SIZE_H = STAGE_W * 60 / 640;
+        public const float SIZE_H = SIZE_W;
 
         ///**MARGIN_TOP: number = 120*/
         //public const int MARGIN_TOP = 150;

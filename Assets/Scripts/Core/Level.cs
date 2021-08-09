@@ -50,8 +50,8 @@ namespace Assets.Scripts.Core
                     this.checkCell(index, types[j], types);
                 }
             }
-            Controller.instance.bg.addTiles(this._tilesBg);
-            Controller.instance.bg.addTiles(this._decorBg, true);
+            Controller.instance.bg.addTiles(this._tilesBg, this._model.grid);
+            Controller.instance.bg.addTiles(this._decorBg, this._model.grid, true);
             this._tilesBg = null;
             this._decorBg = null;
 

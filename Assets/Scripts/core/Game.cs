@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace Assets.Scripts.Core
 
         //private _isStartArrowCheck: boolean = false;
 
-        public static Sprite sprite = null;// test
+        //public static Sprite sprite = null;// test
         public Game()
         {
             //those came from app.ts, they were first ones -----------------------------------------------------
@@ -97,7 +98,8 @@ namespace Assets.Scripts.Core
 
         void Awake()
         {
-            Game.sprite = Resources.Load<Sprite>("images/tiles/grass_0");
+            //Game.sprite = Resources.Load<Sprite>("images/tiles/grass_0");
+            ImagesRes.init();
             this._level = new Level(this, this._model);
         }
 
