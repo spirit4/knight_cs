@@ -6,7 +6,7 @@ namespace Assets.Scripts.Core
 {
     public class ManagerBg
     {
-        //    private _typeBDs: string[] = [
+        //    private _typeBDs string[] = [
         //        ImagesRes.GAME_BG,
         //        ImagesRes.UI_LEVEL_BOARD,
         //        ImagesRes.LEVEL_SELECT_TITLE,
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Core
         //        ImagesRes.CREDITS_TITLE
         //    ];
 
-        //    private _cacheBDs: { [type: string]: createjs.Bitmap; } = { };
+        //    private _cacheBDs: { [type string]GameObject } = { };
         private List<GameObject> _levelBitmaps;
         private List<GameObject> _decorBitmaps;
 
@@ -37,18 +37,18 @@ namespace Assets.Scripts.Core
 
         //public init(): void
         //{
-        //    var bitmap: createjs.Bitmap;
-        //    for (var i: number = 0; i < this._typeBDs.length; i++)
+        //    var bitmapGameObject
+        //    for (int i = 0; i < this._typeBDs.Length; i++)
         //        {
         //        this.addToCache(this._typeBDs[i]);
         //    }
         //}
 
-        //public addToCache(type: string, res ?: HTMLImageElement): void
+        //public addToCache(type string, res ?: HTMLImageElement): void
         //{
         //    //console.log("[addToCache]", type, res);
         //    var bd: HTMLImageElement;
-        //    var bitmap: createjs.Bitmap;
+        //    var bitmapGameObject
 
         //    if (!res)
         //    {
@@ -72,8 +72,8 @@ namespace Assets.Scripts.Core
         //{
         //    this.clear();
 
-        //    var bitmap: createjs.Bitmap;
-        //    for (var i: number = 0; i < imgs.length; i++)
+        //    var bitmapGameObject
+        //    for (int i = 0; i < imgs.Length; i++)
         //        {
         //        bitmap = this._cacheBDs[imgs[i]['type']];
         //        bitmap.visible = true;
@@ -95,10 +95,10 @@ namespace Assets.Scripts.Core
         //    this.update();
         //}
 
-        //public dispose(types: string[]): void
+        //public dispose(types string[]): void
         //{
-        //    var bitmap: createjs.Bitmap;
-        //    for (var i: number = 0; i < types.length; i++)
+        //    var bitmapGameObject
+        //    for (int i = 0; i < types.Length; i++)
         //        {
         //        bitmap = this._cacheBDs[types[i]];
         //        this.removeChild(bitmap);
@@ -172,17 +172,17 @@ namespace Assets.Scripts.Core
 
         //public removeTiles(): void
         //{
-        //    for (var i: number = 0; i < this._levelBitmaps.length; i++)
+        //    for (int i = 0; i < this._levelBitmaps.Length; i++)
         //        {
         //        this.removeChild(this._levelBitmaps[i]);
         //    }
-        //    for (var i: number = 0; i < this._decorBitmaps.length; i++)
+        //    for (int i = 0; i < this._decorBitmaps.Length; i++)
         //        {
         //        this.removeChild(this._decorBitmaps[i]);
         //    }
-        //    this._levelBitmaps.length = 0;
+        //    this._levelBitmaps.Length = 0;
         //    this._levelBitmaps = null;
-        //    this._decorBitmaps.length = 0;
+        //    this._decorBitmaps.Length = 0;
         //    this._decorBitmaps = null;
         //    this.update();
         //}

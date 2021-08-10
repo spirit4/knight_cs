@@ -26,17 +26,17 @@ namespace Assets.Scripts.Core
 
         //    private _pathfinder: Pathfinder;
 
-        //    private _units: { [index: number]: ICollidable; };
+        //    private _units: { [index number]: ICollidable; };
         //private _items: IActivatable[];
 
-        //private _help: createjs.Bitmap;
+        //private _helpGameObject
         //private _helpShape: createjs.Shape;
         //private _top: createjs.Shape;
         //private _bottom: createjs.Shape;
 
         //private _targetMark: TargetMark;
-        //private _poolPoints: createjs.Bitmap[] = [];
-        //private _activePoints: createjs.Bitmap[] = [];
+        //private _poolPoints GameObject[] = [];
+        //private _activePoints GameObject[] = [];
 
         //private _isStartArrowCheck: boolean = false;
 
@@ -89,7 +89,7 @@ namespace Assets.Scripts.Core
             //this._targetMark = new TargetMark();
             //this.addChild(this._targetMark);
 
-            //for (var i: number = 0; i < 15; i++)   //put on pool
+            //for (int i = 0; i < 15; i++)   //put on pool
             //    {
             //    this.createPathPoint();
             //}
@@ -98,9 +98,10 @@ namespace Assets.Scripts.Core
 
         void Awake()
         {
-            //Game.sprite = Resources.Load<Sprite>("images/tiles/grass_0");
+            this.gameObject.isStatic = true;
             ImagesRes.init();
             this._level = new Level(this, this._model);
+            
         }
 
 
@@ -124,7 +125,7 @@ namespace Assets.Scripts.Core
         //    }
 
         //    var point: createjs.Point = this.globalToLocal(e.stageX, e.stageY);
-        //    var index: number = Utils.getIndex(point.x, point.y);
+        //    var index number = Utils.getIndex(point.x, point.y);
         //    //console.log("[tap tile]: ", point, index);
 
         //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
@@ -146,15 +147,15 @@ namespace Assets.Scripts.Core
         //    this._pathfinder.init(Config.WIDTH, Config.HEIGHT, this._grid);
         //    this._pathfinder.findPath(this._hero.index, index);
 
-        //    if (this._pathfinder.path.length > 0 && (!this._grid[index].isContainType(ImagesRes.MILL) || e.target instanceof MillPress))
+        //    if (this._pathfinder.path.Length > 0 && (!this._grid[index].isContainType(ImagesRes.MILL) || e.target instanceof MillPress))
         //        {
-        //        var path: number[] = this._pathfinder.path;
+        //        var path number[] = this._pathfinder.path;
         //        if (e.target instanceof MillPress)
         //            {
         //            path.pop();
         //        }
 
-        //        if (this._pathfinder.path.length > 0)
+        //        if (this._pathfinder.path.Length > 0)
         //        {
         //            this.removeHint();
 
@@ -188,8 +189,8 @@ namespace Assets.Scripts.Core
 
         //public activateItems(): void
         //{
-        //    var len: number = this._items.length;
-        //    for (var i: number = 0; i < len; i++)
+        //    var len number = this._items.Length;
+        //    for (int i = 0; i < len; i++)
         //        {
         //        if (!(this._items[i] instanceof Tower))
         //            {
@@ -308,7 +309,7 @@ namespace Assets.Scripts.Core
         //        return;
         //    }
 
-        //    var params: Array < number > = Hints.texts[Progress.currentLevel];
+        //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
 
         //    var g: createjs.Graphics = new createjs.Graphics();
         //    var shape: createjs.Shape = new createjs.Shape(g);
@@ -320,14 +321,14 @@ namespace Assets.Scripts.Core
         //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
 
         //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
-        //    for (var i: number = 0; i < holes.length; i++)
+        //    for (int i = 0; i < holes.Length; i++)
         //        {
         //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
         //    }
 
         //    g.endFill();
 
-        //    var bitmap: createjs.Bitmap = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
         //    bitmap.mouseEnabled = false;
         //    bitmap.snapToPixel = true;
         //    Core.instance.addChild(bitmap);
@@ -361,7 +362,7 @@ namespace Assets.Scripts.Core
         //        return;
         //    }
 
-        //    var params: Array < number > = Hints.textsAfterAction[Progress.currentLevel];
+        //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
 
         //    var g: createjs.Graphics = new createjs.Graphics();
         //    var shape: createjs.Shape = new createjs.Shape(g);
@@ -373,14 +374,14 @@ namespace Assets.Scripts.Core
         //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
 
         //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
-        //    for (var i: number = 0; i < holes.length; i++)
+        //    for (int i = 0; i < holes.Length; i++)
         //        {
         //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
         //    }
 
         //    g.endFill();
 
-        //    var bitmap: createjs.Bitmap = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
         //    bitmap.mouseEnabled = false;
         //    bitmap.snapToPixel = true;
         //    Core.instance.addChild(bitmap);
@@ -431,7 +432,7 @@ namespace Assets.Scripts.Core
         //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
         //    }
         //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
-        //    if (Progress.currentLevel < Progress.starsAllLevels.length - 1)
+        //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
         //    {
         //        this.parent.addChild(new Victory(this));
         //    }
@@ -446,13 +447,13 @@ namespace Assets.Scripts.Core
         //    this.checkCollision(this._units, -30, 30, -30, 30);
         //}
 
-        //public checkCollision(vector: {[index: number]: ICollidable; }, x1: number, x2: number, y1: number, y2: number): void
+        //public checkCollision(vector: {[index number]: ICollidable; }, x1 number, x2 number, y1 number, y2 number): void
         //{
         //    var dObject: createjs.DisplayObject;
-        //    var heroX: number = this._hero.x + +Config.SIZE_W * 0.5;
-        //    var heroY: number = this._hero.y + +Config.SIZE_H * 0.5;
-        //    var objX: number;
-        //    var objY: number;
+        //    var heroX number = this._hero.x + +Config.SIZE_W * 0.5;
+        //    var heroY number = this._hero.y + +Config.SIZE_H * 0.5;
+        //    var objX number;
+        //    var objY number;
 
         //        for (var i in vector)
         //    {
@@ -473,7 +474,7 @@ namespace Assets.Scripts.Core
         //                    if (dObject instanceof Monster)
         //                        {
         //                        var monster: Monster = < Monster > dObject;
-        //                        var index: number = this._items.indexOf(monster);
+        //                        var index number = this._items.indexOf(monster);
         //                        this._items.splice(index, 1);
         //                        this.removeChild(monster);
         //                    }
@@ -532,7 +533,7 @@ namespace Assets.Scripts.Core
 
         //}
 
-        //private showBoom(boomType: string = ImagesRes.A_BOOM): void
+        //private showBoom(boomType string = ImagesRes.A_BOOM): void
         //{
         //    //console.log("[PLAY BOOM]", this._hero.state);
         //    var sprite: createjs.Sprite = new createjs.Sprite(JSONRes.atlas1, boomType);
@@ -557,11 +558,11 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //private showPath(path: number[]): void
+        //private showPath(path number[]): void
         //{
-        //    for (var i: number = 0; i < path.length; i++)
+        //    for (int i = 0; i < path.Length; i++)
         //        {
-        //        if (this._poolPoints.length < path.length)
+        //        if (this._poolPoints.Length < path.Length)
         //        {
         //            this.createPathPoint();
         //        }
@@ -570,9 +571,9 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //private appearPoint(index: number): void
+        //private appearPoint(index number): void
         //{
-        //    var bitmap: createjs.Bitmap = this._poolPoints.pop();
+        //    var bitmap GameObject = this._poolPoints.pop();
         //    bitmap.scaleX = bitmap.scaleY = 0;
         //    bitmap.x = this._grid[index].x + Config.SIZE_W * 0.5 + 2;
         //    bitmap.y = this._grid[index].y + Config.SIZE_H * 0.5 + 3;
@@ -581,16 +582,16 @@ namespace Assets.Scripts.Core
         //    createjs.Tween.get(bitmap).to({ scaleX: 1.2, scaleY: 1.2 }, 100, createjs.Ease.quartOut).call(this.reducePoint, [bitmap], this);
         //}
 
-        //private reducePoint(bitmap: createjs.Bitmap): void
+        //private reducePoint(bitmap GameObject): void
         //{
         //    createjs.Tween.get(bitmap).to({ scaleX: 1, scaleY: 1 }, 60, createjs.Ease.quartIn);
         //}
 
         //private hidePoints(): void
         //{
-        //    while (this._activePoints.length > 0)
+        //    while (this._activePoints.Length > 0)
         //    {
-        //        var bitmap: createjs.Bitmap = this._activePoints.pop();
+        //        var bitmap GameObject = this._activePoints.pop();
         //        bitmap.visible = false;
         //        this._poolPoints.push(bitmap);
         //    }
@@ -598,7 +599,7 @@ namespace Assets.Scripts.Core
 
         //private hideLastPoint(e: GameEvent): void
         //{
-        //    if (this._activePoints.length == 0)
+        //    if (this._activePoints.Length == 0)
         //    {
         //        return;
         //    }
@@ -611,14 +612,14 @@ namespace Assets.Scripts.Core
         //    }
 
         //    //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
-        //    var bitmap: createjs.Bitmap = this._activePoints.shift();
+        //    var bitmap GameObject = this._activePoints.shift();
         //    bitmap.visible = false;
         //    this._poolPoints.push(bitmap);
         //}
 
         //private createPathPoint(): void
         //{
-        //    var bitmap: createjs.Bitmap;
+        //    var bitmapGameObject
         //    var bd: HTMLImageElement;
 
         //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
@@ -666,8 +667,8 @@ namespace Assets.Scripts.Core
         //    this._pathfinder = null;
 
         //    var grid: Tile[] = this._grid;
-        //    var len: number = grid.length;
-        //    for (var i: number = 0; i < len; i++)
+        //    var len number = grid.Length;
+        //    for (int i = 0; i < len; i++)
         //        {
         //        grid[i].clear();
         //    }
@@ -679,9 +680,9 @@ namespace Assets.Scripts.Core
         //    this._items = null;
 
         //    this._targetMark = null;
-        //    this._poolPoints.length = 0;
+        //    this._poolPoints.Length = 0;
         //    this._poolPoints = null;
-        //    this._activePoints.length = 0;
+        //    this._activePoints.Length = 0;
         //    this._activePoints = null;
 
         //    this._grid = null;

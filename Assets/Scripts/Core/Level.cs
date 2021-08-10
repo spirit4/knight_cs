@@ -1,21 +1,18 @@
 ﻿using Assets.Scripts.Data;
-using Assets.Scripts.Utils;
 using SimpleJSON;
-using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
-    class Level
+    public class Level
     {
         private Model _model;
         private Component _container;
 
         //private _hero: Hero;
         //private _mill: MillPress;
-        //private _units: { [index: number]: ICollidable; };
+        //private _units: { [index number]: ICollidable; };
         //private _items: IActivatable[];
 
         /** <summary>Static Sprites</summary> */
@@ -55,8 +52,8 @@ namespace Assets.Scripts.Core
             this._tilesBg = null;
             this._decorBg = null;
 
-            //var len: number = this._items.length;
-            //for (var i: number = 0; i < len; i++)
+            //var len number = this._items.Length;
+            //for (int i = 0; i < len; i++)
             //{
             //    this._items[i].init(i, this._model.grid, this._units);
             //}
@@ -132,7 +129,7 @@ namespace Assets.Scripts.Core
 
                 //            case ImagesRes.MONSTER:
                 //                var monster: Monster;
-                //                var id: number = 0;
+                //                var id number = 0;
                 //                for (var key in this._units)
                 //                {
                 //        monster = < Monster > this._units[key];
@@ -167,8 +164,8 @@ namespace Assets.Scripts.Core
         //{
         //    Core.instance.bg.removeTiles();
 
-        //    var len: number = this._items.length;
-        //    for (var i: number = 0; i < len; i++)
+        //    var len number = this._items.Length;
+        //    for (int i = 0; i < len; i++)
         //        {
         //        this._items[i].destroy();
         //    }
@@ -178,7 +175,7 @@ namespace Assets.Scripts.Core
         //    this._hero = null;
         //    this._units = null;
         //    this._mill = null;
-        //    this._items.length = 0;
+        //    this._items.Length = 0;
         //    this._items = null;
         //}
 
@@ -192,7 +189,7 @@ namespace Assets.Scripts.Core
         //    return this._mill;
         //}
 
-        //public get units(): {[index: number]: ICollidable; }
+        //public get units(): {[index number]: ICollidable; }
         //{
         //    return this._units;
         //}

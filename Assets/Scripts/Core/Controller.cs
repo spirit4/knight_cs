@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Core
 {
-    class Controller
+    public class Controller
     {
         //    //-------------------------------
         //    //public editor: Editor;
@@ -152,7 +152,7 @@ namespace Assets.Scripts.Core
         //        Core.instance.addBlind();
         //    }
 
-        //private setLevel(level: string): void
+        //private setLevel(level string): void
         //{
         //    if (level != "")
         //    {
@@ -202,7 +202,7 @@ namespace Assets.Scripts.Core
         //    this._blind = null;
         //}
 
-        //private addView(type: string): void
+        //private addView(type string): void
         //{
         //    switch (type)
         //    {

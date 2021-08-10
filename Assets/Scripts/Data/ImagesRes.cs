@@ -10,107 +10,107 @@ namespace Assets.Scripts.Data
     public static class ImagesRes
     {
         //        //tiles
-        //        static NONE: string = "none";
-        //    static HERO: string = "hero";
+        //        static NONE string = "none";
+        //public const string HERO string = "hero";
         public const string GRASS = "grass";
-        //    static STAR: string = "star";   //helm, shield, sword
-        //    static EXIT: string = "exit";
-        //    static MILL: string = "mill";
-        //    static MILL_VANE: string = "millVane";
+        //public const string STAR string = "star";   //helm, shield, sword
+        //public const string EXIT string = "exit";
+        //public const string MILL string = "mill";
+        //public const string MILL_VANE string = "millVane";
         public const string WATER = "water";
-        //    static PINE: string = "pine";
-        //    static STONE: string = "stone";
-        //    static STUMP: string = "stump";
-        //    static MONSTER: string = "wolwpig";
-        //    static BRIDGE: string = "brige";
-        //    static TOWER: string = "tower";
-        //    static ARROW: string = "arrow";
-        //    static SPIKES: string = "spikes";
-        //    static TRAP: string = "trap";
-        //    static BOULDER: string = "boulder";
-        //    static BOULDER_MARK: string = "boulderMark";
-        //    static TARGET_MARK: string = "targetMark";
+        //public const string PINE string = "pine";
+        //public const string STONE string = "stone";
+        //public const string STUMP string = "stump";
+        //public const string MONSTER string = "wolwpig";
+        //public const string BRIDGE string = "brige";
+        //public const string TOWER string = "tower";
+        //public const string ARROW string = "arrow";
+        //public const string SPIKES string = "spikes";
+        //public const string TRAP string = "trap";
+        //public const string BOULDER string = "boulder";
+        //public const string BOULDER_MARK string = "boulderMark";
+        //public const string TARGET_MARK string = "targetMark";
 
         public const string DECOR = "Decor";//???????????????????flovers
 
         //    //gui
-        //    static MAIN_BG: string = "MainBack";   //in preloader
-        //    static GAME_BG: string = "GameBack";
-        //    static LEVELS_BG: string = "LevelBack";
+        //public const string MAIN_BG string = "MainBack";   //in preloader
+        //public const string GAME_BG string = "GameBack";
+        //public const string LEVELS_BG string = "LevelBack";
 
-        //    static PRELOADER_BAR_BG: string = "preloaderBarBg";    //in preloader
-        //    static PRELOADER_BAR: string = "preloaderBar";    //in preloader
-        //    static SPEAR_UI: string = "spearUI";        //in preloader (2)
+        //public const string PRELOADER_BAR_BG string = "preloaderBarBg";    //in preloader
+        //public const string PRELOADER_BAR string = "preloaderBar";    //in preloader
+        //public const string SPEAR_UI string = "spearUI";        //in preloader (2)
 
-        //    static INTRO_ICON: string = "intro";
+        //public const string INTRO_ICON string = "intro";
 
-        //    static UI_MILL: string = "UImill";
-        //    static UI_STICK: string = "UIstick";
-        //    static UI_COURSE: string = "UIcourse";
-        //    static UI_STAR_ON: string = "UIstarOn";
-        //    static UI_STAR_OFF: string = "UIstarOff";
-        //    static UI_MILL_VANE: string = "UImillVane";
-        //    static UI_LEVEL_BOARD: string = "UILevelBoard";
+        //public const string UI_MILL string = "UImill";
+        //public const string UI_STICK string = "UIstick";
+        //public const string UI_COURSE string = "UIcourse";
+        //public const string UI_STAR_ON string = "UIstarOn";
+        //public const string UI_STAR_OFF string = "UIstarOff";
+        //public const string UI_MILL_VANE string = "UImillVane";
+        //public const string UI_LEVEL_BOARD string = "UILevelBoard";
 
-        //    //static UI_FAMOBI_MORE: string = "UIFamobiMoreGames";
+        //    //public static UI_FAMOBI_MORE string = "UIFamobiMoreGames";
 
-        //    static MAIN_TITLE: string = "MainLogo";   //in preloader
-        //    static CREDITS_TITLE: string = "Credits";
-        //    static LEVEL_SELECT_TITLE: string = "SelectLevel";
-        //    static ACHIEVEMENS_TITLE: string = "Achievemens";
-        //    static VICTORY_MID: string = "victoryMid";
-        //    static FINISH_MID: string = "finishMid";
-        //    static VICTORY_TOP: string = "victoryTop";
-        //    static VICTORY_BOTTOM: string = "victoryBottom";
+        //public const string MAIN_TITLE string = "MainLogo";   //in preloader
+        //public const string CREDITS_TITLE string = "Credits";
+        //public const string LEVEL_SELECT_TITLE string = "SelectLevel";
+        //public const string ACHIEVEMENS_TITLE string = "Achievemens";
+        //public const string VICTORY_MID string = "victoryMid";
+        //public const string FINISH_MID string = "finishMid";
+        //public const string VICTORY_TOP string = "victoryTop";
+        //public const string VICTORY_BOTTOM string = "victoryBottom";
 
-        //    static ICON_ACH: string = "IconAch";
-        //    static TEXT_ACH: string = "textAch";
+        //public const string ICON_ACH string = "IconAch";
+        //public const string TEXT_ACH string = "textAch";
 
-        //    static HELP: string = "help";
+        //public const string HELP string = "help";
 
-        //    static BUTTON_CREDITS: string = "button_credits_main_main_state_0";
-        //    static BUTTON_CREDITS_OVER: string = "button_credits_main_main_state_01";
-        //    //static BUTTON_MORE_GAME: string = "botton_joystick_game_state_0";
-        //    //static BUTTON_MORE_OVER_GAME: string = "botton_joystick_game_state_01";
-        //    static BUTTON_MORE_MAIN: string = "botton_joystick_game_state_02";
-        //    static BUTTON_MORE_OVER_MAIN: string = "botton_joystick_game_state_012";
-        //    static BUTTON_PLAY_MAIN: string = "button_play_main_state_0";
-        //    static BUTTON_PLAY_OVER_MAIN: string = "button_play_main_state_01";
-        //    static BUTTON_PLAY_LC: string = "button_play_main_state_02";
-        //    static BUTTON_PLAY_OVER_LC: string = "button_play_main_state_012";
-        //    static BUTTON_ACH: string = "button_achievments_main_state_0";
-        //    static BUTTON_ACH_OVER: string = "button_achievments_main_state_01";
-        //    static BUTTON_SOUND_ON: string = "button_sound_on_main_state_0";
-        //    static BUTTON_SOUND_ON_OVER: string = "button_sound_on_main_state_01";
-        //    static BUTTON_SOUND_OFF: string = "button_sound_off_main_state_0";
-        //    static BUTTON_SOUND_OFF_OVER: string = "button_sound_off_main_state_01";
-        //    static BUTTON_BACK: string = "button_back_levels_state_0";
-        //    static BUTTON_BACK_OVER: string = "button_back_levels_state_01";
-        //    static BUTTON_LS: string = "desk_level_state_0";
-        //    static BUTTON_LS_OVER: string = "desk_level_state_01";
-        //    static BUTTON_MENU: string = "button_levels_level_complete_state_0";
-        //    static BUTTON_MENU_OVER: string = "button_levels_level_complete_state_01";
-        //    static BUTTON_RESET: string = "button_replay_level_complete_state_0";
-        //    static BUTTON_RESET_OVER: string = "button_replay_level_complete_state_01";
+        //public const string BUTTON_CREDITS string = "button_credits_main_main_state_0";
+        //public const string BUTTON_CREDITS_OVER string = "button_credits_main_main_state_01";
+        //    //public static BUTTON_MORE_GAME string = "botton_joystick_game_state_0";
+        //    //public static BUTTON_MORE_OVER_GAME string = "botton_joystick_game_state_01";
+        //public const string BUTTON_MORE_MAIN string = "botton_joystick_game_state_02";
+        //public const string BUTTON_MORE_OVER_MAIN string = "botton_joystick_game_state_012";
+        //public const string BUTTON_PLAY_MAIN string = "button_play_main_state_0";
+        //public const string BUTTON_PLAY_OVER_MAIN string = "button_play_main_state_01";
+        //public const string BUTTON_PLAY_LC string = "button_play_main_state_02";
+        //public const string BUTTON_PLAY_OVER_LC string = "button_play_main_state_012";
+        //public const string BUTTON_ACH string = "button_achievments_main_state_0";
+        //public const string BUTTON_ACH_OVER string = "button_achievments_main_state_01";
+        //public const string BUTTON_SOUND_ON string = "button_sound_on_main_state_0";
+        //public const string BUTTON_SOUND_ON_OVER string = "button_sound_on_main_state_01";
+        //public const string BUTTON_SOUND_OFF string = "button_sound_off_main_state_0";
+        //public const string BUTTON_SOUND_OFF_OVER string = "button_sound_off_main_state_01";
+        //public const string BUTTON_BACK string = "button_back_levels_state_0";
+        //public const string BUTTON_BACK_OVER string = "button_back_levels_state_01";
+        //public const string BUTTON_LS string = "desk_level_state_0";
+        //public const string BUTTON_LS_OVER string = "desk_level_state_01";
+        //public const string BUTTON_MENU string = "button_levels_level_complete_state_0";
+        //public const string BUTTON_MENU_OVER string = "button_levels_level_complete_state_01";
+        //public const string BUTTON_RESET string = "button_replay_level_complete_state_0";
+        //public const string BUTTON_RESET_OVER string = "button_replay_level_complete_state_01";
 
         //    //animations
-        //    static A_HERO_IDLEs: Object[];
-        //    static A_HERO_MOVEs: Object[];
-        //    //static A_HERO_DEATHs: Object[];
-        //    static A_ITEMs: Object;   // 0-helm, 1-shield, 2-sword
-        //    static A_MONSTER: Object;
-        //    static A_SMOKE: string = "smoke";
-        //    static A_BOOM: string = "boom";
-        //    static A_ATTACK_BOOM: string = "boom_sword";
-        //    static A_TRAP: string = "trap";
+        //public const string A_HERO_IDLEs: Object[];
+        //public const string A_HERO_MOVEs: Object[];
+        //    //public static A_HERO_DEATHs: Object[];
+        //public const string A_ITEMs: Object;   // 0-helm, 1-shield, 2-sword
+        //public const string A_MONSTER: Object;
+        //public const string A_SMOKE string = "smoke";
+        //public const string A_BOOM string = "boom";
+        //public const string A_ATTACK_BOOM string = "boom_sword";
+        //public const string A_TRAP string = "trap";
 
-        public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
+        public static readonly Dictionary<string, float>  numberImages = new Dictionary<string, float>();
         public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); //loader: createjs.LoadQueue;
 
         public static void init()
         {
-            ImagesRes.numberImages[ImagesRes.GRASS] = 5.0f;
-            ImagesRes.numberImages[ImagesRes.WATER] = 3.0f;
+            ImagesRes. numberImages[ImagesRes.GRASS] = 5.0f;
+            ImagesRes. numberImages[ImagesRes.WATER] = 3.0f;
 
             //    var manifest = [
             //            { src: "images/ui/help1.png", id: ImagesRes.HELP + "0" },
@@ -274,7 +274,7 @@ namespace Assets.Scripts.Data
             //Game.sprite = Resources.Load<Sprite>("images/tiles/grass_0");
         }
 
-        //static initAnimations(): void
+        //public static initAnimations(): void
         //{
         //    ImagesRes.A_HERO_IDLEs = [
         //            { animation: "knight_stay", atlas: JSONRes.atlas0 },
@@ -318,9 +318,9 @@ namespace Assets.Scripts.Data
         {
             Sprite bd;
             int index;
-            if (ImagesRes.numberImages[name] > 0)
+            if (ImagesRes. numberImages[name] > 0)
             {
-                index = (int)Random.Range(0, ImagesRes.numberImages[name]);
+                index = (int)Random.Range(0, ImagesRes. numberImages[name]);
                 //Debug.Log("[getImage] " + name + '_' + index);
                 bd = tileSprites[name + '_' + index];
             }
