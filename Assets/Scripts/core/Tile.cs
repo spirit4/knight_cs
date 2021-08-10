@@ -30,16 +30,20 @@ namespace Assets.Scripts.Core
         {
             this.types.Add(type);
             GameObject dObject = this.GetAlignedGameObject(type);
-            //dObject.transform.SetParent(container.gameObject.transform);
-            
 
-           // Debug.Log("TILE i: " + index + "   " + x + "   " + y);
+
+            // Debug.Log("TILE i: " + index + "   " + x + "   " + y);
             this.objects.Add(dObject);
 
-            // console.log("+++add", type, type.indexOf(ImagesRes.DECOR))
+            //Debug.Log("+++add  " + type + "   " + type.IndexOf(ImagesRes.DECOR));
+
+            //everything by default
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
             {
-                //dObject.transform.SetParent(container.gameObject.transform);
+                dObject.transform.SetParent(container.gameObject.transform);
+                dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+                dObject.GetComponent<SpriteRenderer>().sortingOrder = index;
+                dObject.transform.localPosition = new Vector3(x - 0.03f, y + 0.06f, 0);
             }
 
             return dObject;
@@ -54,7 +58,7 @@ namespace Assets.Scripts.Core
 
             dObject.name = type;// + index; seems I need only water
             dObject.transform.position = new Vector3(this.x, this.y, 0);
-           // Debug.Log("+++add" + type + "  " + index + "  " + x + "  " + y);
+            //Debug.Log("+++add " + type + "  " + index + "  " + x + "  " + y);
             switch (type)
             {
                 //        case ImagesRes.HERO:  //editor
@@ -66,59 +70,51 @@ namespace Assets.Scripts.Core
 
                 case ImagesRes.GRASS:
                     this.isWall = false;
-
                     dObject.isStatic = true;
-                    //dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Back";
-                    //dObject.GetComponent<SpriteRenderer>().sortingOrder = index + 1;
                     break;
 
                 case ImagesRes.WATER:
                     dObject.isStatic = true;
-                    //dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Back";
-                    //dObject.GetComponent<SpriteRenderer>().sortingOrder = index + 1;
                     break;
 
-                    //        case ImagesRes.STAR + 0:
-                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                    //            sprite.framerate = 30;
-                    //            sprite.x = this.x - 10;
-                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 35;
-                    //            dObject = sprite;
-                    //            break;
-                    //        case ImagesRes.STAR + 1:
-                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                    //            sprite.framerate = 20;
-                    //            sprite.x = this.x + 0;
-                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 15;
-                    //            dObject = sprite;
-                    //            break;
-                    //        case ImagesRes.STAR + 2:
-                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                    //            sprite.framerate = 15;
-                    //            sprite.x = this.x + 20;
-                    //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 5;
-                    //            dObject = sprite;
-                    //            break;
+                //        case ImagesRes.STAR + 0:
+                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                //            sprite.framerate = 30;
+                //            sprite.x = this.x - 10;
+                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 35;
+                //            dObject = sprite;
+                //            break;
+                //        case ImagesRes.STAR + 1:
+                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                //            sprite.framerate = 20;
+                //            sprite.x = this.x + 0;
+                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 15;
+                //            dObject = sprite;
+                //            break;
+                //        case ImagesRes.STAR + 2:
+                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
+                //            sprite.framerate = 15;
+                //            sprite.x = this.x + 20;
+                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 5;
+                //            dObject = sprite;
+                //            break;
 
-                    //        case ImagesRes.TRAP:
-                    //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
-                    //            sprite.framerate = 30;
-                    //            sprite.x = this.x + 6;
-                    //            sprite.y = this.y + 9;
-                    //            dObject = sprite;
-                    //            break;
+                //        case ImagesRes.TRAP:
+                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
+                //            sprite.framerate = 30;
+                //            sprite.x = this.x + 6;
+                //            sprite.y = this.y + 9;
+                //            dObject = sprite;
+                //            break;
 
-                    //        case ImagesRes.PINE + 0:
-                    //        case ImagesRes.PINE + 1:
-                    //        case ImagesRes.PINE + 2:
-                    //        case ImagesRes.STONE + 0:
-                    //        case ImagesRes.STONE + 1:
-                    //        case ImagesRes.STUMP:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
-                    //            this.isWall = true;
-                    //            break;
+                case ImagesRes.PINE:
+                case ImagesRes.STONE:
+                case ImagesRes.STUMP:
+                    dObject.isStatic = true;
+                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                    this.isWall = true;
+                    break;
 
                     //        case ImagesRes.BRIDGE + 0:
                     //            dObject = new createjs.Bitmap(bd);

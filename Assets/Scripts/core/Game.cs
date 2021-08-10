@@ -100,6 +100,11 @@ namespace Assets.Scripts.Core
         {
             this.gameObject.isStatic = true;
             ImagesRes.init();
+
+            //JSONRes.init();
+            //ImagesRes.initAnimations();
+            Controller.instance.bg.init();
+
             this._level = new Level(this, this._model);
             
         }

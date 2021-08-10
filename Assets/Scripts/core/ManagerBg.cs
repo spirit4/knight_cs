@@ -6,7 +6,7 @@ namespace Assets.Scripts.Core
 {
     public class ManagerBg
     {
-        //    private _typeBDs string[] = [
+            //private string[]  = [
         //        ImagesRes.GAME_BG,
         //        ImagesRes.UI_LEVEL_BOARD,
         //        ImagesRes.LEVEL_SELECT_TITLE,
@@ -35,14 +35,15 @@ namespace Assets.Scripts.Core
             //this.mouseChildren = false;
         }
 
-        //public init(): void
-        //{
-        //    var bitmapGameObject
-        //    for (int i = 0; i < this._typeBDs.Length; i++)
-        //        {
-        //        this.addToCache(this._typeBDs[i]);
-        //    }
-        //}
+        public void init()
+        {
+            //for (int i = 0; i < this._typeBDs.Length; i++)
+            //{
+            //   // this.addToCache(this._typeBDs[i]);
+            //}
+
+            ////this is gui //unessasery
+        }
 
         //public addToCache(type string, res ?: HTMLImageElement): void
         //{
@@ -136,7 +137,7 @@ namespace Assets.Scripts.Core
                 bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
                 bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
 
-                // Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
+                 Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
 
                 if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)
                 {
@@ -156,7 +157,8 @@ namespace Assets.Scripts.Core
 
                 //}
 
-                //////Debug.Log("mbg: " + dx + "x: " + dy + "y ");
+                //Debug.Log("mbg: " + grid[i].x + "x: " + grid[i].y + "y " + bitmaps[i].name);
+                //Debug.Log("mbg i: " + i +  "   name: " + bitmaps[i].name);
                 if (isDecor)
                 {
                     this._decorBitmaps.Add(bitmaps[i]);

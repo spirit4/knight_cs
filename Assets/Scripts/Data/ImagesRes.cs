@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Core;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -18,9 +19,9 @@ namespace Assets.Scripts.Data
         //public const string MILL string = "mill";
         //public const string MILL_VANE string = "millVane";
         public const string WATER = "water";
-        //public const string PINE string = "pine";
-        //public const string STONE string = "stone";
-        //public const string STUMP string = "stump";
+        public const string PINE  = "pine";
+        public const string STONE  = "stone";
+        public const string STUMP  = "stump";
         //public const string MONSTER string = "wolwpig";
         //public const string BRIDGE string = "brige";
         //public const string TOWER string = "tower";
@@ -316,9 +317,9 @@ namespace Assets.Scripts.Data
 
         public static Sprite getImage(string name)
         {
-            Sprite bd;
+            Sprite bd = null;
             int index;
-            if (ImagesRes. numberImages[name] > 0)
+            if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes. numberImages[name] > 0)
             {
                 index = (int)Random.Range(0, ImagesRes. numberImages[name]);
                 //Debug.Log("[getImage] " + name + '_' + index);
@@ -326,7 +327,24 @@ namespace Assets.Scripts.Data
             }
             else
             {
-                bd = tileSprites[name];
+                if (!ImagesRes.tileSprites.ContainsKey(name))
+                {
+
+                    try
+                    {
+                        string digit = Regex.Match(name, @"\d+").Value;
+                        index = int.Parse(digit);      //check if there is actually index in string
+                        bd = tileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
+
+                        Debug.Log("[getImage]  [" + name.Substring(0, name.LastIndexOf(digit)) + '_' + digit + "]");
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log("[getImage] THERE is NO item yet: [" + name + "]");
+                        Debug.Log(e);
+                    }
+                }
+
             }
 
             

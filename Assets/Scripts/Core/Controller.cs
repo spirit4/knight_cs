@@ -49,7 +49,7 @@ namespace Assets.Scripts.Core
 
             //this._preloader.removeAllEventListeners();
             this.model = new Model();
-
+            initCompleted();
 
 
             //ImagesRes.init();-- moved to Game.Awake()
@@ -60,11 +60,11 @@ namespace Assets.Scripts.Core
             //        this._preloader.on(GameEvent.COMPLETE, this.initCompleted, this);
         }
 
-        //    private initCompleted() : void
-        //    {
-        //        JSONRes.init();
-        //        ImagesRes.initAnimations();
-        //        this.bg.init();
+            private void initCompleted()
+            {
+                //JSONRes.init();
+                //ImagesRes.initAnimations();
+                //this.bg.init();------------------------------------------------------------------moved to awake
 
         //        //-------------------------------
         //        //this.editor = new Editor(this.model.grid);
@@ -75,7 +75,7 @@ namespace Assets.Scripts.Core
         //        if (this.ga)
         //        {
         //        Core.instance.ga.send('pageview', "/InitMainMenu");
-        //    }
+            }
 
         //    //window.addEventListener(GUIEvent.KEYDOWN, this.editor.keyHandler.bind(this.editor));
 

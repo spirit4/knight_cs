@@ -154,8 +154,9 @@ namespace Assets.Scripts.Core
                     this._tilesBg.Add(bitmap);
                     break;
 
-                    //default:
-                    //    grid[index].pus(type, this._container, grid);
+                default:
+                    grid[index].add(type, this._container, grid);
+                    break;
             }
 
         }

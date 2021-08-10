@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Unit : MonoBehaviour //: ICollidable
+    public class Unit : MonoBehaviour, ICollidable
     {
         //    //states
         //    static ON: string = 'on';
