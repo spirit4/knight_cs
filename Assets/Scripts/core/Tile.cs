@@ -29,10 +29,10 @@ namespace Assets.Scripts.Core
         public GameObject add(string type, Component container, Tile[] grid = null)
         {
             this.types.Add(type);
-            GameObject dObject = this.GetAlignedGameObject(type);
+            GameObject dObject = this.GetAlignedGameObject(type, container);
 
 
-            // Debug.Log("TILE i: " + index + "   " + x + "   " + y);
+            // Debug.Log("TILE type: " + type + "   index" + index);
             this.objects.Add(dObject);
 
             //Debug.Log("+++add  " + type + "   " + type.IndexOf(ImagesRes.DECOR));
@@ -40,16 +40,16 @@ namespace Assets.Scripts.Core
             //everything by default
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
             {
-                dObject.transform.SetParent(container.gameObject.transform);
+                //dObject.transform.SetParent(container.gameObject.transform);
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
                 dObject.GetComponent<SpriteRenderer>().sortingOrder = index;
-                dObject.transform.localPosition = new Vector3(x - 0.03f, y + 0.06f, 0);
+                //dObject.transform.localPosition = new Vector3(x - 0.03f, y + 0.06f, 0);
             }
 
             return dObject;
         }
 
-        private GameObject GetAlignedGameObject(string type)
+        private GameObject GetAlignedGameObject(string type, Component container)
         {
             GameObject dObject = new GameObject();
             dObject.AddComponent<SpriteRenderer>();
@@ -57,17 +57,9 @@ namespace Assets.Scripts.Core
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
             dObject.name = type;// + index; seems I need only water
-            dObject.transform.position = new Vector3(this.x, this.y, 0);
             //Debug.Log("+++add " + type + "  " + index + "  " + x + "  " + y);
             switch (type)
             {
-                //        case ImagesRes.HERO:  //editor
-                //        case ImagesRes.MONSTER:  //editor
-                //            dObject = new createjs.Bitmap(bd);
-                //            dObject.x = this.x;
-                //            dObject.y = this.y + Config.SIZE_H - bd.height - 10;
-                //            break;
-
                 case ImagesRes.GRASS:
                     this.isWall = false;
                     dObject.isStatic = true;
@@ -107,51 +99,64 @@ namespace Assets.Scripts.Core
                 //            dObject = sprite;
                 //            break;
 
-                case ImagesRes.PINE:
-                case ImagesRes.STONE:
-                case ImagesRes.STUMP:
+                case string x when x.StartsWith(ImagesRes.PINE):
+                case string y when y.StartsWith(ImagesRes.STONE):
                     dObject.isStatic = true;
-                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.06f, 0);
                     this.isWall = true;
+                    //Debug.Log(type + " ================================================");
                     break;
 
-                    //        case ImagesRes.BRIDGE + 0:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
-                    //            this.isWall = false;
-                    //            break;
-                    //        case ImagesRes.BRIDGE + 1:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //            dObject.y = this.y - 10;
-                    //            this.isWall = false;
-                    //            break;
+                case ImagesRes.STUMP:
+                    dObject.isStatic = true;
+                    this.isWall = true;
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.06f, 0);
+                    //Debug.Log(type + " ================================================");
+                    break;
 
-                    //        case ImagesRes.SPIKES + 0:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + 2;
-                    //            dObject.y = this.y + 2;
-                    //            break;
+                case string y when y.StartsWith(ImagesRes.BRIDGE + 0):
+                    dObject.isStatic = true;
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y, 0);
+                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                    this.isWall = false;
+                    break;
+                case string y when y.StartsWith(ImagesRes.BRIDGE + 1):
+                    dObject.isStatic = true;
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.04f, 0);
+                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
+                    //dObject.y = this.y - 10;
+                    this.isWall = false;
+                    break;
 
-                    //        case ImagesRes.BOULDER:
-                    //        case ImagesRes.TOWER:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x;
-                    //            dObject.y = this.y;
-                    //            break;
+                //        case ImagesRes.SPIKES + 0:
+                //            dObject = new createjs.Bitmap(bd);
+                //            dObject.x = this.x + 2;
+                //            dObject.y = this.y + 2;
+                //            break;
 
-                    //        case ImagesRes.EXIT:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + 3;
-                    //            dObject.y = this.y - 13;
-                    //            break;
+                //        case ImagesRes.BOULDER:
+                //        case ImagesRes.TOWER:
+                //            dObject = new createjs.Bitmap(bd);
+                //            dObject.x = this.x;
+                //            dObject.y = this.y;
+                //            break;
 
-                    //        default:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //            dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
+                //        case ImagesRes.EXIT:
+                //            dObject = new createjs.Bitmap(bd);
+                //            dObject.x = this.x + 3;
+                //            dObject.y = this.y - 13;
+                //            break;
+
+                default:
+                    Debug.Log(type + " ==================== default in Tile ============================");
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y, 0);
+                    break;
             }
 
             //    dObject.snapToPixel = true;

@@ -137,7 +137,7 @@ namespace Assets.Scripts.Core
                 bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
                 bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
 
-                 Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
+                //Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
 
                 if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)
                 {

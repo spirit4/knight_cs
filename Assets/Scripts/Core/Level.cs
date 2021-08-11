@@ -107,7 +107,7 @@ namespace Assets.Scripts.Core
 
                 //            case ImagesRes.BOULDER_MARK:
                 //            case ImagesRes.ARROW:
-                //                grid[index].addType(type);//for set direction
+                //                grid[index].addType(type);//for setting the direction
                 //                break;
 
                 //            case ImagesRes.SPIKES + 0:

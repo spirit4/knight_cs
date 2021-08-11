@@ -19,11 +19,11 @@ namespace Assets.Scripts.Data
         //public const string MILL string = "mill";
         //public const string MILL_VANE string = "millVane";
         public const string WATER = "water";
-        public const string PINE  = "pine";
-        public const string STONE  = "stone";
-        public const string STUMP  = "stump";
-        //public const string MONSTER string = "wolwpig";
-        //public const string BRIDGE string = "brige";
+        public const string PINE = "pine";
+        public const string STONE = "stone";
+        public const string STUMP = "stump";
+        public const string MONSTER = "wolwpig";
+        public const string BRIDGE = "brige";
         //public const string TOWER string = "tower";
         //public const string ARROW string = "arrow";
         //public const string SPIKES string = "spikes";
@@ -105,13 +105,13 @@ namespace Assets.Scripts.Data
         //public const string A_ATTACK_BOOM string = "boom_sword";
         //public const string A_TRAP string = "trap";
 
-        public static readonly Dictionary<string, float>  numberImages = new Dictionary<string, float>();
+        public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
         public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); //loader: createjs.LoadQueue;
 
         public static void init()
         {
-            ImagesRes. numberImages[ImagesRes.GRASS] = 5.0f;
-            ImagesRes. numberImages[ImagesRes.WATER] = 3.0f;
+            ImagesRes.numberImages[ImagesRes.GRASS] = 5.0f;
+            ImagesRes.numberImages[ImagesRes.WATER] = 3.0f;
 
             //    var manifest = [
             //            { src: "images/ui/help1.png", id: ImagesRes.HELP + "0" },
@@ -319,35 +319,40 @@ namespace Assets.Scripts.Data
         {
             Sprite bd = null;
             int index;
-            if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes. numberImages[name] > 0)
+            if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes.numberImages[name] > 0)
             {
-                index = (int)Random.Range(0, ImagesRes. numberImages[name]);
+                index = (int)Random.Range(0, ImagesRes.numberImages[name]);
                 //Debug.Log("[getImage] " + name + '_' + index);
                 bd = tileSprites[name + '_' + index];
             }
-            else
+            else if (ImagesRes.tileSprites.ContainsKey(name))
             {
-                if (!ImagesRes.tileSprites.ContainsKey(name))
+                bd = tileSprites[name];
+                //Debug.Log("[getImage]!!!!!!!!!!!!!!!!!!!!!!!!: [" + name + "]");
+            }
+            else if (!ImagesRes.tileSprites.ContainsKey(name))
+            {
+
+                try
                 {
+                    string digit = Regex.Match(name, @"\d+").Value;
+                    index = int.Parse(digit);      //check if there is actually index in string
+                    bd = tileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
 
-                    try
-                    {
-                        string digit = Regex.Match(name, @"\d+").Value;
-                        index = int.Parse(digit);      //check if there is actually index in string
-                        bd = tileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
-
-                        Debug.Log("[getImage]  [" + name.Substring(0, name.LastIndexOf(digit)) + '_' + digit + "]");
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Log("[getImage] THERE is NO item yet: [" + name + "]");
-                        Debug.Log(e);
-                    }
+                    //Debug.Log("[getImage]  [" + name.Substring(0, name.LastIndexOf(digit)) + '_' + digit + "] " + name);
                 }
+                catch (Exception e)
+                {
+                    Debug.Log("[getImage] THERE is NO item yet: [" + name + "]");
+                    Debug.Log(e);
+
+
+                }
+
 
             }
 
-            
+
             return bd;
         }
     }
