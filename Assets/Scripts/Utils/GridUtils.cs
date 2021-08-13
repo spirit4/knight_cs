@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
-    public static class Utils
+    public static class GridUtils
     {
 
         public static int getIndex(float localX, float localY)
@@ -15,6 +16,13 @@ namespace Assets.Scripts.Utils
             int cellX = (int)(localX / Config.SIZE_W);
             int cellY = (int)(localY / Config.SIZE_H);
             return cellY * Config.WIDTH + cellX;
+        }
+
+        public static Vector2 GetUnityPoint(int x, int y)
+        {
+            float cellX = Config.SIZE_W * x / Config.PIXEL_SIZE;
+            float cellY = -Config.SIZE_H * y / Config.PIXEL_SIZE;
+            return new Vector2(cellX, cellY);
         }
 
         //public const string getPoint(i number) : createjs.Point

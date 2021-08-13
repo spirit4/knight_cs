@@ -19,6 +19,8 @@ namespace Assets.Scripts.Data
         /**SIZE_H number = 60*/
         public const float SIZE_H = SIZE_W;
 
+        public const float PIXEL_SIZE = 60; //html5 version
+
         ///**MARGIN_TOP number = 120*/
         //public const int MARGIN_TOP = 150;
         ///**PADDING number = 194*/

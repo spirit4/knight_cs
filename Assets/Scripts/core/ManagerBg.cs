@@ -132,10 +132,13 @@ namespace Assets.Scripts.Core
             int waterIndex = 0;
             for (int i = 0; i < bitmaps.Count; i++)
             {
-                bitmaps[i].transform.SetParent(_game.gameObject.transform);
                 bitmaps[i].GetComponent<SpriteRenderer>().sortingLayerName = "Back";
-                bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
-                bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
+                if(!isDecor) //decor set in Tile
+                {
+                    bitmaps[i].transform.SetParent(_game.gameObject.transform);
+                    bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
+                    bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
+                }
 
                 //Debug.Log("TILE i: " + i + "   " + bitmaps[i].name);
 
@@ -153,8 +156,8 @@ namespace Assets.Scripts.Core
                 }
                 //else
                 //{
-
-
+                //    Debug.Log("ManagerBg: " + i + "   " + bitmaps[i].name);
+                    
                 //}
 
                 //Debug.Log("mbg: " + grid[i].x + "x: " + grid[i].y + "y " + bitmaps[i].name);
@@ -162,6 +165,8 @@ namespace Assets.Scripts.Core
                 if (isDecor)
                 {
                     this._decorBitmaps.Add(bitmaps[i]);
+                    //putting on the top of any grass/water
+                    bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = Config.WIDTH * Config.HEIGHT + 10;
                 }
                 else
                 {

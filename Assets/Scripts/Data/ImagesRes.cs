@@ -319,6 +319,13 @@ namespace Assets.Scripts.Data
         {
             Sprite bd = null;
             int index;
+            string digit = Regex.Match(name, @"\d+").Value;
+
+            if (name.StartsWith(DECOR))
+            {
+                return tileSprites["flovers_" + digit]; //artist's spelling
+            }
+
             if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes.numberImages[name] > 0)
             {
                 index = (int)Random.Range(0, ImagesRes.numberImages[name]);
@@ -335,21 +342,14 @@ namespace Assets.Scripts.Data
 
                 try
                 {
-                    string digit = Regex.Match(name, @"\d+").Value;
-                    index = int.Parse(digit);      //check if there is actually index in string
+                    index = int.Parse(digit);      //checking if there is actually an index in the string
                     bd = tileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
-
-                    //Debug.Log("[getImage]  [" + name.Substring(0, name.LastIndexOf(digit)) + '_' + digit + "] " + name);
                 }
                 catch (Exception e)
                 {
                     Debug.Log("[getImage] THERE is NO item yet: [" + name + "]");
                     Debug.Log(e);
-
-
                 }
-
-
             }
 
 

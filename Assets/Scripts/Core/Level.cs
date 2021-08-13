@@ -44,7 +44,7 @@ namespace Assets.Scripts.Core
 
                 for (int j = 0; j < types.Count; j++)
                 {
-                    this.checkCell(index, types[j], types);
+                    this.checkCell(index, types[j], types, cells[i]);
                 }
             }
             Controller.instance.bg.addTiles(this._tilesBg, this._model.grid);
@@ -59,7 +59,8 @@ namespace Assets.Scripts.Core
             //}
         }
 
-        private void checkCell(int index, string type, List<string> types)
+        //node has local coordinates of decor
+        private void checkCell(int index, string type, List<string> types, JSONNode node)
         {
             GameObject bitmap;
             //GameObject sprite;
@@ -115,17 +116,15 @@ namespace Assets.Scripts.Core
                 //                this._items.push(spikes);
                 //                break;
 
-                //            case ImagesRes.DECOR + 0:
-                //            case ImagesRes.DECOR + 1:
-                //            case ImagesRes.DECOR + 2:
-                //            case ImagesRes.DECOR + 3:
-                //            case ImagesRes.DECOR + 4:
-                //                bitmap = < createjs.Bitmap > grid[index].add(type, this._container, grid);
-                //                bitmap.x = cell[type][0];
-                //                bitmap.y = cell[type][1];
-                //                this._decorBg.push(bitmap);
+                case string x when x.StartsWith(ImagesRes.DECOR):
+                    //bitmap = < createjs.Bitmap > grid[index].add(type, this._container, grid);
+                    //bitmap.x = cell[type][0];
+                    //bitmap.y = cell[type][1];
+                    grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
+                    bitmap = grid[index].add(type, this._container, grid);
+                    this._decorBg.Add(bitmap);
 
-                //                break;
+                    break;
 
                 //            case ImagesRes.MONSTER:
                 //                var monster: Monster;

@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace Assets.Scripts.Core
         public float x;
         public float y;
         public int index;
+
+        private int _localX;
+        private int _localY;
 
         public List<GameObject> objects;
         public List<string> types;
@@ -47,6 +51,12 @@ namespace Assets.Scripts.Core
             }
 
             return dObject;
+        }
+
+        public void AddLocalCoordinates (int localX, int localY)
+        {
+            _localX = localX;
+            _localY = localY;
         }
 
         private GameObject GetAlignedGameObject(string type, Component container)
@@ -151,6 +161,15 @@ namespace Assets.Scripts.Core
                 //            dObject.x = this.x + 3;
                 //            dObject.y = this.y - 13;
                 //            break;
+
+                case string y when y.StartsWith(ImagesRes.DECOR):
+                    //dObject.isStatic = true;
+                    dObject.transform.SetParent(container.gameObject.transform);
+                        var point = GridUtils.GetUnityPoint(_localX, _localY);
+                   //Debug.Log(type + "  is Decor x: " + point.x + "  y: " + point.y);
+
+                    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f, 0);
+                    break;
 
                 default:
                     Debug.Log(type + " ==================== default in Tile ============================");
