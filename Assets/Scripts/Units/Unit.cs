@@ -9,10 +9,10 @@ namespace Assets.Scripts.Units
         //    static OFF: string = 'off';
         //    static STARTED: string = 'started';
 
-        //    private _view: createjs.DisplayObject;
-        //    private _index: number;
-        //    private _type: string;
-        //    private _state: string;
+        private GameObject _view;
+        private int _index;
+        private string _type;
+        private string _state;
         //    private _tile: Tile;
 
         //    constructor(index: number, type: string, view?: createjs.DisplayObject, tile?: Tile)
@@ -27,15 +27,15 @@ namespace Assets.Scripts.Units
         //        this._state = Unit.ON;
         //    }
 
-        //    public destroy(): void
-        //    {
-        //        this.removeAllEventListeners();
-        //        createjs.Tween.removeTweens(this);
-        //        this.removeAllChildren();
+        public void destroy()
+        {
+            //        this.removeAllEventListeners();
+            //        createjs.Tween.removeTweens(this);
+            //        this.removeAllChildren();
 
-        //        this._view = null;
-        //        this._tile = null;
-        //    }
+            //        this._view = null;
+            //        this._tile = null;
+        }
 
         public void stop()
         {
@@ -60,10 +60,13 @@ namespace Assets.Scripts.Units
         //    }
         //    //--------------------setters
 
-        //    public get view(): createjs.DisplayObject
-        //    {
-        //        return this._view;
-        //    }
+        public GameObject view
+        {
+            get
+            {
+                return this._view;
+            }
+        }
 
         //    public get mc(): createjs.Sprite
         //    {
@@ -75,20 +78,27 @@ namespace Assets.Scripts.Units
         //        return <createjs.Bitmap> this._view;
         //    }
 
-        //    public get index(): number
-        //    {
-        //        return this._index;
-        //    }
-
-        //    public get type(): string
-        //    {
-        //        return this._type;
-        //    }
-
-        //    public get state(): string
-        //    {
-        //        return this._state;
-        //    }
+        public int index
+        {
+            get
+            {
+                return this._index;
+            }
+        }
+        public string type
+        {
+            get
+            {
+                return this._type;
+            }
+        }
+        public string state
+        {
+            get
+            {
+                return this._state;
+            }
+        }
 
         //    public get tile(): Tile
         //    {

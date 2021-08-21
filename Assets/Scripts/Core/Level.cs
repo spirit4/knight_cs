@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Units;
 using SimpleJSON;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Core
 
         //private _hero: Hero;
         //private _mill: MillPress;
-        //private _units: { [index number]: ICollidable; };
+        private Dictionary<int, ICollidable> _units;
         //private _items: IActivatable[];
 
         /** <summary>Static Sprites</summary> */
