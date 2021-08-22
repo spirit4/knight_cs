@@ -1,31 +1,34 @@
+using Assets.Scripts.Core;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Unit : MonoBehaviour, ICollidable
+    public abstract class Unit : ICollidable
     {
         //    //states
-        //    static ON: string = 'on';
-        //    static OFF: string = 'off';
-        //    static STARTED: string = 'started';
+        public const string ON = "on";
+        public const string OFF = "off";
+        public const string STARTED = "started";
 
         private GameObject _view;
         private int _index;
         private string _type;
         private string _state;
-        //    private _tile: Tile;
+        private Tile _tile;
 
-        //    constructor(index: number, type: string, view?: createjs.DisplayObject, tile?: Tile)
-        //    {
-        //        super();
-        //        this.mouseChildren = false;
+        public float x;
+        public float y; //uppercase
 
-        //        this._view = view;
-        //        this._tile = tile;
-        //        this._index = index;
-        //        this._type = type;
-        //        this._state = Unit.ON;
-        //    }
+        public Unit(int index, string type, GameObject view, Tile tile = null)//view?: createjs.DisplayObject, tile?: Tile)
+        {
+            //this.mouseChildren = false;
+
+            this._view = view;
+            this._tile = tile;
+            this._index = index;
+            this._type = type;
+            this._state = Unit.ON;
+        }
 
         public void destroy()
         {
@@ -83,6 +86,10 @@ namespace Assets.Scripts.Units
             get
             {
                 return this._index;
+            }
+            set
+            {
+                this._index = value;
             }
         }
         public string type

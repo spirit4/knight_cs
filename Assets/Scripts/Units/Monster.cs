@@ -1,107 +1,110 @@
 ﻿///using Assets.Scripts.Core;
+using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using DG.Tweening;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Monster : Unit// : IActivatable
+    public class Monster : Unit, IActivatable
     {
-        //private _directionX: number = 0;
-        //private _directionY: number = 0;
+        private int _directionX = 0;
+        private int _directionY = 0;
 
-        //private _grid: Tile[];
-        //private _pontIndex1: number = 0;
-        //private _pontIndex2: number = 0;
+        private Tile[] _grid;
+        private int _pontIndex1 = 0;
+        private int _pontIndex2 = 0;
 
-        //private SPEED: number = 1150;
+        private const float SPEED = 1.0f;//1.15f;
+        private const float MARGIN = 0.4f;
 
-        //public id: number = -1;
+        public int id = -1;
 
-        //constructor(type: string, index: number, id: number)
-        //{
-        //    super(index, type);
-        //    this._grid = Core.instance.model.grid;
-        //    this.id = id;
 
-        //    this._pontIndex1 = index;
+        public Monster(string type, int index, int id, GameObject view, Component container) : base(index, type, view)
+        {
+            this._grid = Controller.instance.model.grid;
+            this.id = id;
 
-        //    this.view = new createjs.Sprite(ImagesRes.A_MONSTER["atlas"], ImagesRes.A_MONSTER["animation"]);
-        //    this.view.snapToPixel = true;
-        //    this.mc.framerate = 26;
+            this._pontIndex1 = index;
+            this.x = this._grid[index].x; //for chooseing direction --> Level
+            this.y = this._grid[index].y;
 
-        //    this.view.regX = this.view.getBounds().width >> 1;
-        //    this.view.regY = this.view.getBounds().height >> 1;
+            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            view.GetComponent<SpriteRenderer>().sortingOrder = 10;// --------------??
+            view.name = type;
+            view.transform.SetParent(container.gameObject.transform);
+            view.transform.localPosition = new Vector3(_grid[index].x - MARGIN, _grid[index].y + MARGIN, 0);
+        }
 
-        //    this.x = this._grid[index].x;
-        //    this.y = this._grid[index].y;
-        //    this.view.x = Config.SIZE_W * 0.5 - 7;
-        //    this.view.y = Config.SIZE_H * 0.5 - 7;
+        private void move(float x, float y)
+        {
+            float time = 0;
+            if (this._directionX == 1 || this._directionX == -1) //!= 0
+            {
+                time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2);
+                view.transform.DOLocalMoveX(x - MARGIN, time).SetEase(Ease.Linear).OnComplete(setDirection);
+            }
+            else if (this._directionY == 1 || this._directionY == -1)
+            {
+                //Debug.Log("[move ]" + y + "   " + time);
+                time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
+                view.transform.DOLocalMoveY(y + MARGIN, time).SetEase(Ease.Linear).OnComplete(setDirection); 
+            }
 
-        //    this.addChild(this.view);
-        //}
+            
+            //    createjs.Tween.get(this).to({ x: x, y: y }, time, createjs.Ease.linear).call(this.setDirection, [], this);
+        }
 
-        //private move(x: number, y: number): void
-        //{
-        //    var time: number = 0;
-        //    if (this._directionX == 1 || this._directionX == -1)
-        //    {
-        //        time = this.SPEED * Math.abs(this._pontIndex1 - this._pontIndex2);
-        //    }
-        //    else if (this._directionY == 1 || this._directionY == -1)
-        //    {
-        //        time = this.SPEED * Math.abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
-        //    }
+        private void setDirection()
+        {
+            int directionIndex = (this.index == this._pontIndex1) ? this._pontIndex2 : this._pontIndex1;
+            Tile tile = this._grid[directionIndex];
+            if (tile.y == this.x && tile.x > this.x)
+            {
+                this._directionX = 1;
+                this._directionX = 0;
+            }
+            else if (tile.y == this.y && tile.x < this.x)
+            {
+                this._directionX = -1;
+                this._directionY = 0;
+            }
+            else if (tile.x == this.x && tile.y > this.y)
+            {
+                this._directionX = 0;
+                this._directionY = 1;
+            }
+            else if (tile.x == this.x && tile.y < this.y)
+            {
+                this._directionX = 0;
+                this._directionY = -1;
+            }
 
-        //    createjs.Tween.get(this).to({ x: x, y: y }, time, createjs.Ease.linear).call(this.setDirection, [], this);
-        //}
+            this.FlipView();
+            this.move(tile.x, tile.y);
+            this.index = directionIndex;
+        }
 
-        //private setDirection(): void
-        //{
-        //    var directionIndex: number = (this.index == this._pontIndex1) ? this._pontIndex2 : this._pontIndex1;
-        //    var tile: Tile = this._grid[directionIndex];
-        //    if (tile.y == this.y && tile.x > this.x)
-        //    {
-        //        this._directionX = 1;
-        //        this._directionY = 0;
-        //    }
-        //    else if (tile.y == this.y && tile.x < this.x)
-        //    {
-        //        this._directionX = -1;
-        //        this._directionY = 0;
-        //    }
-        //    else if (tile.x == this.x && tile.y > this.y)
-        //    {
-        //        this._directionX = 0;
-        //        this._directionY = 1;
-        //    }
-        //    else if (tile.x == this.x && tile.y < this.y)
-        //    {
-        //        this._directionX = 0;
-        //        this._directionY = -1;
-        //    }
+        private void FlipView() // TODO test it
+        {
+            if (this._directionX == 1)
+            {
+                view.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (this._directionX == -1)
+            {
+                view.GetComponent<SpriteRenderer>().flipX = false;
+            }
 
-        //    this.changeView();
-        //    this.move(tile.x, tile.y);
-        //    this.index = directionIndex;
-        //}
+        }
 
-        //private changeView(): void
-        //{
-        //    if (this._directionX == 1)
-        //    {
-        //        this.view.scaleX = -1;
-        //    }
-        //    else if (this._directionX == -1)
-        //    {
-        //        this.view.scaleX = 1;
-        //    }
-
-        //}
-
-        //public setPointIndex2(index: number): void
-        //{
-        //    this._pontIndex2 = index;
-        //    this.setDirection();
-        //}
+        public void setPointIndex2(int index)
+        {
+            this._pontIndex2 = index;
+            this.setDirection();
+        }
 
         //public activate(): void
         //{

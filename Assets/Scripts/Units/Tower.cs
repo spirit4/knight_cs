@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Core;
+using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Tower : Unit // : IActivatable
+    public class Tower : Unit, IActivatable
     {
         //private _directionIndex: number;
         //private _grid: Tile[];
@@ -13,13 +14,15 @@ namespace Assets.Scripts.Units
 
         //private _count: number = 0;
 
-        //constructor(type: string, index: number, view: createjs.DisplayObject, tile: Tile)
-        //{
-        //    super(index, type, view, tile);
-        //    tile.isWall = true;
-        //    view.x += 10;
-        //    view.y -= 15;
-        //}
+        public Tower(string type, int index, GameObject view, Tile tile) : base(index, type, view, tile)
+        {
+            //constructor(type: string, index: number, view: createjs.DisplayObject, tile: Tile)
+            //{
+            //    super(index, type, view, tile);
+            //    tile.isWall = true;
+            //    view.x += 10;
+            //    view.y -= 15;
+        }
 
         //public init(i: number, grid: Tile[], units: { [index: number]: ICollidable; }): void
         //{

@@ -3,14 +3,12 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Spikes : Unit// implements IActivatable
+    public class Spikes : Unit, IActivatable
     {
-
-        //constructor(type: string, index: number, view: createjs.DisplayObject, tile:Tile)
-        //{
-        //    super(index, type, view, tile);
-        //    tile.isWall = true;
-        //}
+        public Spikes(string type, int index, GameObject view, Tile tile) : base(index, type, view, tile)
+        {
+            tile.isWall = true;
+        }
 
         //public init(): void
         //{

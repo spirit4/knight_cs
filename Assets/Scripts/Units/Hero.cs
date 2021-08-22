@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -35,6 +36,10 @@ namespace Assets.Scripts.Units
         //static TWO_SHIELD_SWORD: number = 6;
         //static FULL: number = 7;
 
+        public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
+        {
+
+        }
         //constructor(index: number)
         //{
         //    super(index, ImagesRes.HERO);

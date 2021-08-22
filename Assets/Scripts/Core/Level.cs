@@ -14,7 +14,7 @@ namespace Assets.Scripts.Core
         //private _hero: Hero;
         //private _mill: MillPress;
         private Dictionary<int, ICollidable> _units;
-        //private _items: IActivatable[];
+        private List<IActivatable> _items;
 
         /** <summary>Static Sprites</summary> */
         private List<GameObject> _tilesBg;
@@ -26,8 +26,8 @@ namespace Assets.Scripts.Core
             this._container = container;
             this._model = model;
 
-            //this._units = { };
-            //this._items = [];
+            this._units = new Dictionary<int, ICollidable>();
+            this._items = new List<IActivatable>();
             this._tilesBg = new List<GameObject>();
             this._decorBg = new List<GameObject>();
 
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Core
                 //                grid[index].isDear = true;
                 //                grid[index].addType(type);
                 //                grid[index].objects.push(container);//dirty hack
-                //                //console.log("[SDSDSDSDSDS: ]", index, type);
+                //                
                 //                break;
 
                 //            case ImagesRes.STAR:
@@ -127,26 +127,33 @@ namespace Assets.Scripts.Core
 
                     break;
 
-                //            case ImagesRes.MONSTER:
-                //                var monster: Monster;
-                //                var id number = 0;
-                //                for (var key in this._units)
-                //                {
-                //        monster = < Monster > this._units[key];
-                //        if (monster.type == type && (monster.x == grid[index].x || monster.y == grid[index].y))
-                //        {
-                //            monster.setPointIndex2(index);
-                //            return;
-                //        }
-                //        id++;
-                //    }
+                case ImagesRes.MONSTER:
+                    Monster monster;
+                    int id = 0;
+                    //Debug.Log("[case ImagesRes.MONSTER1: ]" + grid[index].y);
+                    foreach (KeyValuePair<int, ICollidable> pair in this._units)
+                    {
+                        //Debug.Log("[case ImagesRes.MONSTER2: ]" + pair.Value.type + pair.Key);
+                        if (pair.Value.type == type)
+                        {
+                            monster = pair.Value as Monster;
+                            //Debug.Log("[11111: ]" + monster.type + type);
+                            //Debug.Log("[22222: ]" + monster.x + "       " +grid[index].x + "       " + monster.y + "       " + grid[index].y);
+                            if (monster.type == type && (monster.x == grid[index].x || monster.y == grid[index].y))
+                            {
+                                monster.setPointIndex2(index);
+                                return;
+                            }
+                            id++;
+                        }
+                    }
 
-                //    monster = new Monster(type, index, id);
-                //                this._container.addChild(monster);
+                    GameObject view = GameObject.Instantiate(ImagesRes.prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    monster = new Monster(type, index, id, view, this._container);
 
-                //                this._units[index] = monster;
-                //                this._items.push(monster);//to set index position
-                //                break;
+                    this._units.Add(index, monster);
+                    this._items.Add(monster);//to set index position ?
+                    break;
 
                 case ImagesRes.GRASS:
                 case ImagesRes.WATER:

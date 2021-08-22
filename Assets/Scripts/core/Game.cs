@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,8 +54,6 @@ namespace Assets.Scripts.Core
             this._model = Controller.instance.model;
             this._grid = this._model.grid;
 
-           
-            
 
             //this.x = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
             //this.y = Config.MARGIN_TOP;
@@ -100,6 +99,8 @@ namespace Assets.Scripts.Core
         {
             this.gameObject.isStatic = true;
             ImagesRes.init();
+
+            DOTween.Init();
 
             //JSONRes.init();
             //ImagesRes.initAnimations();

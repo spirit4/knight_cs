@@ -14,19 +14,21 @@ namespace Assets.Scripts.Units
 
         //public id: number = -1;
 
-        //constructor(type: string, index: number)
-        //{
-        //    super(index, type);
-        //    this._grid = Core.instance.model.grid;
+        public TowerArrow(string type, int index, GameObject view) : base(index, type, view)
+        {
+            //constructor(type: string, index: number)
+            //{
+            //    super(index, type);
+            //    this._grid = Core.instance.model.grid;
 
-        //    this._pontIndex1 = index;
+            //    this._pontIndex1 = index;
 
-        //    var bd: HTMLImageElement = ImagesRes.getImage(type);
-        //    this.view = new createjs.Bitmap(bd);
-        //    this.view.snapToPixel = true;
+            //    var bd: HTMLImageElement = ImagesRes.getImage(type);
+            //    this.view = new createjs.Bitmap(bd);
+            //    this.view.snapToPixel = true;
 
-        //    this.addChild(this.view);
-        //}
+            //    this.addChild(this.view);
+        }
 
         //public shoot(direction: number, speed: number): void
         //{

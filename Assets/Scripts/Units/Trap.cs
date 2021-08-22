@@ -5,12 +5,11 @@ namespace Assets.Scripts.Units
 {
     public class Trap : Unit
     {
-        //constructor(view: createjs.DisplayObject, index: number, type: string)
-        //{
-        //    super(index, type, view);
-        //    this.mc.stop();
-        //    this.mc.alpha = 0.4;
-        //}
-
+        public Trap(string type, int index, GameObject view) : base(index, type, view)
+        {
+            //this.mc.stop();
+            //    this.mc.alpha = 0.4;
+        }
+        
     }
 }

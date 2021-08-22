@@ -3,11 +3,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-   public class Star : Unit
+    public class Star : Unit
     {
-    //    constructor(view: createjs.DisplayObject, index: number, type: string)
-    //{
-    //        super(index, type, view);
-    //    }
+        public Star(string type, int index, GameObject view) : base(index, type, view)
+        {
 
-    } }
+        }
+
+
+    }
+}

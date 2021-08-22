@@ -12,7 +12,7 @@ namespace Assets.Scripts.Data
     {
         //        //tiles
         //        static NONE string = "none";
-        //public const string HERO string = "hero";
+        public const string HERO = "hero";
         public const string GRASS = "grass";
         //public const string STAR string = "star";   //helm, shield, sword
         //public const string EXIT string = "exit";
@@ -23,6 +23,7 @@ namespace Assets.Scripts.Data
         public const string STONE = "stone";
         public const string STUMP = "stump";
         public const string MONSTER = "wolwpig";
+        public const string MONSTER_ANIMATION = "Wolf";
         public const string BRIDGE = "brige";
         //public const string TOWER string = "tower";
         //public const string ARROW string = "arrow";
@@ -107,6 +108,7 @@ namespace Assets.Scripts.Data
 
         public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
         public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); //loader: createjs.LoadQueue;
+        public static Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>(); //loader: createjs.LoadQueue;
 
         public static void init()
         {
@@ -264,6 +266,14 @@ namespace Assets.Scripts.Data
                 {
                     tileSprites.Add(s.name, s);
                     //Debug.Log("[try] " + s.name);
+                }
+
+                GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
+                //Debug.Log(clips.Length);
+                foreach (var prefab in clips)
+                {
+                    prefabs.Add(prefab.name, prefab);
+                    //Debug.Log("[try] " + prefab.name);
                 }
 
             }
