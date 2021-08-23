@@ -63,9 +63,8 @@ namespace Assets.Scripts.Core
         //node has local coordinates of decor
         private void checkCell(int index, string type, List<string> types, JSONNode node)
         {
-            GameObject bitmap;
-            //GameObject sprite;
-            //GameObject container;
+            GameObject gameObject;
+
             Tile[] grid = this._model.grid;
 
             switch (type)
@@ -84,11 +83,27 @@ namespace Assets.Scripts.Core
                 //                
                 //                break;
 
-                //            case ImagesRes.STAR:
-                //                sprite = < createjs.Sprite > grid[index].add(type, this._container, grid);
+                //TODO fix animations pivots all 3
+                case string x when x.StartsWith(ImagesRes.STAR + 0): //helmet
+                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject.transform.SetParent(_container.gameObject.transform);
+                    new Star(type, index, gameObject);
+                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.04f, grid[index].y - 0.07f, 0);
+                    break;
 
-                //                var star: Star = new Star(sprite, index, type);
-                //                break;
+                case string x when x.StartsWith(ImagesRes.STAR + 1): //shield
+                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Shield"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject.transform.SetParent(_container.gameObject.transform);
+                    new Star(type, index, gameObject);
+                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.03f, grid[index].y + 0.05f, 0);
+                    break;
+
+                case string x when x.StartsWith(ImagesRes.STAR + 2): //sword
+                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Sword"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject.transform.SetParent(_container.gameObject.transform);
+                    new Star(type, index, gameObject);
+                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.01f, grid[index].y + 0.15f, 0);
+                    break;
 
                 //            case ImagesRes.TRAP:
                 //                sprite = < createjs.Sprite > grid[index].add(type, this._container, grid);
@@ -122,8 +137,8 @@ namespace Assets.Scripts.Core
                     //bitmap.x = cell[type][0];
                     //bitmap.y = cell[type][1];
                     grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
-                    bitmap = grid[index].add(type, this._container, grid);
-                    this._decorBg.Add(bitmap);
+                    gameObject = grid[index].add(type, this._container, grid);
+                    this._decorBg.Add(gameObject);
 
                     break;
 
@@ -157,8 +172,8 @@ namespace Assets.Scripts.Core
 
                 case ImagesRes.GRASS:
                 case ImagesRes.WATER:
-                    bitmap = grid[index].add(type, this._container, grid);
-                    this._tilesBg.Add(bitmap);
+                    gameObject = grid[index].add(type, this._container, grid);
+                    this._tilesBg.Add(gameObject);
                     break;
 
                 default:

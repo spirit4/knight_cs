@@ -79,28 +79,6 @@ namespace Assets.Scripts.Core
                     dObject.isStatic = true;
                     break;
 
-                //        case ImagesRes.STAR + 0:
-                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                //            sprite.framerate = 30;
-                //            sprite.x = this.x - 10;
-                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 35;
-                //            dObject = sprite;
-                //            break;
-                //        case ImagesRes.STAR + 1:
-                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                //            sprite.framerate = 20;
-                //            sprite.x = this.x + 0;
-                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 15;
-                //            dObject = sprite;
-                //            break;
-                //        case ImagesRes.STAR + 2:
-                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_ITEMs[type]);
-                //            sprite.framerate = 15;
-                //            sprite.x = this.x + 20;
-                //            sprite.y = this.y + Config.SIZE_H - sprite.getBounds().height - 5;
-                //            dObject = sprite;
-                //            break;
-
                 //        case ImagesRes.TRAP:
                 //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
                 //            sprite.framerate = 30;
@@ -113,7 +91,7 @@ namespace Assets.Scripts.Core
                 case string y when y.StartsWith(ImagesRes.STONE):
                     dObject.isStatic = true;
                     dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.06f, 0);
+                    dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.07f, 0);
                     this.isWall = true;
                     //Debug.Log(type + " ================================================");
                     break;
