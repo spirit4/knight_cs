@@ -15,7 +15,7 @@ namespace Assets.Scripts.Data
         public const string HERO = "hero";
         public const string GRASS = "grass";
         public const string STAR  = "star";   //helm, shield, sword
-        //public const string EXIT string = "exit";
+        public const string EXIT = "exit";
         //public const string MILL string = "mill";
         //public const string MILL_VANE string = "millVane";
         public const string WATER = "water";

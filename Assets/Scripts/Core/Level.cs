@@ -11,7 +11,7 @@ namespace Assets.Scripts.Core
         private Model _model;
         private Component _container;
 
-        //private _hero: Hero;
+        //private Hero _hero;
         //private _mill: MillPress;
         private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
@@ -69,10 +69,12 @@ namespace Assets.Scripts.Core
 
             switch (type)
             {
-                //            case ImagesRes.HERO:
-                //                this._hero = new Hero(index);
-                //                this._container.addChild(this._hero);
-                //                break;
+                case ImagesRes.HERO:
+                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject.transform.SetParent(_container.gameObject.transform);
+                    var hero = new Hero(index, gameObject);
+                    //this._container.addChild(this._hero);
+                    break;
 
                 //            case ImagesRes.MILL:
                 //                container = this._mill = new MillPress(type, index);

@@ -37,7 +37,7 @@ namespace Assets.Scripts.Units
             view.name = type;
             //view.GetComponent<Bounds>
             view.transform.SetParent(container.gameObject.transform);
-            view.transform.localPosition = new Vector3(_grid[index].x - MARGIN_X, _grid[index].y + MARGIN_Y, 0);
+            view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
             //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.x);
             //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.y);
         }
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Units
             if (this._directionX == 1 || this._directionX == -1) //!= 0
             {
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2);
-                view.transform.DOLocalMoveX(x - MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
+                view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
             else if (this._directionY == 1 || this._directionY == -1)
             {

@@ -12,7 +12,7 @@ public class AtlasCopyPasteEditor : EditorWindow
     public Texture2D pasteTo;           //Sprite atlas where to paste settings
 
     private Sprite[] _sprites;           //Collection of sprites from source texture for faster referencing
-    private Sprite[] _sprites2;          
+    private Sprite[] _sprites2;
 
     [MenuItem("Window/Atlas CopyPaste Editor")]
     static void Init()
@@ -95,13 +95,31 @@ public class AtlasCopyPasteEditor : EditorWindow
         //Reassigning to new atlas
         List<SpriteMetaData> _data = new List<SpriteMetaData>();
 
+        TextureImporterSettings texImporterSettings = new TextureImporterSettings();
+        _importer.ReadTextureSettings(texImporterSettings);
+        texImporterSettings.spriteAlignment = (int)SpriteAlignment.Custom;
+        _importer.SetTextureSettings(texImporterSettings);
+
+        //texImporterSettings.spritePixelsPerUnit = 32;
+        //texImporterSettings.spritePivot = new Vector2(0.5f, 0.08f); ;
+        //texImporterSettings.spriteMode = 1;
+        //texImporterSettings.spriteExtrude = 1;
+        //texImporterSettings.spriteMeshType = SpriteMeshType.FullRect;
+        //texImporterSettings.filterMode = FilterMode.Point;
+        //texImporterSettings.wrapMode = TextureWrapMode.Clamp;
+        //texImporterSettings.textureType = TextureImporterType.Sprite;
+        _importer.SetTextureSettings(texImporterSettings);
+
         for (int i = 0; i < _sprites.Length; i++)
         {
             SpriteMetaData _meta = new SpriteMetaData();
-            _meta.pivot = _sprites[i].pivot;
+            //Debug.Log("pivot " + _sprites[i].pivot.normalized);
+            _meta.alignment = 9;
+            _meta.pivot = _sprites[i].pivot.normalized;
             _meta.name = _sprites[i].name;
             _meta.rect = _sprites[i].rect;
             _meta.border = _sprites[i].border;
+
 
             _data.Add(_meta);
         }
@@ -109,11 +127,16 @@ public class AtlasCopyPasteEditor : EditorWindow
         //Add MetaData back to spriteshet from List to Array
         Debug.Log("CopyPaste1 " + _importer.spritesheet.Length);
         _importer.spritesheet = _data.ToArray();
+
+        //Debug.Log("i2 " + _importer.spritesheet[2].pivot.x);
         Debug.Log("CopyPaste2 " + _importer.spritesheet.Length);
 
         //Rebuild asset
         _importer.isReadable = false;// to add new sprites - !important!
+        //EditorUtility.CopySerialized(_importer, _importer);
         AssetDatabase.ImportAsset(_path, ImportAssetOptions.ForceUpdate);
+
+        // _importer.isReadable = true;//---?
         Debug.Log("COMPLETE slicing " + _importer.spritesheet.Length);
     }
 

@@ -13,7 +13,7 @@ namespace Assets.Scripts.Units
 
         //private SPEED: number = 300;
 
-        //private _grid: Tile[];
+        private Tile[] _grid;
 
         //private _path: number[] = [];
         //private _directionX: number = 1;
@@ -36,9 +36,19 @@ namespace Assets.Scripts.Units
         //static TWO_SHIELD_SWORD: number = 6;
         //static FULL: number = 7;
 
+        private const float MARGIN_X = 0f;
+        private const float MARGIN_Y = 0f;
+
         public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
         {
+            this._grid = Controller.instance.model.grid;
+                this.index = index;
 
+            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
+            view.name = type;
+
+            view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
         }
         //constructor(index: number)
         //{
@@ -49,8 +59,7 @@ namespace Assets.Scripts.Units
 
         //    this._stateItems = Hero.NO_ITEMS;
 
-        //    this._grid = Core.instance.model.grid;
-        //    this.index = index;
+        //    
 
         //    var ss: any[] = this.getAnimation();
 

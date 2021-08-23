@@ -53,7 +53,7 @@ namespace Assets.Scripts.Core
             return dObject;
         }
 
-        public void AddLocalCoordinates (int localX, int localY)
+        public void AddLocalCoordinates(int localX, int localY)
         {
             _localX = localX;
             _localY = localY;
@@ -134,17 +134,16 @@ namespace Assets.Scripts.Core
                 //            dObject.y = this.y;
                 //            break;
 
-                //        case ImagesRes.EXIT:
-                //            dObject = new createjs.Bitmap(bd);
-                //            dObject.x = this.x + 3;
-                //            dObject.y = this.y - 13;
-                //            break;
+                case ImagesRes.EXIT:
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.13f, 0);
+                    break;
 
                 case string y when y.StartsWith(ImagesRes.DECOR):
                     //dObject.isStatic = true;
                     dObject.transform.SetParent(container.gameObject.transform);
-                        var point = GridUtils.GetUnityPoint(_localX, _localY);
-                   //Debug.Log(type + "  is Decor x: " + point.x + "  y: " + point.y);
+                    var point = GridUtils.GetUnityPoint(_localX, _localY);
+                    //Debug.Log(type + "  is Decor x: " + point.x + "  y: " + point.y);
 
                     dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f, 0);
                     break;
