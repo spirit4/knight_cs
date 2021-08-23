@@ -77,6 +77,7 @@ public class JSONSpriteImporter : EditorWindow {
 			Texture2D tex = AssetDatabase.LoadMainAssetAtPath(path) as Texture2D;
 			images.Add(tex);
 			sprite_metadata.Add (new List<SpriteMetaData> ());
+			//Debug.Log("[json 1111]" + i + "    " + path);
 		}
 
 		//set meta data based on frames

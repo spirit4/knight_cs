@@ -17,7 +17,8 @@ namespace Assets.Scripts.Units
         private int _pontIndex2 = 0;
 
         private const float SPEED = 1.0f;//1.15f;
-        private const float MARGIN = 0.4f;
+        private const float MARGIN_X = 0f;
+        private const float MARGIN_Y = 0.1f;
 
         public int id = -1;
 
@@ -32,10 +33,13 @@ namespace Assets.Scripts.Units
             this.y = this._grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 10;// --------------??
+            view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
             view.name = type;
+            //view.GetComponent<Bounds>
             view.transform.SetParent(container.gameObject.transform);
-            view.transform.localPosition = new Vector3(_grid[index].x - MARGIN, _grid[index].y + MARGIN, 0);
+            view.transform.localPosition = new Vector3(_grid[index].x - MARGIN_X, _grid[index].y + MARGIN_Y, 0);
+            //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.x);
+            //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.y);
         }
 
         private void move(float x, float y)
@@ -44,13 +48,13 @@ namespace Assets.Scripts.Units
             if (this._directionX == 1 || this._directionX == -1) //!= 0
             {
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2);
-                view.transform.DOLocalMoveX(x - MARGIN, time).SetEase(Ease.Linear).OnComplete(setDirection);
+                view.transform.DOLocalMoveX(x - MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
             else if (this._directionY == 1 || this._directionY == -1)
             {
                 //Debug.Log("[move ]" + y + "   " + time);
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
-                view.transform.DOLocalMoveY(y + MARGIN, time).SetEase(Ease.Linear).OnComplete(setDirection); 
+                view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(setDirection); 
             }
 
             
