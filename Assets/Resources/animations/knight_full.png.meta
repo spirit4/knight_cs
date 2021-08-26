@@ -95,6 +95,51 @@ TextureImporter:
   - first:
       213: -2709611518634457821
     second: stay_14
+  - first:
+      213: -8296385383580801948
+    second: walk_0
+  - first:
+      213: 3218353051568008401
+    second: walk_1
+  - first:
+      213: 6971375644381031630
+    second: walk_2
+  - first:
+      213: -3714987382563562326
+    second: walk_3
+  - first:
+      213: -2044624726750869082
+    second: walk_4
+  - first:
+      213: -1800561202758830752
+    second: walk_5
+  - first:
+      213: -7072565547094396234
+    second: walk_6
+  - first:
+      213: -6780060589664581786
+    second: walk_7
+  - first:
+      213: 2251703588619409307
+    second: walk_8
+  - first:
+      213: -5224373444711448209
+    second: walk_9
+  - first:
+      213: 8428286525173097495
+    second: walk_10
+  - first:
+      213: -2787140197056013511
+    second: walk_11
+  - first:
+      213: -8260419473583676578
+    second: walk_12
+  - first:
+      213: 6000581766031926614
+    second: walk_13
+  - first:
+      213: -6959915571989194883
+    second: walk_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -172,321 +217,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stay_helmet_0
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 1615
-        width: 61
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009845856, y: 0.99995154}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be233eae1000de660800000000000000
-      internalID: 7416584169584800491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_1
-      rect:
-        serializedVersion: 2
-        x: 370
-        y: 1615
-        width: 61
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009845856, y: 0.99995154}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30e61d4103898b2a0800000000000000
-      internalID: -6721455111575343613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_2
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 1615
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009684463, y: 0.9999531}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9050453a53612cf50800000000000000
-      internalID: 6900101998714291465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_3
-      rect:
-        serializedVersion: 2
-        x: 493
-        y: 1615
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009684463, y: 0.9999531}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0b58139d2dbd77ec0800000000000000
-      internalID: -3569142481034312272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_4
-      rect:
-        serializedVersion: 2
-        x: 554
-        y: 1615
-        width: 59
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009523071, y: 0.99995464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fed16937b3956f250800000000000000
-      internalID: 5978063667258072559
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_5
-      rect:
-        serializedVersion: 2
-        x: 614
-        y: 1615
-        width: 59
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009523071, y: 0.99995464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b19f0f3b453d9e70800000000000000
-      internalID: 9123507017419297209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_6
-      rect:
-        serializedVersion: 2
-        x: 674
-        y: 1615
-        width: 59
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009523071, y: 0.99995464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 489b23d561f869b40800000000000000
-      internalID: 5446698125566851460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_7
-      rect:
-        serializedVersion: 2
-        x: 734
-        y: 1615
-        width: 59
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009523071, y: 0.99995464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c248d0728202eebd0800000000000000
-      internalID: -2599104578120219604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_8
-      rect:
-        serializedVersion: 2
-        x: 794
-        y: 1615
-        width: 59
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009523071, y: 0.99995464}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8d454fc85f65cb80800000000000000
-      internalID: -8375165504800338547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_9
-      rect:
-        serializedVersion: 2
-        x: 854
-        y: 1615
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009684463, y: 0.9999531}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c007a8845b4adc950800000000000000
-      internalID: 6471009338114338828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_10
-      rect:
-        serializedVersion: 2
-        x: 915
-        y: 1615
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009684463, y: 0.9999531}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc2bcb8beda146cd0800000000000000
-      internalID: -2565896343809903925
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_11
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1526
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009684463, y: 0.9999531}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b99555b382ca0c4b0800000000000000
-      internalID: -5422144662559958629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_12
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 1526
-        width: 61
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009845856, y: 0.99995154}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e12860c13e68d680800000000000000
-      internalID: -8730106717697203738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_13
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 1526
-        width: 60
-        height: 88
-      alignment: 9
-      pivot: {x: -0.017430203, y: 0.99984807}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a31bf8af0f2995dd0800000000000000
-      internalID: -2496802954706702022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stay_helmet_14
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 1615
-        width: 61
-        height: 88
-      alignment: 9
-      pivot: {x: -0.009845856, y: 0.99995154}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f3eb55dabeef0450800000000000000
-      internalID: 6057322510047503348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: stay_0
       rect:
         serializedVersion: 2
@@ -495,7 +225,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010690564, y: 0.99994284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -516,7 +246,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010690564, y: 0.99994284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -537,7 +267,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.0105153285, y: 0.9999447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -558,7 +288,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.0105153285, y: 0.9999447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -579,7 +309,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010340092, y: 0.9999465}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -600,7 +330,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010340092, y: 0.9999465}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -621,7 +351,7 @@ TextureImporter:
         width: 58
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010164856, y: 0.9999484}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -642,7 +372,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010340092, y: 0.9999465}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -663,7 +393,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010340092, y: 0.9999465}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -684,7 +414,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.0105153285, y: 0.9999447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -705,7 +435,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.0105153285, y: 0.9999447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -726,7 +456,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.0105153285, y: 0.9999447}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -747,7 +477,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010690564, y: 0.99994284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -768,7 +498,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010690564, y: 0.99994284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -789,7 +519,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.014195048, y: 0.9998992}
+      pivot: {x: -0.010690564, y: 0.99994284}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -797,6 +527,636 @@ TextureImporter:
       bones: []
       spriteID: 3258c701ea6856ad0800000000000000
       internalID: -2709611518634457821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_0
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1615
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0068251397, y: 0.9999767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be233eae1000de660800000000000000
+      internalID: 7416584169584800491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_1
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1615
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0068251397, y: 0.9999767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30e61d4103898b2a0800000000000000
+      internalID: -6721455111575343613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1615
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0066032093, y: 0.99997824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9050453a53612cf50800000000000000
+      internalID: 6900101998714291465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_3
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1615
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0066032093, y: 0.99997824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b58139d2dbd77ec0800000000000000
+      internalID: -3569142481034312272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_4
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1615
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.006384946, y: 0.9999796}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed16937b3956f250800000000000000
+      internalID: 5978063667258072559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_5
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1615
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.006384946, y: 0.9999796}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b19f0f3b453d9e70800000000000000
+      internalID: 9123507017419297209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_6
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 1615
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.006384946, y: 0.9999796}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 489b23d561f869b40800000000000000
+      internalID: 5446698125566851460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_7
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1615
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.006384946, y: 0.9999796}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c248d0728202eebd0800000000000000
+      internalID: -2599104578120219604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_8
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1615
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.006384946, y: 0.9999796}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d454fc85f65cb80800000000000000
+      internalID: -8375165504800338547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_9
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1615
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0066032093, y: 0.99997824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c007a8845b4adc950800000000000000
+      internalID: 6471009338114338828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_10
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1615
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0066032093, y: 0.99997824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2bcb8beda146cd0800000000000000
+      internalID: -2565896343809903925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1526
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0066032093, y: 0.99997824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b99555b382ca0c4b0800000000000000
+      internalID: -5422144662559958629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_12
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1525
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.025, y: 1.011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e12860c13e68d680800000000000000
+      internalID: -8730106717697203738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_13
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1525
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.04, y: 1.011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a31bf8af0f2995dd0800000000000000
+      internalID: -2496802954706702022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_14
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 1615
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0068251397, y: 0.9999767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f3eb55dabeef0450800000000000000
+      internalID: 6057322510047503348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.016804349, y: 0.9998588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4646ce323715ddc80800000000000000
+      internalID: -8296385383580801948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.016804349, y: 0.9998588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc61808c03e9ac20800000000000000
+      internalID: 3218353051568008401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_2
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.016804349, y: 0.9998588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc242f663d4fb060800000000000000
+      internalID: 6971375644381031630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_3
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0056656315, y: 0.9999839}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aac9d3d88a6b17cc0800000000000000
+      internalID: -3714987382563562326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_4
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1443
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.0056656315, y: 0.9999839}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a9c807d4a800a3e0800000000000000
+      internalID: -2044624726750869082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_5
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.016994713, y: 0.9998556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065b539302f1307e0800000000000000
+      internalID: -1800561202758830752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_6
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1444
+        width: 58
+        height: 81
+      alignment: 9
+      pivot: {x: -0.016994713, y: 0.9998556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2b5c26b1339dd90800000000000000
+      internalID: -7072565547094396234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_7
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1446
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.017189436, y: 0.99985224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667ca65e0d268e1a0800000000000000
+      internalID: -6780060589664581786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_8
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.016994713, y: 0.9998556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97d12bdb78af3f10800000000000000
+      internalID: 2251703588619409307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_9
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.028317252, y: 0.99959904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f618dfd280c4f77b0800000000000000
+      internalID: -5224373444711448209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_10
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1443
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.028317252, y: 0.99959904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714672e80f947f470800000000000000
+      internalID: 8428286525173097495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_11
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.028317252, y: 0.99959904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b9347f1c61259d0800000000000000
+      internalID: -2787140197056013511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_12
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.028317252, y: 0.99959904}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53635d11481d5d80800000000000000
+      internalID: -8260419473583676578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_13
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.028000223, y: 0.999608}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655e402e259564350800000000000000
+      internalID: 6000581766031926614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1359
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.028000223, y: 0.999608}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77dfd899a9696f90800000000000000
+      internalID: -6959915571989194883
       vertices: []
       indices: 
       edges: []
