@@ -320,6 +320,456 @@ TextureImporter:
   - first:
       213: 4485706364362457383
     second: stay_sword_shield_14
+  - first:
+      213: -7034382062378341673
+    second: walk_helmet_0
+  - first:
+      213: 4012948042166075086
+    second: walk_helmet_1
+  - first:
+      213: -3197671875252906443
+    second: walk_helmet_2
+  - first:
+      213: -2272930473884939758
+    second: walk_helmet_3
+  - first:
+      213: -7057232379726077572
+    second: walk_helmet_4
+  - first:
+      213: 7002176268807757759
+    second: walk_helmet_5
+  - first:
+      213: 557719132698095243
+    second: walk_helmet_6
+  - first:
+      213: 5799265319410984311
+    second: walk_helmet_7
+  - first:
+      213: -5500633925064676855
+    second: walk_helmet_8
+  - first:
+      213: -5430083101177146123
+    second: walk_helmet_9
+  - first:
+      213: -1128511676884445814
+    second: walk_helmet_10
+  - first:
+      213: -129263889734471626
+    second: walk_helmet_11
+  - first:
+      213: 9072462124029803961
+    second: walk_helmet_12
+  - first:
+      213: 3345719835249396907
+    second: walk_helmet_13
+  - first:
+      213: -1915369429998640933
+    second: walk_helmet_14
+  - first:
+      213: -5077505415311420067
+    second: walk_helmet_15
+  - first:
+      213: -2819589972304500464
+    second: walk_helmet_16
+  - first:
+      213: -3380307610249174201
+    second: walk_helmet_17
+  - first:
+      213: -1487921492176933069
+    second: walk_helmet_18
+  - first:
+      213: -2914477815981346784
+    second: walk_helmet_19
+  - first:
+      213: -5876304852074005491
+    second: walk_helmet_20
+  - first:
+      213: -8427107536845057962
+    second: walk_helmet_21
+  - first:
+      213: 671759649829099630
+    second: walk_helmet_22
+  - first:
+      213: -8065972283141050748
+    second: walk_helmet_23
+  - first:
+      213: -8978961058287101454
+    second: walk_helmet_24
+  - first:
+      213: 3861001105572884139
+    second: walk_helmet_25
+  - first:
+      213: -918689003716085349
+    second: walk_helmet_26
+  - first:
+      213: -8430211062924159939
+    second: walk_helmet_27
+  - first:
+      213: 1607869447853641711
+    second: walk_helmet_28
+  - first:
+      213: 8895147021725905239
+    second: walk_helmet_29
+  - first:
+      213: 3543892874718950206
+    second: walk_helmet_shield_0
+  - first:
+      213: 8360071620765865769
+    second: walk_helmet_shield_1
+  - first:
+      213: -1110108278681759734
+    second: walk_helmet_shield_2
+  - first:
+      213: 6603841991373285897
+    second: walk_helmet_shield_3
+  - first:
+      213: 5466164187267160467
+    second: walk_helmet_shield_4
+  - first:
+      213: -6044188217912339305
+    second: walk_helmet_shield_5
+  - first:
+      213: 455864932728312975
+    second: walk_helmet_shield_6
+  - first:
+      213: -3725695703224171858
+    second: walk_helmet_shield_7
+  - first:
+      213: 5357382264759388716
+    second: walk_helmet_shield_8
+  - first:
+      213: -4717358291351522338
+    second: walk_helmet_shield_9
+  - first:
+      213: -302490898578553663
+    second: walk_helmet_shield_10
+  - first:
+      213: -5382689628509294075
+    second: walk_helmet_shield_11
+  - first:
+      213: 3347679665799071352
+    second: walk_helmet_shield_12
+  - first:
+      213: -7750489718136783794
+    second: walk_helmet_shield_13
+  - first:
+      213: -1368439455916847563
+    second: walk_helmet_shield_14
+  - first:
+      213: 272909677937553239
+    second: walk_shield_0
+  - first:
+      213: 8317020748710571316
+    second: walk_shield_1
+  - first:
+      213: 885388211729684661
+    second: walk_shield_2
+  - first:
+      213: 8603609679079868004
+    second: walk_shield_3
+  - first:
+      213: 8940609823009627860
+    second: walk_shield_4
+  - first:
+      213: 4061180978084709874
+    second: walk_shield_5
+  - first:
+      213: 2629914316143205776
+    second: walk_shield_6
+  - first:
+      213: 3091702670480227445
+    second: walk_shield_7
+  - first:
+      213: -4128068384375210416
+    second: walk_shield_8
+  - first:
+      213: 4867937711564407181
+    second: walk_shield_9
+  - first:
+      213: 6756650331302586656
+    second: walk_shield_10
+  - first:
+      213: 2502259839174939926
+    second: walk_shield_11
+  - first:
+      213: 3817535708781242174
+    second: walk_shield_12
+  - first:
+      213: 3411948117859679696
+    second: walk_shield_13
+  - first:
+      213: 1683722340067270221
+    second: walk_shield_14
+  - first:
+      213: -1063215993356636345
+    second: walk_sword_0
+  - first:
+      213: 3549674784057172589
+    second: walk_sword_1
+  - first:
+      213: 4986620472116974541
+    second: walk_sword_2
+  - first:
+      213: 6484461442078295892
+    second: walk_sword_3
+  - first:
+      213: 3129648070076588416
+    second: walk_sword_4
+  - first:
+      213: 1492312531589700889
+    second: walk_sword_5
+  - first:
+      213: -6912630044182649712
+    second: walk_sword_6
+  - first:
+      213: 6075153891057430832
+    second: walk_sword_7
+  - first:
+      213: 8467519170829372243
+    second: walk_sword_8
+  - first:
+      213: 155653552017696051
+    second: walk_sword_9
+  - first:
+      213: -2432485818174283621
+    second: walk_sword_10
+  - first:
+      213: -7869206318338315705
+    second: walk_sword_11
+  - first:
+      213: 4368005355201259690
+    second: walk_sword_12
+  - first:
+      213: -2418528010971633793
+    second: walk_sword_13
+  - first:
+      213: 8244045817303394043
+    second: walk_sword_14
+  - first:
+      213: -3083590837185767778
+    second: stay_helmet_shield_0
+  - first:
+      213: -2743094579110791796
+    second: stay_helmet_shield_1
+  - first:
+      213: -7121528074517927862
+    second: stay_helmet_shield_2
+  - first:
+      213: 764427537733447525
+    second: stay_helmet_shield_3
+  - first:
+      213: -1590184968111566248
+    second: stay_helmet_shield_4
+  - first:
+      213: 8699075929459648999
+    second: stay_helmet_shield_5
+  - first:
+      213: 479732840708900471
+    second: stay_helmet_shield_6
+  - first:
+      213: 8124355310862470552
+    second: stay_helmet_shield_7
+  - first:
+      213: -4283335630602643969
+    second: stay_helmet_shield_8
+  - first:
+      213: 6744904362342630693
+    second: stay_helmet_shield_9
+  - first:
+      213: -2932299527165547675
+    second: stay_helmet_shield_10
+  - first:
+      213: 609426801731348776
+    second: stay_helmet_shield_11
+  - first:
+      213: 6732050369317044041
+    second: stay_helmet_shield_12
+  - first:
+      213: 2517747855936466425
+    second: stay_helmet_shield_13
+  - first:
+      213: -4014390234934333361
+    second: stay_helmet_shield_14
+  - first:
+      213: -3604825940908324231
+    second: stay_helmet_sword_shield_0
+  - first:
+      213: -7417809645499909500
+    second: stay_helmet_sword_shield_1
+  - first:
+      213: 4931148191630086272
+    second: stay_helmet_sword_shield_2
+  - first:
+      213: -5903887417832500529
+    second: stay_helmet_sword_shield_3
+  - first:
+      213: -9043825567370383955
+    second: stay_helmet_sword_shield_4
+  - first:
+      213: 6056072542217612208
+    second: stay_helmet_sword_shield_5
+  - first:
+      213: 4432670269723964516
+    second: stay_helmet_sword_shield_6
+  - first:
+      213: 2458865177260065872
+    second: stay_helmet_sword_shield_7
+  - first:
+      213: -9036428263258814243
+    second: stay_helmet_sword_shield_8
+  - first:
+      213: 2991524950971079112
+    second: stay_helmet_sword_shield_9
+  - first:
+      213: -7980230303225644216
+    second: stay_helmet_sword_shield_10
+  - first:
+      213: -7983198985183349446
+    second: stay_helmet_sword_shield_11
+  - first:
+      213: 4350605959066537752
+    second: stay_helmet_sword_shield_12
+  - first:
+      213: 4288772001507118288
+    second: stay_helmet_sword_shield_13
+  - first:
+      213: -5924791209085868308
+    second: stay_helmet_sword_shield_14
+  - first:
+      213: 7220147316446619501
+    second: walk_helmet_sword_0
+  - first:
+      213: 3004076752207820113
+    second: walk_helmet_sword_1
+  - first:
+      213: 587243975328929617
+    second: walk_helmet_sword_2
+  - first:
+      213: -2643736321141748590
+    second: walk_helmet_sword_3
+  - first:
+      213: 512491521965412281
+    second: walk_helmet_sword_4
+  - first:
+      213: 7571039550549892249
+    second: walk_helmet_sword_5
+  - first:
+      213: -1862091647214561915
+    second: walk_helmet_sword_6
+  - first:
+      213: 7108321186743044336
+    second: walk_helmet_sword_7
+  - first:
+      213: 8659033964756635857
+    second: walk_helmet_sword_8
+  - first:
+      213: 8526694277118380118
+    second: walk_helmet_sword_9
+  - first:
+      213: 2681906609017269074
+    second: walk_helmet_sword_10
+  - first:
+      213: -8370873493474210494
+    second: walk_helmet_sword_11
+  - first:
+      213: 1563504379274077903
+    second: walk_helmet_sword_12
+  - first:
+      213: -9083292584731876476
+    second: walk_helmet_sword_13
+  - first:
+      213: 8820799509952694043
+    second: walk_helmet_sword_14
+  - first:
+      213: 7371960336885403226
+    second: walk_helmet_sword_shield_0
+  - first:
+      213: 8269786521060301435
+    second: walk_helmet_sword_shield_1
+  - first:
+      213: -8583334945614907534
+    second: walk_helmet_sword_shield_2
+  - first:
+      213: 6079279410371161363
+    second: walk_helmet_sword_shield_3
+  - first:
+      213: 9165308602291921367
+    second: walk_helmet_sword_shield_4
+  - first:
+      213: 6680750543271747887
+    second: walk_helmet_sword_shield_5
+  - first:
+      213: -1221633351019969707
+    second: walk_helmet_sword_shield_6
+  - first:
+      213: 8044689508917769110
+    second: walk_helmet_sword_shield_7
+  - first:
+      213: 8591960686612966779
+    second: walk_helmet_sword_shield_8
+  - first:
+      213: 6373122974481152525
+    second: walk_helmet_sword_shield_9
+  - first:
+      213: -3911419529194457371
+    second: walk_helmet_sword_shield_10
+  - first:
+      213: -6930094546874336222
+    second: walk_helmet_sword_shield_11
+  - first:
+      213: -4928659687223649762
+    second: walk_helmet_sword_shield_12
+  - first:
+      213: 2369346444728750988
+    second: walk_helmet_sword_shield_13
+  - first:
+      213: -2359585608924941744
+    second: walk_helmet_sword_shield_14
+  - first:
+      213: -8094574944715967100
+    second: walk_sword_shield_0
+  - first:
+      213: -4287874536399065907
+    second: walk_sword_shield_1
+  - first:
+      213: -2376323513152591045
+    second: walk_sword_shield_2
+  - first:
+      213: -4513768990605595466
+    second: walk_sword_shield_3
+  - first:
+      213: 607618477697197219
+    second: walk_sword_shield_4
+  - first:
+      213: -5011657864280573734
+    second: walk_sword_shield_5
+  - first:
+      213: 6481342993140214878
+    second: walk_sword_shield_6
+  - first:
+      213: -2468209516293537241
+    second: walk_sword_shield_7
+  - first:
+      213: -8478100374808969493
+    second: walk_sword_shield_8
+  - first:
+      213: -8887416253828423853
+    second: walk_sword_shield_9
+  - first:
+      213: -6664567803753213434
+    second: walk_sword_shield_10
+  - first:
+      213: -5038619351798388597
+    second: walk_sword_shield_11
+  - first:
+      213: -2255556083091662420
+    second: walk_sword_shield_12
+  - first:
+      213: -373051665074518123
+    second: walk_sword_shield_13
+  - first:
+      213: 6113209759322164161
+    second: walk_sword_shield_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -405,7 +855,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.003438762, y: 0.99999404}
+      pivot: {x: -0.00026792174, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -426,7 +876,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.003438762, y: 0.99999404}
+      pivot: {x: -0.00026792174, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -447,7 +897,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.0031659899, y: 0.999995}
+      pivot: {x: -0.00021257284, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -468,7 +918,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.0031659899, y: 0.999995}
+      pivot: {x: -0.00021257284, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -489,7 +939,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.002910809, y: 0.99999577}
+      pivot: {x: -0.00016800355, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -510,7 +960,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.002910809, y: 0.99999577}
+      pivot: {x: -0.00016800355, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -531,7 +981,7 @@ TextureImporter:
         width: 58
         height: 81
       alignment: 9
-      pivot: {x: -0.002672354, y: 0.9999964}
+      pivot: {x: -0.00013224593, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -552,7 +1002,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.002910809, y: 0.99999577}
+      pivot: {x: -0.00016800355, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -573,7 +1023,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.002910809, y: 0.99999577}
+      pivot: {x: -0.00016800355, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -594,7 +1044,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.0031659899, y: 0.999995}
+      pivot: {x: -0.00021257284, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -615,7 +1065,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.0031659899, y: 0.999995}
+      pivot: {x: -0.00021257284, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -636,7 +1086,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.0031659899, y: 0.999995}
+      pivot: {x: -0.00021257284, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -657,7 +1107,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.003438762, y: 0.99999404}
+      pivot: {x: -0.00026792174, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -678,7 +1128,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.003438762, y: 0.99999404}
+      pivot: {x: -0.00026792174, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -699,7 +1149,7 @@ TextureImporter:
         width: 61
         height: 81
       alignment: 9
-      pivot: {x: -0.003438762, y: 0.99999404}
+      pivot: {x: -0.00026792174, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -720,7 +1170,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.0015758317, y: 0.9999988}
+      pivot: {x: -0.000058228397, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -741,7 +1191,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.0015758317, y: 0.9999988}
+      pivot: {x: -0.000058228397, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -762,7 +1212,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0014270475, y: 0.999999}
+      pivot: {x: -0.000045441862, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -783,7 +1233,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0014270475, y: 0.999999}
+      pivot: {x: -0.000045441862, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -804,7 +1254,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.0012901584, y: 0.9999991}
+      pivot: {x: -0.000035315672, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -825,7 +1275,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.0012901584, y: 0.9999991}
+      pivot: {x: -0.000035315672, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -846,7 +1296,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.0012901584, y: 0.9999991}
+      pivot: {x: -0.000035315672, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -867,7 +1317,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.0012901584, y: 0.9999991}
+      pivot: {x: -0.000035315672, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -888,7 +1338,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.0012901584, y: 0.9999991}
+      pivot: {x: -0.000035315672, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -909,7 +1359,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0014270475, y: 0.999999}
+      pivot: {x: -0.000045441862, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -930,7 +1380,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0014270475, y: 0.999999}
+      pivot: {x: -0.000045441862, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -951,7 +1401,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0014270475, y: 0.999999}
+      pivot: {x: -0.000045441862, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -972,7 +1422,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.019, y: 1.011}
+      pivot: {x: -0.016, y: 1.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -993,7 +1443,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.036, y: 1.011}
+      pivot: {x: -0.034, y: 1.011}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1014,7 +1464,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.0015758317, y: 0.9999988}
+      pivot: {x: -0.000058228397, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1022,6 +1472,321 @@ TextureImporter:
       bones: []
       spriteID: 4f3eb55dabeef0450800000000000000
       internalID: 6057322510047503348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_0
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1000
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0030993973, y: 0.9999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9694ec9872e435d0800000000000000
+      internalID: -3083590837185767778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_1
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 1000
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0030993973, y: 0.9999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c853dca83029ee9d0800000000000000
+      internalID: -2743094579110791796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_2
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 1000
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0029011029, y: 0.9999958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a48236c92ff3b2d90800000000000000
+      internalID: -7121528074517927862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_3
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 1000
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0029011029, y: 0.9999958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56fe023abcacb9a00800000000000000
+      internalID: 764427537733447525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_4
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1000
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: -0.002712479, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8525b8852378ee9e0800000000000000
+      internalID: -1590184968111566248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_5
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 1000
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: -0.002712479, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e9e799d77359b870800000000000000
+      internalID: 8699075929459648999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_6
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 1000
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: -0.002712479, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7760b851a7a58a600800000000000000
+      internalID: 479732840708900471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_7
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 1000
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: -0.002712479, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89d040d4c128fb070800000000000000
+      internalID: 8124355310862470552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_8
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 1000
+        width: 59
+        height: 89
+      alignment: 9
+      pivot: {x: -0.002712479, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5d72420f88e84c0800000000000000
+      internalID: -4283335630602643969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 910
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0029011029, y: 0.9999958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5254a6118c6ba9d50800000000000000
+      internalID: 6744904362342630693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_10
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 910
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0029011029, y: 0.9999958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b6044bd116e47d0800000000000000
+      internalID: -2932299527165547675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 910
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0029011029, y: 0.9999958}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 829acc1827e157800800000000000000
+      internalID: 609426801731348776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_12
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 910
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0030993973, y: 0.9999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94ffd29942c0d6d50800000000000000
+      internalID: 6732050369317044041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_13
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 910
+        width: 60
+        height: 89
+      alignment: 9
+      pivot: {x: -0.02, y: 0.99998635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fd281bd556d0f220800000000000000
+      internalID: 2517747855936466425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_shield_14
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1000
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.0030993973, y: 0.9999952}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4031f8b9550a48c0800000000000000
+      internalID: -4014390234934333361
       vertices: []
       indices: 
       edges: []
@@ -1035,7 +1800,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.00473112, y: 0.9999888}
+      pivot: {x: -0.0001748209, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1056,7 +1821,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.00473112, y: 0.9999888}
+      pivot: {x: -0.0001748209, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1077,7 +1842,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0045022406, y: 0.99998987}
+      pivot: {x: -0.0001433674, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1098,7 +1863,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0045022406, y: 0.99998987}
+      pivot: {x: -0.0001433674, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1119,7 +1884,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.004280864, y: 0.9999908}
+      pivot: {x: -0.00011718161, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1140,7 +1905,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.004280864, y: 0.9999908}
+      pivot: {x: -0.00011718161, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1161,7 +1926,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.004280864, y: 0.9999908}
+      pivot: {x: -0.00011718161, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1182,7 +1947,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.004280864, y: 0.9999908}
+      pivot: {x: -0.00011718161, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1203,7 +1968,7 @@ TextureImporter:
         width: 59
         height: 88
       alignment: 9
-      pivot: {x: -0.004280864, y: 0.9999908}
+      pivot: {x: -0.00011718161, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1224,7 +1989,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0045022406, y: 0.99998987}
+      pivot: {x: -0.001, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1245,7 +2010,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0045022406, y: 0.99998987}
+      pivot: {x: -0.0001433674, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1266,7 +2031,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.0045022406, y: 0.99998987}
+      pivot: {x: -0.0001433674, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1287,7 +2052,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.00473112, y: 0.9999888}
+      pivot: {x: -0.0001748209, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1308,7 +2073,7 @@ TextureImporter:
         width: 60
         height: 88
       alignment: 9
-      pivot: {x: -0.022, y: 0.99996716}
+      pivot: {x: -0.018, y: 0.99999976}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1329,7 +2094,7 @@ TextureImporter:
         width: 61
         height: 88
       alignment: 9
-      pivot: {x: -0.00473112, y: 0.9999888}
+      pivot: {x: -0.0001748209, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1337,6 +2102,321 @@ TextureImporter:
       bones: []
       spriteID: 1363a1cfba8270380800000000000000
       internalID: -9005184210769922511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_0
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 910
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.004522047, y: 0.988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97acb0be7e519fdc0800000000000000
+      internalID: -3604825940908324231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 911
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004677963, y: 0.9999891}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48af28cbd65ae0990800000000000000
+      internalID: -7417809645499909500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_2
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 911
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004677963, y: 0.9999891}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 080dbe86725fe6440800000000000000
+      internalID: 4931148191630086272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_3
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 911
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004451655, y: 0.9999901}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc212327cad211ea0800000000000000
+      internalID: -5903887417832500529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_4
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 911
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004451655, y: 0.9999901}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dadea4e0090ed7280800000000000000
+      internalID: -9043825567370383955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_5
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 911
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0042327647, y: 0.99999106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bba0e404ed7b0450800000000000000
+      internalID: 6056072542217612208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_6
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 911
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0042327647, y: 0.99999106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464f4510022048d30800000000000000
+      internalID: 4432670269723964516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_7
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 911
+        width: 58
+        height: 88
+      alignment: 9
+      pivot: {x: -0.00402117, y: 0.99999195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0540a21e9d4af1220800000000000000
+      internalID: 2458865177260065872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_8
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 911
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0042327647, y: 0.99999106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd888222f58289280800000000000000
+      internalID: -9036428263258814243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_9
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 911
+        width: 59
+        height: 88
+      alignment: 9
+      pivot: {x: -0.0042327647, y: 0.99999106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c95957d718048920800000000000000
+      internalID: 2991524950971079112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_10
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 911
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004451655, y: 0.9999901}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84b7d6ef1d6804190800000000000000
+      internalID: -7980230303225644216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 821
+        width: 60
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004451655, y: 0.9999901}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3533ecd1daf53190800000000000000
+      internalID: -7983198985183349446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_12
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 821
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004677963, y: 0.9999891}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fcbdbb115706c30800000000000000
+      internalID: 4350605959066537752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_13
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 821
+        width: 61
+        height: 88
+      alignment: 9
+      pivot: {x: -0.004677963, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc09789967c48b30800000000000000
+      internalID: 4288772001507118288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stay_helmet_sword_shield_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 910
+        width: 61
+        height: 89
+      alignment: 9
+      pivot: {x: -0.004522047, y: 0.9999898}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce6641649c9e6cda0800000000000000
+      internalID: -5924791209085868308
       vertices: []
       indices: 
       edges: []
@@ -1350,7 +2430,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.0077677444, y: 0.99996984}
+      pivot: {x: -0.0005419406, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1371,7 +2451,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.0075151664, y: 0.9999717}
+      pivot: {x: -0.00045184276, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1392,7 +2472,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.0075151664, y: 0.9999717}
+      pivot: {x: -0.00045184276, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1413,7 +2493,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.0072667617, y: 0.9999736}
+      pivot: {x: -0.0003755742, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1434,7 +2514,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.0072667617, y: 0.9999736}
+      pivot: {x: -0.0003755742, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1455,7 +2535,7 @@ TextureImporter:
         width: 58
         height: 82
       alignment: 9
-      pivot: {x: -0.0070225312, y: 0.9999753}
+      pivot: {x: -0.00031119428, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1476,7 +2556,7 @@ TextureImporter:
         width: 58
         height: 82
       alignment: 9
-      pivot: {x: -0.0070225312, y: 0.9999753}
+      pivot: {x: -0.00031119428, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1497,7 +2577,7 @@ TextureImporter:
         width: 58
         height: 82
       alignment: 9
-      pivot: {x: -0.0070225312, y: 0.9999753}
+      pivot: {x: -0.00031119428, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1518,7 +2598,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.0072667617, y: 0.9999736}
+      pivot: {x: -0.0003755742, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1539,7 +2619,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.0072667617, y: 0.9999736}
+      pivot: {x: -0.0003755742, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1560,7 +2640,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.0072667617, y: 0.9999736}
+      pivot: {x: -0.0003755742, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1581,7 +2661,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.0075151664, y: 0.9999717}
+      pivot: {x: -0.00045184276, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1602,7 +2682,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.0075151664, y: 0.9999717}
+      pivot: {x: -0.00045184276, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1623,7 +2703,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.0077677444, y: 0.99996984}
+      pivot: {x: -0.0005419406, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1644,7 +2724,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.0077677444, y: 0.99996984}
+      pivot: {x: -0.0005419406, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1665,7 +2745,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.010441632, y: 0.99994546}
+      pivot: {x: -0.00072851026, y: 0.9999997}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1686,7 +2766,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.010270476, y: 0.99994725}
+      pivot: {x: -0.0006175184, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1707,7 +2787,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.010270476, y: 0.99994725}
+      pivot: {x: -0.0006175184, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1728,7 +2808,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.010099319, y: 0.99994904}
+      pivot: {x: -0.0005219845, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1744,12 +2824,12 @@ TextureImporter:
       name: stay_sword_4
       rect:
         serializedVersion: 2
-        x: 846
-        y: 1788
+        x: 849
+        y: 1785
         width: 59
-        height: 81
+        height: 85
       alignment: 9
-      pivot: {x: -0.010223988, y: 1.012}
+      pivot: {x: -0.05, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1768,9 +2848,9 @@ TextureImporter:
         x: 906
         y: 1788
         width: 58
-        height: 81
+        height: 82
       alignment: 9
-      pivot: {x: -0.01005072, y: 1.012}
+      pivot: {x: -0.0004914772, y: 1.001}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1791,7 +2871,7 @@ TextureImporter:
         width: 58
         height: 81
       alignment: 9
-      pivot: {x: -0.01005072, y: 1.012}
+      pivot: {x: -0.0004914772, y: 1.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1812,7 +2892,7 @@ TextureImporter:
         width: 58
         height: 81
       alignment: 9
-      pivot: {x: -0.01005072, y: 1.012}
+      pivot: {x: -0.0004914772, y: 1.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1833,7 +2913,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.010223988, y: 1.012}
+      pivot: {x: -0.00058309943, y: 1.01}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1854,7 +2934,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.010099319, y: 0.999949}
+      pivot: {x: -0.0005219845, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1875,7 +2955,7 @@ TextureImporter:
         width: 59
         height: 82
       alignment: 9
-      pivot: {x: -0.010099319, y: 0.99994904}
+      pivot: {x: -0.0005219845, y: 0.9999999}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1896,7 +2976,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.010270476, y: 0.99994725}
+      pivot: {x: -0.0006175184, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1917,7 +2997,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.010270476, y: 0.99994725}
+      pivot: {x: -0.0006175184, y: 0.9999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1938,7 +3018,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.010441632, y: 0.99994546}
+      pivot: {x: -0.00072851026, y: 0.9999997}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1959,7 +3039,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.010441632, y: 0.99994546}
+      pivot: {x: -0.00072851026, y: 0.9999997}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1967,321 +3047,6 @@ TextureImporter:
       bones: []
       spriteID: c03c63664dc909370800000000000000
       internalID: 8327328147069911820
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_0
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 1443
-        width: 61
-        height: 82
-      alignment: 9
-      pivot: {x: -0.005146847, y: 0.99998677}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4646ce323715ddc80800000000000000
-      internalID: -8296385383580801948
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_1
-      rect:
-        serializedVersion: 2
-        x: 186
-        y: 1443
-        width: 61
-        height: 82
-      alignment: 9
-      pivot: {x: -0.005146847, y: 0.99998677}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1dc61808c03e9ac20800000000000000
-      internalID: 3218353051568008401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_2
-      rect:
-        serializedVersion: 2
-        x: 248
-        y: 1442
-        width: 60
-        height: 83
-      alignment: 9
-      pivot: {x: -0.00458956, y: 0.99998945}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecc242f663d4fb060800000000000000
-      internalID: 6971375644381031630
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_3
-      rect:
-        serializedVersion: 2
-        x: 309
-        y: 1442
-        width: 60
-        height: 83
-      alignment: 9
-      pivot: {x: -0.0015472034, y: 0.9999988}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aac9d3d88a6b17cc0800000000000000
-      internalID: -3714987382563562326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_4
-      rect:
-        serializedVersion: 2
-        x: 370
-        y: 1443
-        width: 60
-        height: 82
-      alignment: 9
-      pivot: {x: -0.0016240685, y: 0.9999987}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6a9c807d4a800a3e0800000000000000
-      internalID: -2044624726750869082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_5
-      rect:
-        serializedVersion: 2
-        x: 431
-        y: 1444
-        width: 59
-        height: 81
-      alignment: 9
-      pivot: {x: -0.004784533, y: 0.9999885}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 065b539302f1307e0800000000000000
-      internalID: -1800561202758830752
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_6
-      rect:
-        serializedVersion: 2
-        x: 491
-        y: 1444
-        width: 58
-        height: 81
-      alignment: 9
-      pivot: {x: -0.0044683185, y: 0.99999}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b2b5c26b1339dd90800000000000000
-      internalID: -7072565547094396234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_7
-      rect:
-        serializedVersion: 2
-        x: 550
-        y: 1446
-        width: 58
-        height: 79
-      alignment: 9
-      pivot: {x: -0.0049948674, y: 0.99998754}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 667ca65e0d268e1a0800000000000000
-      internalID: -6780060589664581786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_8
-      rect:
-        serializedVersion: 2
-        x: 609
-        y: 1444
-        width: 59
-        height: 81
-      alignment: 9
-      pivot: {x: -0.004784533, y: 0.9999885}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b97d12bdb78af3f10800000000000000
-      internalID: 2251703588619409307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_9
-      rect:
-        serializedVersion: 2
-        x: 669
-        y: 1444
-        width: 59
-        height: 81
-      alignment: 9
-      pivot: {x: -0.007974057, y: 0.9999682}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f618dfd280c4f77b0800000000000000
-      internalID: -5224373444711448209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_10
-      rect:
-        serializedVersion: 2
-        x: 729
-        y: 1443
-        width: 60
-        height: 82
-      alignment: 9
-      pivot: {x: -0.008120084, y: 0.99996704}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 714672e80f947f470800000000000000
-      internalID: 8428286525173097495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_11
-      rect:
-        serializedVersion: 2
-        x: 790
-        y: 1442
-        width: 60
-        height: 83
-      alignment: 9
-      pivot: {x: -0.007735794, y: 0.99997}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 93b9347f1c61259d0800000000000000
-      internalID: -2787140197056013511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_12
-      rect:
-        serializedVersion: 2
-        x: 851
-        y: 1443
-        width: 61
-        height: 82
-      alignment: 9
-      pivot: {x: -0.008675068, y: 0.9999624}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e53635d11481d5d80800000000000000
-      internalID: -8260419473583676578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_13
-      rect:
-        serializedVersion: 2
-        x: 913
-        y: 1443
-        width: 61
-        height: 82
-      alignment: 9
-      pivot: {x: -0.008577875, y: 0.9999632}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 655e402e259564350800000000000000
-      internalID: 6000581766031926614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_14
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 1359
-        width: 61
-        height: 82
-      alignment: 9
-      pivot: {x: -0.008577875, y: 0.9999632}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d77dfd899a9696f90800000000000000
-      internalID: -6959915571989194883
       vertices: []
       indices: 
       edges: []
@@ -2295,7 +3060,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0009793087, y: 0.9999995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2316,7 +3081,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0008439417, y: 0.99999964}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2337,7 +3102,7 @@ TextureImporter:
         width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.0009312121, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2358,7 +3123,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.0008004895, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2379,7 +3144,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.0008004895, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2395,12 +3160,12 @@ TextureImporter:
       name: stay_sword_shield_5
       rect:
         serializedVersion: 2
-        x: 305
+        x: 304
         y: 1966
-        width: 58
+        width: 60
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: 0.015, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2416,12 +3181,12 @@ TextureImporter:
       name: stay_sword_shield_6
       rect:
         serializedVersion: 2
-        x: 364
+        x: 365
         y: 1966
         width: 58
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.02, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2439,10 +3204,10 @@ TextureImporter:
         serializedVersion: 2
         x: 423
         y: 1966
-        width: 58
+        width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.003, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2463,7 +3228,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.0008004895, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2484,7 +3249,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.014035675, y: 1.012}
+      pivot: {x: -0.0008004895, y: 1.013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2505,7 +3270,7 @@ TextureImporter:
         width: 59
         height: 81
       alignment: 9
-      pivot: {x: -0.03, y: 1.025}
+      pivot: {x: -0.016, y: 1.025}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2526,7 +3291,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0008439417, y: 0.99999964}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2547,7 +3312,7 @@ TextureImporter:
         width: 60
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0008439417, y: 0.99999964}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2568,7 +3333,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0009793087, y: 0.9999995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2589,7 +3354,7 @@ TextureImporter:
         width: 61
         height: 82
       alignment: 9
-      pivot: {x: -0.014035675, y: 0.9999015}
+      pivot: {x: -0.0009793087, y: 0.9999995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2597,6 +3362,2841 @@ TextureImporter:
       bones: []
       spriteID: 721888e0c2e604e30800000000000000
       internalID: 4485706364362457383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00035907966, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4646ce323715ddc80800000000000000
+      internalID: -8296385383580801948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_1
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00035907966, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc61808c03e9ac20800000000000000
+      internalID: 3218353051568008401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_2
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0002474196, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc242f663d4fb060800000000000000
+      internalID: 6971375644381031630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_3
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.000083407744, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aac9d3d88a6b17cc0800000000000000
+      internalID: -3714987382563562326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_4
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1443
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.0000976431, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a9c807d4a800a3e0800000000000000
+      internalID: -2044624726750869082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_5
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.0002761516, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065b539302f1307e0800000000000000
+      internalID: -1800561202758830752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_6
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1444
+        width: 58
+        height: 81
+      alignment: 9
+      pivot: {x: -0.00022112364, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2b5c26b1339dd90800000000000000
+      internalID: -7072565547094396234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_7
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 1446
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.00030955477, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667ca65e0d268e1a0800000000000000
+      internalID: -6780060589664581786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_8
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.0002761516, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97d12bdb78af3f10800000000000000
+      internalID: 2251703588619409307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_9
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 1444
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.00046025243, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f618dfd280c4f77b0800000000000000
+      internalID: -5224373444711448209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_10
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1443
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00048821527, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 714672e80f947f470800000000000000
+      internalID: 8428286525173097495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_11
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 1442
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.00041703874, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93b9347f1c61259d0800000000000000
+      internalID: -2787140197056013511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_12
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.0006052475, y: 0.9999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53635d11481d5d80800000000000000
+      internalID: -8260419473583676578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_13
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00059846585, y: 0.9999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 655e402e259564350800000000000000
+      internalID: 6000581766031926614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1359
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00059846585, y: 0.9999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d77dfd899a9696f90800000000000000
+      internalID: -6959915571989194883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_0
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 1355
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00086292013, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da2f85b8cad06e90800000000000000
+      internalID: -7034382062378341673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1267
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00086292013, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ece786b9bfad0b730800000000000000
+      internalID: 4012948042166075086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 1267
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00075262476, y: 0.99999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5361b471f569f93d0800000000000000
+      internalID: -3197671875252906443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1267
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00075262476, y: 0.99999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a8de8c6cde470e0800000000000000
+      internalID: -2272930473884939758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 1266
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.00068613904, y: 0.99999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71ea0d9a8caf0e90800000000000000
+      internalID: -7057232379726077572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_5
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 1267
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00029105225, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbfd4f4a73abc2160800000000000000
+      internalID: 7002176268807757759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_6
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 1267
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.000253851, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ea8e4a89a6db700800000000000000
+      internalID: 557719132698095243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_7
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1267
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.000253851, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 775ebb905112b7050800000000000000
+      internalID: 5799265319410984311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_8
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1267
+        width: 57
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00066263584, y: 0.9999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90aae09b692d9a3b0800000000000000
+      internalID: -5500633925064676855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_9
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 1268
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0007276307, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f41c75703874a4b0800000000000000
+      internalID: -5430083101177146123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_10
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1268
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0007276307, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a851c66eb98b650f0800000000000000
+      internalID: -1128511676884445814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_11
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1268
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0007276307, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630771a5d23c43ef0800000000000000
+      internalID: -129263889734471626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_12
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 1268
+        width: 56
+        height: 85
+      alignment: 9
+      pivot: {x: -0.00063156255, y: 0.9999998}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd7bfcdb3cd7ed70800000000000000
+      internalID: 9072462124029803961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_13
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 1269
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0006942782, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacc40ab6726e6e20800000000000000
+      internalID: 3345719835249396907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_14
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 1269
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0006942782, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd0e947c6ad3b65e0800000000000000
+      internalID: -1915369429998640933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_15
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 1269
+        width: 57
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0007998861, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d559d3ff9b31989b0800000000000000
+      internalID: -5077505415311420067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_16
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1269
+        width: 57
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0007998861, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0196988ebddced8d0800000000000000
+      internalID: -2819589972304500464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_17
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 1268
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0007276307, y: 0.9999997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7436c8b532cb611d0800000000000000
+      internalID: -3380307610249174201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_18
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1180
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0012127174, y: 0.9999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33fef154947d95be0800000000000000
+      internalID: -1487921492176933069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_19
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1180
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0012127174, y: 0.9999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 020fca03ed1bd87d0800000000000000
+      internalID: -2914477815981346784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_20
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012692537, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c793cfedb237ea0800000000000000
+      internalID: -5876304852074005491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_21
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012692537, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 650555e0856ec0b80800000000000000
+      internalID: -8427107536845057962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_22
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012692537, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e681186a7d1925900800000000000000
+      internalID: 671759649829099630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_23
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012692537, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48e2b3f91f8ef0090800000000000000
+      internalID: -8065972283141050748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_24
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 1178
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.0011435645, y: 0.9999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f95bb47d72546380800000000000000
+      internalID: -8978961058287101454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_25
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 1178
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.0011435645, y: 0.9999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baeef0f8c08059530800000000000000
+      internalID: 3861001105572884139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_26
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012543738, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b99f172f7392043f0800000000000000
+      internalID: -918689003716085349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_27
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012543738, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3456d414bfd10b80800000000000000
+      internalID: -8430211062924159939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_28
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012543738, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fef05847ebc405610800000000000000
+      internalID: 1607869447853641711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_29
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 1179
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012543738, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 751b8d67619e17b70800000000000000
+      internalID: 8895147021725905239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_0
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1355
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012432403, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3339af0bcf6e2130800000000000000
+      internalID: 3543892874718950206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_1
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1355
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0011159604, y: 0.9999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927d29478d0f40470800000000000000
+      internalID: 8360071620765865769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_2
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1355
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0004192721, y: 0.99999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0014f2f66a1890f0800000000000000
+      internalID: -1110108278681759734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_3
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1354
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.00034306955, y: 0.99999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90aec907d4f85ab50800000000000000
+      internalID: 6603841991373285897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_4
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1355
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.00037198703, y: 0.99999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 399550a0e57bbdb40800000000000000
+      internalID: 5466164187267160467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 1355
+        width: 57
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0003293486, y: 0.99999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 794dbbbd6dabe1ca0800000000000000
+      internalID: -6044188217912339305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_6
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 1357
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.001041417, y: 0.99999946}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8414d4bdbe835600800000000000000
+      internalID: 455864932728312975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_7
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1358
+        width: 58
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0004826048, y: 0.9999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea2cf1c5f7bab4cc0800000000000000
+      internalID: -3725695703224171858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_8
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 1357
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.001041417, y: 0.99999946}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a06f009ce395a40800000000000000
+      internalID: 5357382264759388716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_9
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 1355
+        width: 57
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0009880454, y: 0.99999946}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed3bfbda0a3988eb0800000000000000
+      internalID: -4717358291351522338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_10
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1355
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0011159604, y: 0.9999994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c4cf6261265dcbf0800000000000000
+      internalID: -302490898578553663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_11
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1354
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.0017153451, y: 0.9999985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50236843d48dc45b0800000000000000
+      internalID: -5382689628509294075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_12
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 1355
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0018599319, y: 0.99999833}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87680c55be8557e20800000000000000
+      internalID: 3347679665799071352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_13
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1355
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012578153, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4cb32b4aaab07490800000000000000
+      internalID: -7750489718136783794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_shield_14
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1355
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0012432403, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e827da093520de0800000000000000
+      internalID: -1368439455916847563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_0
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 1092
+        width: 58
+        height: 85
+      alignment: 9
+      pivot: {x: -0.008187396, y: 0.9999665}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d676ac6fabd133460800000000000000
+      internalID: 7220147316446619501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_1
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 1091
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0027588399, y: 0.9999962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1553b5dc3ef90b920800000000000000
+      internalID: 3004076752207820113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_2
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 1091
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.002666113, y: 0.9999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15718f1c84f462800800000000000000
+      internalID: 587243975328929617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_3
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 1090
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.0026051756, y: 0.9999966}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c4c82b2df8f4bd0800000000000000
+      internalID: -2643736321141748590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_4
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1092
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0026671824, y: 0.9999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bfc52de25cbc1700800000000000000
+      internalID: 512491521965412281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_5
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1092
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.0026671824, y: 0.9999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99c95feab5cb11960800000000000000
+      internalID: 7571039550549892249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_6
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 1093
+        width: 57
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0027310643, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585dd8c33858826e0800000000000000
+      internalID: -1862091647214561915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1005
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0026360794, y: 0.99999654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f8c3353574d5a260800000000000000
+      internalID: 7108321186743044336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_8
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1005
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.007908017, y: 0.99996877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d09c5f63811b2870800000000000000
+      internalID: 8659033964756635857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_9
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 1004
+        width: 57
+        height: 85
+      alignment: 9
+      pivot: {x: -0.008001319, y: 0.99996793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6584ff7c447e45670800000000000000
+      internalID: 8526694277118380118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_10
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1003
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.008092983, y: 0.9999673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b2f3ff9db083520800000000000000
+      internalID: 2681906609017269074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_11
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1002
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.007815315, y: 0.9999695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24d8cb198eea4db80800000000000000
+      internalID: -8370873493474210494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_12
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1002
+        width: 59
+        height: 87
+      alignment: 9
+      pivot: {x: -0.0080871135, y: 0.9999673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6266bf2fea2b510800000000000000
+      internalID: 1563504379274077903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_13
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 1003
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.008276268, y: 0.9999657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 483ed100589a1f180800000000000000
+      internalID: -9083292584731876476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_14
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 1003
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.008276268, y: 0.9999657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b178ba17b66c96a70800000000000000
+      internalID: 8820799509952694043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 734
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0119234845, y: 0.99992895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5ec25a3ed67e4660800000000000000
+      internalID: 7371960336885403226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_1
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.011858814, y: 0.99992967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7adc14960f24c270800000000000000
+      internalID: 8269786521060301435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.011858814, y: 0.99992967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2773d6ae75ed1e880800000000000000
+      internalID: -8583334945614907534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_3
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 733
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.003907747, y: 0.9999924}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31de4811a60fd5450800000000000000
+      internalID: 6079279410371161363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_4
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0039531854, y: 0.9999922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d121782d97b13f70800000000000000
+      internalID: 9165308602291921367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_5
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 734
+        width: 57
+        height: 86
+      alignment: 9
+      pivot: {x: -0.011654381, y: 0.9999321}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21e5b4193bc6bc50800000000000000
+      internalID: 6680750543271747887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_6
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 736
+        width: 56
+        height: 84
+      alignment: 9
+      pivot: {x: -0.011861563, y: 0.99992967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5534fa290f2eb0fe0800000000000000
+      internalID: -1221633351019969707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_7
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 737
+        width: 57
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0122187855, y: 0.9999254}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693fa5b5c7a74af60800000000000000
+      internalID: 8044689508917769110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_8
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 736
+        width: 57
+        height: 84
+      alignment: 9
+      pivot: {x: -0.0120733455, y: 0.99992716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7defa9e8b6cc3770800000000000000
+      internalID: 8591960686612966779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_9
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.011858814, y: 0.99992967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0a74db3491e17850800000000000000
+      internalID: 6373122974481152525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_10
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 734
+        width: 57
+        height: 86
+      alignment: 9
+      pivot: {x: -0.019421618, y: 0.99981135}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e6b6da69a8d7b9c0800000000000000
+      internalID: -3911419529194457371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_11
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 733
+        width: 58
+        height: 87
+      alignment: 9
+      pivot: {x: -0.019535152, y: 0.99980915}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cfea11abb53df90800000000000000
+      internalID: -6930094546874336222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_12
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.019762218, y: 0.9998047}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a1f3ca022e99bb0800000000000000
+      internalID: -4928659687223649762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_13
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 734
+        width: 58
+        height: 86
+      alignment: 9
+      pivot: {x: -0.019762218, y: 0.9998047}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8354e3c90c91e020800000000000000
+      internalID: 2369346444728750988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_helmet_sword_shield_14
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 734
+        width: 59
+        height: 86
+      alignment: 9
+      pivot: {x: -0.0119234845, y: 0.99992895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 052b7eae361114fd0800000000000000
+      internalID: -2359585608924941744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_0
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 1532
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.002848244, y: 0.9999959}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75feb39f7e199c300800000000000000
+      internalID: 272909677937553239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_1
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 1532
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.002848244, y: 0.9999959}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43d62743e4efb6370800000000000000
+      internalID: 8317020748710571316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 1531
+        width: 61
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0008828199, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b8577833e7894c00800000000000000
+      internalID: 885388211729684661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_3
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1531
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0008085262, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4660ba35b69266770800000000000000
+      internalID: 8603609679079868004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_4
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 1532
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.00086951995, y: 0.99999964}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4de5bdfb34d631c70800000000000000
+      internalID: 8940609823009627860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_5
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1533
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.0025385, y: 0.9999968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f5005f15963c5830800000000000000
+      internalID: 4061180978084709874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_6
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 1533
+        width: 58
+        height: 81
+      alignment: 9
+      pivot: {x: -0.002291043, y: 0.9999974}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09d1e6bf2255f7420800000000000000
+      internalID: 2629914316143205776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_7
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 1534
+        width: 59
+        height: 80
+      alignment: 9
+      pivot: {x: -0.0027349354, y: 0.9999963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57cb911c23fe7ea20800000000000000
+      internalID: 3091702670480227445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_8
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1533
+        width: 59
+        height: 81
+      alignment: 9
+      pivot: {x: -0.0025385, y: 0.9999968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05e7bc40da726b6c0800000000000000
+      internalID: -4128068384375210416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_9
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 1533
+        width: 60
+        height: 81
+      alignment: 9
+      pivot: {x: -0.002807839, y: 0.99999607}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d814686ae836e8340800000000000000
+      internalID: 4867937711564407181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_10
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 1532
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.0043475595, y: 0.9999905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 029e0d49da174cd50800000000000000
+      internalID: 6756650331302586656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_11
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1532
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.0043475595, y: 0.9999905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6159fb1f010d9b220800000000000000
+      internalID: 2502259839174939926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_12
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1531
+        width: 60
+        height: 83
+      alignment: 9
+      pivot: {x: -0.0039973045, y: 0.999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e37664f308c9af430800000000000000
+      internalID: 3817535708781242174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_13
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1443
+        width: 60
+        height: 82
+      alignment: 9
+      pivot: {x: -0.004298848, y: 0.99999076}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ddb6156cbca95f20800000000000000
+      internalID: 3411948117859679696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_shield_14
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1443
+        width: 61
+        height: 82
+      alignment: 9
+      pivot: {x: -0.002848244, y: 0.9999959}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4e591c2c88cd5710800000000000000
+      internalID: 1683722340067270221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_0
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1186
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.0037597863, y: 0.99999297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fa67cefa2be31f0800000000000000
+      internalID: -1063215993356636345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_1
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 1186
+        width: 59
+        height: 79
+      alignment: 9
+      pivot: {x: -0.0013651007, y: 0.99999905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62a3ebb86af24130800000000000000
+      internalID: 3549674784057172589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_2
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1185
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.0011768746, y: 0.99999934}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc3193e26e8043540800000000000000
+      internalID: 4986620472116974541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_3
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1185
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.0011768746, y: 0.99999934}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4574bce435f6df950800000000000000
+      internalID: 6484461442078295892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_4
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1186
+        width: 57
+        height: 79
+      alignment: 9
+      pivot: {x: -0.0011625525, y: 0.99999934}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 081e6e0965ebe6b20800000000000000
+      internalID: 3129648070076588416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1099
+        width: 57
+        height: 78
+      alignment: 9
+      pivot: {x: -0.0012390105, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d94434752c5b410800000000000000
+      internalID: 1492312531589700889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_6
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1099
+        width: 57
+        height: 78
+      alignment: 9
+      pivot: {x: -0.0012390105, y: 0.9999992}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094ecc879976110a0800000000000000
+      internalID: -6912630044182649712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 1100
+        width: 56
+        height: 77
+      alignment: 9
+      pivot: {x: -0.0012096515, y: 0.9999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0317f40c6484f4450800000000000000
+      internalID: 6075153891057430832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_8
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1099
+        width: 56
+        height: 78
+      alignment: 9
+      pivot: {x: -0.0034022005, y: 0.9999942}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35b4812b2dba28570800000000000000
+      internalID: 8467519170829372243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_9
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1099
+        width: 57
+        height: 78
+      alignment: 9
+      pivot: {x: -0.0037170083, y: 0.999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335ea04b41ef82200800000000000000
+      internalID: 155653552017696051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_10
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 1098
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.003804492, y: 0.9999927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90eb8649031e3ed0800000000000000
+      internalID: -2432485818174283621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_11
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1097
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.0035306038, y: 0.9999938}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74a6f2bdb86fac290800000000000000
+      internalID: -7869206318338315705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_12
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1097
+        width: 59
+        height: 80
+      alignment: 9
+      pivot: {x: -0.003845639, y: 0.99999255}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa866c55ab54e9c30800000000000000
+      internalID: 4368005355201259690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_13
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1098
+        width: 59
+        height: 79
+      alignment: 9
+      pivot: {x: -0.004095271, y: 0.9999916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7724b28699af6ed0800000000000000
+      internalID: -2418528010971633793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_14
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 1098
+        width: 59
+        height: 79
+      alignment: 9
+      pivot: {x: -0.004095271, y: 0.9999916}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6e964fdfbb86270800000000000000
+      internalID: 8244045817303394043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_0
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 830
+        width: 59
+        height: 79
+      alignment: 9
+      pivot: {x: -0.01741896, y: 0.9998483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4857d6489fa4aaf80800000000000000
+      internalID: -8094574944715967100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 830
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.01741896, y: 0.9998483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dccad78c3d86e74c0800000000000000
+      internalID: -4287874536399065907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_2
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 829
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.01741896, y: 0.9998483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ba127ea5a950fd0800000000000000
+      internalID: -2376323513152591045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_3
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 829
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.005875339, y: 0.9999827}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bca7cc940fdb51c0800000000000000
+      internalID: -4513768990605595466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_4
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 830
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.0058753393, y: 0.9999827}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a4ea1249c1be6800800000000000000
+      internalID: 607618477697197219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_5
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 831
+        width: 57
+        height: 78
+      alignment: 9
+      pivot: {x: -0.017623585, y: 0.9998447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad873cfa9b3037ab0800000000000000
+      internalID: -5011657864280573734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_6
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 831
+        width: 56
+        height: 78
+      alignment: 9
+      pivot: {x: -0.017623585, y: 0.9998447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5ce695dc1b52f950800000000000000
+      internalID: 6481342993140214878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_7
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 832
+        width: 57
+        height: 77
+      alignment: 9
+      pivot: {x: -0.017623585, y: 0.9998447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 722c516a5882fbdd0800000000000000
+      internalID: -2468209516293537241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_8
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 831
+        width: 57
+        height: 78
+      alignment: 9
+      pivot: {x: -0.017623585, y: 0.9998447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beeb765c0acb75a80800000000000000
+      internalID: -8478100374808969493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_9
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 831
+        width: 58
+        height: 78
+      alignment: 9
+      pivot: {x: -0.017623585, y: 0.9998447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f1683310e89a480800000000000000
+      internalID: -8887416253828423853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_10
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 830
+        width: 57
+        height: 79
+      alignment: 9
+      pivot: {x: -0.029364536, y: 0.99956876}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 602d8c394e2b283a0800000000000000
+      internalID: -6664567803753213434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_11
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 829
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.029364534, y: 0.99956876}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b88e5a1356a331ab0800000000000000
+      internalID: -5038619351798388597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_12
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 829
+        width: 58
+        height: 80
+      alignment: 9
+      pivot: {x: -0.029023774, y: 0.9995788}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca9995061b7a2b0e0800000000000000
+      internalID: -2255556083091662420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_13
+      rect:
+        serializedVersion: 2
+        x: 948
+        y: 830
+        width: 58
+        height: 79
+      alignment: 9
+      pivot: {x: -0.029023774, y: 0.9995788}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5978d54bc77a2daf0800000000000000
+      internalID: -373051665074518123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk_sword_shield_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 741
+        width: 59
+        height: 79
+      alignment: 9
+      pivot: {x: -0.01741896, y: 0.9998483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb49dd03eb76d450800000000000000
+      internalID: 6113209759322164161
       vertices: []
       indices: 
       edges: []
