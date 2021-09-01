@@ -13,9 +13,9 @@ namespace Assets.Scripts.Utils
 
         public static int getIndex(float localX, float localY)
         {
-            int cellX = (int)(localX / Config.SIZE_W);
-            int cellY = (int)(localY / Config.SIZE_H);
-            return cellY * Config.WIDTH + cellX;
+            int cellX = (int)((localX + Config.SIZE_W / 2) / Config.SIZE_W);
+            int cellY = (int)((localY - Config.SIZE_H / 2) / Config.SIZE_H);
+            return -cellY * Config.WIDTH + cellX;
         }
 
         public static Vector2 GetUnityPoint(int x, int y)

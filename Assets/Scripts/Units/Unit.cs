@@ -40,7 +40,7 @@ namespace Assets.Scripts.Units
             //        this._tile = null;
         }
 
-        public void stop()
+        public virtual void stop()
         {
             //createjs.Tween.removeTweens(this);
         }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Core
         private Model _model;
         private Component _container;
 
-        //private Hero _hero;
+        private Hero _hero;
         //private _mill: MillPress;
         private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
@@ -72,8 +72,7 @@ namespace Assets.Scripts.Core
                 case ImagesRes.HERO:
                     gameObject = GameObject.Instantiate(ImagesRes.prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
-                    var hero = new Hero(index, gameObject);
-                    //this._container.addChild(this._hero);
+                    _hero = new Hero(index, gameObject);
                     break;
 
                 //            case ImagesRes.MILL:
@@ -204,10 +203,14 @@ namespace Assets.Scripts.Core
         //    this._items = null;
         //}
 
-        //public get hero(): Hero
-        //{
-        //    return this._hero;
-        //}
+        public Hero hero
+        {
+            get
+            {
+                return this._hero;
+            }
+
+        }
 
         //public get mill(): MillPress
         //{

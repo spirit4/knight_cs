@@ -1,11 +1,7 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Units;
+using Assets.Scripts.Utils;
 using DG.Tweening;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
@@ -22,7 +18,7 @@ namespace Assets.Scripts.Core
         //    private _buttonRestart: Button;
 
             private Level _level;
-        //    private _hero: Hero;
+        private Hero _hero;
         //    private _mill: MillPress;
 
         //    private _pathfinder: Pathfinder;
@@ -61,7 +57,7 @@ namespace Assets.Scripts.Core
             //this.createGUI();
 
             //move to awake from here ------------------------------->>>>>>>>>>>>>>>>>
-            //this._hero = this._level.hero;
+            //
             //this._mill = this._level.mill;
 
             //this._units = this._level.units;
@@ -107,7 +103,7 @@ namespace Assets.Scripts.Core
             Controller.instance.bg.init();
 
             this._level = new Level(this, this._model);
-            
+            this._hero = this._level.hero;
         }
 
 
@@ -117,81 +113,83 @@ namespace Assets.Scripts.Core
         //    this.showBoom();
         //}
 
-        //private movedownHandler(e: createjs.MouseEvent): void
-        //{
-        //    if (this._hero.state != Hero.IDLE)
-        //    {
-        //        this._hero.stop();
-        //        return;
-        //    }
+        private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
+        {
+            //Debug.Log(_hero.HeroState);
+            if (_hero.HeroState != Hero.IDLE)
+            {
+                this._hero.stop();
+                return;
+            }
 
-        //    if (e.target.parent instanceof Button)
-        //        {
-        //        return;
-        //    }
+            //    if (e.target.parent instanceof Button)
+            //        {
+            //        return;
+            //    }
 
-        //    var point: createjs.Point = this.globalToLocal(e.stageX, e.stageY);
-        //    var index number = Utils.getIndex(point.x, point.y);
-        //    //console.log("[tap tile]: ", point, index);
+            
+            Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
+            int index = GridUtils.getIndex(point.x, point.y);
+            Debug.Log("[tap tile]: " + point + "   " + index);
 
-        //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
-        //    {
-        //        return;
-        //    }
+            //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
+            //    {
+            //        return;
+            //    }
 
 
-        //    if (e.target instanceof MillPress && Utils.isNeighbours(index, this._hero.index))
-        //        {
-        //        (< MillPress > e.target).startRotateMill();
-        //    }
+            //    if (e.target instanceof MillPress && Utils.isNeighbours(index, this._hero.index))
+            //        {
+            //        (< MillPress > e.target).startRotateMill();
+            //    }
 
-        //    if (this._grid[index].isWall)
-        //    {
-        //        return;
-        //    }
+            //    if (this._grid[index].isWall)
+            //    {
+            //        return;
+            //    }
 
-        //    this._pathfinder.init(Config.WIDTH, Config.HEIGHT, this._grid);
-        //    this._pathfinder.findPath(this._hero.index, index);
+            //    this._pathfinder.init(Config.WIDTH, Config.HEIGHT, this._grid);
+            //    this._pathfinder.findPath(this._hero.index, index);
 
-        //    if (this._pathfinder.path.Length > 0 && (!this._grid[index].isContainType(ImagesRes.MILL) || e.target instanceof MillPress))
-        //        {
-        //        var path number[] = this._pathfinder.path;
-        //        if (e.target instanceof MillPress)
-        //            {
-        //            path.pop();
-        //        }
+            //    if (this._pathfinder.path.Length > 0 && (!this._grid[index].isContainType(ImagesRes.MILL) || e.target instanceof MillPress))
+            //        {
+            //        var path number[] = this._pathfinder.path;
+            //        if (e.target instanceof MillPress)
+            //            {
+            //            path.pop();
+            //        }
 
-        //        if (this._pathfinder.path.Length > 0)
-        //        {
-        //            this.removeHint();
+            //        if (this._pathfinder.path.Length > 0)
+            //        {
+            //            this.removeHint();
 
-        //            this._targetMark.placeByTap(index);
-        //            this.showPath(this._pathfinder.path);
+            //            this._targetMark.placeByTap(index);
+            //            this.showPath(this._pathfinder.path);
 
-        //            var arrow: Unit;
-        //                for (var i in this._units)
-        //            {
-        //                arrow = < Unit > this._units[i];
-        //                if (this._units[i] instanceof TowerArrow &&
-        //                    arrow.y == this._hero.y + 5 &&
-        //                    (< TowerArrow > arrow).isShooted())
-        //                    {
+            //            var arrow: Unit;
+            //                for (var i in this._units)
+            //            {
+            //                arrow = < Unit > this._units[i];
+            //                if (this._units[i] instanceof TowerArrow &&
+            //                    arrow.y == this._hero.y + 5 &&
+            //                    (< TowerArrow > arrow).isShooted())
+            //                    {
 
-        //                    //console.log("[+++++]: ", i, arrow.y, this._hero.y + 5);
-        //                    this._isStartArrowCheck = true;
-        //                    break;
-        //                }
-        //            }
+            //                    //console.log("[+++++]: ", i, arrow.y, this._hero.y + 5);
+            //                    this._isStartArrowCheck = true;
+            //                    break;
+            //                }
+            //            }
 
-        //            this._hero.moveToCell(path);
-        //        }
+            //            this._hero.moveToCell(path);
+            //        }
 
-        //        if (e.target instanceof MillPress)
-        //            {
-        //            (< MillPress > e.target).activate();
-        //        }
-        //    }
-        //}
+            //        if (e.target instanceof MillPress)
+            //            {
+            //            (< MillPress > e.target).activate();
+            //        }
+            //    }
+        }
 
         //public activateItems(): void
         //{
