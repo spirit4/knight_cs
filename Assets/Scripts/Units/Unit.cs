@@ -58,8 +58,7 @@ namespace Assets.Scripts.Units
 
         //    public set state(value: string)
         //    {
-        //        this._state = value;
-        //        //console.log("[set state]",value, this)
+        //        
         //    }
         //    //--------------------setters
 
@@ -101,6 +100,11 @@ namespace Assets.Scripts.Units
         }
         public string state
         {
+            set
+            {
+                this._state = value;
+                //console.log("[set state]",value, this)
+            }
             get
             {
                 return this._state;

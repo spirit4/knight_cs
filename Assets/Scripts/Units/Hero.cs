@@ -7,11 +7,11 @@ namespace Assets.Scripts.Units
     public class Hero : Unit
     {
         ////states
-        //static IDLE: string = 'idle';
-        //static MOVE: string = 'move';
-        //static DEATH: string = 'death';
+        public const int IDLE = 0;
+        public const int MOVE = 1;
+        public const int DEATH = 2;
 
-        //private SPEED: number = 300;
+        private const float SPEED = 300f;
 
         private Tile[] _grid;
 
@@ -39,6 +39,8 @@ namespace Assets.Scripts.Units
         private const float MARGIN_X = 0f;
         private const float MARGIN_Y = 0f;
 
+        private int _heroState;
+
         public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
         {
             this._grid = Controller.instance.model.grid;
@@ -49,6 +51,9 @@ namespace Assets.Scripts.Units
             view.name = type;
 
             view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
+
+            //view.GetComponent<Animator>().SetInteger("HeroState", 1);
+            _heroState = IDLE;
         }
         //constructor(index: number)
         //{

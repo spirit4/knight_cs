@@ -8,23 +8,23 @@ namespace Assets.Scripts.Utils
 {
     public class PathNode
     {
-    //    public cost number = 0;
-    //public costToStart number = 0;
-    //public costToEnd number = 0;
-    //public totalCost number = 0;
+        public int cost = 0;
+        public int costToStart = 0;
+        public int costToEnd = 0;
+        public int totalCost = 0;
 
-    //public index number = 0;
+        public int index = 0;
 
-    //public parent: PathNode = null;
+        public PathNode parent = null;
 
-    //constructor()
-    //    {
+        public PathNode()
+        {
 
-    //    }
-    //    public calculateTotalCost() : void
-    //{
-    //    this.totalCost = this.costToStart + this.costToEnd;
-    //}
+        }
+        public void CalculateTotalCost()
+        {
+            this.totalCost = this.costToStart + this.costToEnd;
+        }
 
-} 
+    }
 }

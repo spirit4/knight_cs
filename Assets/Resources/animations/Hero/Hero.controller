@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6529318656834265103}
@@ -37,13 +37,13 @@ AnimatorStateTransition:
     m_ConditionEvent: HeroState
     m_EventTreshold: 1
   - m_ConditionMode: 2
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8293092067390332600}
@@ -122,7 +122,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6534201085053059194}
@@ -150,13 +150,13 @@ AnimatorStateTransition:
     m_ConditionEvent: HeroState
     m_EventTreshold: 1
   - m_ConditionMode: 2
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2594570910838297012}
@@ -184,13 +184,13 @@ AnimatorStateTransition:
     m_ConditionEvent: HeroState
     m_EventTreshold: 1
   - m_ConditionMode: 1
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3280734603122442326}
@@ -215,7 +215,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4413661971146963046}
@@ -502,19 +502,19 @@ AnimatorController:
   m_Name: Hero
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Helmet
+  - m_Name: HasHelmet
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Shield
+  - m_Name: HasShield
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Sword
+  - m_Name: HasSword
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -652,7 +652,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6534201085053059194}
@@ -732,7 +732,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4413661971146963046}
@@ -849,7 +849,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6534201085053059194}
@@ -877,13 +877,13 @@ AnimatorStateTransition:
     m_ConditionEvent: HeroState
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 11691498965773306}
@@ -907,9 +907,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
+  - m_ConditionMode: 3
     m_ConditionEvent: HeroState
-    m_EventTreshold: 1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6534201085053059194}
   m_Solo: 0
@@ -963,13 +963,13 @@ AnimatorStateTransition:
     m_ConditionEvent: HeroState
     m_EventTreshold: 1
   - m_ConditionMode: 2
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Sword
+    m_ConditionEvent: HasSword
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7776508052549265660}
@@ -994,7 +994,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6529318656834265103}
@@ -1047,7 +1047,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Shield
+    m_ConditionEvent: HasShield
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1574849369313832990}
@@ -1125,7 +1125,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Helmet
+    m_ConditionEvent: HasHelmet
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1574849369313832990}
