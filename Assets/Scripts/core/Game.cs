@@ -2,26 +2,27 @@
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
     /** <summary>the script of GameContainer (Sprite on Unity GameScene)</summary> */
-    public class Game : MonoBehaviour 
+    public class Game : MonoBehaviour
 
     {
-            private Tile[]_grid;
-            private Model _model;
+        private Tile[] _grid;
+        private Model _model;
 
         //    private _buttonMenu: Button;
         //    private _buttonSound: Button;
         //    private _buttonRestart: Button;
 
-            private Level _level;
+        private Level _level;
         private Hero _hero;
         //    private _mill: MillPress;
 
-        //    private _pathfinder: Pathfinder;
+        private Pathfinder _pathfinder;
 
         //    private _units: { [index number]: ICollidable; };
         //private _items: IActivatable[];
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Core
         //private _bottom: createjs.Shape;
 
         //private _targetMark: TargetMark;
-        //private _poolPoints GameObject[] = [];
+        private List<GameObject> _poolPoints = new List<GameObject>();
         //private _activePoints GameObject[] = [];
 
         //private _isStartArrowCheck: boolean = false;
@@ -43,7 +44,7 @@ namespace Assets.Scripts.Core
             //those came from app.ts, they were first ones -----------------------------------------------------
             var managerBg = new ManagerBg(this);
             //this._bgStage.addChild(this._managerBg);
-            new Controller(managerBg);
+            new Controller(managerBg);//singleton
             //this._mainStage.addChild(this._core);
 
 
@@ -63,7 +64,7 @@ namespace Assets.Scripts.Core
             //this._units = this._level.units;
             //this._items = this._level.items;
 
-            //this._pathfinder = new Pathfinder();
+
 
             //var g: createjs.Graphics = new createjs.Graphics();
             //var shape: createjs.Shape = new createjs.Shape();
@@ -104,6 +105,8 @@ namespace Assets.Scripts.Core
 
             this._level = new Level(this, this._model);
             this._hero = this._level.hero;
+
+            _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
         }
 
 
@@ -127,10 +130,10 @@ namespace Assets.Scripts.Core
             //        return;
             //    }
 
-            
+
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
             int index = GridUtils.getIndex(point.x, point.y);
-            Debug.Log("[tap tile]: " + point + "   " + index);
+            //Debug.Log("[tap tile]: " + point + "   " + index);
 
             //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
             //    {
@@ -143,52 +146,52 @@ namespace Assets.Scripts.Core
             //        (< MillPress > e.target).startRotateMill();
             //    }
 
-            //    if (this._grid[index].isWall)
-            //    {
-            //        return;
-            //    }
+            if (this._grid[index].isWall)
+            {
+                return;
+            }
 
-            //    this._pathfinder.init(Config.WIDTH, Config.HEIGHT, this._grid);
-            //    this._pathfinder.findPath(this._hero.index, index);
+            this._pathfinder.Init(this._grid); //TODO must be single Init
+            this._pathfinder.FindPath(this._hero.index, index);
+            //Debug.Log("Game Path  " + _pathfinder.Path.ToString());
+            if (_pathfinder.Path.Count > 0 && (!this._grid[index].isContainType(ImagesRes.MILL)))// || e.target instanceof MillPress))
+            {
+                List<int> path = _pathfinder.Path;
+                //if (e.target instanceof MillPress)
+                //        {
+                //    path.pop();
+                //}
 
-            //    if (this._pathfinder.path.Length > 0 && (!this._grid[index].isContainType(ImagesRes.MILL) || e.target instanceof MillPress))
-            //        {
-            //        var path number[] = this._pathfinder.path;
-            //        if (e.target instanceof MillPress)
-            //            {
-            //            path.pop();
-            //        }
+                if (path.Count > 0)
+                {
+                    //            this.removeHint();
 
-            //        if (this._pathfinder.path.Length > 0)
-            //        {
-            //            this.removeHint();
+                    //            this._targetMark.placeByTap(index);
+                    this.showPath(this._pathfinder.Path);
 
-            //            this._targetMark.placeByTap(index);
-            //            this.showPath(this._pathfinder.path);
+                    //            var arrow: Unit;
+                    //                for (var i in this._units)
+                    //            {
+                    //                arrow = < Unit > this._units[i];
+                    //                if (this._units[i] instanceof TowerArrow &&
+                    //                    arrow.y == this._hero.y + 5 &&
+                    //                    (< TowerArrow > arrow).isShooted())
+                    //                    {
 
-            //            var arrow: Unit;
-            //                for (var i in this._units)
-            //            {
-            //                arrow = < Unit > this._units[i];
-            //                if (this._units[i] instanceof TowerArrow &&
-            //                    arrow.y == this._hero.y + 5 &&
-            //                    (< TowerArrow > arrow).isShooted())
-            //                    {
+                    //                    //console.log("[+++++]: ", i, arrow.y, this._hero.y + 5);
+                    //                    this._isStartArrowCheck = true;
+                    //                    break;
+                    //                }
+                    //            }
+                    Debug.Log("[path]: " + path.Count);
+                    this._hero.moveToCell(path);
+                }
 
-            //                    //console.log("[+++++]: ", i, arrow.y, this._hero.y + 5);
-            //                    this._isStartArrowCheck = true;
-            //                    break;
-            //                }
-            //            }
-
-            //            this._hero.moveToCell(path);
-            //        }
-
-            //        if (e.target instanceof MillPress)
-            //            {
-            //            (< MillPress > e.target).activate();
-            //        }
-            //    }
+                //        if (e.target instanceof MillPress)
+                //            {
+                //            (< MillPress > e.target).activate();
+                //        }
+            }
         }
 
         //public activateItems(): void
@@ -562,18 +565,18 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //private showPath(path number[]): void
-        //{
-        //    for (int i = 0; i < path.Length; i++)
-        //        {
-        //        if (this._poolPoints.Length < path.Length)
-        //        {
-        //            this.createPathPoint();
-        //        }
+        private void showPath(List<int> path)
+        {
+            for (int i = 0; i < path.Count; i++)
+            {
+                if (_poolPoints.Count < path.Count)
+                {
+                    this.createPathPoint();
+                }
 
-        //        createjs.Tween.get(this).wait(50 * i).call(this.appearPoint, [path[i]], this);
-        //    }
-        //}
+                //createjs.Tween.get(this).wait(50 * i).call(this.appearPoint, [path[i]], this);
+            }
+        }
 
         //private appearPoint(index number): void
         //{
@@ -621,21 +624,30 @@ namespace Assets.Scripts.Core
         //    this._poolPoints.push(bitmap);
         //}
 
-        //private createPathPoint(): void
-        //{
-        //    var bitmapGameObject
-        //    var bd: HTMLImageElement;
+        private void createPathPoint()
+        {
+            //    var bitmapGameObject
+            //    var bd: HTMLImageElement;
 
-        //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
-        //    bitmap = new createjs.Bitmap(bd);
-        //    bitmap.snapToPixel = true;
-        //    this.addChildAt(bitmap, 0);
+            //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
+            //    bitmap = new createjs.Bitmap(bd);
+            //    bitmap.snapToPixel = true;
+            //    this.addChildAt(bitmap, 0);
 
-        //    bitmap.regX = bd.width >> 1;
-        //    bitmap.regY = bd.height * 0.5 - 3;
-        //    this._poolPoints.push(bitmap);
-        //    bitmap.visible = false;
-        //}
+            //    bitmap.regX = bd.width >> 1;
+            //    bitmap.regY = bd.height * 0.5 - 3;
+            //    this._poolPoints.push(bitmap);
+            //    bitmap.visible = false;
+
+            GameObject dObject = new GameObject();
+            dObject.AddComponent<SpriteRenderer>();
+            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
+            dObject.transform.SetParent(this.gameObject.transform);
+            dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            dObject.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            //dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.07f, 0);
+            _poolPoints.Add(dObject);
+        }
 
 
         //public destroy(): void

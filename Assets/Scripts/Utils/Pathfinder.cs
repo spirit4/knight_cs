@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Core;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
@@ -52,8 +53,7 @@ namespace Assets.Scripts.Utils
                 }
                 else if (grid[i].isDear)
                 {
-                    this._grid[i].cost = DEAR_COST;
-                    //console.log("dear " + i + grid[i].isDear)
+                    _grid[i].cost = DEAR_COST;
                 }
             }
         }
@@ -62,8 +62,6 @@ namespace Assets.Scripts.Utils
 
         public void FindPath(int start, int end)
         {
-            //console.log("findPath ", start, end);
-
             _path = new List<int>();
 
             _openList.Add(_grid[start]);
@@ -78,34 +76,34 @@ namespace Assets.Scripts.Utils
 
         private void Iterate()
         {
-            PathNode startNode = this._grid[this._currentIndex];
-            int y0  = _currentIndex / _sizeX;
-            int x0  = _currentIndex - y0 * _sizeY;
+            PathNode startNode = _grid[_currentIndex];
+            int y0 = _currentIndex / _sizeX;
+            int x0 = _currentIndex - y0 * _sizeY;
 
-            int xMin  = ((x0 - 1) >= 0) ? (x0 - 1) : 0;
-            int yMin  = ((y0 - 1) >= 0) ? (y0 - 1) : 0;
+            int xMin = ((x0 - 1) >= 0) ? (x0 - 1) : 0;
+            int yMin = ((y0 - 1) >= 0) ? (y0 - 1) : 0;
 
-            int xMax  = ((x0 + 1) < _sizeX) ? (x0 + 1) : _sizeX - 1;
-            int yMax  = ((y0 + 1) < _sizeY) ? (y0 + 1) : _sizeY - 1;
+            int xMax = ((x0 + 1) < _sizeX) ? (x0 + 1) : _sizeX - 1;
+            int yMax = ((y0 + 1) < _sizeY) ? (y0 + 1) : _sizeY - 1;
 
             int index;
-            PathNode node ;
-            for (int y  = yMin; y <= yMax; y++)
+            PathNode node;
+            for (int y = yMin; y <= yMax; y++)
+            {
+                for (int x = xMin; x <= xMax; x++)
                 {
-                for (int x  = xMin; x <= xMax; x++)
-                    {
                     index = y * _sizeX + x;
-                    node = this._grid[index];
-                    //console.log("----------------cost ", node.costToStart, node.costToEnd, index);
-                    if (node.cost != WALL_COST && this._closeList.Contains(node) && ((x0 == x || y0 == y)))
+                    node = _grid[index];
+
+                    if (node.cost != WALL_COST && !_closeList.Contains(node) && ((x0 == x || y0 == y)))
                     {
-                        if (this._openList.Contains(node))
+                        if (!_openList.Contains(node))
                         {
-                            this._openList.Add(node);
+                            _openList.Add(node);
                             node.parent = startNode;
                             node.costToStart = startNode.costToStart + GetCost(x0, y0, x, y) + node.cost;
                             node.costToEnd = GetCostToEnd(x, y);
-                            //console.log("----------------cost ", node.costToStart, node.costToEnd, this._currentIndex);
+
                             node.CalculateTotalCost();
                         }
                     }
@@ -118,53 +116,54 @@ namespace Assets.Scripts.Utils
         private void Check()
         {
             PathNode openNode;
-            for (int i = 0; i < this._openList.Count; i++)
+            for (int i = 0; i < _openList.Count; i++)
             {
-                openNode = this._openList[i];
-                if (this._openList.Contains(this._grid[this._endIndex]))
+                openNode = _openList[i];
+
+                if (_openList.Contains(_grid[_endIndex]))
                 {
-                    _closeList.Add(this._grid[this._endIndex]);
+                    _closeList.Add(_grid[_endIndex]);
                     _openList.Clear();
 
                     SetPath();
 
-                    this._closeList.Clear(); //???
+                    _closeList.Clear(); //clear for the next search
 
                     return;
                 }
             }
 
-            //console.log("before", this._openList);
-            this._openList.Sort((node1, node2) => node1.totalCost - node2.totalCost);
-            //console.log("after", this._openList);
+            _openList.Sort((node1, node2) => node1.totalCost - node2.totalCost);
 
-            if (this._openList.Count == 0)
+            if (_openList.Count == 0)
             {
-                return;//a path don't exist
+                return;//a path doesn't exist
             }
-
-            this._currentIndex = this._openList[0].index;
-            this._closeList.Add(this._openList[0]);
-            this._openList.RemoveAt(0);
+            _currentIndex = _openList[0].index;
+            _closeList.Add(_openList[0]);
+            _openList.RemoveAt(0);
 
             this.Iterate();
         }
 
         private void SetPath()
         {
-            this._path.Clear();
-            PathNode node = this._grid[this._endIndex];
-            while (node.parent != null)
+            _path.Clear();
+            PathNode node = _grid[_endIndex];
+            do
             {
+                _path.Insert(0, node.index);
+                //Debug.Log("SetPath  " + node.index);
+
                 node = node.parent;
-                this._path.Insert(0, node.index);
             }
+            while (node.parent != null);
         }
 
         private int GetCostToEnd(int x, int y)
         {
-            int numberX = Math.Abs(x - this._endX);
-            int numberY = Math.Abs(y - this._endY);
+            int numberX = Math.Abs(x - _endX);
+            int numberY = Math.Abs(y - _endY);
 
             return (numberX + numberY) * NORMAL_COST;
         }
@@ -180,16 +179,16 @@ namespace Assets.Scripts.Utils
 
         public void Destroy()
         {
-            this._grid.Clear();
-            this._openList.Clear();
-            this._path.Clear();
-            this._closeList.Clear();
+            _grid.Clear();
+            _openList.Clear();
+            _path.Clear();
+            _closeList.Clear();
 
-            this._grid = null;
-            this._openList = null;
-            this._path = null;
-            this._closeList = null;
+            _grid = null;
+            _openList = null;
+            _path = null;
+            _closeList = null;
         }
 
-}
+    }
 }

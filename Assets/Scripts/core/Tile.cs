@@ -216,163 +216,155 @@ namespace Assets.Scripts.Core
         //    return null;
         //}
 
-        //public isContainType(type string): boolean
-        //{
-        //    var index number = this.types.indexOf(type);
-        //    if (index != -1)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool isContainType(string type) 
+        {
+            return types.Contains(type);
+        }
 
-        //public isContainTypes(type string): boolean
-        //{
-        //    var index0 number = this.types.indexOf(type + 0);
-        //    var index1 number = this.types.indexOf(type + 1);
-        //    var index2 number = this.types.indexOf(type + 2);
-        //    var index3 number = this.types.indexOf(type + 3);
-        //    var index4 number = this.types.indexOf(type + 4);
-        //    if (index0 != -1 || index1 != -1 || index2 != -1 || index3 != -1 || index4 != -1)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+    //public isContainTypes(type string): boolean
+    //{
+    //    var index0 number = this.types.indexOf(type + 0);
+    //    var index1 number = this.types.indexOf(type + 1);
+    //    var index2 number = this.types.indexOf(type + 2);
+    //    var index3 number = this.types.indexOf(type + 3);
+    //    var index4 number = this.types.indexOf(type + 4);
+    //    if (index0 != -1 || index1 != -1 || index2 != -1 || index3 != -1 || index4 != -1)
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
+    //}
 
-        //public getConcreteType(type string) string
-        //{
-        //    var index0 number = this.types.indexOf(type + 0);
-        //    var index1 number = this.types.indexOf(type + 1);
-        //    var index2 number = this.types.indexOf(type + 2);
-        //    var index3 number = this.types.indexOf(type + 3);
-        //    if (index0 != -1)
-        //    {
-        //        return type + 0;
-        //    }
-        //    else if (index1 != -1)
-        //    {
-        //        return type + 1;
-        //    }
-        //    else if (index2 != -1)
-        //    {
-        //        return type + 2;
-        //    }
-        //    else if (index3 != -1)
-        //    {
-        //        return type + 3;
-        //    }
-        //    else
-        //    {
-        //        //console.log("[INCORRECT TYPE] getConcreteType", type);
-        //    }
-        //}
+    //public getConcreteType(type string) string
+    //{
+    //    var index0 number = this.types.indexOf(type + 0);
+    //    var index1 number = this.types.indexOf(type + 1);
+    //    var index2 number = this.types.indexOf(type + 2);
+    //    var index3 number = this.types.indexOf(type + 3);
+    //    if (index0 != -1)
+    //    {
+    //        return type + 0;
+    //    }
+    //    else if (index1 != -1)
+    //    {
+    //        return type + 1;
+    //    }
+    //    else if (index2 != -1)
+    //    {
+    //        return type + 2;
+    //    }
+    //    else if (index3 != -1)
+    //    {
+    //        return type + 3;
+    //    }
+    //    else
+    //    {
+    //        //console.log("[INCORRECT TYPE] getConcreteType", type);
+    //    }
+    //}
 
-        //public clear(): void
-        //{
-        //    for (int i = 0; i < this.objects.Length; i++)
-        //        {
-        //        if (this.objects[i].parent)
-        //        {
-        //            this.objects[i].parent.removeChild(this.objects[i]);
-        //        }
-        //    }
-        //    this.objects.Length = 0;
-        //    this.types.Length = 0;
-        //    this.isWall = true;
-        //    this.isDear = false;
-        //}
+    //public clear(): void
+    //{
+    //    for (int i = 0; i < this.objects.Length; i++)
+    //        {
+    //        if (this.objects[i].parent)
+    //        {
+    //            this.objects[i].parent.removeChild(this.objects[i]);
+    //        }
+    //    }
+    //    this.objects.Length = 0;
+    //    this.types.Length = 0;
+    //    this.isWall = true;
+    //    this.isDear = false;
+    //}
 
-        //public getFirstIndex() number
-        //{
-        //    if (this.objects.Length == 0)
-        //    {
-        //        return -1;
-        //    }
+    //public getFirstIndex() number
+    //{
+    //    if (this.objects.Length == 0)
+    //    {
+    //        return -1;
+    //    }
 
-        //    return this.objects[0].parent.getChildIndex(this.objects[0]);
-        //}
+    //    return this.objects[0].parent.getChildIndex(this.objects[0]);
+    //}
 
 
-        //public getLastIndex(container: createjs.Container) number
-        //{
-        //    var grid: Tile[] = Core.instance.model.grid;
-        //    var index number = this.index;
-        //    var objects: createjs.DisplayObject[] = grid[index].objects;
+    //public getLastIndex(container: createjs.Container) number
+    //{
+    //    var grid: Tile[] = Core.instance.model.grid;
+    //    var index number = this.index;
+    //    var objects: createjs.DisplayObject[] = grid[index].objects;
 
-        //    //console.log("[index000]: ", index, container.getChildIndex(objects[1]));
-        //    while (container.getChildIndex(objects[1]) == -1)
-        //    {
-        //        index--;
+    //    //console.log("[index000]: ", index, container.getChildIndex(objects[1]));
+    //    while (container.getChildIndex(objects[1]) == -1)
+    //    {
+    //        index--;
 
-        //        if (index == -1)
-        //        {
-        //            return 0;  //gui + grid
-        //        }
+    //        if (index == -1)
+    //        {
+    //            return 0;  //gui + grid
+    //        }
 
-        //        objects = grid[index].objects;
-        //    }
+    //        objects = grid[index].objects;
+    //    }
 
-        //    //console.log("[index1]: ", index, container.getChildIndex(objects[1]), objects.Length);
-        //    return container.getChildIndex(objects[1]) + 1;
-        //}
+    //    //console.log("[index1]: ", index, container.getChildIndex(objects[1]), objects.Length);
+    //    return container.getChildIndex(objects[1]) + 1;
+    //}
 
-        //public getIndex(type string) number //-1 if no exist
-        //{
-        //    var arrayIndex number = this.types.indexOf(type);
+    //public getIndex(type string) number //-1 if no exist
+    //{
+    //    var arrayIndex number = this.types.indexOf(type);
 
-        //    if (arrayIndex == -1)
-        //        return -1;
+    //    if (arrayIndex == -1)
+    //        return -1;
 
-        //    var container: createjs.Container = < createjs.Container > this.objects[arrayIndex].parent;
-        //    return container.getChildIndex(this.objects[arrayIndex]);
-        //}
+    //    var container: createjs.Container = < createjs.Container > this.objects[arrayIndex].parent;
+    //    return container.getChildIndex(this.objects[arrayIndex]);
+    //}
 
-        //public setIndex(dObject: createjs.Container, isHeroUnder: boolean = true): void
-        //{
-        //    //if (!dObject)
-        //    //{
-        //    //console.log("WTF dObject doesn't exist");
-        //    //}
+    //public setIndex(dObject: createjs.Container, isHeroUnder: boolean = true): void
+    //{
+    //    //if (!dObject)
+    //    //{
+    //    //console.log("WTF dObject doesn't exist");
+    //    //}
 
-        //    var index number;
-        //    //if (this.isContainTypes(ImagesRes.STAR) || this.isContainType(ImagesRes.EXIT))
-        //    //{
-        //    //    index = this.getIndex(ImagesRes.STAR);
+    //    var index number;
+    //    //if (this.isContainTypes(ImagesRes.STAR) || this.isContainType(ImagesRes.EXIT))
+    //    //{
+    //    //    index = this.getIndex(ImagesRes.STAR);
 
-        //    //    if (index == -1)
-        //    //        index = this.getIndex(ImagesRes.DARK);
+    //    //    if (index == -1)
+    //    //        index = this.getIndex(ImagesRes.DARK);
 
-        //    //    if (index == -1)
-        //    //    {
-        //    //        index = this.getIndex(ImagesRes.EXIT);
-        //    //        index +=2; //above the right
-        //    //    }
+    //    //    if (index == -1)
+    //    //    {
+    //    //        index = this.getIndex(ImagesRes.EXIT);
+    //    //        index +=2; //above the right
+    //    //    }
 
-        //    //    if (isHeroUnder)
-        //    //        index--;
+    //    //    if (isHeroUnder)
+    //    //        index--;
 
-        //    // //console.log("[index1]: ", index);
-        //    //    dObject.parent.addChildAt(dObject, index);
+    //    // //console.log("[index1]: ", index);
+    //    //    dObject.parent.addChildAt(dObject, index);
 
-        //    //}
-        //    //else
-        //    //{
-        //    index = this.getLastIndex(dObject.parent);
+    //    //}
+    //    //else
+    //    //{
+    //    index = this.getLastIndex(dObject.parent);
 
-        //    //console.log("[index2]: ", index, dObject.parent);
-        //    dObject.parent.addChildAt(dObject, index);
-        //    //console.log("[index3]: ", dObject.parent.getChildIndex(dObject));
-        //    //}
+    //    //console.log("[index2]: ", index, dObject.parent);
+    //    dObject.parent.addChildAt(dObject, index);
+    //    //console.log("[index3]: ", dObject.parent.getChildIndex(dObject));
+    //    //}
 
-        //}
+    //}
 
 
-    }
+}
 }

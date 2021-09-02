@@ -14,9 +14,9 @@ namespace Assets.Scripts.Data
         //        static NONE string = "none";
         public const string HERO = "hero";
         public const string GRASS = "grass";
-        public const string STAR  = "star";   //helm, shield, sword
+        public const string STAR = "star";   //helm, shield, sword
         public const string EXIT = "exit";
-        //public const string MILL string = "mill";
+        public const string MILL = "mill";
         //public const string MILL_VANE string = "millVane";
         public const string WATER = "water";
         public const string PINE = "pine";
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Data
         //public const string TRAP string = "trap";
         //public const string BOULDER string = "boulder";
         //public const string BOULDER_MARK string = "boulderMark";
-        //public const string TARGET_MARK string = "targetMark";
+        public const string TARGET_MARK = "target_";
 
         public const string DECOR = "Decor";//???????????????????flovers
 

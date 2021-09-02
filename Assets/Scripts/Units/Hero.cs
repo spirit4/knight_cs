@@ -87,8 +87,8 @@ namespace Assets.Scripts.Units
             _path.Clear();
         }
 
-    //public moveToCell(path: number[] = null): void
-    //{
+    public void moveToCell(List<int> path = null)
+    {
     //    if (path)
     //    {
     //        this._path = path;
@@ -136,7 +136,7 @@ namespace Assets.Scripts.Units
     //    }
 
     //    this.move(true);
-    //}
+    }
 
     //private moveCompleteHandler(): void
     //{
