@@ -9,8 +9,8 @@ namespace Assets.Scripts.Utils.Display
 {
     public class TargetMark : MonoBehaviour
     {
-        //private _centerGameObject
-        //private _outerGameObject
+        private GameObject _center;
+        private GameObject _outer;
 
         public TargetMark()
         {

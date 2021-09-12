@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using Assets.Scripts.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,8 +18,8 @@ namespace Assets.Scripts.Units
         private Tile[] _grid;
 
         private List<int> _path;
-        //private _directionX: number = 1;
-        //private _directionY: number = 1;
+        private int _directionX = 1;
+        private int _directionY = 1;
         //private _prevState: string = "";
 
         //static currentTween: createjs.Tween;
@@ -89,54 +90,56 @@ namespace Assets.Scripts.Units
 
     public void moveToCell(List<int> path = null)
     {
-    //    if (path)
-    //    {
-    //        this._path = path;
-    //    }
+            if (path != null)
+            {
+                this._path = path;
+            }
 
-    //    var currentIndex: number = this.index;
-    //    this.index = this._path.shift();
-    //    var point: createjs.Point = Utils.getPoint(this.index);
+            int currentIndex = this.index;
+            this.index = _path[0];
+            _path.RemoveAt(0);
+            Vector2 point = GridUtils.GetPoint(this.index);
 
-    //    this._directionX = 0;
-    //    this._directionY = 0;
+            this._directionX = 0;
+            this._directionY = 0;
 
-    //    //console.log("--MOVE--", this.index)
+            Debug.Log("--MOVE--" + point);
+            Debug.Log("--GetPoint--" + point.y);
 
-    //    var step: number = 0;
-    //    if (point.y == this.y && point.x > this.x)
-    //    {
-    //        step = 1;
-    //        this._directionX = 1;
-    //    }
-    //    else if (point.y == this.y && point.x < this.x)
-    //    {
-    //        step = -1;
-    //        this._directionX = -1;
-    //    }
-    //    else if (point.x == this.x && point.y > this.y)
-    //    {
-    //        step = Config.WIDTH;
-    //        this._directionY = 1;
-    //    }
-    //    else if (point.x == this.x && point.y < this.y)
-    //    {
-    //        step = -Config.WIDTH;
-    //        this._directionY = -1;
-    //    }
+            int step = 0;
+            if (point.y == this.y && point.x > this.x)
+            {
+                step = 1;
+                this._directionX = 1;
+            }
+            else if (point.y == this.y && point.x < this.x)
+            {
+                step = -1;
+                this._directionX = -1;
+            }
+            else if (point.x == this.x && point.y > this.y)
+            {
+                step = Config.WIDTH;
+                this._directionY = 1;
+            }
+            else if (point.x == this.x && point.y < this.y)
+            {
+                step = -Config.WIDTH;
+                this._directionY = -1;
+            }
 
-    //    while (this.index != currentIndex)
-    //    {
-    //        currentIndex += step;
-    //        if (this._grid[currentIndex].isContainTypes(ImagesRes.STAR) || this._grid[currentIndex].isContainType(ImagesRes.TRAP))
-    //        {
-    //            this.index = currentIndex;
-    //            this._path.length = 0;
-    //        }
-    //    }
+            //    while (this.index != currentIndex)
+            //    {
+            //        currentIndex += step;
+            //        if (this._grid[currentIndex].isContainTypes(ImagesRes.STAR) || this._grid[currentIndex].isContainType(ImagesRes.TRAP))
+            //        {
+            //            this.index = currentIndex;
+            //            this._path.length = 0;
+            //        }
+            //    }
 
-    //    this.move(true);
-    }
+            //    this.move(true);
+        }
 
     //private moveCompleteHandler(): void
     //{

@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
+using Assets.Scripts.Utils.Display;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,9 +33,9 @@ namespace Assets.Scripts.Core
         //private _top: createjs.Shape;
         //private _bottom: createjs.Shape;
 
-        //private _targetMark: TargetMark;
+        private TargetMark _targetMark;
         private List<GameObject> _poolPoints = new List<GameObject>();
-        //private _activePoints GameObject[] = [];
+        private List<GameObject> _activePoints = new List<GameObject>();
 
         //private _isStartArrowCheck: boolean = false;
 
@@ -574,78 +575,68 @@ namespace Assets.Scripts.Core
                     this.createPathPoint();
                 }
 
+                appearPoint(path[i]);
                 //createjs.Tween.get(this).wait(50 * i).call(this.appearPoint, [path[i]], this);
             }
         }
 
-        //private appearPoint(index number): void
-        //{
-        //    var bitmap GameObject = this._poolPoints.pop();
-        //    bitmap.scaleX = bitmap.scaleY = 0;
-        //    bitmap.x = this._grid[index].x + Config.SIZE_W * 0.5 + 2;
-        //    bitmap.y = this._grid[index].y + Config.SIZE_H * 0.5 + 3;
-        //    bitmap.visible = true;
-        //    this._activePoints.push(bitmap);
-        //    createjs.Tween.get(bitmap).to({ scaleX: 1.2, scaleY: 1.2 }, 100, createjs.Ease.quartOut).call(this.reducePoint, [bitmap], this);
-        //}
-
-        //private reducePoint(bitmap GameObject): void
-        //{
-        //    createjs.Tween.get(bitmap).to({ scaleX: 1, scaleY: 1 }, 60, createjs.Ease.quartIn);
-        //}
-
-        //private hidePoints(): void
-        //{
-        //    while (this._activePoints.Length > 0)
-        //    {
-        //        var bitmap GameObject = this._activePoints.pop();
-        //        bitmap.visible = false;
-        //        this._poolPoints.push(bitmap);
-        //    }
-        //}
-
-        //private hideLastPoint(e: GameEvent): void
-        //{
-        //    if (this._activePoints.Length == 0)
-        //    {
-        //        return;
-        //    }
-
-        //    if (this._isStartArrowCheck)
-        //    {
-        //        //console.log("[+++++reached]");
-        //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-        //        this._isStartArrowCheck = false;
-        //    }
-
-        //    //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
-        //    var bitmap GameObject = this._activePoints.shift();
-        //    bitmap.visible = false;
-        //    this._poolPoints.push(bitmap);
-        //}
-
-        private void createPathPoint()
+        private void appearPoint(int index) 
         {
-            //    var bitmapGameObject
-            //    var bd: HTMLImageElement;
+            GameObject bitmap  = _poolPoints[_poolPoints.Count - 1];
+            _poolPoints.RemoveAt(_poolPoints.Count - 1);
 
-            //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
-            //    bitmap = new createjs.Bitmap(bd);
-            //    bitmap.snapToPixel = true;
-            //    this.addChildAt(bitmap, 0);
+            //bitmap.scaleX = bitmap.scaleY = 0;
+            bitmap.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y, 0);
+            bitmap.SetActive(true);
+            this._activePoints.Add(bitmap);
+            //createjs.Tween.get(bitmap).to({ scaleX: 1.2, scaleY: 1.2 }, 100, createjs.Ease.quartOut).call(this.reducePoint, [bitmap], this);
+    }
 
-            //    bitmap.regX = bd.width >> 1;
-            //    bitmap.regY = bd.height * 0.5 - 3;
-            //    this._poolPoints.push(bitmap);
-            //    bitmap.visible = false;
+    //private reducePoint(bitmap GameObject): void
+    //{
+    //    createjs.Tween.get(bitmap).to({ scaleX: 1, scaleY: 1 }, 60, createjs.Ease.quartIn);
+    //}
 
+    //private hidePoints(): void
+    //{
+    //    while (this._activePoints.Length > 0)
+    //    {
+    //        var bitmap GameObject = this._activePoints.pop();
+    //        bitmap.visible = false;
+    //        this._poolPoints.push(bitmap);
+    //    }
+    //}
+
+    //private hideLastPoint(e: GameEvent): void
+    //{
+    //    if (this._activePoints.Length == 0)
+    //    {
+    //        return;
+    //    }
+
+    //    if (this._isStartArrowCheck)
+    //    {
+    //        //console.log("[+++++reached]");
+    //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
+    //        this._isStartArrowCheck = false;
+    //    }
+
+    //    //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
+    //    var bitmap GameObject = this._activePoints.shift();
+    //    bitmap.visible = false;
+    //    this._poolPoints.push(bitmap);
+    //}
+
+    private void createPathPoint()
+        {
             GameObject dObject = new GameObject();
             dObject.AddComponent<SpriteRenderer>();
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
             dObject.transform.SetParent(this.gameObject.transform);
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 999;
-            //dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.07f, 0);
+            dObject.SetActive(false);
+            
             _poolPoints.Add(dObject);
         }
 
