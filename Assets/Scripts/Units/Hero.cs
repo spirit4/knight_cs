@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
+using com.ootii.Messages;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -103,10 +105,10 @@ namespace Assets.Scripts.Units
             this._directionX = 0;
             this._directionY = 0;
 
-            Debug.Log("--MOVE--" + point);
-            Debug.Log("--GetPoint--" + point.y);
+            //Debug.Log("--MOVE--" + point);
+            //Debug.Log("--GetPoint--" + point.y);
 
-            int step = 0;
+            int step;
             if (point.y == this.y && point.x > this.x)
             {
                 step = 1;
@@ -139,6 +141,9 @@ namespace Assets.Scripts.Units
             //    }
 
             //    this.move(true);
+
+            //test
+            MessageDispatcher.SendMessage(this,  GameEvent.HERO_REACHED, null, 0);
         }
 
     //private moveCompleteHandler(): void

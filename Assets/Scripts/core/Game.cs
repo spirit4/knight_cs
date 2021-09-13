@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Events;
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Utils.Display;
+using com.ootii.Messages;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -79,9 +81,7 @@ namespace Assets.Scripts.Core
 
             //this.on(GameEvent.COLLISION, this.collisionProcess, this);
             //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
-            //this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
-            //this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
-            //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
+            
 
             //this._targetMark = new TargetMark();
             //this.addChild(this._targetMark);
@@ -108,6 +108,12 @@ namespace Assets.Scripts.Core
             this._hero = this._level.hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
+
+            //this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
+            //this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
+            //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
+
+            MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
         }
 
 
@@ -185,6 +191,7 @@ namespace Assets.Scripts.Core
                     //                }
                     //            }
                     Debug.Log("[path]: " + path.Count);
+
                     this._hero.moveToCell(path);
                 }
 
@@ -207,9 +214,9 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //private reachedHandler(e: GameEvent): void
-        //{
-        //    //console.log("[reached]", this._hero.index);
+        private void reachedHandler(IMessage rMessage)//e: GameEvent) : void
+        {
+            Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
 
         //    if (this._isStartArrowCheck)
         //    {
@@ -233,7 +240,7 @@ namespace Assets.Scripts.Core
         //            this.activateItems();
         //        }
         //    }
-        //}
+        }
 
         //private collisionProcess(e: GameEvent): void
         //{

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Events
 {
-    public class GameEvent : UnityEvent
+    public class GameEvent
     {
         //       static GOTO_LEVEL: string = "gotoLevel";
         //  public static UPDATE: string = "tick";
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Events
         //  public static COLLISION: string = "collision";
         //  public static EDITOR_ON_OFF: string = "editorOnOff";
 
-        //  public static HERO_REACHED: string = "heroReached";
+        public const string HERO_REACHED = "heroReached";
         //  public static HERO_ONE_CELL_AWAY: string = "heroOneCellAway";
         //  public static HERO_GET_TRAP: string = "heroGetTrap";
 
