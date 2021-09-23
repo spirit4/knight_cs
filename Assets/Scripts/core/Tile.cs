@@ -221,22 +221,24 @@ namespace Assets.Scripts.Core
             return types.Contains(type);
         }
 
-    //public isContainTypes(type string): boolean
-    //{
-    //    var index0 number = this.types.indexOf(type + 0);
-    //    var index1 number = this.types.indexOf(type + 1);
-    //    var index2 number = this.types.indexOf(type + 2);
-    //    var index3 number = this.types.indexOf(type + 3);
-    //    var index4 number = this.types.indexOf(type + 4);
-    //    if (index0 != -1 || index1 != -1 || index2 != -1 || index3 != -1 || index4 != -1)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+        public bool isContainTypes(string type) 
+    {
+            string str = types.ToString();// (type + 0);
+            return str.Contains(type);
+        //    types.( (Any(item => b.Contains(item))
+        //var index1 number = this.types.indexOf(type + 1);
+        //var index2 number = this.types.indexOf(type + 2);
+        //var index3 number = this.types.indexOf(type + 3);
+        //var index4 number = this.types.indexOf(type + 4);
+        //if (index0 != -1 || index1 != -1 || index2 != -1 || index3 != -1 || index4 != -1)
+        //{
+        //    return true;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
+    }
 
     //public getConcreteType(type string) string
     //{

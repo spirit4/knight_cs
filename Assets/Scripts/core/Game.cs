@@ -5,8 +5,12 @@ using Assets.Scripts.Utils;
 using Assets.Scripts.Utils.Display;
 using com.ootii.Messages;
 using DG.Tweening;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+
 
 namespace Assets.Scripts.Core
 {
@@ -81,10 +85,9 @@ namespace Assets.Scripts.Core
 
             //this.on(GameEvent.COLLISION, this.collisionProcess, this);
             //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
-            
 
-            //this._targetMark = new TargetMark();
-            //this.addChild(this._targetMark);
+
+            
 
             //for (int i = 0; i < 15; i++)   //put on pool
             //    {
@@ -93,7 +96,7 @@ namespace Assets.Scripts.Core
 
         }
 
-        void Awake()
+        private void Awake()
         {
             this.gameObject.isStatic = true;
             ImagesRes.init();
@@ -114,6 +117,10 @@ namespace Assets.Scripts.Core
             //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
+            MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
+
+            _targetMark = new TargetMark(this.gameObject);
+
         }
 
 
@@ -122,6 +129,7 @@ namespace Assets.Scripts.Core
         //    createjs.Tween.get(this).wait(100).call(this.hideActors, [null], this);
         //    this.showBoom();
         //}
+
 
         private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
         {
@@ -132,6 +140,8 @@ namespace Assets.Scripts.Core
                 return;
             }
 
+            
+
             //    if (e.target.parent instanceof Button)
             //        {
             //        return;
@@ -141,6 +151,9 @@ namespace Assets.Scripts.Core
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
             int index = GridUtils.getIndex(point.x, point.y);
             //Debug.Log("[tap tile]: " + point + "   " + index);
+
+            if (_hero.index == index)
+                return;
 
             //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
             //    {
@@ -173,7 +186,7 @@ namespace Assets.Scripts.Core
                 {
                     //            this.removeHint();
 
-                    //            this._targetMark.placeByTap(index);
+                    _targetMark.placeByTap(index);
                     this.showPath(this._pathfinder.Path);
 
                     //            var arrow: Unit;
@@ -190,7 +203,7 @@ namespace Assets.Scripts.Core
                     //                    break;
                     //                }
                     //            }
-                    Debug.Log("[path]: " + path.Count);
+                    //Debug.Log("Game [path]: " + path.Count);
 
                     this._hero.moveToCell(path);
                 }
@@ -216,30 +229,30 @@ namespace Assets.Scripts.Core
 
         private void reachedHandler(IMessage rMessage)//e: GameEvent) : void
         {
-            Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
+            //Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
 
-        //    if (this._isStartArrowCheck)
-        //    {
-        //        //console.log("[+++++reached]");
-        //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-        //        this._isStartArrowCheck = false;
-        //    }
+            //    if (this._isStartArrowCheck)
+            //    {
+            //        //console.log("[+++++reached]");
+            //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
+            //        this._isStartArrowCheck = false;
+            //    }
 
-        //    this.hidePoints();
+            this.hidePoints();
 
-        //    if (Progress.currentLevel == 0 && this._hero.index == 54) //to guide
-        //    {
-        //        this.createHintAfterAction();
-        //    }
+            //    if (Progress.currentLevel == 0 && this._hero.index == 54) //to guide
+            //    {
+            //        this.createHintAfterAction();
+            //    }
 
-        //    if (Utils.findAround(this._grid, this._hero.index, ImagesRes.MILL) != -1)
-        //    {
-        //        if (this._mill.state != Unit.ON)
-        //        {
-        //            this._mill.startRotateMill();
-        //            this.activateItems();
-        //        }
-        //    }
+            //    if (Utils.findAround(this._grid, this._hero.index, ImagesRes.MILL) != -1)
+            //    {
+            //        if (this._mill.state != Unit.ON)
+            //        {
+            //            this._mill.startRotateMill();
+            //            this.activateItems();
+            //        }
+            //    }
         }
 
         //private collisionProcess(e: GameEvent): void
@@ -581,60 +594,62 @@ namespace Assets.Scripts.Core
                 {
                     this.createPathPoint();
                 }
-
-                appearPoint(path[i]);
-                //createjs.Tween.get(this).wait(50 * i).call(this.appearPoint, [path[i]], this);
+                // Debug.Log("--showPath--" + path.Count + " i " + i);
+                WaitAndCall(50 * i, appearPoint, path[i]);
             }
         }
 
-        private void appearPoint(int index) 
+        private void appearPoint(int index)
         {
-            GameObject bitmap  = _poolPoints[_poolPoints.Count - 1];
+            //Debug.Log("--appearPoint--" + Time.time);
+            GameObject bitmap = _poolPoints[_poolPoints.Count - 1];
             _poolPoints.RemoveAt(_poolPoints.Count - 1);
 
-            //bitmap.scaleX = bitmap.scaleY = 0;
+            bitmap.transform.localScale = new Vector3(0, 0);
             bitmap.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y, 0);
             bitmap.SetActive(true);
             this._activePoints.Add(bitmap);
-            //createjs.Tween.get(bitmap).to({ scaleX: 1.2, scaleY: 1.2 }, 100, createjs.Ease.quartOut).call(this.reducePoint, [bitmap], this);
-    }
+            
+            bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => reducePoint(bitmap.transform));
+        }
 
-    //private reducePoint(bitmap GameObject): void
-    //{
-    //    createjs.Tween.get(bitmap).to({ scaleX: 1, scaleY: 1 }, 60, createjs.Ease.quartIn);
-    //}
+        private void reducePoint(Transform transform)
+        {
+            transform.DOScale(1, 0.06f).SetEase(Ease.InQuart);
+        }
 
-    //private hidePoints(): void
-    //{
-    //    while (this._activePoints.Length > 0)
-    //    {
-    //        var bitmap GameObject = this._activePoints.pop();
-    //        bitmap.visible = false;
-    //        this._poolPoints.push(bitmap);
-    //    }
-    //}
+        private void hidePoints()
+        {
+            while (this._activePoints.Count > 0)
+            {
+                GameObject bitmap = _activePoints[_activePoints.Count - 1];
+                _activePoints.RemoveAt(_activePoints.Count - 1);
+                bitmap.SetActive(false);
+                _poolPoints.Add(bitmap);
+            }
+        }
 
-    //private hideLastPoint(e: GameEvent): void
-    //{
-    //    if (this._activePoints.Length == 0)
-    //    {
-    //        return;
-    //    }
+        private void hideLastPoint(IMessage rMessage)
+        {
+            if (this._activePoints.Count == 0)
+                return;
 
-    //    if (this._isStartArrowCheck)
-    //    {
-    //        //console.log("[+++++reached]");
-    //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-    //        this._isStartArrowCheck = false;
-    //    }
+            //if (this._isStartArrowCheck)
+            //{
+            //    //console.log("[+++++reached]");
+            //    AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
+            //    this._isStartArrowCheck = false;
+            //}
 
-    //    //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
-    //    var bitmap GameObject = this._activePoints.shift();
-    //    bitmap.visible = false;
-    //    this._poolPoints.push(bitmap);
-    //}
+            //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
 
-    private void createPathPoint()
+            GameObject bitmap = _activePoints[0];
+            _activePoints.RemoveAt(0);
+            bitmap.SetActive(false);
+            _poolPoints.Add(bitmap);
+        }
+
+        private void createPathPoint()
         {
             GameObject dObject = new GameObject();
             dObject.AddComponent<SpriteRenderer>();
@@ -643,7 +658,7 @@ namespace Assets.Scripts.Core
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 999;
             dObject.SetActive(false);
-            
+
             _poolPoints.Add(dObject);
         }
 
@@ -711,6 +726,24 @@ namespace Assets.Scripts.Core
         //    this._buttonRestart = null;
         //}
 
+        /** <summary>delay (ms)</summary> */
+        private void WaitAndCall(float delay, Action<int> callback, int index)
+        {
+            StartCoroutine(ExampleCoroutine(delay, callback, index));
+        }
 
+        private IEnumerator ExampleCoroutine(float delay, Action<int> callback, int index)
+        {
+            //Print the time of when the function is first called.
+            //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+            //yield on a new YieldInstruction that waits for 5 seconds.
+            yield return new WaitForSeconds(delay / 1000);
+            callback(index);
+            //After we have waited 5 seconds print the time again.
+            //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        }
     }
+
+
 }

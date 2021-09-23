@@ -28,7 +28,7 @@ namespace Assets.Scripts.Data
         //public const string TOWER string = "tower";
         //public const string ARROW string = "arrow";
         //public const string SPIKES string = "spikes";
-        //public const string TRAP string = "trap";
+        public const string TRAP = "trap";
         //public const string BOULDER string = "boulder";
         //public const string BOULDER_MARK string = "boulderMark";
         public const string TARGET_MARK = "target_";

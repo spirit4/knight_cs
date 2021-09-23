@@ -17,7 +17,7 @@ namespace Assets.Scripts.Units
         private Tile _tile;
 
         public float x;
-        public float y; //uppercase
+        public float y; //TODO uppercase
 
         public Unit(int index, string type, GameObject view, Tile tile = null)//view?: createjs.DisplayObject, tile?: Tile)
         {

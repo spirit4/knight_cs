@@ -29,7 +29,7 @@ namespace Assets.Scripts.Units
             this.id = id;
 
             this._pontIndex1 = index;
-            this.x = this._grid[index].x; //for chooseing direction --> Level
+            this.x = this._grid[index].x; //for choosing direction --> Level
             this.y = this._grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";

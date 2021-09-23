@@ -1,80 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils.Display
 {
-    public class TargetMark : MonoBehaviour
+    public class TargetMark
     {
         private GameObject _center;
         private GameObject _outer;
 
-        public TargetMark()
+        public TargetMark(GameObject container)
         {
-            //    super();
+            GameObject bitmap = new GameObject();
+            bitmap.AddComponent<SpriteRenderer>();
+            bitmap.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
+            bitmap.transform.SetParent(container.transform);
+            bitmap.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            bitmap.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            _center = bitmap;
+            bitmap.SetActive(false);
 
-            //    this.snapToPixel = true;
-            //    this.visible = false;
-
-            //    var bitmapGameObject
-            //    var bd: HTMLImageElement;
-            //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
-            //    bitmap = new createjs.Bitmap(bd);
-            //    bitmap.snapToPixel = true;
-            //    this.addChild(bitmap);
-            //    bitmap.regX = bd.width >> 1;
-            //    bitmap.regY = bd.height * 0.5 - 3;
-            //    this._center = bitmap;
-
-            //    bd = ImagesRes.getImage(ImagesRes.TARGET_MARK + 1);
-            //    bitmap = new createjs.Bitmap(bd);
-            //    bitmap.snapToPixel = true;
-            //    this.addChild(bitmap);
-            //    bitmap.regX = bd.width >> 1;
-            //    bitmap.regY = bd.height * 0.5 - 3;
-            //    this._outer = bitmap;
-
+            bitmap = new GameObject();
+            bitmap.AddComponent<SpriteRenderer>();
+            bitmap.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 1);
+            bitmap.transform.SetParent(container.transform);
+            bitmap.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            bitmap.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            _outer = bitmap;
+            bitmap.SetActive(false);
         }
 
-        //public placeByTap(index: number) : void
-        //{
-        //    var grid: Tile[] = Core.instance.model.grid;
-        //    this.x = grid[index].x + Config.SIZE_W * 0.5 + 2;
-        //    this.y = grid[index].y + Config.SIZE_H * 0.5 + 3;
+        public void placeByTap(int index)
+        {
+            Tile[] grid = Controller.instance.model.grid;
 
-        //    this.visible = true;
-        //    this._outer.scaleX = this._outer.scaleY = 0.9;
-        //    this._center.alpha = 0;
-        //    this._outer.alpha = 0;
+            _center.transform.localScale = new Vector3(0.9f, 0.9f);
+            _outer.transform.localScale = new Vector3(0.9f, 0.9f);
 
-        //    this.appear();
-        // }
 
-        //private appear() : void
-        //{
-        //    createjs.Tween.get(this._center).to({ alpha: 0.8 }, 80, createjs.Ease.quartIn);
-        //createjs.Tween.get(this._outer).to({ alpha: 0.8, scaleX: 1, scaleY: 1 }, 80, createjs.Ease.quartIn).call(this.extend, [], this);
-        //}
+            _center.transform.localPosition = new Vector3(grid[index].x, grid[index].y);
+            _center.SetActive(true);
 
-        //private extend() : void
-        //{
-        //    createjs.Tween.get(this._center).to({ scaleX: 1.1, scaleY: 1.1 }, 80, createjs.Ease.quartOut);
-        //createjs.Tween.get(this._outer).to({ scaleX: 1.2, scaleY: 1.2 }, 80, createjs.Ease.quartOut).call(this.disappear, [], this);
-        //}
+            _outer.transform.localPosition = new Vector3(grid[index].x, grid[index].y);
+            _outer.SetActive(true);
 
-        //private disappear() : void
-        //{
-        //    createjs.Tween.get(this._center).to({ alpha: 0, scaleX: 0.9, scaleY: 0.9 }, 120, createjs.Ease.quartIn);
-        //createjs.Tween.get(this._outer).to({ alpha: 0, scaleX: 0.9, scaleY: 0.9 }, 120, createjs.Ease.quartIn).call(this.hide, [], this);
-        //}
+            appear();
+        }
 
-        //private hide() : void
-        //{
-        //    this.visible = false;
-        //}
+        private void appear()
+        {
+            _center.transform.DOScale(1.0f, 0.08f).SetEase(Ease.InQuart);
+            _outer.transform.DOScale(1.0f, 0.08f).SetEase(Ease.InQuart).OnComplete(extend);
+        }
+
+        private void extend()
+        {
+            _center.transform.DOScale(1.1f, 0.08f).SetEase(Ease.OutQuart);
+            _outer.transform.DOScale(1.2f, 0.08f).SetEase(Ease.OutQuart).OnComplete(disappear);
+        }
+
+        private void disappear()
+        {
+            _center.transform.DOScale(0, 0.12f).SetEase(Ease.InQuart);
+            _outer.transform.DOScale(0, 0.12f).SetEase(Ease.InQuart).OnComplete(hide);
+        }
+
+        private void hide()
+        {
+            _center.SetActive(false);
+            _outer.SetActive(false);
+        }
 
     }
 }

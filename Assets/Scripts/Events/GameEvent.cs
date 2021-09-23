@@ -20,7 +20,7 @@ namespace Assets.Scripts.Events
         //  public static EDITOR_ON_OFF: string = "editorOnOff";
 
         public const string HERO_REACHED = "heroReached";
-        //  public static HERO_ONE_CELL_AWAY: string = "heroOneCellAway";
+        public const string HERO_ONE_CELL_AWAY = "heroOneCellAway";
         //  public static HERO_GET_TRAP: string = "heroGetTrap";
 
         //public index: number;

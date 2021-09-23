@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace Assets.Scripts.Utils
         {
             float cellY = (int)(i / Config.WIDTH) * Config.SIZE_W;
             float cellX = (i - (int)(i / Config.WIDTH) * Config.WIDTH) * Config.SIZE_H;
-            return new Vector2(cellX, cellY);
+            return new Vector2(cellX, -cellY);
         }
 
         //public static isNeighbours(index1 number, index2 number): boolean
@@ -112,7 +113,6 @@ namespace Assets.Scripts.Utils
         //    return count;
         //}
 
-
-    }
+   }
 
 }
