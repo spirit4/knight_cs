@@ -23,25 +23,11 @@ namespace Assets.Scripts.Units
         private List<int> _path;
         private int _directionX = 1;
         private int _directionY = 1;
-        private int _prevState = 0;
 
         //static currentTween: createjs.Tween;
         //static currentView: createjs.Sprite;
 
-        ///**helm, shield, sword*/
-        //private _wearItems: number[] = [0, 0, 0];
-        //private _stateItems: number;
-
-        //static NO_ITEMS: number = 0;
-        //static ONE_HELM: number = 1;
-        //static ONE_SHIELD: number = 2;
-        //static ONE_SWORD: number = 3;
-        //static TWO_HELM_SHIELD: number = 4;
-        //static TWO_HELM_SWORD: number = 5;
-        //static TWO_SHIELD_SWORD: number = 6;
-        //static FULL: number = 7;
-
-        private float MARGIN_X = -0.3f; //todo fix it
+        private float MARGIN_X = -0.3f; //todo fix it ? or not
         private const float MARGIN_Y = 0.7f;
 
         private int _heroState;
@@ -64,12 +50,11 @@ namespace Assets.Scripts.Units
             this.y = this._grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
+            view.GetComponent<SpriteRenderer>().sortingOrder = 999;
             view.name = type;
 
             view.transform.localPosition = new Vector3(this.x + MARGIN_X, this.y + MARGIN_Y);
 
-            //view.GetComponent<Animator>().SetInteger("HeroState", 1);
             _heroState = IDLE;
 
             //    this.mouseEnabled = false;
@@ -119,9 +104,6 @@ namespace Assets.Scripts.Units
             // Debug.Log("--MOVE1--" + point);
             //Debug.Log("--MOVE2--x: " + x + " y: " + y);
             //Debug.Log("currentIndex1: " + currentIndex + " index: " + index);
-
-
-
 
             int step = 0;
             if (point.y == this.y && point.x > this.x)
@@ -185,37 +167,15 @@ namespace Assets.Scripts.Units
             a.SetBool("HasSword", _hasSword);
             a.SetBool("HasShield", _hasShield);
 
-            // //console.log("changeView", this._prevState, this.state);
-            //    if (this._prevState != this.state)
-            //    {
-            //        var ss: any[] = this.getAnimation();
-            //        this.mc.spriteSheet = ss[0];
-            //        this.mc.gotoAndPlay(ss[1]);
-            //    }
-
-            //    this._prevState = this.state;
-
             if (_directionX == 1)
             {
                 view.GetComponent<SpriteRenderer>().flipX = false;
-                //MARGIN_X = -0.3f;
-
-                //this.view.x = 4 + Config.SIZE_W >> 1;
             }
             else if (this._directionX == -1)
             {
-                //MARGIN_X = 1.3f;
                 view.GetComponent<SpriteRenderer>().flipX = true;
             }
-            //view.transform.localPosition = new Vector3(this.x, this.y);
-            //    if (this.state == Hero.IDLE)
-            //    {
-            //        this.mc.framerate = 15;
-            //    }
-            //    else if (this.state == Hero.MOVE)
-            //    {
-            //        switch (this._stateItems)
-            //        {
+   
             //            case Hero.NO_ITEMS:
             //                this.mc.framerate = 30;
             //                break;
@@ -242,11 +202,6 @@ namespace Assets.Scripts.Units
             //                break;
             //        }
 
-            //    }
-            //    else
-            //    {
-            //        this.mc.framerate = 15;
-            //    }
         }
 
         ////-------actions---------------------------------
@@ -268,16 +223,18 @@ namespace Assets.Scripts.Units
             //    {
             //        this._grid[this.index].setIndex(this);
             //    }
+           // Debug.Log("idle: " + index + " 111: " + _grid[index].isContainTypes(ImagesRes.STAR));
+            
+            if (_grid[index].isContainTypes(ImagesRes.STAR))
+            {
+                string type = _grid[this.index].getConcreteType(ImagesRes.STAR);
+                int index = _grid[this.index].types.IndexOf(type);
 
-            //    if (this._grid[this.index].isContainTypes(ImagesRes.STAR))
-            //    {
-            //        var type: string = this._grid[this.index].getConcreteType(ImagesRes.STAR);
-            //        var index: number = this._grid[this.index].types.indexOf(type);
+                GameObject dObject = _grid[this.index].objects[index];
+               
+                dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => starTweenComplete(type));
+            }
 
-            //        var dObject: createjs.DisplayObject = this._grid[this.index].objects[index];
-            //        createjs.Tween.get(dObject).to({ alpha: 0 }, 150, createjs.Ease.quadOut).call(this.starTweenComplete, [type], this);
-
-            //    }
             //    else if (this._grid[this.index].isContainType(ImagesRes.TRAP))
             //    {
             //        var index: number = this._grid[this.index].types.indexOf(ImagesRes.TRAP);
@@ -309,20 +266,24 @@ namespace Assets.Scripts.Units
             //    }
 
             //    //this._directionIndex = 0;
+
             _heroState = Hero.IDLE;
+            //Debug.Log("changeView IDLE" + _heroState + "   " + _hasHelmet);
+            changeView();
+            
+
             MessageDispatcher.SendMessage(this, GameEvent.HERO_REACHED, null, 0);
 
-            changeView();
+            
             //    this.parent.addChild(this);//up top
         }
 
-        //private starTweenComplete(type: string): void
-        //{
-        //    //console.log("starTweenComplete", type, this.index);
-        //    this._prevState = Hero.MOVE;//dirty hack
-        //    this._grid[this.index].remove(type);
-        //    this.reclothe(type);
-        //}
+        private void starTweenComplete(string type)
+        {
+            //console.log("starTweenComplete", type, this.index);
+            this._grid[this.index].remove(type);
+            reclothe(type);
+        }
 
         //private trapTweenComplete(): void
         //{
@@ -348,9 +309,9 @@ namespace Assets.Scripts.Units
 
         private void move(bool isContinue = false)
         {
-            TweenCallback handler = this.idle;
+            TweenCallback handler = idle;
             if (isContinue)
-                handler = this.keepMove;
+                handler = keepMove;
 
             // //console.log("move", isContinue, this.index, this._directionX, this._directionY);
 
@@ -361,10 +322,8 @@ namespace Assets.Scripts.Units
             //    }
 
             _heroState = Hero.MOVE;
-
+            //Debug.Log("changeView MOVE" + _heroState + "   " + _hasHelmet);
             view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            //    //Hero.currentTween = createjs.Tween.get(this).to({ x: this._grid[this.index].x, y: this._grid[this.index].y }, this.SPEED, createjs.Ease.linear).call(handler, [], this);
-
             //    if (this._path.length == 0 && this._grid[this.index].isContainType(ImagesRes.EXIT))
             //    {
             //        Hero.currentTween = createjs.Tween.get(this).
@@ -376,7 +335,7 @@ namespace Assets.Scripts.Units
             //        Hero.currentTween = createjs.Tween.get(this).to({ x: this._grid[this.index].x, y: this._grid[this.index].y }, this.SPEED, createjs.Ease.linear).call(handler, [], this);
             //    }
 
-            changeView();
+           changeView();//todo fix many changes
         }
 
         private void keepMove()
@@ -433,65 +392,27 @@ namespace Assets.Scripts.Units
         //    return ["incorrect", "animation"];
         //}
 
-        //private reclothe(type: string): void
-        //{
-        //    var index: number = +type.substr(4, 1);
-        //    this._wearItems[index] = 1;
+        private void  reclothe(string type) 
+        {
+            if (type == ImagesRes.STAR + 0)
+            {
+                _hasHelmet = true;
+                //AchController.instance.addParam(AchController.HELMET_TAKED);
+            }
+            else if (type == ImagesRes.STAR + 1)
+            {
+                _hasShield = true;
+                //AchController.instance.addParam(AchController.SHIELD_TAKED);
+            }
+            else if (type == ImagesRes.STAR + 2)
+            {
+                _hasSword = true;
+                //AchController.instance.addParam(AchController.SWORD_TAKED);
+            }
 
-        //    if (index == 0)
-        //    {
-        //        AchController.instance.addParam(AchController.HELMET_TAKED);
-        //    }
-        //    else if (index == 1)
-        //    {
-        //        AchController.instance.addParam(AchController.SHIELD_TAKED);
-        //    }
-        //    else if (index == 2)
-        //    {
-        //        AchController.instance.addParam(AchController.SWORD_TAKED);
-        //    }
-
-
-        //    if (this._wearItems[0])
-        //    {
-        //        if (this._wearItems[1])
-        //        {
-        //            if (this._wearItems[2])
-        //            {
-        //                this._stateItems = Hero.FULL;
-        //            }
-        //            else
-        //            {
-        //                this._stateItems = Hero.TWO_HELM_SHIELD;
-        //            }
-        //        }
-        //        else if (this._wearItems[2])
-        //        {
-        //            this._stateItems = Hero.TWO_HELM_SWORD;
-        //        }
-        //        else
-        //        {
-        //            this._stateItems = Hero.ONE_HELM;
-        //        }
-        //    }
-        //    else if (this._wearItems[1])
-        //    {
-        //        if (this._wearItems[2])
-        //        {
-        //            this._stateItems = Hero.TWO_SHIELD_SWORD;
-        //        }
-        //        else
-        //        {
-        //            this._stateItems = Hero.ONE_SHIELD;
-        //        }
-        //    }
-        //    else if (this._wearItems[2])
-        //    {
-        //        this._stateItems = Hero.ONE_SWORD;
-        //    }
-
-        //    this.changeView();
-        //}
+            changeView();
+            //Debug.Log("changeView RE------ " + _heroState + "   " + _hasHelmet);
+        }
 
         //public get stateItems(): number
         //{

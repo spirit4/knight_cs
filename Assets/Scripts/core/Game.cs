@@ -656,7 +656,7 @@ namespace Assets.Scripts.Core
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
             dObject.transform.SetParent(this.gameObject.transform);
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            dObject.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            dObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
             dObject.SetActive(false);
 
             _poolPoints.Add(dObject);

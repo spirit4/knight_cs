@@ -90,6 +90,8 @@ namespace Assets.Scripts.Core
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
                     gameObject.transform.localPosition = new Vector3(grid[index].x + 0.04f, grid[index].y - 0.07f);
+                    grid[index].AddType(type);
+                    grid[index].AddObject(gameObject);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.STAR + 1): //shield
@@ -97,6 +99,8 @@ namespace Assets.Scripts.Core
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
                     gameObject.transform.localPosition = new Vector3(grid[index].x + 0.03f, grid[index].y + 0.05f, 0);
+                    grid[index].AddType(type);
+                    grid[index].AddObject(gameObject);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.STAR + 2): //sword
@@ -104,6 +108,8 @@ namespace Assets.Scripts.Core
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
                     gameObject.transform.localPosition = new Vector3(grid[index].x + 0.01f, grid[index].y + 0.15f, 0);
+                    grid[index].AddType(type);
+                    grid[index].AddObject(gameObject);
                     break;
 
                 //            case ImagesRes.TRAP:
