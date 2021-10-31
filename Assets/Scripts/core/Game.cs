@@ -99,9 +99,12 @@ namespace Assets.Scripts.Core
         private void Awake()
         {
             this.gameObject.isStatic = true;
-            ImagesRes.init();
+            //Debug.Log("[Awake]" + ImagesRes.prefabs.Count);
+            if(ImagesRes.prefabs.Count == 0) // loading resources to static
+                ImagesRes.init();
 
             DOTween.Init();
+            DOTween.Clear();
 
             //JSONRes.init();
             //ImagesRes.initAnimations();
