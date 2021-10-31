@@ -34,13 +34,6 @@ namespace Assets.Scripts.Units
         private bool _hasShield = false;
         private bool _hasSword = false;
         private bool _hasHelmet = false;
-        public int HeroState
-        {
-            get
-            {
-                return _heroState;
-            }
-        }
 
         public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
         {
@@ -175,7 +168,7 @@ namespace Assets.Scripts.Units
             {
                 view.GetComponent<SpriteRenderer>().flipX = true;
             }
-   
+
             //            case Hero.NO_ITEMS:
             //                this.mc.framerate = 30;
             //                break;
@@ -223,15 +216,15 @@ namespace Assets.Scripts.Units
             //    {
             //        this._grid[this.index].setIndex(this);
             //    }
-           // Debug.Log("idle: " + index + " 111: " + _grid[index].isContainTypes(ImagesRes.STAR));
-            
+            // Debug.Log("idle: " + index + " 111: " + _grid[index].isContainTypes(ImagesRes.STAR));
+
             if (_grid[index].isContainTypes(ImagesRes.STAR))
             {
                 string type = _grid[this.index].getConcreteType(ImagesRes.STAR);
                 int index = _grid[this.index].types.IndexOf(type);
 
                 GameObject dObject = _grid[this.index].objects[index];
-               
+
                 dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => starTweenComplete(type));
             }
 
@@ -270,11 +263,11 @@ namespace Assets.Scripts.Units
             _heroState = Hero.IDLE;
             //Debug.Log("changeView IDLE" + _heroState + "   " + _hasHelmet);
             changeView();
-            
+
 
             MessageDispatcher.SendMessage(this, GameEvent.HERO_REACHED, null, 0);
 
-            
+
             //    this.parent.addChild(this);//up top
         }
 
@@ -322,7 +315,7 @@ namespace Assets.Scripts.Units
             //    }
 
             _heroState = Hero.MOVE;
-            //Debug.Log("changeView MOVE" + _heroState + "   " + _hasHelmet);
+            //Debug.Log("changeView MOVE" + _heroState + "   " + HeroState);
             view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
             //    if (this._path.length == 0 && this._grid[this.index].isContainType(ImagesRes.EXIT))
             //    {
@@ -335,7 +328,7 @@ namespace Assets.Scripts.Units
             //        Hero.currentTween = createjs.Tween.get(this).to({ x: this._grid[this.index].x, y: this._grid[this.index].y }, this.SPEED, createjs.Ease.linear).call(handler, [], this);
             //    }
 
-           changeView();//todo fix many changes
+            changeView();//todo fix many changes
         }
 
         private void keepMove()
@@ -392,7 +385,7 @@ namespace Assets.Scripts.Units
         //    return ["incorrect", "animation"];
         //}
 
-        private void  reclothe(string type) 
+        private void reclothe(string type)
         {
             if (type == ImagesRes.STAR + 0)
             {
@@ -411,12 +404,44 @@ namespace Assets.Scripts.Units
             }
 
             changeView();
-            //Debug.Log("changeView RE------ " + _heroState + "   " + _hasHelmet);
+            //Debug.Log("changeView RE------ " + HeroState + "   " + _heroState);
         }
 
         //public get stateItems(): number
         //{
         //    return this._stateItems;
         //}
+        public int HeroState
+        {
+            get
+            {
+                return _heroState;
+            }
+            set
+            {
+                _heroState = value;
+            }
+        }
+        public bool HasHelmet
+        {
+            get
+            {
+                return _hasHelmet;
+            }
+        }
+        public bool HasShield
+        {
+            get
+            {
+                return _hasShield;
+            }
+        }
+        public bool HasSword
+        {
+            get
+            {
+                return _hasSword;
+            }
+        }
     }
 }

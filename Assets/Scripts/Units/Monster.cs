@@ -35,7 +35,7 @@ namespace Assets.Scripts.Units
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
             view.name = type;
-            //view.GetComponent<Bounds>
+            
             view.transform.SetParent(container.gameObject.transform);
             view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
             //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.x);

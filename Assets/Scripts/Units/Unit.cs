@@ -1,5 +1,7 @@
 using Assets.Scripts.Core;
+using com.ootii.Messages;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Assets.Scripts.Units
 {
@@ -38,6 +40,10 @@ namespace Assets.Scripts.Units
 
             //        this._view = null;
             //        this._tile = null;
+            //MessageDispatcher.ClearListeners(); //TODO not sure
+
+            _view.transform.DOKill();
+            UnityEngine.Object.Destroy(view);
         }
 
         public virtual void stop()

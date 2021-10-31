@@ -31,7 +31,7 @@ namespace Assets.Scripts.Core
 
         private Pathfinder _pathfinder;
 
-        //    private _units: { [index number]: ICollidable; };
+        private Dictionary<int, ICollidable> _units;//private _units: { [index number]: ICollidable; };
         //private _items: IActivatable[];
 
         //private _helpGameObject
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Core
             //
             //this._mill = this._level.mill;
 
-            //this._units = this._level.units;
+
             //this._items = this._level.items;
 
 
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Core
             //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
 
 
-            
+
 
             //for (int i = 0; i < 15; i++)   //put on pool
             //    {
@@ -121,6 +121,7 @@ namespace Assets.Scripts.Core
 
             _targetMark = new TargetMark(this.gameObject);
 
+            _units = this._level.units;
         }
 
 
@@ -140,7 +141,7 @@ namespace Assets.Scripts.Core
                 return;
             }
 
-            
+
 
             //    if (e.target.parent instanceof Button)
             //        {
@@ -325,266 +326,314 @@ namespace Assets.Scripts.Core
         //    this.dispatchEvent(ev);
         //}
 
-        //private restartClickHandler(e: createjs.MouseEvent = null): void
+        private void restartClickHandler()//e: createjs.MouseEvent = null) : void
+        {
+            //this.dispatchEvent(new GameEvent(GameEvent.RESTART));
+        }
+
+    //public createHint(): void
+    //{
+    //    if (!Hints.texts[Progress.currentLevel])
+    //    {
+    //        return;
+    //    }
+
+    //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
+
+    //    var g: createjs.Graphics = new createjs.Graphics();
+    //    var shape: createjs.Shape = new createjs.Shape(g);
+    //    Core.instance.addChild(shape);
+    //    shape.alpha = 0.7;
+    //    this._helpShape = shape;
+
+    //    g.beginFill("#333333");
+    //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+
+    //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
+    //    for (int i = 0; i < holes.Length; i++)
+    //        {
+    //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
+    //    }
+
+    //    g.endFill();
+
+    //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+    //    bitmap.mouseEnabled = false;
+    //    bitmap.snapToPixel = true;
+    //    Core.instance.addChild(bitmap);
+    //    this._help = bitmap;
+    //    bitmap.x = params[0];
+    //    bitmap.y = params[1];
+
+    //    g = new createjs.Graphics();
+    //    shape = new createjs.Shape(g);
+    //    g.beginFill("#333333");
+    //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
+    //    g.endFill();
+    //    shape.snapToPixel = true;
+    //    shape.alpha = 0.7;
+    //    Core.instance.bg.addChild(shape);
+    //    this._top = shape;
+
+    //    shape = new createjs.Shape(g);
+    //    shape.snapToPixel = true;
+    //    shape.alpha = 0.7;
+    //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
+    //    Core.instance.bg.addChild(shape);
+    //    this._bottom = shape;
+    //    Core.instance.bg.update();
+    //}
+
+    //public createHintAfterAction(): void
+    //{
+    //    if (!Hints.textsAfterAction[Progress.currentLevel])
+    //    {
+    //        return;
+    //    }
+
+    //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
+
+    //    var g: createjs.Graphics = new createjs.Graphics();
+    //    var shape: createjs.Shape = new createjs.Shape(g);
+    //    Core.instance.addChild(shape);
+    //    shape.alpha = 0.7;
+    //    this._helpShape = shape;
+
+    //    g.beginFill("#333333");
+    //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+
+    //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
+    //    for (int i = 0; i < holes.Length; i++)
+    //        {
+    //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
+    //    }
+
+    //    g.endFill();
+
+    //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+    //    bitmap.mouseEnabled = false;
+    //    bitmap.snapToPixel = true;
+    //    Core.instance.addChild(bitmap);
+    //    this._help = bitmap;
+    //    bitmap.x = params[0];
+    //    bitmap.y = params[1];
+
+    //    g = new createjs.Graphics();
+    //    shape = new createjs.Shape(g);
+    //    g.beginFill("#333333");
+    //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
+    //    g.endFill();
+    //    shape.snapToPixel = true;
+    //    shape.alpha = 0.7;
+    //    Core.instance.bg.addChild(shape);
+    //    this._top = shape;
+
+    //    shape = new createjs.Shape(g);
+    //    shape.snapToPixel = true;
+    //    shape.alpha = 0.7;
+    //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
+    //    Core.instance.bg.addChild(shape);
+    //    this._bottom = shape;
+    //    Core.instance.bg.update();
+    //}
+
+    //private removeHint(): void
+    //{
+    //    if (this._help)
+    //    {
+    //        Core.instance.removeChild(this._help);
+    //        Core.instance.removeChild(this._helpShape);
+    //        this._help = null;
+    //        this._helpShape = null;
+
+    //        Core.instance.bg.removeChild(this._top);
+    //        Core.instance.bg.removeChild(this._bottom);
+    //        Core.instance.bg.update();
+    //        this._top = null;
+    //        this._bottom = null;
+    //    }
+    //}
+
+    //private showVictory(): void
+    //{
+    //    if (Core.instance.ga)
+    //    {
+    //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
+    //    }
+    //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
+    //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
+    //    {
+    //        this.parent.addChild(new Victory(this));
+    //    }
+    //    else
+    //    {
+    //        this.parent.addChild(new GameVictory(this));
+    //    }
+    //}
+
+    //Bounds m_Collider, m_Collider2;
+    public void Update()
+        {
+            this.checkCollision(this._units, -0.6f, 0, 0.2f, 0.8f);
+
+            //m_Collider = _hero.view.GetComponent<SpriteRenderer>().bounds;
+
+            //foreach (KeyValuePair<int, ICollidable> pair in _units)
+            //{
+            //    if (pair.Value.type == ImagesRes.MONSTER)
+            //    {
+            //        Monster monster = pair.Value as Monster;
+            //        m_Collider2 = monster.view.GetComponent<SpriteRenderer>().bounds;
+            //    }
+            //}
+
+            //if (m_Collider.Intersects(m_Collider2))
+            //{
+            //    Debug.Log("Bounds intersecting");
+            //}
+        }
+
+        //void OnTriggerEnter2D(Collider2D other)
         //{
-        //    this.dispatchEvent(new GameEvent(GameEvent.RESTART));
+        //    Debug.Log("OnTriggerEnter2D");
         //}
 
-        //public createHint(): void
+        //void OnCollisionEnter2D(Collision2D col)
         //{
-        //    if (!Hints.texts[Progress.currentLevel])
-        //    {
-        //        return;
-        //    }
-
-        //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
-
-        //    var g: createjs.Graphics = new createjs.Graphics();
-        //    var shape: createjs.Shape = new createjs.Shape(g);
-        //    Core.instance.addChild(shape);
-        //    shape.alpha = 0.7;
-        //    this._helpShape = shape;
-
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
-
-        //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
-        //    for (int i = 0; i < holes.Length; i++)
-        //        {
-        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-        //    }
-
-        //    g.endFill();
-
-        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-        //    bitmap.mouseEnabled = false;
-        //    bitmap.snapToPixel = true;
-        //    Core.instance.addChild(bitmap);
-        //    this._help = bitmap;
-        //    bitmap.x = params[0];
-        //    bitmap.y = params[1];
-
-        //    g = new createjs.Graphics();
-        //    shape = new createjs.Shape(g);
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-        //    g.endFill();
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    Core.instance.bg.addChild(shape);
-        //    this._top = shape;
-
-        //    shape = new createjs.Shape(g);
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-        //    Core.instance.bg.addChild(shape);
-        //    this._bottom = shape;
-        //    Core.instance.bg.update();
+        //    Debug.Log("OnCollisionEnter2D");
         //}
 
-        //public createHintAfterAction(): void
-        //{
-        //    if (!Hints.textsAfterAction[Progress.currentLevel])
-        //    {
-        //        return;
-        //    }
 
-        //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
 
-        //    var g: createjs.Graphics = new createjs.Graphics();
-        //    var shape: createjs.Shape = new createjs.Shape(g);
-        //    Core.instance.addChild(shape);
-        //    shape.alpha = 0.7;
-        //    this._helpShape = shape;
+        public void checkCollision(Dictionary<int, ICollidable> vector, float x1, float x2, float y1, float y2)
+        {
+            GameObject dObject;
+            float heroX = _hero.view.transform.localPosition.x;// + Config.SIZE_W * 0.5;
+            float heroY = _hero.view.transform.localPosition.y;// +Config.SIZE_H * 0.5;
+            float objX;
+            float objY;
 
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+            foreach (KeyValuePair<int, ICollidable> pair in vector)
+            {
+                dObject = pair.Value.view;
 
-        //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
-        //    for (int i = 0; i < holes.Length; i++)
-        //        {
-        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-        //    }
+                objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5;
+                objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5;
 
-        //    g.endFill();
+                // Debug.Log("---" + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
+                if (heroX > objX + x1 && heroX < objX + x2)
+                {
+                    if (heroY > objY + y1 && heroY < objY + y2)
+                    {
+                        if (_hero.HeroState != Hero.DEATH)
+                        {
+                            //sconsole.log("[checkCollision]", this._hero)
 
-        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-        //    bitmap.mouseEnabled = false;
-        //    bitmap.snapToPixel = true;
-        //    Core.instance.addChild(bitmap);
-        //    this._help = bitmap;
-        //    bitmap.x = params[0];
-        //    bitmap.y = params[1];
+                            if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
+                            {
+                                Monster monster = pair.Value as Monster;
+                                //var index number = this._items.indexOf(monster);
+                                //this._items.splice(index, 1); not now, maybe never
+                                //this.removeChild(monster);-------------------------------------------
 
-        //    g = new createjs.Graphics();
-        //    shape = new createjs.Shape(g);
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-        //    g.endFill();
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    Core.instance.bg.addChild(shape);
-        //    this._top = shape;
+                                //Debug.Log("monster" + heroX);
+                            }
 
-        //    shape = new createjs.Shape(g);
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-        //    Core.instance.bg.addChild(shape);
-        //    this._bottom = shape;
-        //    Core.instance.bg.update();
-        //}
+                            //vector[i] = null;
+                            //delete vector[i];
+                            vector.Remove(pair.Key);
 
-        //private removeHint(): void
-        //{
-        //    if (this._help)
-        //    {
-        //        Core.instance.removeChild(this._help);
-        //        Core.instance.removeChild(this._helpShape);
-        //        this._help = null;
-        //        this._helpShape = null;
+                            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(this._hero.stateItems != Hero.FULL)
+                            {
+                                //    if (dObject instanceof Monster)
+                                //            {
+                                //        AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
+                                //    }
+                                //            else if (dObject instanceof TowerArrow)
+                                //            {
+                                //        AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
+                                //    }
+                                //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject], this);
+                                WaitAndCall(100, hideActors, pair.Value, true);
+                                _hero.HeroState = Hero.DEATH;
+                                showBoom();
 
-        //        Core.instance.bg.removeChild(this._top);
-        //        Core.instance.bg.removeChild(this._bottom);
-        //        Core.instance.bg.update();
-        //        this._top = null;
-        //        this._bottom = null;
-        //    }
-        //}
+                                //    if (Core.instance.api)
+                                //    {
+                                //        Core.instance.api.gameOver();
+                                //    }
+                                //}
+                                //else if (dObject instanceof Monster)
+                                //        {
+                                //    AchController.instance.addParam(AchController.MONSTER_DEAD);
 
-        //private showVictory(): void
-        //{
-        //    if (Core.instance.ga)
-        //    {
-        //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
-        //    }
-        //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
-        //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
-        //    {
-        //        this.parent.addChild(new Victory(this));
-        //    }
-        //    else
-        //    {
-        //        this.parent.addChild(new GameVictory(this));
-        //    }
-        //}
+                                //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
+                                //    this.showBoom(ImagesRes.A_ATTACK_BOOM);
+                            }
 
-        //public update(): void
-        //{
-        //    this.checkCollision(this._units, -30, 30, -30, 30);
-        //}
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
-        //public checkCollision(vector: {[index number]: ICollidable; }, x1 number, x2 number, y1 number, y2 number): void
-        //{
-        //    var dObject: createjs.DisplayObject;
-        //    var heroX number = this._hero.x + +Config.SIZE_W * 0.5;
-        //    var heroY number = this._hero.y + +Config.SIZE_H * 0.5;
-        //    var objX number;
-        //    var objY number;
+        private void hideActors(ICollidable unit, bool IsEnd)
+        {
+            if (unit != null)
+            {
+                unit.stop();
+                _hero.stop();
+                //        unit.view.visible = false;
+                unit.view.SetActive(false);
+                unit.destroy();
+            }
 
-        //        for (var i in vector)
-        //    {
-        //        dObject = vector[i].view.parent;
+            if (IsEnd)
+            {
+                //this._hero.visible = false;
+                _hero.view.SetActive(false);
+            }
 
-        //        objX = dObject.x + Config.SIZE_W * 0.5;
-        //        objY = dObject.y + Config.SIZE_H * 0.5;
+        }
 
-        //        //console.log("---", heroX, heroY, objX, objY, i)
-        //        if (heroX > objX + x1 && heroX < objX + x2)
-        //        {
-        //            if (heroY > objY + y1 && heroY < objY + y2)
-        //            {
-        //                if (this._hero.state != Hero.DEATH)
-        //                {
-        //                    //sconsole.log("[checkCollision]", this._hero)
+        private void showBoom(string boomType = ImagesRes.A_BOOM)
+        {
+            //    //console.log("[PLAY BOOM]", this._hero.state);
+            //    var sprite: createjs.Sprite = new createjs.Sprite(JSONRes.atlas1, boomType);
+            //    sprite.framerate = 30;
+            //    sprite.mouseEnabled = false;
+            //    sprite.x = this._hero.x - (100 - Config.SIZE_W >> 1);
+            //    sprite.y = this._hero.y - (150 - Config.SIZE_H >> 1);
+            //    this.addChild(sprite);
+            //    sprite.on(GameEvent.ANIMATION_COMPLETE, this.boomCompleteHandler, this);
+            //    sprite.gotoAndPlay(boomType);
+            float boomX = _hero.view.transform.localPosition.x;
+            float boomY = _hero.view.transform.localPosition.y;
+            GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            gameObject.transform.SetParent(this.gameObject.transform);
+            gameObject.transform.localPosition = new Vector3(boomX, boomY);
+            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
 
-        //                    if (dObject instanceof Monster)
-        //                        {
-        //                        var monster: Monster = < Monster > dObject;
-        //                        var index number = this._items.indexOf(monster);
-        //                        this._items.splice(index, 1);
-        //                        this.removeChild(monster);
-        //                    }
+            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+        }
 
-        //                    vector[i] = null;
-        //                    delete vector[i];
+        public void boomCompleteHandler(IMessage rMessage)
+        {
+            //Debug.Log("boomCompleteHandler]" + rMessage.Sender);
+            //    e.currentTarget.visible = false;
+            //    e.currentTarget.removeAllEventListeners();
+            //    e.currentTarget.stop();
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            Destroy(rMessage.Sender as GameObject);
 
-        //                    if (this._hero.stateItems != Hero.FULL)
-        //                    {
-        //                        if (dObject instanceof Monster)
-        //                            {
-        //                            AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
-        //                        }
-        //                            else if (dObject instanceof TowerArrow)
-        //                            {
-        //                            AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
-        //                        }
-        //                        createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject], this);
-        //                        this._hero.state = Hero.DEATH;
-        //                        this.showBoom();
-
-        //                        if (Core.instance.api)
-        //                        {
-        //                            Core.instance.api.gameOver();
-        //                        }
-        //                    }
-        //                    else if (dObject instanceof Monster)
-        //                        {
-        //                        AchController.instance.addParam(AchController.MONSTER_DEAD);
-
-        //                        createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
-        //                        this.showBoom(ImagesRes.A_ATTACK_BOOM);
-        //                    }
-
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-        //private hideActors(unit: ICollidable, isEnd: boolean = true): void
-        //{
-        //    if (unit)
-        //    {
-        //        unit.stop();
-        //        this._hero.stop();
-        //        unit.view.visible = false;
-        //        unit.destroy();
-        //    }
-
-        //    if (isEnd)
-        //    {
-        //        this._hero.visible = false;
-        //    }
-
-        //}
-
-        //private showBoom(boomType string = ImagesRes.A_BOOM): void
-        //{
-        //    //console.log("[PLAY BOOM]", this._hero.state);
-        //    var sprite: createjs.Sprite = new createjs.Sprite(JSONRes.atlas1, boomType);
-        //    sprite.framerate = 30;
-        //    sprite.mouseEnabled = false;
-        //    sprite.x = this._hero.x - (100 - Config.SIZE_W >> 1);
-        //    sprite.y = this._hero.y - (150 - Config.SIZE_H >> 1);
-        //    this.addChild(sprite);
-        //    sprite.on(GameEvent.ANIMATION_COMPLETE, this.boomCompleteHandler, this);
-        //    sprite.gotoAndPlay(boomType);
-        //}
-
-        //private boomCompleteHandler(e: GameEvent): void
-        //{
-        //    e.currentTarget.visible = false;
-        //    e.currentTarget.removeAllEventListeners();
-        //    e.currentTarget.stop();
-
-        //    if (this._hero.stateItems != Hero.FULL)    //bad code
-        //    {
-        //        this.restartClickHandler();
-        //    }
-        //}
+            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)// (this._hero.stateItems != Hero.FULL)    //bad code
+                {
+                this.restartClickHandler();
+            }
+            
+        }
 
         private void showPath(List<int> path)
         {
@@ -609,7 +658,7 @@ namespace Assets.Scripts.Core
             bitmap.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y, 0);
             bitmap.SetActive(true);
             this._activePoints.Add(bitmap);
-            
+
             bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => reducePoint(bitmap.transform));
         }
 
@@ -731,18 +780,24 @@ namespace Assets.Scripts.Core
         {
             StartCoroutine(ExampleCoroutine(delay, callback, index));
         }
-
         private IEnumerator ExampleCoroutine(float delay, Action<int> callback, int index)
         {
-            //Print the time of when the function is first called.
-            //Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-            //yield on a new YieldInstruction that waits for 5 seconds.
             yield return new WaitForSeconds(delay / 1000);
             callback(index);
-            //After we have waited 5 seconds print the time again.
-            //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         }
+
+        //overloading
+        private void WaitAndCall(float delay, Action<ICollidable, bool> callback, ICollidable unit, bool flag)
+        {
+            StartCoroutine(ExampleCoroutine(delay, callback, unit, flag));
+        }
+        private IEnumerator ExampleCoroutine(float delay, Action<ICollidable, bool> callback, ICollidable unit, bool flag)
+        {
+            yield return new WaitForSeconds(delay / 1000);
+            callback(unit, flag);
+        }
+
+
     }
 
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    interface ICollidable
+    public interface ICollidable
     {
         GameObject view { get; }
         int index { get; }

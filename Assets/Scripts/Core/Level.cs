@@ -174,7 +174,8 @@ namespace Assets.Scripts.Core
                     monster = new Monster(type, index, id, view, this._container);
 
                     this._units.Add(index, monster);
-                    this._items.Add(monster);//to set index position ?
+                    //this._items.Add(monster);//to set index position ?
+                    //TODO it's in Game Update
                     break;
 
                 case ImagesRes.GRASS:
@@ -223,10 +224,19 @@ namespace Assets.Scripts.Core
         //    return this._mill;
         //}
 
+        //private Dictionary<int, ICollidable> _units;
         //public get units(): {[index number]: ICollidable; }
         //{
         //    return this._units;
         //}
+
+        public Dictionary<int, ICollidable> units
+        {
+            get
+            {
+                return _units;
+            }
+        }
 
         //public get items(): IActivatable[]
         //{

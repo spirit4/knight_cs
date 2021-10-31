@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    interface IActivatable
+    public interface IActivatable
     {
         //    activate() : void;
         //destroy() : void;

@@ -102,8 +102,8 @@ namespace Assets.Scripts.Data
         //public const string A_ITEMs: Object;   // 0-helm, 1-shield, 2-sword
         //public const string A_MONSTER: Object;
         //public const string A_SMOKE string = "smoke";
-        //public const string A_BOOM string = "boom";
-        //public const string A_ATTACK_BOOM string = "boom_sword";
+        public const string A_BOOM = "Boom";
+        public const string A_ATTACK_BOOM = "BoomSword";
         //public const string A_TRAP string = "trap";
 
         public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
