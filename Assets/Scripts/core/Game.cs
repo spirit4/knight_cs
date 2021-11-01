@@ -10,7 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Core
 {
@@ -125,6 +125,9 @@ namespace Assets.Scripts.Core
             _targetMark = new TargetMark(this.gameObject);
 
             _units = this._level.units;
+
+            Text level = GameObject.Find("Canvas/Panel_GameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
+            level.text = (Progress.currentLevel + 1).ToString();
         }
 
 
