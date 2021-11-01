@@ -35,6 +35,11 @@ namespace Assets.Scripts.Units
         private bool _hasSword = false;
         private bool _hasHelmet = false;
 
+        //debug
+        //private bool _hasShield = true;
+        //private bool _hasSword = true;
+        //private bool _hasHelmet = true;
+
         public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
         {
             this._grid = Controller.instance.model.grid;
@@ -43,7 +48,7 @@ namespace Assets.Scripts.Units
             this.y = this._grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            view.GetComponent<SpriteRenderer>().sortingOrder = 100;//TODO sorting
             view.name = type;
 
             view.transform.localPosition = new Vector3(this.x + MARGIN_X, this.y + MARGIN_Y);

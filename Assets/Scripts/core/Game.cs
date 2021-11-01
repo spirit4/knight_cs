@@ -100,7 +100,7 @@ namespace Assets.Scripts.Core
         {
             this.gameObject.isStatic = true;
             //Debug.Log("[Awake]" + ImagesRes.prefabs.Count);
-            if(ImagesRes.prefabs.Count == 0) // loading resources to static
+            if (ImagesRes.prefabs.Count == 0) // loading resources to static
                 ImagesRes.init();
 
             DOTween.Init();
@@ -332,183 +332,155 @@ namespace Assets.Scripts.Core
         //gone to Unity Editor
         private void restartClickHandler()//e: createjs.MouseEvent = null) : void
         {
-            //this.dispatchEvent(new GameEvent(GameEvent.RESTART));
             MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
-    //public createHint(): void
-    //{
-    //    if (!Hints.texts[Progress.currentLevel])
-    //    {
-    //        return;
-    //    }
+        //public createHint(): void
+        //{
+        //    if (!Hints.texts[Progress.currentLevel])
+        //    {
+        //        return;
+        //    }
 
-    //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
+        //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
 
-    //    var g: createjs.Graphics = new createjs.Graphics();
-    //    var shape: createjs.Shape = new createjs.Shape(g);
-    //    Core.instance.addChild(shape);
-    //    shape.alpha = 0.7;
-    //    this._helpShape = shape;
+        //    var g: createjs.Graphics = new createjs.Graphics();
+        //    var shape: createjs.Shape = new createjs.Shape(g);
+        //    Core.instance.addChild(shape);
+        //    shape.alpha = 0.7;
+        //    this._helpShape = shape;
 
-    //    g.beginFill("#333333");
-    //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+        //    g.beginFill("#333333");
+        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
 
-    //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
-    //    for (int i = 0; i < holes.Length; i++)
-    //        {
-    //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-    //    }
+        //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
+        //    for (int i = 0; i < holes.Length; i++)
+        //        {
+        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
+        //    }
 
-    //    g.endFill();
+        //    g.endFill();
 
-    //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-    //    bitmap.mouseEnabled = false;
-    //    bitmap.snapToPixel = true;
-    //    Core.instance.addChild(bitmap);
-    //    this._help = bitmap;
-    //    bitmap.x = params[0];
-    //    bitmap.y = params[1];
+        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+        //    bitmap.mouseEnabled = false;
+        //    bitmap.snapToPixel = true;
+        //    Core.instance.addChild(bitmap);
+        //    this._help = bitmap;
+        //    bitmap.x = params[0];
+        //    bitmap.y = params[1];
 
-    //    g = new createjs.Graphics();
-    //    shape = new createjs.Shape(g);
-    //    g.beginFill("#333333");
-    //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-    //    g.endFill();
-    //    shape.snapToPixel = true;
-    //    shape.alpha = 0.7;
-    //    Core.instance.bg.addChild(shape);
-    //    this._top = shape;
+        //    g = new createjs.Graphics();
+        //    shape = new createjs.Shape(g);
+        //    g.beginFill("#333333");
+        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
+        //    g.endFill();
+        //    shape.snapToPixel = true;
+        //    shape.alpha = 0.7;
+        //    Core.instance.bg.addChild(shape);
+        //    this._top = shape;
 
-    //    shape = new createjs.Shape(g);
-    //    shape.snapToPixel = true;
-    //    shape.alpha = 0.7;
-    //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-    //    Core.instance.bg.addChild(shape);
-    //    this._bottom = shape;
-    //    Core.instance.bg.update();
-    //}
+        //    shape = new createjs.Shape(g);
+        //    shape.snapToPixel = true;
+        //    shape.alpha = 0.7;
+        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
+        //    Core.instance.bg.addChild(shape);
+        //    this._bottom = shape;
+        //    Core.instance.bg.update();
+        //}
 
-    //public createHintAfterAction(): void
-    //{
-    //    if (!Hints.textsAfterAction[Progress.currentLevel])
-    //    {
-    //        return;
-    //    }
+        //public createHintAfterAction(): void
+        //{
+        //    if (!Hints.textsAfterAction[Progress.currentLevel])
+        //    {
+        //        return;
+        //    }
 
-    //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
+        //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
 
-    //    var g: createjs.Graphics = new createjs.Graphics();
-    //    var shape: createjs.Shape = new createjs.Shape(g);
-    //    Core.instance.addChild(shape);
-    //    shape.alpha = 0.7;
-    //    this._helpShape = shape;
+        //    var g: createjs.Graphics = new createjs.Graphics();
+        //    var shape: createjs.Shape = new createjs.Shape(g);
+        //    Core.instance.addChild(shape);
+        //    shape.alpha = 0.7;
+        //    this._helpShape = shape;
 
-    //    g.beginFill("#333333");
-    //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+        //    g.beginFill("#333333");
+        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
 
-    //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
-    //    for (int i = 0; i < holes.Length; i++)
-    //        {
-    //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-    //    }
+        //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
+        //    for (int i = 0; i < holes.Length; i++)
+        //        {
+        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
+        //    }
 
-    //    g.endFill();
+        //    g.endFill();
 
-    //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-    //    bitmap.mouseEnabled = false;
-    //    bitmap.snapToPixel = true;
-    //    Core.instance.addChild(bitmap);
-    //    this._help = bitmap;
-    //    bitmap.x = params[0];
-    //    bitmap.y = params[1];
+        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
+        //    bitmap.mouseEnabled = false;
+        //    bitmap.snapToPixel = true;
+        //    Core.instance.addChild(bitmap);
+        //    this._help = bitmap;
+        //    bitmap.x = params[0];
+        //    bitmap.y = params[1];
 
-    //    g = new createjs.Graphics();
-    //    shape = new createjs.Shape(g);
-    //    g.beginFill("#333333");
-    //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-    //    g.endFill();
-    //    shape.snapToPixel = true;
-    //    shape.alpha = 0.7;
-    //    Core.instance.bg.addChild(shape);
-    //    this._top = shape;
+        //    g = new createjs.Graphics();
+        //    shape = new createjs.Shape(g);
+        //    g.beginFill("#333333");
+        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
+        //    g.endFill();
+        //    shape.snapToPixel = true;
+        //    shape.alpha = 0.7;
+        //    Core.instance.bg.addChild(shape);
+        //    this._top = shape;
 
-    //    shape = new createjs.Shape(g);
-    //    shape.snapToPixel = true;
-    //    shape.alpha = 0.7;
-    //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-    //    Core.instance.bg.addChild(shape);
-    //    this._bottom = shape;
-    //    Core.instance.bg.update();
-    //}
+        //    shape = new createjs.Shape(g);
+        //    shape.snapToPixel = true;
+        //    shape.alpha = 0.7;
+        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
+        //    Core.instance.bg.addChild(shape);
+        //    this._bottom = shape;
+        //    Core.instance.bg.update();
+        //}
 
-    //private removeHint(): void
-    //{
-    //    if (this._help)
-    //    {
-    //        Core.instance.removeChild(this._help);
-    //        Core.instance.removeChild(this._helpShape);
-    //        this._help = null;
-    //        this._helpShape = null;
+        //private removeHint(): void
+        //{
+        //    if (this._help)
+        //    {
+        //        Core.instance.removeChild(this._help);
+        //        Core.instance.removeChild(this._helpShape);
+        //        this._help = null;
+        //        this._helpShape = null;
 
-    //        Core.instance.bg.removeChild(this._top);
-    //        Core.instance.bg.removeChild(this._bottom);
-    //        Core.instance.bg.update();
-    //        this._top = null;
-    //        this._bottom = null;
-    //    }
-    //}
+        //        Core.instance.bg.removeChild(this._top);
+        //        Core.instance.bg.removeChild(this._bottom);
+        //        Core.instance.bg.update();
+        //        this._top = null;
+        //        this._bottom = null;
+        //    }
+        //}
 
-    //private showVictory(): void
-    //{
-    //    if (Core.instance.ga)
-    //    {
-    //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
-    //    }
-    //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
-    //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
-    //    {
-    //        this.parent.addChild(new Victory(this));
-    //    }
-    //    else
-    //    {
-    //        this.parent.addChild(new GameVictory(this));
-    //    }
-    //}
+        //private showVictory(): void
+        //{
+        //    if (Core.instance.ga)
+        //    {
+        //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
+        //    }
+        //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
+        //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
+        //    {
+        //        this.parent.addChild(new Victory(this));
+        //    }
+        //    else
+        //    {
+        //        this.parent.addChild(new GameVictory(this));
+        //    }
+        //}
 
-    //Bounds m_Collider, m_Collider2;
-    public void Update()
+        //Bounds m_Collider, m_Collider2;
+        public void Update()
         {
             this.checkCollision(this._units, -0.6f, 0, 0.2f, 0.8f);
 
-            //m_Collider = _hero.view.GetComponent<SpriteRenderer>().bounds;
-
-            //foreach (KeyValuePair<int, ICollidable> pair in _units)
-            //{
-            //    if (pair.Value.type == ImagesRes.MONSTER)
-            //    {
-            //        Monster monster = pair.Value as Monster;
-            //        m_Collider2 = monster.view.GetComponent<SpriteRenderer>().bounds;
-            //    }
-            //}
-
-            //if (m_Collider.Intersects(m_Collider2))
-            //{
-            //    Debug.Log("Bounds intersecting");
-            //}
         }
-
-        //void OnTriggerEnter2D(Collider2D other)
-        //{
-        //    Debug.Log("OnTriggerEnter2D");
-        //}
-
-        //void OnCollisionEnter2D(Collision2D col)
-        //{
-        //    Debug.Log("OnCollisionEnter2D");
-        //}
-
-
 
         public void checkCollision(Dictionary<int, ICollidable> vector, float x1, float x2, float y1, float y2)
         {
@@ -534,15 +506,13 @@ namespace Assets.Scripts.Core
                         {
                             //sconsole.log("[checkCollision]", this._hero)
 
-                            if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
-                            {
-                                Monster monster = pair.Value as Monster;
-                                //var index number = this._items.indexOf(monster);
-                                //this._items.splice(index, 1); not now, maybe never
-                                //this.removeChild(monster);-------------------------------------------
-
-                                //Debug.Log("monster" + heroX);
-                            }
+                            //if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
+                            //{
+                            Monster monster = pair.Value as Monster;
+                            //var index number = this._items.indexOf(monster);
+                            //this._items.splice(index, 1);                  not now, maybe never
+                            //this.removeChild(monster);-------------------------------------------
+                            //}
 
                             //vector[i] = null;
                             //delete vector[i];
@@ -567,13 +537,14 @@ namespace Assets.Scripts.Core
                                 //    {
                                 //        Core.instance.api.gameOver();
                                 //    }
-                                //}
-                                //else if (dObject instanceof Monster)
-                                //        {
+                            }
+                            else if (pair.Value is Monster)
+                            {
                                 //    AchController.instance.addParam(AchController.MONSTER_DEAD);
 
                                 //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
-                                //    this.showBoom(ImagesRes.A_ATTACK_BOOM);
+                                WaitAndCall(100, hideActors, pair.Value, false); //killing the monster
+                                showBoom(ImagesRes.A_ATTACK_BOOM);
                             }
 
                             break;
@@ -619,7 +590,7 @@ namespace Assets.Scripts.Core
             gameObject.transform.SetParent(this.gameObject.transform);
             gameObject.transform.localPosition = new Vector3(boomX, boomY);
             gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//TODO sorting2
 
             MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
         }
@@ -634,10 +605,10 @@ namespace Assets.Scripts.Core
             Destroy(rMessage.Sender as GameObject);
 
             if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)// (this._hero.stateItems != Hero.FULL)    //bad code
-                {
+            {
                 this.restartClickHandler();
             }
-            
+
         }
 
         private void showPath(List<int> path)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3233210911989682419}
   - component: {fileID: 8578199466576531068}
   - component: {fileID: 7519836406241828590}
+  - component: {fileID: 4598301464052829301}
   m_Layer: 0
   m_Name: BoomSword
   m_TagString: Untagged
@@ -102,3 +103,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4598301464052829301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211628903052448312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a38004c0f66b84b83ba04d0efede2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
