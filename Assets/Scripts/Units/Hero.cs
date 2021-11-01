@@ -124,7 +124,7 @@ namespace Assets.Scripts.Units
             else if (point.x == this.x && point.y < this.y)
             {
                 step = Config.WIDTH;
-               // this._directionY = 1;
+                // this._directionY = 1;
             }
 
             this.x = view.transform.localPosition.x + MARGIN_X;
@@ -243,25 +243,26 @@ namespace Assets.Scripts.Units
             //        createjs.Tween.get(trap).to({ alpha: 1 }, 150, createjs.Ease.quadOut).call(this.trapTweenComplete, [type], this);
 
             //    }
-            //    else if (this._grid[this.index].isContainType(ImagesRes.EXIT))
-            //    {
-            //        //console.log("Hero starsAllLevels", type, this.index);
-            //        for (var i: number = 0; i < 3; i++)
-            //        {
-            //            if (this._wearItems[i] == 1)
-            //            {
-            //                Progress.starsAllLevels[Progress.currentLevel][i] = 1;
-            //            }
-            //        }
+            else if (this._grid[this.index].isContainType(ImagesRes.EXIT))
+            {
+                //        //console.log("Hero starsAllLevels", type, this.index);
+                //        for (var i: number = 0; i < 3; i++)
+                //        {
+                //            if (this._wearItems[i] == 1)
+                //            {
+                //                Progress.starsAllLevels[Progress.currentLevel][i] = 1;
+                //            }
+                //        }
 
-            //        if (this._wearItems[0] == 0 && this._wearItems[1] == 0 && this._wearItems[2] == 0)
-            //        {
-            //            AchController.instance.addParam(AchController.LEVEL_WITHOUT_ITEMS);
-            //        }
+                //        if (this._wearItems[0] == 0 && this._wearItems[1] == 0 && this._wearItems[2] == 0)
+                //        {
+                //            AchController.instance.addParam(AchController.LEVEL_WITHOUT_ITEMS);
+                //        }
 
-            //        this.levelComplete();
-            //        //this.dispatchEvent(new GameEvent(GameEvent.RESTART, true));
-            //    }
+                levelComplete();
+                //        //this.dispatchEvent(new GameEvent(GameEvent.RESTART, true));
+                MessageDispatcher.SendMessage(GameEvent.RESTART);
+            }
 
             //    //this._directionIndex = 0;
 
@@ -298,12 +299,12 @@ namespace Assets.Scripts.Units
         //    this._grid[this.index].remove(ImagesRes.TRAP);
         //}
 
-        //private levelComplete(): void
-        //{
-        //    //console.log("EXIT");
-        //    this.view.removeAllEventListeners();
-        //    this.dispatchEvent(new GameEvent(GameEvent.LEVEL_COMPLETE, false, false));
-        //}
+        private void levelComplete()
+        {
+            Debug.Log("EXIT");
+            //    this.view.removeAllEventListeners();
+            //    this.dispatchEvent(new GameEvent(GameEvent.LEVEL_COMPLETE, false, false));
+        }
 
         private void move(bool isContinue = false)
         {
@@ -322,12 +323,15 @@ namespace Assets.Scripts.Units
             _heroState = Hero.MOVE;
             //Debug.Log("changeView MOVE" + _heroState + "   " + HeroState);
             view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            //    if (this._path.length == 0 && this._grid[this.index].isContainType(ImagesRes.EXIT))
-            //    {
-            //        Hero.currentTween = createjs.Tween.get(this).
-            //            to({ x: this._grid[this.index].x + Config.SIZE_W / 2, y: this._grid[this.index].y + Config.SIZE_H - 4, scaleX: 0, scaleY: 0, alpha: 0 }, this.SPEED * 4, createjs.Ease.linear).
-            //            call(handler, [], this);
-            //    }
+            if (this._path.Count == 0 && this._grid[this.index].isContainType(ImagesRes.EXIT))
+            {
+                //Hero.currentTween = createjs.Tween.get(this).
+                //    to({ x: this._grid[this.index].x + Config.SIZE_W / 2, y: this._grid[this.index].y + Config.SIZE_H - 4, scaleX: 0, scaleY: 0, alpha: 0 }, this.SPEED * 4, createjs.Ease.linear).
+                //        call(handler, [], this);
+                view.transform.DOKill();
+                view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X - 0.3f, _grid[index].y + MARGIN_Y - 0.25f - Config.SIZE_H), SPEED*2).SetEase(Ease.Linear).OnComplete(handler);
+                view.transform.DOScale(0, SPEED*2).SetEase(Ease.Linear);//.OnComplete(handler);
+            }
             //    else //copy top line?
             //    {
             //        Hero.currentTween = createjs.Tween.get(this).to({ x: this._grid[this.index].x, y: this._grid[this.index].y }, this.SPEED, createjs.Ease.linear).call(handler, [], this);
@@ -354,13 +358,6 @@ namespace Assets.Scripts.Units
                 moveToCell();
             }
         }
-
-        //private die(): void
-        //{
-        //    //this.parent.removeChildAt(this.parent.getNumChildren() - 1);//oops
-
-        //    this.dispatchEvent(new GameEvent(GameEvent.RESTART, true, false));
-        //}
 
         //public destroy(): void
         //{
