@@ -329,9 +329,11 @@ namespace Assets.Scripts.Core
         //    this.dispatchEvent(ev);
         //}
 
+        //gone to Unity Editor
         private void restartClickHandler()//e: createjs.MouseEvent = null) : void
         {
             //this.dispatchEvent(new GameEvent(GameEvent.RESTART));
+            MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
     //public createHint(): void
@@ -611,8 +613,8 @@ namespace Assets.Scripts.Core
             //    this.addChild(sprite);
             //    sprite.on(GameEvent.ANIMATION_COMPLETE, this.boomCompleteHandler, this);
             //    sprite.gotoAndPlay(boomType);
-            float boomX = _hero.view.transform.localPosition.x;
-            float boomY = _hero.view.transform.localPosition.y;
+            float boomX = _hero.view.transform.localPosition.x + Config.SIZE_W / 2;
+            float boomY = _hero.view.transform.localPosition.y - Config.SIZE_H / 2 - 0.1f;
             GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             gameObject.transform.SetParent(this.gameObject.transform);
             gameObject.transform.localPosition = new Vector3(boomX, boomY);

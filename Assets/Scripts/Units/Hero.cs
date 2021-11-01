@@ -22,7 +22,7 @@ namespace Assets.Scripts.Units
 
         private List<int> _path;
         private int _directionX = 1;
-        private int _directionY = 1;
+        //private int _directionY = 1;
 
         //static currentTween: createjs.Tween;
         //static currentView: createjs.Sprite;
@@ -88,7 +88,7 @@ namespace Assets.Scripts.Units
             Vector2 point = GridUtils.GetPoint(index);
 
             this._directionX = 0;
-            this._directionY = 0;
+            //this._directionY = 0;
 
 
             this.x = view.transform.localPosition.x - MARGIN_X;
@@ -114,12 +114,12 @@ namespace Assets.Scripts.Units
             else if (point.x == this.x && point.y > this.y)
             {
                 step = -Config.WIDTH;
-                this._directionY = -1;
+                //this._directionY = -1;
             }
             else if (point.x == this.x && point.y < this.y)
             {
                 step = Config.WIDTH;
-                this._directionY = 1;
+               // this._directionY = 1;
             }
 
             this.x = view.transform.localPosition.x + MARGIN_X;

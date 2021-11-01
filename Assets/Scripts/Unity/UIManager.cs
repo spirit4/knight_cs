@@ -1,3 +1,5 @@
+using Assets.Scripts.Events;
+using com.ootii.Messages;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +28,8 @@ namespace Assets.Scripts.Unity
             if (_levelsPanel)
                 _levelsPanel.SetActive(false);
 
-
+            //if(MessageDispatcher.) // TODO ?
+            MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
         }
 
         // Update is called once per frame
@@ -74,6 +77,11 @@ namespace Assets.Scripts.Unity
         public void HideOldWindow(GameObject window)
         {
             window.SetActive(false);
+        }
+
+        private void RestartGame(IMessage m)
+        {
+            StartGame();
         }
 
         public void StartGame()

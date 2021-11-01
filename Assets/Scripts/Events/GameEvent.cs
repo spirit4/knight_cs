@@ -11,11 +11,11 @@ namespace Assets.Scripts.Events
         //  public static UPDATE: string = "tick";
 
         //  public static COMPLETE: string = "complete";
-          public const string ANIMATION_COMPLETE = "animationEnded";
+        public const string ANIMATION_COMPLETE = "animationEnded";
         //  public static PROGRESS: string = "progress";
 
         //  public static LEVEL_COMPLETE: string = "levelComplete";
-        //  public static RESTART: string = "restart";
+        public const string RESTART = "restart";
         //  public static COLLISION: string = "collision";
         //  public static EDITOR_ON_OFF: string = "editorOnOff";
 

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Events
+namespace Assets.Scripts.Unity
 {
     public class EventReceiver : MonoBehaviour
     {
