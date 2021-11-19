@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using com.ootii.Messages;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Unity
         //public const ACHS string = "achs";
 
         private GameObject _levelsPanel;
+        private GameObject _popup;
 
         // Start is called before the first frame update
         void Start()
@@ -24,6 +26,12 @@ namespace Assets.Scripts.Unity
 
             if (_levelsPanel)
                 _levelsPanel.SetActive(false);
+
+            //if (!_popup)
+            //{
+            //    _popup = GameObject.Find("PanelVictory");
+            //    _popup.SetActive(false);
+            //}
 
             //if(MessageDispatcher.) // TODO ?
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
@@ -66,6 +74,7 @@ namespace Assets.Scripts.Unity
             //LevelsPanel.SetActive(true);
         }
 
+        //logic in Editor's buttons
         public void ShowNewWindow(GameObject window)
         {
             window.SetActive(true);
@@ -78,6 +87,13 @@ namespace Assets.Scripts.Unity
 
         private void RestartGame(IMessage m)
         {
+            StartGame();
+        }
+
+
+        public void GoToNextLevel()
+        {
+            Progress.currentLevel++;
             StartGame();
         }
 

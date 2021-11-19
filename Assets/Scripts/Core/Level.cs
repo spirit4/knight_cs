@@ -31,8 +31,9 @@ namespace Assets.Scripts.Core
             this._tilesBg = new List<GameObject>();
             this._decorBg = new List<GameObject>();
 
-            var cells = JSON.Parse(JSONRes.level0); ;// new ExpandoObject[10];
-            // JSONRes.levels[Progress.currentLevel];
+            //var cells = JSON.Parse(JSONRes.level0); 
+            //Debug.Log(Progress.currentLevel);
+            var cells = JSON.Parse(JSONRes.levels[Progress.currentLevel]); ;// new ExpandoObject[10];
 
             int index;
             List<string> types;

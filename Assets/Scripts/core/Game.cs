@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Core
@@ -84,7 +85,7 @@ namespace Assets.Scripts.Core
             //this.on(GUIEvent.MOUSE_DOWN, this.movedownHandler, this);
 
             //this.on(GameEvent.COLLISION, this.collisionProcess, this);
-            //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
+
 
 
 
@@ -118,15 +119,17 @@ namespace Assets.Scripts.Core
             //this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
             //this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
             //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
+            //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
+            MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, showVictory);
             MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
 
             _targetMark = new TargetMark(this.gameObject);
 
             _units = this._level.units;
 
-            Text level = GameObject.Find("Canvas/Panel_GameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
+            Text level = GameObject.Find("Canvas/PanelGameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
             level.text = (Progress.currentLevel + 1).ToString();
         }
 
@@ -140,6 +143,9 @@ namespace Assets.Scripts.Core
 
         private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
+
             //Debug.Log(_hero.HeroState);
             if (_hero.HeroState != Hero.IDLE)
             {
@@ -461,22 +467,30 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //private showVictory(): void
-        //{
-        //    if (Core.instance.ga)
-        //    {
-        //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
-        //    }
-        //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
-        //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
-        //    {
-        //        this.parent.addChild(new Victory(this));
-        //    }
-        //    else
-        //    {
-        //        this.parent.addChild(new GameVictory(this));
-        //    }
-        //}
+        private void showVictory(IMessage rMessage)
+        {
+            //TODO delete?
+
+            //GameObject panel;
+            //    if (Core.instance.ga)
+            //    {
+            //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
+            //    }
+            //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
+            //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
+            //    {
+            //        this.parent.addChild(new Victory(this));
+
+            //panel = GameObject.Find("Canvas/PanelVictory");
+            //Debug.Log("showVictory: " );
+            //    }
+            //    else
+            //    {
+            //        this.parent.addChild(new GameVictory(this));
+            //    }
+            //panel.SetActive(true);
+
+        }
 
         //Bounds m_Collider, m_Collider2;
         public void Update()

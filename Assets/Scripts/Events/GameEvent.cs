@@ -14,7 +14,7 @@ namespace Assets.Scripts.Events
         public const string ANIMATION_COMPLETE = "animationEnded";
         //  public static PROGRESS: string = "progress";
 
-        //  public static LEVEL_COMPLETE: string = "levelComplete";
+        public const string LEVEL_COMPLETE = "levelComplete";
         public const string RESTART = "restart";
         //  public static COLLISION: string = "collision";
         //  public static EDITOR_ON_OFF: string = "editorOnOff";

@@ -64,7 +64,6 @@ namespace Assets.Scripts.Core
         {
             GameObject dObject = new GameObject();
             dObject.AddComponent<SpriteRenderer>();
-            //Sprite bd = 
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
             dObject.name = type;// + index; seems I need only water

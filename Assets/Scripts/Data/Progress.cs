@@ -7,7 +7,7 @@ namespace Assets.Scripts.Data
         public static int levelsCompleted = 20;
         public static int currentLevel = 0;
 
-        /**starsAllLevels [level][helmet, shield, sword]*/
+        /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
         public static int[,] starsAllLevels = new int[20, 3]
         {
              {0, 0, 0},

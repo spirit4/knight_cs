@@ -62,7 +62,7 @@ namespace Assets.Scripts.Core
 
             private void initCompleted()
             {
-                //JSONRes.init();
+                JSONRes.init();
                 //ImagesRes.initAnimations();
                 //this.bg.init();------------------------------------------------------------------moved to awake
 

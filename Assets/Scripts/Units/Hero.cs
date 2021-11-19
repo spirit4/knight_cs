@@ -248,10 +248,15 @@ namespace Assets.Scripts.Units
                 //        //console.log("Hero starsAllLevels", type, this.index);
                 //        for (var i: number = 0; i < 3; i++)
                 //        {
-                //            if (this._wearItems[i] == 1)
-                //            {
-                //                Progress.starsAllLevels[Progress.currentLevel][i] = 1;
-                //            }
+                if (_hasHelmet)
+                    Progress.starsAllLevels[Progress.currentLevel, 0] = 1;
+
+                if (_hasShield)
+                    Progress.starsAllLevels[Progress.currentLevel, 1] = 1;
+
+                if (_hasSword)
+                    Progress.starsAllLevels[Progress.currentLevel, 2] = 1;
+
                 //        }
 
                 //        if (this._wearItems[0] == 0 && this._wearItems[1] == 0 && this._wearItems[2] == 0)
@@ -261,7 +266,7 @@ namespace Assets.Scripts.Units
 
                 levelComplete();
                 //        //this.dispatchEvent(new GameEvent(GameEvent.RESTART, true));
-                MessageDispatcher.SendMessage(GameEvent.RESTART);
+                //MessageDispatcher.SendMessage(GameEvent.RESTART); //temp
             }
 
             //    //this._directionIndex = 0;
@@ -301,9 +306,10 @@ namespace Assets.Scripts.Units
 
         private void levelComplete()
         {
-            Debug.Log("EXIT");
+            //Debug.Log("EXIT");
             //    this.view.removeAllEventListeners();
             //    this.dispatchEvent(new GameEvent(GameEvent.LEVEL_COMPLETE, false, false));
+            MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
         }
 
         private void move(bool isContinue = false)
@@ -329,8 +335,9 @@ namespace Assets.Scripts.Units
                 //    to({ x: this._grid[this.index].x + Config.SIZE_W / 2, y: this._grid[this.index].y + Config.SIZE_H - 4, scaleX: 0, scaleY: 0, alpha: 0 }, this.SPEED * 4, createjs.Ease.linear).
                 //        call(handler, [], this);
                 view.transform.DOKill();
-                view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X - 0.3f, _grid[index].y + MARGIN_Y - 0.25f - Config.SIZE_H), SPEED*2).SetEase(Ease.Linear).OnComplete(handler);
-                view.transform.DOScale(0, SPEED*2).SetEase(Ease.Linear);//.OnComplete(handler);
+                view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X - 0.3f, _grid[index].y + MARGIN_Y - 0.25f - Config.SIZE_H), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                view.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
+                view.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }
             //    else //copy top line?
             //    {
