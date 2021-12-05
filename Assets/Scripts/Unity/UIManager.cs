@@ -16,17 +16,23 @@ namespace Assets.Scripts.Unity
         //public const ACHS string = "achs";
 
         private GameObject _levelsPanel;
+        private GameObject _creditsPanel;
         private GameObject _popup;
 
         // Start is called before the first frame update
         void Start()
         {
             if (!_levelsPanel)
+            {
                 _levelsPanel = GameObject.Find("Panel_Levels");
+                _creditsPanel = GameObject.Find("Panel_Credits");
+            }
 
             if (_levelsPanel)
+            {
                 _levelsPanel.SetActive(false);
-
+                _creditsPanel.SetActive(false);
+            }
             //if (!_popup)
             //{
             //    _popup = GameObject.Find("PanelVictory");
