@@ -106,5 +106,15 @@ namespace Assets.Scripts.Unity
         {
             SceneManager.LoadScene("MainScene");
         }
+
+        public void PostponeAnimation()
+        {
+
+        }
+
+        //public void ShowCredits()
+        //{
+
+        //}
     }
 }
