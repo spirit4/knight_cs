@@ -1,3 +1,4 @@
+using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using com.ootii.Messages;
@@ -19,6 +20,14 @@ namespace Assets.Scripts.Unity
         private GameObject _creditsPanel;
         private GameObject _popup;
 
+
+        private void Awake()
+        {
+            //Debug.Log("UIManager awake");
+            this.gameObject.AddComponent<AudioSource>();
+            SoundManager.getInstance().init(this.gameObject.GetComponent<AudioSource>());
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -38,6 +47,11 @@ namespace Assets.Scripts.Unity
             //    _popup = GameObject.Find("PanelVictory");
             //    _popup.SetActive(false);
             //}
+
+            if(GameObject.Find("Panel_MainMenu") != null)
+                SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
+            else
+                SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
 
             //if(MessageDispatcher.) // TODO ?
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
@@ -91,6 +105,7 @@ namespace Assets.Scripts.Unity
             window.SetActive(false);
         }
 
+        //not by button
         private void RestartGame(IMessage m)
         {
             StartGame();
@@ -105,12 +120,16 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
+            //Debug.Log("StartGame");
             SceneManager.LoadScene("GameScene");
+            SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
         }
 
         public void EndGame()
         {
+            //Debug.Log("EndGame");
             SceneManager.LoadScene("MainScene");
+            SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
         }
 
         public void PostponeAnimation()

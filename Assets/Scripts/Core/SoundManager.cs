@@ -1,124 +1,140 @@
-﻿using System;
+﻿using Assets.Scripts.Utils.Display;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
     public class SoundManager
     {
-        //        //music
-        //        static MUSIC_MENU string = 'musicMenu';
-        //public const string MUSIC_GAME string = 'musicGame';
+        public static Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
 
-        public static SoundManager instance;
+        //music
+        public const string MUSIC_MENU = "menu";
+        public const string MUSIC_GAME = "game";
+
+        private static SoundManager instance;
 
         //    //false = true;
-        //    private _isSFX: boolean = true;
-        //    private _isMusic: boolean = true;
+        //private bool _isMusic = true; //TODO has
+        private bool _isMusic = false; //TODO has
 
-        //    private _currentButton: Button;
-        //    private _currentLocation string = ""; //menu or game
+        private MusicButton _currentButton;
+        private string _currentLocation; //menu or game
+        private AudioSource _audioSource;
 
-        //    private _musicInstances: { [index string]: createjs.AbstractSoundInstance; } = {};
-        //private _musicPositions: {[index string] number; } = { };
+        private Dictionary<string, float> _musicPositions = new Dictionary<string, float>();
 
 
         public SoundManager()
         {
-            SoundManager.instance = this;
+            // SoundManager.instance = this;
         }
 
-        //public setLocation(type string): void
-        //{
-        //    if (this._isMusic)
-        //    {
-        //        if (type != this._currentLocation)
-        //        {
-        //            //console.log("type" + type, this.currentLocation);
-        //            this.stopMusicTrack();
+        public static SoundManager getInstance()
+        {
+            if (instance == null)
+                instance = new SoundManager();
 
-        //            this._musicPositions[SoundManager.MUSIC_GAME] = 0;
-        //            this._musicPositions[SoundManager.MUSIC_MENU] = 0;
+            return instance;
+        }
 
-        //            this._currentLocation = type;
-        //            this.playMusicTrack();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this._currentLocation = type;
-        //    }
-        //}
+        public void init(AudioSource audioSource)
+        {
+            _audioSource = audioSource;
 
-        //private playMusicTrack(): void
-        //{
-        //    if (!this._musicPositions[this._currentLocation])
-        //    {
-        //        this._musicPositions[this._currentLocation] = 0;
-        //    }
+            if (SoundManager.tracks.Count > 0)
+                return;
 
-        //    this._musicInstances[this._currentLocation] = createjs.Sound.play(this._currentLocation, "none", 0, this._musicPositions[this._currentLocation], -1);
-        //}
+            AudioClip[] aClips = Resources.LoadAll<AudioClip>("Music");
 
-        //private stopMusicTrack(): void
-        //{
-        //    if (this._currentLocation == "")
-        //    {
-        //        return;
-        //    }
+            foreach (var track in aClips)
+            {
+                tracks.Add(track.name, track);
+            }
+        }
 
-        //    this._musicPositions[this._currentLocation] = this._musicInstances[this._currentLocation].getPosition();
-        //    this._musicInstances[this._currentLocation].stop();
-        //}
 
-        //public muteOnOff(): void
-        //{
-        //    if (this._isMusic == this._isSFX)
-        //    {
-        //        this.isMusic = !this._isMusic;
-        //        this.isSFX = this._isMusic;
+        //TODO save position on scene reload
+        public void setLocation(string type)
+        {
+            //Debug.Log("[SoundManager] setLocation " + _currentLocation);
+            if (_isMusic)
+            {
+                if (type != _currentLocation)
+                {
+                    stopMusicTrack();
 
-        //        if (this._currentButton)
-        //        {
-        //            this._currentButton.setState();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        alert("use different button for sfx");
-        //    }
-        //}
+                    _musicPositions[SoundManager.MUSIC_GAME] = 0;
+                    _musicPositions[SoundManager.MUSIC_MENU] = 0;
+                }
+            }
+     
+            _currentLocation = type;
 
-        //public set isSFX(value: boolean)
-        //    {
-        //    this._isSFX = value;
-        //}
+            if (_isMusic)
+                playMusicTrack();
+        }
 
-        //public get isSFX(): boolean
-        //{
-        //    return this._isSFX;
-        //}
+        private void playMusicTrack()
+        {
+            //Debug.Log("playMusicTrack" + _musicPositions.ContainsKey(_currentLocation));
 
-        //public set isMusic(value: boolean)
-        //    {
-        //    this._isMusic = value;
+            if (!_musicPositions.ContainsKey(_currentLocation))
+                _musicPositions[_currentLocation] = 0;
 
-        //    if (this._isMusic)
-        //    {
-        //        this.playMusicTrack();
-        //    }
-        //    else
-        //    {
-        //        this.stopMusicTrack();
-        //    }
-        //}
+            _audioSource.clip = tracks[_currentLocation];
+            _audioSource.loop = true;
+            _audioSource.time = _musicPositions[_currentLocation];
+            _audioSource.Play();
 
-        //public get isMusic(): boolean
-        //{
-        //    return this._isMusic;
-        //}
+            
+        }
+
+        private void stopMusicTrack()
+        {
+
+            if (_currentLocation == null)
+                return;
+
+            _musicPositions[_currentLocation] = _audioSource.time;
+            _audioSource.Stop();
+
+            //Debug.Log("stopMusicTrack" + _audioSource.time);
+        }
+
+        public void muteOnOff()
+        {
+            //Debug.Log("[SoundManager] muteOnOff " + SoundManager.getInstance().isMusic);
+            this.isMusic = !_isMusic;
+
+            if (_currentButton)
+                _currentButton.SetState();
+        }
+
+        public bool isMusic
+        {
+            get
+            {
+                return _isMusic;
+            }
+            set
+            {
+                _isMusic = value;
+
+                if (_isMusic)
+                {
+                    playMusicTrack();
+                }
+                else
+                {
+                    stopMusicTrack();
+                }
+            }
+        }
 
         //public set savingState(state: boolean)
         //    {
@@ -126,9 +142,12 @@ namespace Assets.Scripts.Core
         //    this._isSFX = state;
         //}
 
-        //public set currentButton(value: Button)
-        //    {
-        //    this._currentButton = value;
-        //}
-    } 
+        public MusicButton CurrentButton
+        {
+            set
+            {
+                _currentButton = value;
+            }
+        }
+    }
 }

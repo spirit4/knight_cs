@@ -60,26 +60,29 @@ namespace Assets.Scripts.Core
             //        this._preloader.on(GameEvent.COMPLETE, this.initCompleted, this);
         }
 
-            private void initCompleted()
-            {
-                JSONRes.init();
-                //ImagesRes.initAnimations();
-                //this.bg.init();------------------------------------------------------------------moved to awake
+        private void initCompleted()
+        {
+            JSONRes.init();
+            //ImagesRes.initAnimations();
+            //this.bg.init();------------------------------------------------------------------moved to awake
 
-        //        //-------------------------------
-        //        //this.editor = new Editor(this.model.grid);
-        //        //this.editor.on(GameEvent.EDITOR_ON_OFF, this.onOffHandler, this);
-        //        //this.addChild(this.editor);
-        //        //-------------------------------
+            //        //-------------------------------
+            //        //this.editor = new Editor(this.model.grid);
+            //        //this.editor.on(GameEvent.EDITOR_ON_OFF, this.onOffHandler, this);
+            //        //this.addChild(this.editor);
+            //        //-------------------------------
 
-        //        if (this.ga)
-        //        {
-        //        Core.instance.ga.send('pageview', "/InitMainMenu");
-            }
+            //        if (this.ga)
+            //        {
+            //        Core.instance.ga.send('pageview', "/InitMainMenu");
+
+            //new SoundManager();//singleton
+            //SoundManager.instance.setLocation(SoundManager.MUSIC_MENU);
+        }
 
         //    //window.addEventListener(GUIEvent.KEYDOWN, this.editor.keyHandler.bind(this.editor));
 
-        //    var sm: SoundManager = new SoundManager();//singleton
+        //    
         //        this.model.loadProgress();
 
         //        var ac: AchController = new AchController();//singleton
@@ -89,7 +92,7 @@ namespace Assets.Scripts.Core
 
         //        //this.startGame();
         //        this.addView(View.MAIN_MENU);
-        //    SoundManager.instance.setLocation(SoundManager.MUSIC_MENU);
+
 
         //        //remove preloader
         //        this._preloader.removeAllEventListeners();
