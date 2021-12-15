@@ -55,18 +55,18 @@ namespace Assets.Scripts.Data
 
         public static List<string> hintAchs = new List<string>()
         {
-            "Let an arrow \rkill the knight",
-            "Obtain the entire outfit \rand kill the beast",
-            "Complete a level \rwithout the outfit",
-            "Collect the entire outfit \rfrom every level",
-            "Find a trap \rand step on it",//5
-            "Activate the windmill \rcoming up to it",
-            "Collect ten helmets \rfrom any ten levels",
+            "Let an arrow \nkill the knight",
+            "Obtain the entire outfit \nand kill the beast",
+            "Complete a level \nwithout the outfit",
+            "Collect the entire outfit \nfrom every level",
+            "Find a trap \nand step on it",//5
+            "Activate the windmill \ncoming up to it",
+            "Collect ten helmets \nfrom any ten levels",
             "The knight has to die ;)",
-            "Collect ten shields \rfrom any ten levels",
-            "Complete any ten levels \rwithout dying",//10
-            "Collect ten swords \rfrom any ten levels",
-            "Make a step \rsidewards from the arrow \rafter it's been shot"
+            "Collect ten shields \nfrom any ten levels",
+            "Complete any ten levels \nwithout dying",//10
+            "Collect ten swords \nfrom any ten levels",
+            "Make a step \nsidewards from the arrow \nafter it's been shot"
         };
     }
 }

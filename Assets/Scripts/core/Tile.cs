@@ -136,7 +136,7 @@ namespace Assets.Scripts.Core
 
                 case ImagesRes.EXIT:
                     dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.13f, 0);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.13f);
                     break;
 
                 case string y when y.StartsWith(ImagesRes.DECOR):
@@ -145,13 +145,13 @@ namespace Assets.Scripts.Core
                     var point = GridUtils.GetUnityPoint(_localX, _localY);
                     //Debug.Log(type + "  is Decor x: " + point.x + "  y: " + point.y);
 
-                    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f, 0);
+                    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f);
                     break;
 
                 default:
                     Debug.Log(type + " ==================== default in Tile ============================");
                     dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.x, this.y, 0);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y);
                     break;
             }
 

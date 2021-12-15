@@ -153,13 +153,10 @@ namespace Assets.Scripts.Core
                 return;
             }
 
-
-
             //    if (e.target.parent instanceof Button)
             //        {
             //        return;
             //    }
-
 
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
             int index = GridUtils.getIndex(point.x, point.y);

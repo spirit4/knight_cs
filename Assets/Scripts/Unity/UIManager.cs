@@ -18,6 +18,7 @@ namespace Assets.Scripts.Unity
 
         private GameObject _levelsPanel;
         private GameObject _creditsPanel;
+        private GameObject _achsPanel;
         private GameObject _popup;
 
 
@@ -35,12 +36,14 @@ namespace Assets.Scripts.Unity
             {
                 _levelsPanel = GameObject.Find("Panel_Levels");
                 _creditsPanel = GameObject.Find("Panel_Credits");
+                _achsPanel = GameObject.Find("Panel_Achs");
             }
 
             if (_levelsPanel)
             {
                 _levelsPanel.SetActive(false);
                 _creditsPanel.SetActive(false);
+                _achsPanel.SetActive(false);
             }
             //if (!_popup)
             //{
