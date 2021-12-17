@@ -4,6 +4,7 @@ using Assets.Scripts.Events;
 using com.ootii.Messages;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Unity
 {
@@ -118,6 +119,12 @@ namespace Assets.Scripts.Unity
         public void GoToNextLevel()
         {
             Progress.currentLevel++;
+            StartGame();
+        }
+
+        public void GoToLevel(Text level)
+        {
+            Progress.currentLevel = int.Parse(level.text) - 1;
             StartGame();
         }
 

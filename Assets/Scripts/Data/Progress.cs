@@ -10,17 +10,17 @@ namespace Assets.Scripts.Data
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
         public static int[,] starsAllLevels = new int[20, 3]
         {
-             {0, 0, 0},
-             {0, 0, 0},
-             {0, 0, 0},
+             {0, 0, 1},
+             {1, 0, 0},
+             {0, 1, 0},
              {0, 0, 0},
              {0, 0, 0},//5
 
              {0, 0, 0},
+             {1, 1, 0},
+             {0, 1, 1},
              {0, 0, 0},
-             {0, 0, 0},
-             {0, 0, 0},
-             {0, 0, 0},//10
+             {1, 0, 1},//10
 
              {0, 0, 0},
              {0, 0, 0},
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Data
              {0, 0, 0},
              {0, 0, 0},
              {0, 0, 0},
-             {0, 0, 0},
+             {1, 1, 1},
              {0, 0, 0}//20
     };
 
