@@ -28,29 +28,28 @@ namespace Assets.Scripts.Units
             this._grid = Controller.instance.model.grid;
             this.id = id;
 
-            this._pontIndex1 = index;
+            //Debug.Log("[Monster ] " + index);
+            _pontIndex1 = index;
             this.x = this._grid[index].x; //for choosing direction --> Level
             this.y = this._grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
-            view.name = type;
+            view.GetComponent<SpriteRenderer>().sortingOrder = 95;//TODO --------------??
+            view.name = type + index;
             
             view.transform.SetParent(container.gameObject.transform);
             view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
-            //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.x);
-            //Debug.Log(view.GetComponent<SpriteRenderer>().sprite.bounds.extents.y);
         }
 
         private void move(float x, float y)
         {
             float time = 0;
-            if (this._directionX == 1 || this._directionX == -1) //!= 0
+            if (_directionX == 1 || _directionX == -1) //!= 0
             {
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2);
                 view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
-            else if (this._directionY == 1 || this._directionY == -1)
+            else if (_directionY == 1 || _directionY == -1)
             {
                 //Debug.Log("[move ]" + y + "   " + time);
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
@@ -63,51 +62,55 @@ namespace Assets.Scripts.Units
 
         private void setDirection()
         {
-            int directionIndex = (this.index == this._pontIndex1) ? this._pontIndex2 : this._pontIndex1;
-            Tile tile = this._grid[directionIndex];
-            if (tile.y == this.x && tile.x > this.x)
+            int directionIndex = (this.index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
+            Tile tile = _grid[directionIndex];
+
+            if (tile.y == this.y && tile.x > this.x)
             {
-                this._directionX = 1;
-                this._directionX = 0;
+                _directionX = 1;
+                _directionY = 0;
             }
             else if (tile.y == this.y && tile.x < this.x)
             {
-                this._directionX = -1;
-                this._directionY = 0;
+                _directionX = -1;
+                _directionY = 0;
             }
             else if (tile.x == this.x && tile.y > this.y)
             {
-                this._directionX = 0;
-                this._directionY = 1;
+                _directionX = 0;
+                _directionY = 1;
             }
             else if (tile.x == this.x && tile.y < this.y)
             {
-                this._directionX = 0;
-                this._directionY = -1;
+                _directionX = 0;
+                _directionY = -1;
             }
 
-            this.FlipView();
-            this.move(tile.x, tile.y);
+            FlipView();
+            move(tile.x, tile.y);
             this.index = directionIndex;
+
+            this.x = this._grid[index].x;
+            this.y = this._grid[index].y;
         }
 
-        private void FlipView() // TODO test it
+        private void FlipView() 
         {
-            if (this._directionX == 1)
+            if (_directionX == 1)
             {
                 view.GetComponent<SpriteRenderer>().flipX = true;
             }
-            else if (this._directionX == -1)
+            else if (_directionX == -1)
             {
                 view.GetComponent<SpriteRenderer>().flipX = false;
             }
-
         }
 
         public void setPointIndex2(int index)
         {
-            this._pontIndex2 = index;
-            this.setDirection();
+            //Debug.Log("[setPointIndex2 ]" + index);
+            _pontIndex2 = index;
+            setDirection();
         }
 
         //public activate(): void
