@@ -90,7 +90,7 @@ namespace Assets.Scripts.Unity
                 col = i % 2;
                 row = (i - col) / 2;
 
-                dObject = new GameObject();
+                dObject = new GameObject("a" + (i + 1));
                 dObject.AddComponent<SpriteRenderer>();
                 dObject.AddComponent<BoxCollider2D>(); //for click and hint
                 dObject.GetComponent<BoxCollider2D>().size = new Vector2(0.72f, 0.72f);
@@ -103,10 +103,9 @@ namespace Assets.Scripts.Unity
 
                 dObject.transform.SetParent(this.gameObject.transform);
                 dObject.transform.localPosition = new Vector3(-246 + col * 292, 219 - row * 80);
-                dObject.name = "a" + (i + 1);
 
 
-                dObject = new GameObject();
+                dObject = new GameObject("at" + (i + 1));
                 dObject.AddComponent<SpriteRenderer>();
                 sprite = sprites["at" + (i + 1)];
                 dObject.GetComponent<SpriteRenderer>().sprite = sprite;
@@ -114,7 +113,6 @@ namespace Assets.Scripts.Unity
 
                 dObject.transform.SetParent(this.gameObject.transform);
                 dObject.transform.localPosition = new Vector3(-198 + col * 293 + sprite.rect.width / 2, 224 - row * 80);
-                dObject.name = "at" + (i + 1);
             }
         }
 

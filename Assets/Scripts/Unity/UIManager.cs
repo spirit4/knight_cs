@@ -10,18 +10,20 @@ namespace Assets.Scripts.Unity
 {
     public class UIManager : MonoBehaviour
     {
-        public const string MAIN_MENU = "ButtonPlay_MainMenu";
-        public const string LEVELS = "ButtonBack_Levels";
+        //public const string MAIN_MENU = "ButtonPlay_MainMenu";
+        //public const string LEVELS = "ButtonBack_Levels";
         //public const GAME string = "game";
         //public const CREDITS string = "credits";
         //public const INTRO string = "intro";
         //public const ACHS string = "achs";
 
+        private GameObject _mainPanel;
         private GameObject _levelsPanel;
         private GameObject _creditsPanel;
         private GameObject _achsPanel;
-        private GameObject _popup;
+        //private GameObject _popup;
 
+        private static bool isFirstLoad = true;
 
         private void Awake()
         {
@@ -36,6 +38,7 @@ namespace Assets.Scripts.Unity
             if (!_levelsPanel)
             {
                 _levelsPanel = GameObject.Find("Panel_Levels");
+                _mainPanel = GameObject.Find("Panel_MainMenu");
                 _creditsPanel = GameObject.Find("Panel_Credits");
                 _achsPanel = GameObject.Find("Panel_Achs");
             }
@@ -59,6 +62,16 @@ namespace Assets.Scripts.Unity
 
             //if(MessageDispatcher.) // TODO ?
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
+
+            
+            //menu from game
+            if (_levelsPanel && !UIManager.isFirstLoad)
+            {
+                _mainPanel.SetActive(false);
+                _levelsPanel.SetActive(true);
+            }
+
+            UIManager.isFirstLoad = false;
         }
 
         // Update is called once per frame
