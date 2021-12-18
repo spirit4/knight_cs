@@ -4,7 +4,7 @@ namespace Assets.Scripts.Data
 {
     public static class Progress
     {
-        public static int levelsCompleted = 20;
+        public static int levelsCompleted = 13;
         public static int currentLevel = 0;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
@@ -32,7 +32,7 @@ namespace Assets.Scripts.Data
              {0, 0, 0},
              {0, 0, 0},
              {1, 1, 1},
-             {0, 0, 0}//20
+             {0, 1, 0}//20
     };
 
         /**0 or 1*/

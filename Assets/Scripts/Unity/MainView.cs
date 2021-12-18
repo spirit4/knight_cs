@@ -36,8 +36,6 @@ namespace Assets.Scripts.Unity
             anim.enabled = true;
         }
 
-
-
         private void RotateMill()
         {
             _vane.transform.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);

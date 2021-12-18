@@ -35,17 +35,22 @@ namespace Assets.Scripts.Unity
                     level.text = (i - 2).ToString();
 
                     if (Progress.starsAllLevels[i - 3, 0] == 0)
-                        transform.GetChild(2).gameObject.SetActive(false);
+                        transform.GetChild(0).GetChild(2).gameObject.SetActive(false);//helmet deeper for swayer
 
                     if (Progress.starsAllLevels[i - 3, 2] == 0)
-                        transform.GetChild(4).gameObject.SetActive(false);
+                        transform.GetChild(2).gameObject.SetActive(false);
 
                     if (Progress.starsAllLevels[i - 3, 1] == 0)
-                        transform.GetChild(6).gameObject.SetActive(false);
+                        transform.GetChild(4).gameObject.SetActive(false);
                 }
                 else
                 {
                     transform.gameObject.SetActive(false);
+                }
+
+                if (i-3 == Progress.levelsCompleted - 1)
+                {
+                    transform.GetChild(0).gameObject.AddComponent<Swayer>();
                 }
             }
         }
