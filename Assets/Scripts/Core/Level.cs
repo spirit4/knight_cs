@@ -47,16 +47,16 @@ namespace Assets.Scripts.Core
                     this.checkCell(index, types[j], types, cells[i]);
                 }
             }
-            Controller.instance.bg.addTiles(this._tilesBg, this._model.grid);
-            Controller.instance.bg.addTiles(this._decorBg, this._model.grid, true);
+            Controller.instance.bg.addTiles(_tilesBg, _model.grid);
+            Controller.instance.bg.addTiles(_decorBg, _model.grid, true);
             this._tilesBg = null;
             this._decorBg = null;
 
-            //var len number = this._items.Length;
-            //for (int i = 0; i < len; i++)
-            //{
-            //    this._items[i].init(i, this._model.grid, this._units);
-            //}
+            int len  = _items.Count;
+            for (int i = 0; i < len; i++)
+            {
+                _items[i].init(i, _model.grid, _units);
+            }
         }
 
         //node has local coordinates of decor
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Core
         {
             GameObject gameObject;
 
-            Tile[] grid = this._model.grid;
+            Tile[] grid = _model.grid;
 
             switch (type)
             {
@@ -116,10 +116,10 @@ namespace Assets.Scripts.Core
                 //                var trap: Trap = new Trap(sprite, index, type);
                 //                break;
 
-                //            case ImagesRes.BOULDER:
-                //                var boulder: Boulder = new Boulder(type, index, grid[index].add(type, this._container, grid), grid[index]);
-                //                this._items.push(boulder);
-                //                break;
+                case ImagesRes.BOULDER:
+                    Boulder boulder  = new Boulder(type, index, grid[index].add(type, this._container, grid), grid[index]);
+                    _items.Add(boulder);
+                    break;
 
                 //            case ImagesRes.TOWER:
                 //                var tower: Tower = new Tower(type, index, grid[index].add(type, this._container, grid), grid[index]);
@@ -127,10 +127,10 @@ namespace Assets.Scripts.Core
                 //                this._items.push(tower);
                 //                break;
 
-                //            case ImagesRes.BOULDER_MARK:
+                            case ImagesRes.BOULDER_MARK:
                 //            case ImagesRes.ARROW:
-                //                grid[index].addType(type);//for setting the direction
-                //                break;
+                                grid[index].AddType(type);//for setting the direction
+                               break;
 
                 case ImagesRes.SPIKES + "0":
                     Spikes spikes = new Spikes(type, index, grid[index].add(type, this._container, grid), grid[index]);

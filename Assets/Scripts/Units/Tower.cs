@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -24,15 +25,15 @@ namespace Assets.Scripts.Units
             //    view.y -= 15;
         }
 
-        //public init(i: number, grid: Tile[], units: { [index: number]: ICollidable; }): void
-        //{
+        public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        {
         //    this._grid = grid;
         //    this._directionIndex = Utils.findAround(grid, this.index, ImagesRes.ARROW);
         //    this._count = i;
         //    //console.log("checkInit", i);
         //    this.activate();
         //    units[this.index] = this._arrow;
-        //}
+        }
 
         public void activate()
         {

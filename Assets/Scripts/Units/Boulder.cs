@@ -1,4 +1,8 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using Assets.Scripts.Utils;
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -10,35 +14,28 @@ namespace Assets.Scripts.Units
 
         public Boulder(string type, int index, GameObject view, Tile tile) : base(index, type, view, tile)
         {
-            //    constructor(type: string, index: number, view: createjs.DisplayObject, tile: Tile)
-            //    {
-            //        super(index, type, view, tile);
-            //        tile.isWall = true;
-            //        view.x += 4;
-            //        view.y -= 13;
+            tile.isWall = true;
         }
 
-        //    public init(i:number, grid: Tile[]): void
-        //    {
-        //        this._grid = grid;
-        //        this._activeIndex = Utils.findAround(grid, this.index, ImagesRes.BOULDER_MARK);
-        //        //console.log("checkInit", this._activeIndex);
-        //    }
+        public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        {
+            _grid = grid;
+            _activeIndex = GridUtils.findAround(grid, this.index, ImagesRes.BOULDER_MARK);
+        }
 
-            public void activate()
-            {
-        //        this.state = Unit.ON;
-        //        this.index = this._activeIndex;
-        //        createjs.Tween.get(this.bitmap).
-        //            to({ x: this._grid[this.index].x + 4, y: this._grid[this.index].y - 13 },300, createjs.Ease.linear)
-        //            .call(this.completeHandler, [], this);
-            }
+        public void activate()
+        {
+            this.state = Unit.ON;
+            this.index = _activeIndex;
+            view.transform.DOLocalMove(new Vector3(_grid[this.index].x, _grid[this.index].y + 0.13f), 0.3f)
+                .SetEase(Ease.Linear).OnComplete(completeHandler);
+        }
 
-        //    private completeHandler(): void
-        //    {
-        //        this.tile.isWall = false;
-        //        this._grid[this.index].isWall = true;
-        //    }
+        private void completeHandler()
+        {
+            tile.isWall = false;
+            _grid[this.index].isWall = true;
+        }
 
         //    public destroy(): void
         //    {

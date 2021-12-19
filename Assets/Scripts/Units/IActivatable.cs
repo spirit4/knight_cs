@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -8,6 +9,6 @@ namespace Assets.Scripts.Units
         public void activate();
         //public void destroy();
 
-       // public void init(i:number, grid?: Tile[], units?:{[index: number]: ICollidable; });
+        public void init(int i, Tile[] grid = null, Dictionary<int, ICollidable> units = null);
     }
 }

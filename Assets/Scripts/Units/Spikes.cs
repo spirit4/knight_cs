@@ -1,5 +1,6 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -11,10 +12,10 @@ namespace Assets.Scripts.Units
             tile.isWall = true;
         }
 
-        //public init(): void
-        //{
+        public void  init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
+        {
         //    //empty
-        //}
+        }
 
         public void activate()
         {

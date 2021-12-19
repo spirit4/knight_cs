@@ -126,12 +126,14 @@ namespace Assets.Scripts.Core
                     dObject.transform.localPosition = new Vector3(this.x, this.y + 0.06f);
                     break;
 
-                //        case ImagesRes.BOULDER:
-                //        case ImagesRes.TOWER:
-                //            dObject = new createjs.Bitmap(bd);
-                //            dObject.x = this.x;
-                //            dObject.y = this.y;
-                //            break;
+                case ImagesRes.BOULDER:
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.13f);
+                    //        case ImagesRes.TOWER:
+                    //            dObject = new createjs.Bitmap(bd);
+                    //            dObject.x = this.x;
+                    //            dObject.y = this.y;
+                    break;
 
                 case ImagesRes.EXIT:
                     dObject.transform.SetParent(container.gameObject.transform);

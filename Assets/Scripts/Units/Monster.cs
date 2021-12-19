@@ -3,6 +3,7 @@ using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -118,13 +119,13 @@ namespace Assets.Scripts.Units
         //     //empty
         }
 
-        //public init(): void
-        //{
+        public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        {
         //    if (this._directionX == 1 || this._directionY == 1)
         //    {
         //        this._grid[this._pontIndex2].setIndex(this);
         //    }
-        //}
+        }
 
         //public destroy(): void
         //{
