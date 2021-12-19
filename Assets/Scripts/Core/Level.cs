@@ -12,7 +12,7 @@ namespace Assets.Scripts.Core
         private Component _container;
 
         private Hero _hero;
-        //private _mill: MillPress;
+        private MillPress _mill;
         private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
 
@@ -31,9 +31,7 @@ namespace Assets.Scripts.Core
             this._tilesBg = new List<GameObject>();
             this._decorBg = new List<GameObject>();
 
-            //var cells = JSON.Parse(JSONRes.level0); 
-            //Debug.Log(Progress.currentLevel);
-            var cells = JSON.Parse(JSONRes.levels[Progress.currentLevel]); ;// new ExpandoObject[10];
+            var cells = JSON.Parse(JSONRes.levels[Progress.currentLevel]);
 
             int index;
             List<string> types;
@@ -76,14 +74,13 @@ namespace Assets.Scripts.Core
                     _hero = new Hero(index, gameObject);
                     break;
 
-                //            case ImagesRes.MILL:
-                //                container = this._mill = new MillPress(type, index);
-                //                this._container.addChild(container);
-                //                grid[index].isDear = true;
-                //                grid[index].addType(type);
-                //                grid[index].objects.push(container);//dirty hack
-                //                
-                //                break;
+                case ImagesRes.MILL:
+                    gameObject = new GameObject();
+                    _mill = new MillPress(type, index, gameObject, _container);
+                    grid[index].isDear = true;
+                    grid[index].AddType(type);
+                    grid[index].AddObject(gameObject);
+                    break;
 
                 //TODO fix animations pivots all 3
                 case string x when x.StartsWith(ImagesRes.STAR + 0): //helmet
@@ -135,10 +132,10 @@ namespace Assets.Scripts.Core
                 //                grid[index].addType(type);//for setting the direction
                 //                break;
 
-                //            case ImagesRes.SPIKES + 0:
-                //                var spikes: Spikes = new Spikes(type, index, grid[index].add(type, this._container, grid), grid[index]);
-                //                this._items.push(spikes);
-                //                break;
+                case ImagesRes.SPIKES + "0":
+                    Spikes spikes = new Spikes(type, index, grid[index].add(type, this._container, grid), grid[index]);
+                    _items.Add(spikes);
+                    break;
 
                 case string x when x.StartsWith(ImagesRes.DECOR):
                     //bitmap = < createjs.Bitmap > grid[index].add(type, this._container, grid);
@@ -153,15 +150,14 @@ namespace Assets.Scripts.Core
                 case ImagesRes.MONSTER:
                     Monster monster;
                     int id = 0;
-                    //Debug.Log("[case ImagesRes.MONSTER1: ]" + grid[index].y);
+
                     foreach (KeyValuePair<int, ICollidable> pair in this._units)
                     {
                         //Debug.Log("[case ImagesRes.MONSTER2: ]" + pair.Value.type + pair.Key);
                         if (pair.Value.type == type)
                         {
                             monster = pair.Value as Monster;
-                            //Debug.Log("[11111: ]" + monster.type + type);
-                            //Debug.Log("[22222: ]" + monster.x + "       " +grid[index].x + "       " + monster.y + "       " + grid[index].y);
+
                             if (monster.type == type && (monster.x == grid[index].x || monster.y == grid[index].y))
                             {
                                 monster.setPointIndex2(index);
@@ -220,10 +216,14 @@ namespace Assets.Scripts.Core
 
         }
 
-        //public get mill(): MillPress
-        //{
-        //    return this._mill;
-        //}
+        public MillPress mill
+        {
+            get
+            {
+                return _mill;
+            }
+
+        }
 
         //private Dictionary<int, ICollidable> _units;
         //public get units(): {[index number]: ICollidable; }
@@ -239,9 +239,12 @@ namespace Assets.Scripts.Core
             }
         }
 
-        //public get items(): IActivatable[]
-        //{
-        //    return this._items;
-        //}
+        public List<IActivatable> items
+        {
+            get
+            {
+                return _items;
+            }
+        }
     }
 }

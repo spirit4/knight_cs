@@ -25,11 +25,11 @@ namespace Assets.Scripts.Units
         {
             //this.mouseChildren = false;
 
-            this._view = view;
-            this._tile = tile;
-            this._index = index;
-            this._type = type;
-            this._state = Unit.ON;
+            _view = view;
+            _tile = tile;
+            _index = index;
+            _type = type;
+            _state = Unit.ON;
         }
 
         public void destroy()
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Units
         {
             get
             {
-                return this._view;
+                return _view;
             }
         }
 
@@ -90,37 +90,40 @@ namespace Assets.Scripts.Units
         {
             get
             {
-                return this._index;
+                return _index;
             }
             set
             {
-                this._index = value;
+                _index = value;
             }
         }
         public string type
         {
             get
             {
-                return this._type;
+                return _type;
             }
         }
         public string state
         {
             set
             {
-                this._state = value;
+                _state = value;
                 //console.log("[set state]",value, this)
             }
             get
             {
-                return this._state;
+                return _state;
             }
         }
 
-        //    public get tile(): Tile
-        //    {
-        //        return this._tile;
-        //    }
+        public Tile tile
+        {
+            get
+            {
+                return _tile;
+            }
+        }
 
     }
 }

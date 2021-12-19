@@ -1,96 +1,90 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
     public class MillPress : Unit
     {
-        //private _vane: createjs.Bitmap;
-        //private _grid: Tile[];
+        private GameObject _vane;
+        private Tile[] _grid;
 
-        public MillPress(string type, int index, GameObject view) : base(index, type, view)
+        public MillPress(string type, int index, GameObject view, Component container) : base(index, type, view)
         {
-            
-            //    super(index, type);
+            this.state = Unit.OFF;
 
-            //    this.state = Unit.OFF;
+            this._grid = Controller.instance.model.grid;
+            this.x = this._grid[index].x;
+            this.y = this._grid[index].y;
 
-            //    var bd: HTMLImageElement = ImagesRes.getImage(type);
-            //    var bitmap:createjs.Bitmap = new createjs.Bitmap(bd);
-            //    bitmap.snapToPixel = true;
-            //    this.addChild(bitmap);
-            //    this.view = bitmap;
+            view.AddComponent<SpriteRenderer>();
+            view.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
-            //    this._grid = Core.instance.model.grid;
-            //    this.x = this._grid[index].x;
-            //    this.y = this._grid[index].y;
-            //    bitmap.x = 7;
-            //    bitmap.y = -30;
+            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            view.GetComponent<SpriteRenderer>().sortingOrder = index;
+            view.name = type;
 
-            //    this.addMill();
-            }
+            view.transform.SetParent(container.gameObject.transform);
+            view.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y + 0.22f);
 
-            //public activate(): void
-            //{
-            //    if (this.state != Unit.OFF)
-            //    {
-            //        return;
-            //    }
+            AddVane();
+        }
 
-            //    this.state = Unit.STARTED;
+        public void activate()
+        {
+            if (this.state != Unit.OFF)
+                return;
 
-            //    this.scaleX = this.scaleY = 1.2;
-            //    this.x = this._grid[this.index].x - 6;
-            //    this.y = this._grid[this.index].y - 12;
-            //    createjs.Tween.get(this).wait(300).call(this.comeback, [], this);
-            //}
+            this.state = Unit.STARTED;
 
-            //private comeback(): void
-            //{
-            //    this.scaleX = this.scaleY = 1;
+            view.transform.localScale = new Vector3(1.2f, 1.2f);
+            DOTween.Sequence().AppendInterval(0.3f).AppendCallback(comeback);
+        }
+
+        private void comeback()
+        {
+            view.transform.localScale = new Vector3(1.0f, 1.0f);
             //    this.x = this._grid[this.index].x;
             //    this.y = this._grid[this.index].y;
-            //}
-
-            //private addMill(): void
-            //{
-            //    var bd: HTMLImageElement = <HTMLImageElement> ImagesRes.getImage(ImagesRes.MILL_VANE);
-            //    this._vane = new createjs.Bitmap(bd);
-            //    this._vane.snapToPixel = true;
-            //    this._vane.x = 34;
-            //    this._vane.y = -15;
-            //    this._vane.rotation = 35;
-            //    this._vane.regX = bd.width >> 1;
-            //    this._vane.regY = bd.height >> 1;
-            //    this.addChild(this._vane);
-            //}
-
-            //public startRotateMill(): void
-            //{
-            //    if (this.state == Unit.ON)
-            //    {
-            //        return;
-            //    }
-
-            //    AchController.instance.addParam(AchController.MILL_LAUNCHED);
-
-            //    this.state = Unit.ON;
-            //    this.rotateMill();
-            //}
-
-            //private rotateMill(): void
-            //{
-            //    this._vane.rotation = 35;
-            //    createjs.Tween.get(this._vane).to({ rotation: 395 }, 1700, createjs.Ease.linear).call(this.rotateMill, [], this);
-            //}
-
-            //public destroy(): void
-            //{
-            //    super.destroy();
-            //    createjs.Tween.removeTweens(this._vane);
-
-            //    this._vane = null;
-            //    this._grid = null;
-            //}
         }
+
+        private void AddVane()
+        {
+            _vane = new GameObject("vane");
+            _vane.AddComponent<SpriteRenderer>();
+            _vane.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.MILL_VANE);
+            _vane.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            _vane.GetComponent<SpriteRenderer>().sortingOrder = index + 1;
+
+            _vane.transform.SetParent(view.transform);
+            _vane.transform.localPosition = new Vector3(0.02f, 0.28f);
+            _vane.transform.Rotate(0, 0, -45);
+        }
+
+        public void startRotateMill()
+        {
+            if (this.state == Unit.ON)
+                return;
+
+            //AchController.instance.addParam(AchController.MILL_LAUNCHED);
+
+            this.state = Unit.ON;
+            rotateMill();
+        }
+
+        private void rotateMill()
+        {
+            _vane.transform.DORotate(new Vector3(0, 0, -395), 1.7f).SetLoops(-1).SetEase(Ease.Linear);
+        }
+
+        //public destroy(): void
+        //{
+        //    super.destroy();
+        //    createjs.Tween.removeTweens(this._vane);
+
+        //    this._vane = null;
+        //    this._grid = null;
+        //}
+    }
 }

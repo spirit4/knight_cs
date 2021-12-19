@@ -21,7 +21,7 @@ namespace Assets.Scripts.Unity
         private GameObject _levelsPanel;
         private GameObject _creditsPanel;
         private GameObject _achsPanel;
-        //private GameObject _popup;
+        //private GameObject _popup;//// all inside
 
         private static bool isFirstLoad = true;
 
@@ -52,10 +52,10 @@ namespace Assets.Scripts.Unity
             //if (!_popup)
             //{
             //    _popup = GameObject.Find("PanelVictory");
-            //    _popup.SetActive(false);
+            //    //_popup.SetActive(false);
             //}
 
-            if(GameObject.Find("Panel_MainMenu") != null)
+            if (GameObject.Find("Panel_MainMenu") != null)
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
@@ -160,9 +160,5 @@ namespace Assets.Scripts.Unity
 
         }
 
-        //public void ShowCredits()
-        //{
-
-        //}
     }
 }

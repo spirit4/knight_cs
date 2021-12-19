@@ -5,8 +5,9 @@ namespace Assets.Scripts.Units
 {
     public interface IActivatable
     {
-        //    activate() : void;
-        //destroy() : void;
-        //init(i:number, grid?: Tile[], units?:{[index: number]: ICollidable; }): void;
+        public void activate();
+        //public void destroy();
+
+       // public void init(i:number, grid?: Tile[], units?:{[index: number]: ICollidable; });
     }
 }

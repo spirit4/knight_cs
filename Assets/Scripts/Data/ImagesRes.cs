@@ -17,7 +17,7 @@ namespace Assets.Scripts.Data
         public const string STAR = "star";   //helm, shield, sword
         public const string EXIT = "exit";
         public const string MILL = "mill";
-        //public const string MILL_VANE string = "millVane";
+        public const string MILL_VANE  = "mill_paddle_game";
         public const string WATER = "water";
         public const string PINE = "pine";
         public const string STONE = "stone";
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Data
         public const string BRIDGE = "brige";
         //public const string TOWER string = "tower";
         //public const string ARROW string = "arrow";
-        //public const string SPIKES string = "spikes";
+        public const string SPIKES  = "spikes";
         public const string TRAP = "trap";
         //public const string BOULDER string = "boulder";
         //public const string BOULDER_MARK string = "boulderMark";
@@ -327,6 +327,7 @@ namespace Assets.Scripts.Data
         //    ImagesRes.A_ITEMs =  { star0: "helmet", star1: "shield", star2: "sword" };
         //}
 
+        /** <summary>type_0 also works</summary> */
         public static Sprite getImage(string name)
         {
             Sprite bd = null;

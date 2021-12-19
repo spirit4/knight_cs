@@ -28,12 +28,12 @@ namespace Assets.Scripts.Core
 
         private Level _level;
         private Hero _hero;
-        //    private _mill: MillPress;
+        private MillPress _mill;
 
         private Pathfinder _pathfinder;
 
         private Dictionary<int, ICollidable> _units;//private _units: { [index number]: ICollidable; };
-        //private _items: IActivatable[];
+        private List<IActivatable> _items;
 
         //private _helpGameObject
         //private _helpShape: createjs.Shape;
@@ -56,8 +56,8 @@ namespace Assets.Scripts.Core
             //this._mainStage.addChild(this._core);
 
 
-            this._model = Controller.instance.model;
-            this._grid = this._model.grid;
+            _model = Controller.instance.model;
+            _grid = _model.grid;
 
 
             //this.x = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
@@ -67,10 +67,10 @@ namespace Assets.Scripts.Core
 
             //move to awake from here ------------------------------->>>>>>>>>>>>>>>>>
             //
-            //this._mill = this._level.mill;
 
 
-            //this._items = this._level.items;
+
+
 
 
 
@@ -127,7 +127,9 @@ namespace Assets.Scripts.Core
 
             _targetMark = new TargetMark(this.gameObject);
 
-            _units = this._level.units;
+            _units = _level.units;
+            _mill = _level.mill;
+            _items = _level.items;
 
             Text level = GameObject.Find("Canvas/PanelGameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
             level.text = (Progress.currentLevel + 1).ToString();
@@ -143,13 +145,14 @@ namespace Assets.Scripts.Core
 
         private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
         {
+            
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            //Debug.Log(_hero.HeroState);
+            //Debug.Log("OnMouseDown " + Input.c.name);
             if (_hero.HeroState != Hero.IDLE)
             {
-                this._hero.stop();
+                _hero.stop();
                 return;
             }
 
@@ -170,34 +173,36 @@ namespace Assets.Scripts.Core
             //        return;
             //    }
 
-
+            //seems not nessasery - look hero reached-------------------------------------------------------
             //    if (e.target instanceof MillPress && Utils.isNeighbours(index, this._hero.index))
             //        {
             //        (< MillPress > e.target).startRotateMill();
             //    }
 
-            if (this._grid[index].isWall)
-            {
+            //Debug.Log("OnMouseDown " + _grid[index].isWall);
+            if (_grid[index].isWall)
                 return;
-            }
 
-            this._pathfinder.Init(this._grid); //TODO must be single Init
-            this._pathfinder.FindPath(this._hero.index, index);
-            //Debug.Log("Game Path  " + _pathfinder.Path.ToString());
-            if (_pathfinder.Path.Count > 0 && (!this._grid[index].isContainType(ImagesRes.MILL)))// || e.target instanceof MillPress))
+
+            _pathfinder.Init(_grid); //TODO must be single Init
+            _pathfinder.FindPath(_hero.index, index);
+            //Debug.Log("OnMouseDown " + _pathfinder.Path.Count);
+            //Debug.Log("Game Path  " + _pathfinder.Path.ToString()); //forget it, because of raycast
+            if (_pathfinder.Path.Count > 0)// && (!_grid[index].isContainType(ImagesRes.MILL)))// || e.target instanceof MillPress))
             {
                 List<int> path = _pathfinder.Path;
-                //if (e.target instanceof MillPress)
-                //        {
-                //    path.pop();
-                //}
+                if (_grid[index].isContainType(ImagesRes.MILL))
+                {
+                    _mill.activate();
+                    path.RemoveAt(path.Count - 1);
+                }
 
                 if (path.Count > 0)
                 {
                     //            this.removeHint();
 
                     _targetMark.placeByTap(index);
-                    this.showPath(this._pathfinder.Path);
+                    showPath(this._pathfinder.Path);
 
                     //            var arrow: Unit;
                     //                for (var i in this._units)
@@ -215,31 +220,28 @@ namespace Assets.Scripts.Core
                     //            }
                     //Debug.Log("Game [path]: " + path.Count);
 
-                    this._hero.moveToCell(path);
+                    _hero.moveToCell(path);
                 }
 
-                //        if (e.target instanceof MillPress)
-                //            {
-                //            (< MillPress > e.target).activate();
-                //        }
             }
         }
 
-        //public activateItems(): void
-        //{
-        //    var len number = this._items.Length;
-        //    for (int i = 0; i < len; i++)
-        //        {
-        //        if (!(this._items[i] instanceof Tower))
-        //            {
-        //            this._items[i].activate();
-        //        }
-        //    }
-        //}
+        public void activateItems()
+        {
+            int len = _items.Count;
+            for (int i = 0; i < len; i++)
+            {
+                if (!(_items[i] is Tower))
+                {
+                    _items[i].activate();
+                }
+            }
+        }
 
         private void reachedHandler(IMessage rMessage)//e: GameEvent) : void
         {
             //Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
+            //Debug.Log("[reached] " + GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL));
 
             //    if (this._isStartArrowCheck)
             //    {
@@ -248,21 +250,21 @@ namespace Assets.Scripts.Core
             //        this._isStartArrowCheck = false;
             //    }
 
-            this.hidePoints();
+            hidePoints();
 
             //    if (Progress.currentLevel == 0 && this._hero.index == 54) //to guide
             //    {
             //        this.createHintAfterAction();
             //    }
 
-            //    if (Utils.findAround(this._grid, this._hero.index, ImagesRes.MILL) != -1)
-            //    {
-            //        if (this._mill.state != Unit.ON)
-            //        {
-            //            this._mill.startRotateMill();
-            //            this.activateItems();
-            //        }
-            //    }
+            if (GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL) != -1)
+            {
+                if (_mill.state != Unit.ON)
+                {
+                    _mill.startRotateMill();
+                    activateItems();
+                }
+            }
         }
 
         //private collisionProcess(e: GameEvent): void

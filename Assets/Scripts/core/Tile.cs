@@ -47,7 +47,7 @@ namespace Assets.Scripts.Core
             {
                 //dObject.transform.SetParent(container.gameObject.transform);
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = index;//todo???
+                dObject.GetComponent<SpriteRenderer>().sortingOrder = index;//TODO???
                 //dObject.transform.localPosition = new Vector3(x - 0.03f, y + 0.06f, 0);
             }
 
@@ -121,11 +121,10 @@ namespace Assets.Scripts.Core
                     this.isWall = false;
                     break;
 
-                //        case ImagesRes.SPIKES + 0:
-                //            dObject = new createjs.Bitmap(bd);
-                //            dObject.x = this.x + 2;
-                //            dObject.y = this.y + 2;
-                //            break;
+                case ImagesRes.SPIKES + "0":
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.06f);
+                    break;
 
                 //        case ImagesRes.BOULDER:
                 //        case ImagesRes.TOWER:

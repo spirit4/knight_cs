@@ -1,4 +1,5 @@
 using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
@@ -15,12 +16,12 @@ namespace Assets.Scripts.Units
         //    //empty
         //}
 
-        //public activate(): void
-        //{
-        //    this.state = Unit.ON;
-        //    this.bitmap.image = ImagesRes.getImage(ImagesRes.SPIKES + 1);
-        //    this.tile.isWall = false;
-        //}
+        public void activate()
+        {
+            this.state = Unit.ON;
+            view.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.SPIKES + "1");
+            tile.isWall = false;
+        }
 
     }
 }

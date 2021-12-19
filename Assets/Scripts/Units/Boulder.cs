@@ -25,14 +25,14 @@ namespace Assets.Scripts.Units
         //        //console.log("checkInit", this._activeIndex);
         //    }
 
-        //    public activate(): void
-        //    {
+            public void activate()
+            {
         //        this.state = Unit.ON;
         //        this.index = this._activeIndex;
         //        createjs.Tween.get(this.bitmap).
         //            to({ x: this._grid[this.index].x + 4, y: this._grid[this.index].y - 13 },300, createjs.Ease.linear)
         //            .call(this.completeHandler, [], this);
-        //    }
+            }
 
         //    private completeHandler(): void
         //    {

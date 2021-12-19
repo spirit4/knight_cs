@@ -35,7 +35,7 @@ namespace Assets.Scripts.Units
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 95;//TODO --------------??
-            view.name = type + index;
+            view.name = type + id;
             
             view.transform.SetParent(container.gameObject.transform);
             view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
@@ -113,10 +113,10 @@ namespace Assets.Scripts.Units
             setDirection();
         }
 
-        //public activate(): void
-        //{
+        public void activate()
+        {
         //     //empty
-        //}
+        }
 
         //public init(): void
         //{

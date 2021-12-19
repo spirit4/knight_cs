@@ -25,9 +25,7 @@ namespace Assets.Scripts.Unity
             Animator anim = _smoke.GetComponent<Animator>();
             anim.enabled = false;
 
-            Sequence mySequence = DOTween.Sequence();
-            mySequence.AppendInterval(3.0f);
-            mySequence.AppendCallback(PlayAgain);
+            DOTween.Sequence().AppendInterval(3.0f).AppendCallback(PlayAgain);
         }
 
         private void PlayAgain()

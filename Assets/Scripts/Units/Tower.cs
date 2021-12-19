@@ -34,8 +34,8 @@ namespace Assets.Scripts.Units
         //    units[this.index] = this._arrow;
         //}
 
-        //public activate(): void
-        //{
+        public void activate()
+        {
         //    this._arrow = new TowerArrow(ImagesRes.ARROW, this.index);
         //    this._arrow.snapToPixel = true;
         //    this.view.parent.addChildAt(this._arrow, this.view.parent.getChildIndex(this.view) - 1);
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Units
         //    //console.log("IOOOEIWIEIWE2", this._grid[this.index].x / Config.SIZE_W, Utils.getPoint(this.index));
 
         //    createjs.Tween.get(this).wait(this._speedTime * 7 + 700 * this._count).call(this.shoot, [], this);
-        //}
+        }
 
         //private shoot(): void
         //{

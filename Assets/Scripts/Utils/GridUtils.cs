@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,27 +47,27 @@ namespace Assets.Scripts.Utils
         //    return false;
         //}
 
-        //public static findAround(grid: Tile[], index number, type string) number
-        //{
-        //    if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].isContainType(type))
-        //    {
-        //        return index + 1;
-        //    }
-        //    else if (index - 1 >= 0 && grid[index - 1].isContainType(type))
-        //    {
-        //        return index - 1;
-        //    }
-        //    else if (index + Config.WIDTH < Config.WIDTH * Config.HEIGHT && grid[index + Config.WIDTH].isContainType(type))
-        //    {
-        //        return index + Config.WIDTH;
-        //    }
-        //    else if (index - Config.WIDTH >= 0 && grid[index - Config.WIDTH].isContainType(type))
-        //    {
-        //        return index - Config.WIDTH;
-        //    }
+        public static int findAround(Tile[] grid, int index, string type)
+        {
+            if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].isContainType(type))
+            {
+                return index + 1;
+            }
+            else if (index - 1 >= 0 && grid[index - 1].isContainType(type))
+            {
+                return index - 1;
+            }
+            else if (index + Config.WIDTH < Config.WIDTH * Config.HEIGHT && grid[index + Config.WIDTH].isContainType(type))
+            {
+                return index + Config.WIDTH;
+            }
+            else if (index - Config.WIDTH >= 0 && grid[index - Config.WIDTH].isContainType(type))
+            {
+                return index - Config.WIDTH;
+            }
 
-        //    return -1;
-        //}
+            return -1;
+        }
 
         //public static addBitmap(x number, y number, type string, container: createjs.Container, mouseEnabled ?: boolean, rot ? number, isRegCenter ?: boolean): void;
         //public static addBitmap(x number, y number, bd: HTMLImageElement, container: createjs.Container, mouseEnabled ?: boolean, rot ? number, isRegCenter ?: boolean): void;
@@ -113,6 +114,6 @@ namespace Assets.Scripts.Utils
         //    return count;
         //}
 
-   }
+    }
 
 }
