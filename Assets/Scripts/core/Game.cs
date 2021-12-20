@@ -145,7 +145,7 @@ namespace Assets.Scripts.Core
 
         private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
         {
-            
+
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
@@ -494,15 +494,15 @@ namespace Assets.Scripts.Core
         //Bounds m_Collider, m_Collider2;
         public void Update()
         {
-            this.checkCollision(this._units, -0.6f, 0, 0.2f, 0.8f);
-
+            checkCollision(this._units, 0.3f, 0.3f, 0.3f, 0.2f);
         }
 
-        public void checkCollision(Dictionary<int, ICollidable> vector, float x1, float x2, float y1, float y2)
+        public void checkCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
         {
             GameObject dObject;
-            float heroX = _hero.view.transform.localPosition.x;// + Config.SIZE_W * 0.5;
-            float heroY = _hero.view.transform.localPosition.y;// +Config.SIZE_H * 0.5;
+            //magic number
+            float heroX = _hero.view.transform.localPosition.x;// + 0.3f;// + Config.SIZE_W * 0.5f;
+            float heroY = _hero.view.transform.localPosition.y + 0.15f;// + Config.SIZE_H * 0.5f;
             float objX;
             float objY;
 
@@ -510,62 +510,65 @@ namespace Assets.Scripts.Core
             {
                 dObject = pair.Value.view;
 
-                objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5;
-                objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5;
+                objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5f;
+                objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5f;
 
-                // Debug.Log("---" + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
-                if (heroX > objX + x1 && heroX < objX + x2)
+                //Debug.Log("-1-"+dObject.name  + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
+                //if (heroX > objX + x1 && heroX < objX + x2)
+                //{
+                //    if (heroY > objY + y1 && heroY < objY + y2)
+                if ((heroX + w1 >= objX - w2 && heroX - w1 <= objX + w2) && (heroY - h1 <= objY + h2 && heroY + h1 >= objY - h2))
                 {
-                    if (heroY > objY + y1 && heroY < objY + y2)
+                    //if (heroY > objY + y1 && heroY < objY + y2)
+                    //{
+                    if (_hero.HeroState != Hero.DEATH)
                     {
-                        if (_hero.HeroState != Hero.DEATH)
+                        Debug.Log("-2---------"+ dObject.name + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
+
+                        //if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
+                        //{
+                        Monster monster = pair.Value as Monster;
+                        //var index number = this._items.indexOf(monster);
+                        //this._items.splice(index, 1);                  not now, maybe never
+                        //this.removeChild(monster);-------------------------------------------
+                        //}
+
+                        //vector[i] = null;
+                        //delete vector[i];
+                        vector.Remove(pair.Key);
+
+                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(this._hero.stateItems != Hero.FULL)
                         {
-                            //sconsole.log("[checkCollision]", this._hero)
+                            //    if (dObject instanceof Monster)
+                            //            {
+                            //        AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
+                            //    }
+                            //            else if (dObject instanceof TowerArrow)
+                            //            {
+                            //        AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
+                            //    }
+                            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject], this);
+                            WaitAndCall(100, hideActors, pair.Value, true);
+                            _hero.HeroState = Hero.DEATH;
+                            showBoom();
 
-                            //if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
-                            //{
-                            Monster monster = pair.Value as Monster;
-                            //var index number = this._items.indexOf(monster);
-                            //this._items.splice(index, 1);                  not now, maybe never
-                            //this.removeChild(monster);-------------------------------------------
-                            //}
-
-                            //vector[i] = null;
-                            //delete vector[i];
-                            vector.Remove(pair.Key);
-
-                            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(this._hero.stateItems != Hero.FULL)
-                            {
-                                //    if (dObject instanceof Monster)
-                                //            {
-                                //        AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
-                                //    }
-                                //            else if (dObject instanceof TowerArrow)
-                                //            {
-                                //        AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
-                                //    }
-                                //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject], this);
-                                WaitAndCall(100, hideActors, pair.Value, true);
-                                _hero.HeroState = Hero.DEATH;
-                                showBoom();
-
-                                //    if (Core.instance.api)
-                                //    {
-                                //        Core.instance.api.gameOver();
-                                //    }
-                            }
-                            else if (pair.Value is Monster)
-                            {
-                                //    AchController.instance.addParam(AchController.MONSTER_DEAD);
-
-                                //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
-                                WaitAndCall(100, hideActors, pair.Value, false); //killing the monster
-                                showBoom(ImagesRes.A_ATTACK_BOOM);
-                            }
-
-                            break;
+                            //    if (Core.instance.api)
+                            //    {
+                            //        Core.instance.api.gameOver();
+                            //    }
                         }
+                        else if (pair.Value is Monster)
+                        {
+                            //    AchController.instance.addParam(AchController.MONSTER_DEAD);
+
+                            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
+                            WaitAndCall(100, hideActors, pair.Value, false); //killing the monster
+                            showBoom(ImagesRes.A_ATTACK_BOOM);
+                        }
+
+                        break;
                     }
+                    //}
                 }
             }
         }
@@ -600,8 +603,8 @@ namespace Assets.Scripts.Core
             //    this.addChild(sprite);
             //    sprite.on(GameEvent.ANIMATION_COMPLETE, this.boomCompleteHandler, this);
             //    sprite.gotoAndPlay(boomType);
-            float boomX = _hero.view.transform.localPosition.x + Config.SIZE_W / 2;
-            float boomY = _hero.view.transform.localPosition.y - Config.SIZE_H / 2 - 0.1f;
+            float boomX = _hero.view.transform.localPosition.x;// + Config.SIZE_W / 2;
+            float boomY = _hero.view.transform.localPosition.y + 0.25f;// - Config.SIZE_H / 2 - 0.1f;
             GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             gameObject.transform.SetParent(this.gameObject.transform);
             gameObject.transform.localPosition = new Vector3(boomX, boomY);

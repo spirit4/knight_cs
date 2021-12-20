@@ -69,9 +69,11 @@ namespace Assets.Scripts.Core
             switch (type)
             {
                 case ImagesRes.HERO:
+                    var gObject = new GameObject("HeroContainer");
                     gameObject = GameObject.Instantiate(ImagesRes.prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(_container.gameObject.transform);
-                    _hero = new Hero(index, gameObject);
+                    gameObject.transform.SetParent(gObject.transform);
+                    gObject.transform.SetParent(_container.gameObject.transform);
+                    _hero = new Hero(index, gameObject,gObject);
                     break;
 
                 case ImagesRes.MILL:

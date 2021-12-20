@@ -27,31 +27,41 @@ namespace Assets.Scripts.Units
         //static currentTween: createjs.Tween;
         //static currentView: createjs.Sprite;
 
-        private float MARGIN_X = -0.3f; //todo fix it ? or not
-        private const float MARGIN_Y = 0.7f;
+        private const float MARGIN_X = -0.3f;
+        private const float MARGIN_Y = 0.65f;
 
         private int _heroState;
         private bool _hasShield = false;
         private bool _hasSword = false;
         private bool _hasHelmet = false;
 
+        private GameObject _inside;
+
         //debug
         //private bool _hasShield = true;
         //private bool _hasSword = true;
         //private bool _hasHelmet = true;
 
-        public Hero(int index, GameObject view) : base(index, ImagesRes.HERO, view)
+        public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
         {
             this._grid = Controller.instance.model.grid;
 
             this.x = this._grid[index].x; //for choosing direction
             this.y = this._grid[index].y;
 
-            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 100;//TODO sorting
-            view.name = type;
+            _inside = inside;
 
-            view.transform.localPosition = new Vector3(this.x + MARGIN_X, this.y + MARGIN_Y);
+            view.AddComponent<SpriteRenderer>();
+            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            view.GetComponent<SpriteRenderer>().sortingOrder = 100;
+
+            _inside.name = type;
+            _inside.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            _inside.GetComponent<SpriteRenderer>().sortingOrder = 100;
+
+            view.transform.localPosition = new Vector3(this.x, this.y);
+            _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
+            //_inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
 
             _heroState = IDLE;
 
@@ -96,8 +106,8 @@ namespace Assets.Scripts.Units
             //this._directionY = 0;
 
 
-            this.x = view.transform.localPosition.x - MARGIN_X;
-            this.y = view.transform.localPosition.y - MARGIN_Y;
+            this.x = view.transform.localPosition.x;// - MARGIN_X;
+            this.y = view.transform.localPosition.y;// - MARGIN_Y;
 
             // Debug.Log("--MOVE1--" + point);
             //Debug.Log("--MOVE2--x: " + x + " y: " + y);
@@ -108,13 +118,13 @@ namespace Assets.Scripts.Units
             {
                 step = 1;
                 this._directionX = 1;
-                MARGIN_X = -0.3f;
+                _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
             }
             else if (point.y == this.y && point.x < this.x)
             {
                 step = -1;
                 this._directionX = -1;
-                MARGIN_X = 0.3f;
+                _inside.transform.localPosition = new Vector3(-MARGIN_X, MARGIN_Y);
             }
             else if (point.x == this.x && point.y > this.y)
             {
@@ -127,9 +137,9 @@ namespace Assets.Scripts.Units
                 // this._directionY = 1;
             }
 
-            this.x = view.transform.localPosition.x + MARGIN_X;
-            this.y = view.transform.localPosition.y + MARGIN_Y;
-            view.transform.localPosition = new Vector3(_grid[currentIndex].x + MARGIN_X, _grid[currentIndex].y + MARGIN_Y);
+            this.x = view.transform.localPosition.x;// + MARGIN_X;
+            this.y = view.transform.localPosition.y;// + MARGIN_Y;
+            view.transform.localPosition = new Vector3(_grid[currentIndex].x, _grid[currentIndex].y);
 
             //Debug.Log("--stepX== " + point.x + " === " + this.x);
             //Debug.Log("--stepY== " + point.y + " === " + this.y);
@@ -159,7 +169,7 @@ namespace Assets.Scripts.Units
 
         private void changeView()
         {
-            Animator a = view.GetComponent<Animator>();
+            Animator a = _inside.GetComponent<Animator>();
             a.SetInteger("HeroState", _heroState);
             a.SetBool("HasHelmet", _hasHelmet);
             a.SetBool("HasSword", _hasSword);
@@ -167,11 +177,13 @@ namespace Assets.Scripts.Units
 
             if (_directionX == 1)
             {
-                view.GetComponent<SpriteRenderer>().flipX = false;
+                _inside.GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (this._directionX == -1)
             {
-                view.GetComponent<SpriteRenderer>().flipX = true;
+                //Debug.Log("--FLIP1 == " + view.transform.localPosition);
+                _inside.GetComponent<SpriteRenderer>().flipX = true;
+                //Debug.Log("--FLIP2 == " + view.transform.localPosition);
             }
 
             //            case Hero.NO_ITEMS:
@@ -328,14 +340,14 @@ namespace Assets.Scripts.Units
 
             _heroState = Hero.MOVE;
             //Debug.Log("changeView MOVE" + _heroState + "   " + HeroState);
-            view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
+            view.transform.DOLocalMove(new Vector3(_grid[index].x, _grid[index].y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
             if (this._path.Count == 0 && this._grid[this.index].isContainType(ImagesRes.EXIT))
             {
                 //Hero.currentTween = createjs.Tween.get(this).
                 //    to({ x: this._grid[this.index].x + Config.SIZE_W / 2, y: this._grid[this.index].y + Config.SIZE_H - 4, scaleX: 0, scaleY: 0, alpha: 0 }, this.SPEED * 4, createjs.Ease.linear).
                 //        call(handler, [], this);
                 view.transform.DOKill();
-                view.transform.DOLocalMove(new Vector3(_grid[index].x + MARGIN_X - 0.3f, _grid[index].y + MARGIN_Y - 0.25f - Config.SIZE_H), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                view.transform.DOLocalMove(new Vector3(_grid[index].x - 0.3f, _grid[index].y - 0.25f - Config.SIZE_H), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
                 view.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
                 view.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }
