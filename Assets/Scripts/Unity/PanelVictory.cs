@@ -4,6 +4,7 @@ using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Unity
 {
@@ -35,7 +36,14 @@ namespace Assets.Scripts.Unity
         public void Activate(IMessage rMessage = null)
         {
             this.gameObject.SetActive(true);
-            RotateMill();
+
+            if (Progress.currentLevel != 19)
+                RotateMill();
+            else
+            {
+                this.gameObject.GetComponent<Image>().sprite = ImagesRes.getImage("game_end");
+                vane.SetActive(false);
+            }
 
             CreateStars();
         }
@@ -125,8 +133,6 @@ namespace Assets.Scripts.Unity
         private void RotateMill()
         {
             vane.transform.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);
-            //this._vane.rotation = 45;
-            //createjs.Tween.get(this._vane, { ignoreGlobalPause: true }).to({ rotation: 395 }, 2000, createjs.Ease.linear).call(this.rotateMill, [], this);
         }
 
     }

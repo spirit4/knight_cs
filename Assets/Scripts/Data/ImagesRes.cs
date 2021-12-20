@@ -267,6 +267,8 @@ namespace Assets.Scripts.Data
                     tileSprites.Add(s.name, s);
                     //Debug.Log("[try] " + s.name);
                 }
+                Sprite gameEnd = Resources.Load<Sprite>("images/ui/game_end");
+                tileSprites.Add("game_end", gameEnd);//easy hack
 
                 GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
                 //Debug.Log(clips.Length);

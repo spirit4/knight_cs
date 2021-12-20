@@ -347,7 +347,8 @@ namespace Assets.Scripts.Units
                 //    to({ x: this._grid[this.index].x + Config.SIZE_W / 2, y: this._grid[this.index].y + Config.SIZE_H - 4, scaleX: 0, scaleY: 0, alpha: 0 }, this.SPEED * 4, createjs.Ease.linear).
                 //        call(handler, [], this);
                 view.transform.DOKill();
-                view.transform.DOLocalMove(new Vector3(_grid[index].x - 0.3f, _grid[index].y - 0.25f - Config.SIZE_H), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                //view.transform.DOLocalMove(new Vector3(_grid[index].x - 0.3f, _grid[index].y - 0.25f - Config.SIZE_H), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                view.transform.DOLocalMove(new Vector3(_grid[index].x, _grid[index].y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
                 view.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
                 view.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }

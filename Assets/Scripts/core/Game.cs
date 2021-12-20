@@ -122,7 +122,6 @@ namespace Assets.Scripts.Core
             //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
-            MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, showVictory);
             MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
 
             _targetMark = new TargetMark(this.gameObject);
@@ -466,35 +465,10 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        private void showVictory(IMessage rMessage)
-        {
-            //TODO delete?
-
-            //GameObject panel;
-            //    if (Core.instance.ga)
-            //    {
-            //        Core.instance.ga.send('pageview', "/LevelComplete-" + (Progress.currentLevel + 1));
-            //    }
-            //    //console.log("showVictory", Progress.currentLevel, Progress.levelsCompleted);
-            //    if (Progress.currentLevel < Progress.starsAllLevels.Length - 1)
-            //    {
-            //        this.parent.addChild(new Victory(this));
-
-            //panel = GameObject.Find("Canvas/PanelVictory");
-            //Debug.Log("showVictory: " );
-            //    }
-            //    else
-            //    {
-            //        this.parent.addChild(new GameVictory(this));
-            //    }
-            //panel.SetActive(true);
-
-        }
-
         //Bounds m_Collider, m_Collider2;
         public void Update()
         {
-            checkCollision(this._units, 0.3f, 0.3f, 0.3f, 0.2f);
+            checkCollision(this._units, 0.25f, 0.25f, 0.25f, 0.15f);
         }
 
         public void checkCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
@@ -523,7 +497,7 @@ namespace Assets.Scripts.Core
                     //{
                     if (_hero.HeroState != Hero.DEATH)
                     {
-                        Debug.Log("-2---------"+ dObject.name + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
+                        //Debug.Log("-2---------"+ dObject.name + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
 
                         //if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
                         //{
