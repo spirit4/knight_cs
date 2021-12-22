@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Unity
 {
-    public class PanelMainMenu : MonoBehaviour  //TODO new one for cresits, achs?!
+    public class PanelMainMenu : MonoBehaviour 
     {
 
         public GameObject vane;
