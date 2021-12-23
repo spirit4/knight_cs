@@ -153,7 +153,7 @@ namespace Assets.Scripts.Core
                     Monster monster;
                     int id = 0;
 
-                    foreach (KeyValuePair<int, ICollidable> pair in this._units)
+                    foreach (KeyValuePair<int, ICollidable> pair in _units)
                     {
                         //Debug.Log("[case ImagesRes.MONSTER2: ]" + pair.Value.type + pair.Key);
                         if (pair.Value.type == type)
@@ -190,24 +190,28 @@ namespace Assets.Scripts.Core
 
         }
 
-        //public destroy(): void
-        //{
-        //    Core.instance.bg.removeTiles();
+        public void destroy()
+        {
+            //    Core.instance.bg.removeTiles();
 
-        //    var len number = this._items.Length;
-        //    for (int i = 0; i < len; i++)
-        //        {
-        //        this._items[i].destroy();
-        //    }
+            //    var len number = this._items.Length;
+            //    for (int i = 0; i < len; i++)
+            //        {
+            //        this._items[i].destroy();
+            //    }
+            foreach (KeyValuePair<int, ICollidable> pair in _units)
+            {
+                pair.Value.destroy();
+            }
 
-        //    this._model = null;
-        //    this._container = null;
-        //    this._hero = null;
-        //    this._units = null;
-        //    this._mill = null;
-        //    this._items.Length = 0;
-        //    this._items = null;
-        //}
+                //    this._model = null;
+                //    this._container = null;
+                //    this._hero = null;
+                //    this._units = null;
+                //    this._mill = null;
+                //    this._items.Length = 0;
+                //    this._items = null;
+            }
 
         public Hero hero
         {

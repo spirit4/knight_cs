@@ -69,11 +69,6 @@ namespace Assets.Scripts.Core
             //
 
 
-
-
-
-
-
             //var g: createjs.Graphics = new createjs.Graphics();
             //var shape: createjs.Shape = new createjs.Shape();
             //g.beginFill('rgba(255,255,255, 1)');
@@ -85,10 +80,6 @@ namespace Assets.Scripts.Core
             //this.on(GUIEvent.MOUSE_DOWN, this.movedownHandler, this);
 
             //this.on(GameEvent.COLLISION, this.collisionProcess, this);
-
-
-
-
 
             //for (int i = 0; i < 15; i++)   //put on pool
             //    {
@@ -111,8 +102,8 @@ namespace Assets.Scripts.Core
             //ImagesRes.initAnimations();
             Controller.instance.bg.init();
 
-            this._level = new Level(this, this._model);
-            this._hero = this._level.hero;
+            _level = new Level(this, _model);
+            _hero = _level.hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
 
@@ -123,6 +114,8 @@ namespace Assets.Scripts.Core
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
             MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
+
+            MessageDispatcher.AddListener(GameEvent.QUIT, destroy);//leave game, from UIManager
 
             _targetMark = new TargetMark(this.gameObject);
 
@@ -337,8 +330,10 @@ namespace Assets.Scripts.Core
         //}
 
         //gone to Unity Editor
-        private void restartClickHandler()//e: createjs.MouseEvent = null) : void
+        private void restartHandler()//e: createjs.MouseEvent = null) : void
         {
+            //destroy();
+
             MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
@@ -468,7 +463,8 @@ namespace Assets.Scripts.Core
         //Bounds m_Collider, m_Collider2;
         public void Update()
         {
-            checkCollision(this._units, 0.25f, 0.25f, 0.25f, 0.15f);
+            if (_units != null)
+                checkCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);
         }
 
         public void checkCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
@@ -599,7 +595,7 @@ namespace Assets.Scripts.Core
 
             if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)// (this._hero.stateItems != Hero.FULL)    //bad code
             {
-                this.restartClickHandler();
+                restartHandler();
             }
 
         }
@@ -681,68 +677,79 @@ namespace Assets.Scripts.Core
         }
 
 
-        //public destroy(): void
-        //{
-        //    this.removeAllEventListeners();
-        //    this._hero.removeAllEventListeners();
+        private void destroy(IMessage rMessage = null)//TODO continue
+        {
+            //Debug.Log("GAME destroyed: " + rMessage + " level: " + _level);
+            MessageDispatcher.RemoveListener(GameEvent.QUIT, destroy);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, reachedHandler);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
 
-        //    //console.log("[destroy hero]", this._top)
-        //    this._hero.destroy();
+            //MessageDispatcher.ClearListeners(); //TODO bug in inerating?
+            //    this.removeAllEventListeners();
+            //    this._hero.removeAllEventListeners();
 
-        //    if (this._top)
-        //    {
-        //        this._top.graphics.clear();
-        //        this._bottom.graphics.clear();
-        //        Core.instance.bg.removeChild(this._top);
-        //        Core.instance.bg.removeChild(this._bottom);
-        //        Core.instance.bg.update();
-        //        this._top = null;
-        //        this._bottom = null;
+            //    //console.log("[destroy hero]", this._top)
+            //    this._hero.destroy();
 
-        //        this._helpShape.graphics.clear();
-        //        Core.instance.removeChild(this._help);
-        //        Core.instance.removeChild(this._helpShape);
-        //        this._help = null;
-        //        this._helpShape = null;
-        //    }
+            //    if (this._top)
+            //    {
+            //        this._top.graphics.clear();
+            //        this._bottom.graphics.clear();
+            //        Core.instance.bg.removeChild(this._top);
+            //        Core.instance.bg.removeChild(this._bottom);
+            //        Core.instance.bg.update();
+            //        this._top = null;
+            //        this._bottom = null;
 
-        //    this.removeAllEventListeners();
+            //        this._helpShape.graphics.clear();
+            //        Core.instance.removeChild(this._help);
+            //        Core.instance.removeChild(this._helpShape);
+            //        this._help = null;
+            //        this._helpShape = null;
+            //}
 
-        //    this.removeHint();
+            //    this.removeAllEventListeners();
 
-        //    this._pathfinder.destroy();
-        //    this._pathfinder = null;
+            //    this.removeHint();
 
-        //    var grid: Tile[] = this._grid;
-        //    var len number = grid.Length;
-        //    for (int i = 0; i < len; i++)
-        //        {
-        //        grid[i].clear();
-        //    }
+            //    this._pathfinder.destroy();
+            //    this._pathfinder = null;
 
-        //    this.removeAllChildren();
-        //    this._level.destroy();
+            //    var grid: Tile[] = this._grid;
+            //    var len number = grid.Length;
+            //    for (int i = 0; i < len; i++)
+            //        {
+            //        grid[i].clear();
+            //    }
 
-        //    this._units = null;
-        //    this._items = null;
+            //    this.removeAllChildren();
+            if (_level != null)
+            {
+                _level.destroy();
+                _level = null;
+            }
 
-        //    this._targetMark = null;
-        //    this._poolPoints.Length = 0;
-        //    this._poolPoints = null;
-        //    this._activePoints.Length = 0;
-        //    this._activePoints = null;
+            _units = null;
+            _items = null;
 
-        //    this._grid = null;
-        //    this._model = null;
+            //    this._targetMark = null;
+            //    this._poolPoints.Length = 0;
+            //    this._poolPoints = null;
+            //    this._activePoints.Length = 0;
+            //    this._activePoints = null;
 
-        //    this._hero = null;
-        //    this._level = null;
-        //    this._mill = null;
+            //    this._grid = null;
+            //    this._model = null;
 
-        //    this._buttonMenu = null;
-        //    this._buttonSound = null;
-        //    this._buttonRestart = null;
-        //}
+            //    this._hero = null;
+            //    this._level = null;
+            //    this._mill = null;
+
+            //    this._buttonMenu = null;
+            //    this._buttonSound = null;
+            //    this._buttonRestart = null;
+        }
 
         /** <summary>delay (ms)</summary> */
         private void WaitAndCall(float delay, Action<int> callback, int index)

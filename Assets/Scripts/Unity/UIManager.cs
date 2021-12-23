@@ -23,11 +23,7 @@ namespace Assets.Scripts.Unity
             //Debug.Log("UIManager awake");
             this.gameObject.AddComponent<AudioSource>();
             SoundManager.getInstance().init(this.gameObject.GetComponent<AudioSource>());
-        }
 
-        // Start is called before the first frame update
-        void Start()
-        {
             if (!_levelsPanel)
             {
                 _levelsPanel = GameObject.Find("Panel_Levels");
@@ -45,15 +41,6 @@ namespace Assets.Scripts.Unity
                 _introPanel.SetActive(false);
             }
 
-            if (GameObject.Find("Panel_MainMenu") != null)
-                SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
-            else
-                SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
-
-            //if(MessageDispatcher.) // TODO ?
-            MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
-
-
             //menu from game
             if (_levelsPanel && !UIManager.isFirstLoad)
             {
@@ -62,6 +49,16 @@ namespace Assets.Scripts.Unity
             }
 
             UIManager.isFirstLoad = false;
+        }
+        void Start()
+        {
+            if (GameObject.Find("Panel_MainMenu") != null)
+                SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
+            else
+                SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
+
+            //if(MessageDispatcher.) // TODO ?
+            MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
         }
 
         //logic in Editor's buttons
@@ -78,6 +75,7 @@ namespace Assets.Scripts.Unity
         //not by button
         private void RestartGame(IMessage m)
         {
+            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             StartGame();
         }
 
@@ -97,6 +95,8 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
+            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
+            MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
             SceneManager.LoadScene("GameScene");
             SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
@@ -104,7 +104,10 @@ namespace Assets.Scripts.Unity
 
         public void EndGame()
         {
+            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             //Debug.Log("EndGame");
+            MessageDispatcher.SendMessage(GameEvent.QUIT);
+
             SceneManager.LoadScene("MainScene");
             SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
         }

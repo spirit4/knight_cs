@@ -16,6 +16,7 @@ namespace Assets.Scripts.Events
 
         public const string LEVEL_COMPLETE = "levelComplete";
         public const string RESTART = "restart";
+        public const string QUIT = "quit";
         //  public static COLLISION: string = "collision";
         //  public static EDITOR_ON_OFF: string = "editorOnOff";
 

@@ -1,5 +1,4 @@
 using Assets.Scripts.Core;
-using com.ootii.Messages;
 using UnityEngine;
 using DG.Tweening;
 
@@ -32,7 +31,7 @@ namespace Assets.Scripts.Units
             _state = Unit.ON;
         }
 
-        public void destroy()
+        public virtual void destroy()
         {
             //        this.removeAllEventListeners();
             //        createjs.Tween.removeTweens(this);
@@ -42,6 +41,7 @@ namespace Assets.Scripts.Units
             //        this._tile = null;
             //MessageDispatcher.ClearListeners(); //TODO not sure
 
+            //Debug.Log("unit destroyed: " + _view.name + _view.transform.DOKill());
             _view.transform.DOKill();
             UnityEngine.Object.Destroy(view);
         }
@@ -49,6 +49,7 @@ namespace Assets.Scripts.Units
         public virtual void stop()
         {
             //createjs.Tween.removeTweens(this);
+            _view.transform.DOKill();
         }
 
         //    //--------------------setters

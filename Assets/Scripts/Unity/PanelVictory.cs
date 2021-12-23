@@ -3,7 +3,6 @@ using Assets.Scripts.Events;
 using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Unity
@@ -13,10 +12,9 @@ namespace Assets.Scripts.Unity
         public GameObject vane;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             this.gameObject.SetActive(false);
-           // Activate();
 
             //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
             //{
@@ -35,6 +33,7 @@ namespace Assets.Scripts.Unity
         //logic in Editor's buttons
         public void Activate(IMessage rMessage = null)
         {
+            MessageDispatcher.RemoveListener(GameEvent.LEVEL_COMPLETE, Activate); //TODO destroy?
             this.gameObject.SetActive(true);
 
             if (Progress.currentLevel != 19)

@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Events;
-using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 
@@ -19,11 +18,11 @@ namespace Assets.Scripts.Unity
             ChangePivot(new Vector2(0.5f, 1f));
             this.transform.Rotate(_direction, 25 * direction3D, 0);
             Sway();
+
         }
         private void Sway()
         {
             _direction = -_direction;
-
             this.transform.DORotate(new Vector3(_direction, 25 * direction3D, 0), 2.0f).SetEase(Ease.InOutQuad).OnComplete(Sway);
         }
 

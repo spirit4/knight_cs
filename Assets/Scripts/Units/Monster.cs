@@ -29,7 +29,6 @@ namespace Assets.Scripts.Units
             this._grid = Controller.instance.model.grid;
             this.id = id;
 
-            //Debug.Log("[Monster ] " + index);
             _pontIndex1 = index;
             this.x = this._grid[index].x; //for choosing direction --> Level
             this.y = this._grid[index].y;
@@ -37,13 +36,14 @@ namespace Assets.Scripts.Units
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 95;//TODO --------------??
             view.name = type + id;
-            
+
             view.transform.SetParent(container.gameObject.transform);
             view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
         }
 
         private void move(float x, float y)
         {
+            //Debug.Log("[Monster ] " + index);
             float time = 0;
             if (_directionX == 1 || _directionX == -1) //!= 0
             {
@@ -54,11 +54,8 @@ namespace Assets.Scripts.Units
             {
                 //Debug.Log("[move ]" + y + "   " + time);
                 time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
-                view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(setDirection); 
+                view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
-
-            
-            //    createjs.Tween.get(this).to({ x: x, y: y }, time, createjs.Ease.linear).call(this.setDirection, [], this);
         }
 
         private void setDirection()
@@ -95,7 +92,7 @@ namespace Assets.Scripts.Units
             this.y = this._grid[index].y;
         }
 
-        private void FlipView() 
+        private void FlipView()
         {
             if (_directionX == 1)
             {
@@ -116,22 +113,20 @@ namespace Assets.Scripts.Units
 
         public void activate()
         {
-        //     //empty
+            //     //empty
         }
 
         public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
-        //    if (this._directionX == 1 || this._directionY == 1)
-        //    {
-        //        this._grid[this._pontIndex2].setIndex(this);
-        //    }
+            //    if (this._directionX == 1 || this._directionY == 1)
+            //    {
+            //        this._grid[this._pontIndex2].setIndex(this);
+            //    }
         }
 
-        //public destroy(): void
-        //{
-        //    super.destroy();
-
-        //    this._grid = null;
-        //}
+        public override void destroy()
+        {
+            base.destroy();
+        }
     }
 }
