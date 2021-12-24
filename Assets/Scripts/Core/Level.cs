@@ -52,7 +52,7 @@ namespace Assets.Scripts.Core
             this._tilesBg = null;
             this._decorBg = null;
 
-            int len  = _items.Count;
+            int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
                 _items[i].init(i, _model.grid, _units);
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Core
                     gameObject = GameObject.Instantiate(ImagesRes.prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(gObject.transform);
                     gObject.transform.SetParent(_container.gameObject.transform);
-                    _hero = new Hero(index, gameObject,gObject);
+                    _hero = new Hero(index, gameObject, gObject);
                     break;
 
                 case ImagesRes.MILL:
@@ -119,20 +119,20 @@ namespace Assets.Scripts.Core
                 //                break;
 
                 case ImagesRes.BOULDER:
-                    Boulder boulder  = new Boulder(type, index, grid[index].add(type, this._container, grid), grid[index]);
+                    Boulder boulder = new Boulder(type, index, grid[index].add(type, this._container, grid), grid[index]);
                     _items.Add(boulder);
                     break;
 
-                //            case ImagesRes.TOWER:
-                //                var tower: Tower = new Tower(type, index, grid[index].add(type, this._container, grid), grid[index]);
-                //                this._units[index] = tower;
-                //                this._items.push(tower);
-                //                break;
+                case ImagesRes.TOWER:
+                    Tower tower = new Tower(type, index, grid[index].add(type, this._container, grid), grid[index], _container);
+                    //_units[index] = tower;
+                    _items.Add(tower);
+                    break;
 
-                            case ImagesRes.BOULDER_MARK:
-                //            case ImagesRes.ARROW:
-                                grid[index].AddType(type);//for setting the direction
-                               break;
+                case ImagesRes.BOULDER_MARK:
+                case ImagesRes.ARROW:
+                    grid[index].AddType(type);//for setting the direction
+                    break;
 
                 case ImagesRes.SPIKES + "0":
                     Spikes spikes = new Spikes(type, index, grid[index].add(type, this._container, grid), grid[index]);
@@ -140,13 +140,9 @@ namespace Assets.Scripts.Core
                     break;
 
                 case string x when x.StartsWith(ImagesRes.DECOR):
-                    //bitmap = < createjs.Bitmap > grid[index].add(type, this._container, grid);
-                    //bitmap.x = cell[type][0];
-                    //bitmap.y = cell[type][1];
                     grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
                     gameObject = grid[index].add(type, this._container, grid);
                     this._decorBg.Add(gameObject);
-
                     break;
 
                 case ImagesRes.MONSTER:
@@ -199,19 +195,24 @@ namespace Assets.Scripts.Core
             //        {
             //        this._items[i].destroy();
             //    }
+            foreach (ICollidable item in _items)
+            {
+                item.destroy();
+            }
+
             foreach (KeyValuePair<int, ICollidable> pair in _units)
             {
                 pair.Value.destroy();
             }
 
-                //    this._model = null;
-                //    this._container = null;
-                //    this._hero = null;
-                //    this._units = null;
-                //    this._mill = null;
-                //    this._items.Length = 0;
-                //    this._items = null;
-            }
+            //    this._model = null;
+            //    this._container = null;
+            //    this._hero = null;
+            //    this._units = null;
+            //    this._mill = null;
+            //    this._items.Length = 0;
+            //    this._items = null;
+        }
 
         public Hero hero
         {

@@ -45,10 +45,8 @@ namespace Assets.Scripts.Core
             //everything by default
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
             {
-                //dObject.transform.SetParent(container.gameObject.transform);
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
                 dObject.GetComponent<SpriteRenderer>().sortingOrder = index;//TODO???
-                //dObject.transform.localPosition = new Vector3(x - 0.03f, y + 0.06f, 0);
             }
 
             return dObject;
@@ -93,7 +91,6 @@ namespace Assets.Scripts.Core
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.07f, 0);
                     this.isWall = true;
-                    //Debug.Log(type + " ================================================");
                     break;
 
                 case ImagesRes.STUMP:
@@ -101,23 +98,18 @@ namespace Assets.Scripts.Core
                     this.isWall = true;
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.x, this.y + 0.06f, 0);
-                    //Debug.Log(type + " ================================================");
                     break;
 
-                case string y when y.StartsWith(ImagesRes.BRIDGE + 0):
+                case ImagesRes.BRIDGE + "0":
                     dObject.isStatic = true;
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.x, this.y, 0);
-                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //dObject.y = this.y + (Config.SIZE_H - bd.height >> 1);
                     this.isWall = false;
                     break;
-                case string y when y.StartsWith(ImagesRes.BRIDGE + 1):
+                case ImagesRes.BRIDGE + "1":
                     dObject.isStatic = true;
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.x - 0.03f, this.y + 0.04f, 0);
-                    //dObject.x = this.x + (Config.SIZE_W - bd.width >> 1);
-                    //dObject.y = this.y - 10;
                     this.isWall = false;
                     break;
 
@@ -129,10 +121,10 @@ namespace Assets.Scripts.Core
                 case ImagesRes.BOULDER:
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.x, this.y + 0.13f);
-                    //        case ImagesRes.TOWER:
-                    //            dObject = new createjs.Bitmap(bd);
-                    //            dObject.x = this.x;
-                    //            dObject.y = this.y;
+                    break;
+                case ImagesRes.TOWER:
+                    dObject.transform.SetParent(container.gameObject.transform);
+                    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.16f);
                     break;
 
                 case ImagesRes.EXIT:

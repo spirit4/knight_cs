@@ -43,6 +43,7 @@ namespace Assets.Scripts.Core
         private TargetMark _targetMark;
         private List<GameObject> _poolPoints = new List<GameObject>();
         private List<GameObject> _activePoints = new List<GameObject>();
+        private GameObject _boom;
 
         //private _isStartArrowCheck: boolean = false;
 
@@ -564,39 +565,35 @@ namespace Assets.Scripts.Core
 
         private void showBoom(string boomType = ImagesRes.A_BOOM)
         {
-            //    //console.log("[PLAY BOOM]", this._hero.state);
-            //    var sprite: createjs.Sprite = new createjs.Sprite(JSONRes.atlas1, boomType);
-            //    sprite.framerate = 30;
-            //    sprite.mouseEnabled = false;
-            //    sprite.x = this._hero.x - (100 - Config.SIZE_W >> 1);
-            //    sprite.y = this._hero.y - (150 - Config.SIZE_H >> 1);
-            //    this.addChild(sprite);
-            //    sprite.on(GameEvent.ANIMATION_COMPLETE, this.boomCompleteHandler, this);
-            //    sprite.gotoAndPlay(boomType);
             float boomX = _hero.view.transform.localPosition.x;// + Config.SIZE_W / 2;
             float boomY = _hero.view.transform.localPosition.y + 0.25f;// - Config.SIZE_H / 2 - 0.1f;
-            GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            gameObject.transform.SetParent(this.gameObject.transform);
-            gameObject.transform.localPosition = new Vector3(boomX, boomY);
-            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//TODO sorting2
 
+            if (_boom == null)
+            {
+                GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                gameObject.transform.SetParent(this.gameObject.transform);
+                
+                gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//TODO sorting2
+                _boom = gameObject;
+            }
+
+            _boom.transform.localPosition = new Vector3(boomX, boomY);
+            _boom.SetActive(true);
             MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
         }
 
         public void boomCompleteHandler(IMessage rMessage)
         {
-            //Debug.Log("boomCompleteHandler]" + rMessage.Sender);
-            //    e.currentTarget.visible = false;
-            //    e.currentTarget.removeAllEventListeners();
-            //    e.currentTarget.stop();
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
-            Destroy(rMessage.Sender as GameObject);
+            //Debug.Log("boomCompleteHandler]" + (rMessage.Sender as GameObject).name);
 
-            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)// (this._hero.stateItems != Hero.FULL)    //bad code
-            {
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            //Destroy(rMessage.Sender as GameObject);
+            _boom.SetActive(false);
+
+            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
                 restartHandler();
-            }
+
 
         }
 

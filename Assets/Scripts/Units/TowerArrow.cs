@@ -1,27 +1,27 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
     class TowerArrow : Unit
     {
-        //private _directionX: number = 0;
-        //private _directionY: number = 0;
+        //private int _directionX = 0;
+        //private int _directionY = 0;
 
-        //private _grid: Tile[];
-        //private _pontIndex1: number = 0;
-        //private _pontIndex2: number = 0;
+        //private Tile[] _grid;
+        private int _pontIndex1 = 0;
+        //private int _pontIndex2 = 0;
 
-        //public id: number = -1;
+        public int id = -1;
 
         public TowerArrow(string type, int index, GameObject view) : base(index, type, view)
         {
-            //constructor(type: string, index: number)
-            //{
-            //    super(index, type);
-            //    this._grid = Core.instance.model.grid;
+            //_grid = Controller.instance.model.grid;
 
-            //    this._pontIndex1 = index;
+            _pontIndex1 = index;
+
 
             //    var bd: HTMLImageElement = ImagesRes.getImage(type);
             //    this.view = new createjs.Bitmap(bd);
@@ -30,36 +30,41 @@ namespace Assets.Scripts.Units
             //    this.addChild(this.view);
         }
 
-        //public shoot(direction: number, speed: number): void
-        //{
-        //    if (direction == 1)
-        //    {
-        //        this.view.scaleX = -1;
-        //        this.view.x = this.view.getBounds().width;
-        //        createjs.Tween.get(this).to({ x: Config.STAGE_W + 110 }, speed, createjs.Ease.linear).call(this.endHandler, [], this);
-        //    }
-        //    else
-        //    {
-        //        createjs.Tween.get(this).to({ x: -150}, speed, createjs.Ease.linear).call(this.endHandler, [], this);
-        //    }
+        public void shoot(int direction, float speed)
+        {
+            if (direction == 1)
+            {
+                //this.view.scaleX = -1;
+                //this.view.x = this.view.getBounds().width;
+                view.GetComponent<SpriteRenderer>().flipX = true;
+                //createjs.Tween.get(this).to({ x: Config.STAGE_W + 110 }, speed, createjs.Ease.linear).call(this.endHandler, [], this);
 
-        //}
+                view.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(endHandler);
+            }
+            else
+            {
+                view.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(endHandler);
+                //createjs.Tween.get(this).to({ x: -150}, speed, createjs.Ease.linear).call(this.endHandler, [], this);
+            }
 
-        //private endHandler(): void
-        //{
-        //    this.visible = false;
-        //}
+        }
 
-        //public isShooted(): boolean
-        //{
-        //    return this.visible;
-        //}
+        private void endHandler()
+        {
+            view.SetActive(false);
+            //    this.visible = false;
+        }
 
-        //public destroy(): void
-        //{
-        //    super.destroy();
+        public bool isShooted()
+        {
+            return view.activeSelf;
+        }
 
-        //    this._grid = null;
-        //}
+        public override void destroy()
+        {
+            base.destroy();
+
+            //this._grid = null;
+        }
     }
 }
