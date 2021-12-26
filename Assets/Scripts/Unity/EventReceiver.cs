@@ -15,16 +15,11 @@ namespace Assets.Scripts.Unity
 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
 
         public void AnimationCompleteHandler()
         {
-            //Debug.Log("AnimationCompleteHandler]");
-            MessageDispatcher.SendMessage(this.gameObject, GameEvent.ANIMATION_COMPLETE, null, 0);
+            //Debug.Log("AnimationCompleteHandler] " + this.name);
+            MessageDispatcher.SendMessage(GameEvent.ANIMATION_COMPLETE, this.name);
         }
 
     }

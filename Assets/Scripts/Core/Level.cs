@@ -112,11 +112,19 @@ namespace Assets.Scripts.Core
                     grid[index].AddObject(gameObject);
                     break;
 
-                //            case ImagesRes.TRAP:
-                //                sprite = < createjs.Sprite > grid[index].add(type, this._container, grid);
+                case ImagesRes.TRAP:
+                    //                sprite = < createjs.Sprite > grid[index].add(type, this._container, grid);
+                    //    dObject.transform.SetParent(container.gameObject.transform);
+                    //    dObject.transform.localPosition = new Vector3(this.x, this.y + 0.06f);
+                    //Trap trap = new Trap(type, index, grid[index].add(type, this._container, grid));
 
-                //                var trap: Trap = new Trap(sprite, index, type);
-                //                break;
+                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject.transform.SetParent(_container.gameObject.transform);
+                    new Trap(type, index, gameObject);
+                    gameObject.transform.localPosition = new Vector3(grid[index].x, grid[index].y + 0.03f);
+                    grid[index].AddType(type);
+                    grid[index].AddObject(gameObject);
+                    break;
 
                 case ImagesRes.BOULDER:
                     Boulder boulder = new Boulder(type, index, grid[index].add(type, this._container, grid), grid[index]);

@@ -77,14 +77,6 @@ namespace Assets.Scripts.Core
                     dObject.isStatic = true;
                     break;
 
-                //        case ImagesRes.TRAP:
-                //            sprite = new createjs.Sprite(JSONRes.atlas1, ImagesRes.A_TRAP);
-                //            sprite.framerate = 30;
-                //            sprite.x = this.x + 6;
-                //            sprite.y = this.y + 9;
-                //            dObject = sprite;
-                //            break;
-
                 case string x when x.StartsWith(ImagesRes.PINE):
                 case string y when y.StartsWith(ImagesRes.STONE):
                     dObject.isStatic = true;
@@ -208,18 +200,18 @@ namespace Assets.Scripts.Core
         //    }
         //}
 
-        //public getObject(type string): createjs.DisplayObject
-        //    {
-        //    var index number = this.types.indexOf(type);
+        public GameObject getObject(string type)
+        {
+            int index = this.types.IndexOf(type);
 
-        //    if (index != -1)
-        //    {
-        //        return this.objects[index];
-        //    }
+            if (index != -1)
+            {
+                return this.objects[index];
+            }
 
-        //    alert("UNKNOWN TYPE:" + type);
-        //    return null;
-        //}
+            Debug.Log("UNKNOWN TYPE:" + type);
+            return null;
+        }
 
         public bool isContainType(string type)
         {

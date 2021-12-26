@@ -22,7 +22,7 @@ namespace Assets.Scripts.Events
 
         public const string HERO_REACHED = "heroReached";
         public const string HERO_ONE_CELL_AWAY = "heroOneCellAway";
-        //  public static HERO_GET_TRAP: string = "heroGetTrap";
+        public const string HERO_GET_TRAP = "heroGetTrap";
 
         //public index: number;
         //public objectType: string;
@@ -32,4 +32,4 @@ namespace Assets.Scripts.Events
             //base(type, bubbles, cancelable);
         }
     }
-}
+}   

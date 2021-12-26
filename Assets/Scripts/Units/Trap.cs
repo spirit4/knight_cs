@@ -7,8 +7,16 @@ namespace Assets.Scripts.Units
     {
         public Trap(string type, int index, GameObject view) : base(index, type, view)
         {
-            //this.mc.stop();
-            //    this.mc.alpha = 0.4;
+            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            view.GetComponent<SpriteRenderer>().sortingOrder = index;
+            view.name = type;
+
+            Animator anim = view.GetComponent<Animator>();
+            anim.enabled = false;
+
+            Color color = view.GetComponent<SpriteRenderer>().color;
+            color.a = 0.4f;
+            view.GetComponent<SpriteRenderer>().color = color;
         }
         
     }

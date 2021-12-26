@@ -94,7 +94,7 @@ namespace Assets.Scripts.Units
         {
             if (path != null)
             {
-                this._path = path;
+                _path = path;
             }
 
             int currentIndex = index;
@@ -148,7 +148,7 @@ namespace Assets.Scripts.Units
             {
                 currentIndex += step;
                 // Debug.Log("currentIndex2: " + currentIndex + " index: " + index + " step: " + step);
-                if (this._grid[currentIndex].isContainTypes(ImagesRes.STAR) || this._grid[currentIndex].isContainType(ImagesRes.TRAP))
+                if (this._grid[currentIndex].isContainTypes(ImagesRes.STAR) || _grid[currentIndex].isContainType(ImagesRes.TRAP))
                 {
                     this.index = currentIndex;
                     this._path.Clear();
@@ -245,16 +245,20 @@ namespace Assets.Scripts.Units
                 dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => starTweenComplete(type));
             }
 
-            //    else if (this._grid[this.index].isContainType(ImagesRes.TRAP))
-            //    {
-            //        var index: number = this._grid[this.index].types.indexOf(ImagesRes.TRAP);
+            else if (_grid[this.index].isContainType(ImagesRes.TRAP))
+            {
+                //int index = _grid[this.index].types.IndexOf(ImagesRes.TRAP);
 
-            //        var trap: createjs.Sprite = <createjs.Sprite> this._grid[this.index].objects[index];
-            //        trap.on(GameEvent.ANIMATION_COMPLETE, this.trapAnimationComplete, this);
-            //        trap.gotoAndPlay(ImagesRes.A_TRAP);
-            //        createjs.Tween.get(trap).to({ alpha: 1 }, 150, createjs.Ease.quadOut).call(this.trapTweenComplete, [type], this);
-
-            //    }
+                GameObject trap = _grid[this.index].getObject(ImagesRes.TRAP);
+                //trap.on(GameEvent.ANIMATION_COMPLETE, this.trapAnimationComplete, this);
+                //trap.gotoAndPlay(ImagesRes.A_TRAP);
+                //createjs.Tween.get(trap).to({ alpha: 1 }, 150, createjs.Ease.quadOut).call(this.trapTweenComplete, [type], this);
+                Animator anim = trap.GetComponent<Animator>();
+                anim.enabled = true;
+                trap.GetComponent<SpriteRenderer>().DOFade(1, 0.15f).SetEase(Ease.OutQuad);
+                DOTween.Sequence().AppendInterval(0.15f).AppendCallback(trapTweenComplete);
+                MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, trapAnimationComplete, false);
+            }
             else if (this._grid[this.index].isContainType(ImagesRes.EXIT))
             {
                 //        //console.log("Hero starsAllLevels", type, this.index);
@@ -301,20 +305,25 @@ namespace Assets.Scripts.Units
             reclothe(type);
         }
 
-        //private trapTweenComplete(): void
-        //{
-        //    AchController.instance.addParam(AchController.HERO_DEAD_BY_TRAP);
-        //    this.dispatchEvent(new GameEvent(GameEvent.HERO_GET_TRAP));
-        //}
+        private void trapTweenComplete()
+        {
+            //    AchController.instance.addParam(AchController.HERO_DEAD_BY_TRAP);
+            //this.dispatchEvent(new GameEvent(GameEvent.HERO_GET_TRAP));
+            MessageDispatcher.SendMessage(GameEvent.HERO_GET_TRAP);
+        }
 
-        //private trapAnimationComplete(e: GameEvent): void
-        //{
-        //    e.currentTarget.visible = false;
-        //    e.currentTarget.removeAllEventListeners();
-        //    e.currentTarget.stop();
-        //    this._prevState = Hero.MOVE;//dirty hack
-        //    this._grid[this.index].remove(ImagesRes.TRAP);
-        //}
+        private void trapAnimationComplete(IMessage rMessage)
+        {
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, trapAnimationComplete);
+            //    e.currentTarget.visible = false;
+            //    e.currentTarget.removeAllEventListeners();
+            //    e.currentTarget.stop();
+            //_prevState = Hero.MOVE;//dirty hack
+
+            Animator anim = _grid[this.index].getObject(ImagesRes.TRAP).GetComponent<Animator>();
+            anim.enabled = false;
+            _grid[this.index].remove(ImagesRes.TRAP);
+        }
 
         private void levelComplete()
         {
@@ -369,7 +378,7 @@ namespace Assets.Scripts.Units
 
             if (this._path.Count == 0)
             {
-                this.idle();
+                idle();
             }
             else
             {

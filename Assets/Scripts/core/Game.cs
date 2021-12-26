@@ -114,6 +114,7 @@ namespace Assets.Scripts.Core
             //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
+            MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
             MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
 
             MessageDispatcher.AddListener(GameEvent.QUIT, destroy);//leave game, from UIManager
@@ -129,11 +130,13 @@ namespace Assets.Scripts.Core
         }
 
 
-        //private getTrapHandler(e: GameEvent): void
-        //{
-        //    createjs.Tween.get(this).wait(100).call(this.hideActors, [null], this);
-        //    this.showBoom();
-        //}
+        private void getTrapHandler(IMessage rMessage)
+        {
+            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [null], this);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
+            WaitAndCall(100, hideActors, null, false);
+            showBoom();
+        }
 
 
         private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
@@ -550,17 +553,12 @@ namespace Assets.Scripts.Core
             {
                 unit.stop();
                 _hero.stop();
-                //        unit.view.visible = false;
                 unit.view.SetActive(false);
                 unit.destroy();
             }
 
             if (IsEnd)
-            {
-                //this._hero.visible = false;
                 _hero.view.SetActive(false);
-            }
-
         }
 
         private void showBoom(string boomType = ImagesRes.A_BOOM)
@@ -572,29 +570,29 @@ namespace Assets.Scripts.Core
             {
                 GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 gameObject.transform.SetParent(this.gameObject.transform);
-                
+
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
                 gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//TODO sorting2
                 _boom = gameObject;
+                _boom.name = ImagesRes.A_BOOM;
             }
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
-            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            //MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler, false);
         }
 
         public void boomCompleteHandler(IMessage rMessage)
         {
             //Debug.Log("boomCompleteHandler]" + (rMessage.Sender as GameObject).name);
 
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
             //Destroy(rMessage.Sender as GameObject);
             _boom.SetActive(false);
 
             if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
                 restartHandler();
-
-
         }
 
         private void showPath(List<int> path)
@@ -678,9 +676,10 @@ namespace Assets.Scripts.Core
         {
             //Debug.Log("GAME destroyed: " + rMessage + " level: " + _level);
             MessageDispatcher.RemoveListener(GameEvent.QUIT, destroy);
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
             MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, reachedHandler);
             MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
 
             //MessageDispatcher.ClearListeners(); //TODO bug in inerating?
             //    this.removeAllEventListeners();
