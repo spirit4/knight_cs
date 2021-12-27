@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Core
 {
@@ -19,8 +20,8 @@ namespace Assets.Scripts.Core
         private static SoundManager instance;
 
         //    //false = true;
-        //private bool _isMusic = true; //TODO has
-        private bool _isMusic = false; //TODO has
+        private bool _isMusic = true; //TODO has
+        //private bool _isMusic = false; //TODO has
 
         private MusicButton _currentButton;
         private string _currentLocation; //menu or game
@@ -59,9 +60,9 @@ namespace Assets.Scripts.Core
 
 
         //TODO save position on scene reload
-        public void setLocation(string type)
+        public void setLocation(string type)//, bool isRestart)
         {
-            //Debug.Log("[SoundManager] setLocation " + _currentLocation);
+           // Debug.Log("[SoundManager] setLocation " + _currentLocation + "   " + type);
             if (_isMusic)
             {
                 if (type != _currentLocation)
@@ -81,7 +82,7 @@ namespace Assets.Scripts.Core
 
         private void playMusicTrack()
         {
-            //Debug.Log("playMusicTrack" + _musicPositions.ContainsKey(_currentLocation));
+            //Debug.Log("playMusicTrack " + _musicPositions.ContainsKey(_currentLocation));
 
             if (!_musicPositions.ContainsKey(_currentLocation))
                 _musicPositions[_currentLocation] = 0;
@@ -91,19 +92,20 @@ namespace Assets.Scripts.Core
             _audioSource.time = _musicPositions[_currentLocation];
             _audioSource.Play();
 
-            
+            //Debug.Log("playMusicTrack " + _audioSource.time);
         }
 
-        private void stopMusicTrack()
+        public void stopMusicTrack()
         {
-
+            //Debug.Log("stopMusicTrack " + _currentLocation);
             if (_currentLocation == null)
                 return;
 
+            //Debug.Log("stopMusicTrack" + _audioSource.time);
             _musicPositions[_currentLocation] = _audioSource.time;
             _audioSource.Stop();
 
-            //Debug.Log("stopMusicTrack" + _audioSource.time);
+            
         }
 
         public void muteOnOff()

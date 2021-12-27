@@ -5,7 +5,7 @@ namespace Assets.Scripts.Data
     public static class Progress
     {
         public static int levelsCompleted = 20;
-        public static int currentLevel = 7;
+        public static int currentLevel = 5;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
         public static int[,] starsAllLevels = new int[20, 3]

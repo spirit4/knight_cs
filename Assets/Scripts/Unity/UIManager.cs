@@ -52,12 +52,12 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            if (GameObject.Find("Panel_MainMenu") != null)
+            //Debug.Log("UIManager start" + GameObject.Find("Panel_MainMenu") + GameObject.Find("Panel_Levels"));
+            if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2ndtest only
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
 
-            //if(MessageDispatcher.) // TODO ?
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
         }
 
@@ -98,18 +98,17 @@ namespace Assets.Scripts.Unity
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
+            SoundManager.getInstance().stopMusicTrack();
             SceneManager.LoadScene("GameScene");
-            SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
         }
 
         public void EndGame()
         {
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
-            //Debug.Log("EndGame");
             MessageDispatcher.SendMessage(GameEvent.QUIT);
-
+            //Debug.Log("EndGame");
+            SoundManager.getInstance().stopMusicTrack();
             SceneManager.LoadScene("MainScene");
-            SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
         }
 
     }
