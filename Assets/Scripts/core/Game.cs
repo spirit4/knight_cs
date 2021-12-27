@@ -88,6 +88,8 @@ namespace Assets.Scripts.Core
 
             Text level = GameObject.Find("Canvas/PanelGameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
             level.text = (Progress.currentLevel + 1).ToString();
+
+            createHint(true);
         }
 
 
@@ -95,7 +97,7 @@ namespace Assets.Scripts.Core
         {
             //    createjs.Tween.get(this).wait(100).call(this.hideActors, [null], this);
             MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
-            WaitAndCall(100, hideActors, null, false);
+            WaitAndCall(100, hideActors, null, true);
             showBoom();
         }
 
@@ -144,7 +146,7 @@ namespace Assets.Scripts.Core
 
                 if (path.Count > 0)
                 {
-                    //            this.removeHint();
+                    removeHint();
 
                     _targetMark.placeByTap(index);
                     showPath(this._pathfinder.Path);
@@ -197,10 +199,9 @@ namespace Assets.Scripts.Core
 
             hidePoints();
 
-            //    if (Progress.currentLevel == 0 && this._hero.index == 54) //to guide
-            //    {
-            //        this.createHintAfterAction();
-            //    }
+            if (Progress.currentLevel == 0 && _hero.index == 54) //to guide
+                createHintAfterAction();
+
 
             if (GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL) != -1)
             {
@@ -220,128 +221,41 @@ namespace Assets.Scripts.Core
             MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
-        //public createHint(): void
-        //{
-        //    if (!Hints.texts[Progress.currentLevel])
-        //    {
-        //        return;
-        //    }
+        private void createHint(bool isFirst)
+        {
+            if (!Hints.hints.ContainsKey(Progress.currentLevel))
+                return;
 
-        //    var params: Array <  number > = Hints.texts[Progress.currentLevel];
+            int key;
+            if (isFirst)
+                key = Progress.currentLevel;
+            else
+                key = -1;
 
-        //    var g: createjs.Graphics = new createjs.Graphics();
-        //    var shape: createjs.Shape = new createjs.Shape(g);
-        //    Core.instance.addChild(shape);
-        //    shape.alpha = 0.7;
-        //    this._helpShape = shape;
+            Sprite sprite = Resources.Load<Sprite>(Hints.hints[key]);
 
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
+            _help = new GameObject("Help");
+            _help.AddComponent<SpriteRenderer>();
+            _help.GetComponent<SpriteRenderer>().sprite = sprite;
+            _help.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+            _help.GetComponent<SpriteRenderer>().sortingOrder = 999;
+            _help.transform.SetParent(this.gameObject.transform);
+            _help.transform.localPosition = new Vector3(2.45f, -1.9f);
+        }
 
-        //    var holes: Array < Object > = Hints.holes[Progress.currentLevel];
-        //    for (int i = 0; i < holes.Length; i++)
-        //        {
-        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-        //    }
+        public void createHintAfterAction()
+        {
+            createHint(false);//second hint
+        }
 
-        //    g.endFill();
-
-        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-        //    bitmap.mouseEnabled = false;
-        //    bitmap.snapToPixel = true;
-        //    Core.instance.addChild(bitmap);
-        //    this._help = bitmap;
-        //    bitmap.x = params[0];
-        //    bitmap.y = params[1];
-
-        //    g = new createjs.Graphics();
-        //    shape = new createjs.Shape(g);
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-        //    g.endFill();
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    Core.instance.bg.addChild(shape);
-        //    this._top = shape;
-
-        //    shape = new createjs.Shape(g);
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-        //    Core.instance.bg.addChild(shape);
-        //    this._bottom = shape;
-        //    Core.instance.bg.update();
-        //}
-
-        //public createHintAfterAction(): void
-        //{
-        //    if (!Hints.textsAfterAction[Progress.currentLevel])
-        //    {
-        //        return;
-        //    }
-
-        //    var params: Array <  number > = Hints.textsAfterAction[Progress.currentLevel];
-
-        //    var g: createjs.Graphics = new createjs.Graphics();
-        //    var shape: createjs.Shape = new createjs.Shape(g);
-        //    Core.instance.addChild(shape);
-        //    shape.alpha = 0.7;
-        //    this._helpShape = shape;
-
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.STAGE_H_MAX);
-
-        //    var holes: Array < Object > = Hints.holesAfterAction[Progress.currentLevel];
-        //    for (int i = 0; i < holes.Length; i++)
-        //        {
-        //        g.arc(holes[i]['x'], holes[i]['y'], holes[i]['r'], 0, Math.PI * 2, true).closePath();
-        //    }
-
-        //    g.endFill();
-
-        //    var bitmap GameObject = new createjs.Bitmap(ImagesRes.getImage(ImagesRes.HELP + params[2]));
-        //    bitmap.mouseEnabled = false;
-        //    bitmap.snapToPixel = true;
-        //    Core.instance.addChild(bitmap);
-        //    this._help = bitmap;
-        //    bitmap.x = params[0];
-        //    bitmap.y = params[1];
-
-        //    g = new createjs.Graphics();
-        //    shape = new createjs.Shape(g);
-        //    g.beginFill("#333333");
-        //    g.drawRect(0, 0, Config.STAGE_W, Config.PADDING);
-        //    g.endFill();
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    Core.instance.bg.addChild(shape);
-        //    this._top = shape;
-
-        //    shape = new createjs.Shape(g);
-        //    shape.snapToPixel = true;
-        //    shape.alpha = 0.7;
-        //    shape.y = Config.PADDING + Config.STAGE_H_MIN;
-        //    Core.instance.bg.addChild(shape);
-        //    this._bottom = shape;
-        //    Core.instance.bg.update();
-        //}
-
-        //private removeHint(): void
-        //{
-        //    if (this._help)
-        //    {
-        //        Core.instance.removeChild(this._help);
-        //        Core.instance.removeChild(this._helpShape);
-        //        this._help = null;
-        //        this._helpShape = null;
-
-        //        Core.instance.bg.removeChild(this._top);
-        //        Core.instance.bg.removeChild(this._bottom);
-        //        Core.instance.bg.update();
-        //        this._top = null;
-        //        this._bottom = null;
-        //    }
-        //}
+        private void removeHint()
+        {
+            if (_help != null)
+            {
+                Destroy(_help);
+                _help = null;
+            }
+        }
 
         //Bounds m_Collider, m_Collider2;
         public void Update()

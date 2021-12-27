@@ -89,7 +89,7 @@ namespace Assets.Scripts.Core
                     gameObject = GameObject.Instantiate(ImagesRes.prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.04f, grid[index].y - 0.07f);
+                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.03f, grid[index].y - 0.07f);
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
