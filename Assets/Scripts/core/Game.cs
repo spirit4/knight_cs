@@ -22,10 +22,6 @@ namespace Assets.Scripts.Core
         private Tile[] _grid;
         private Model _model;
 
-        //    private _buttonMenu: Button;
-        //    private _buttonSound: Button;
-        //    private _buttonRestart: Button;
-
         private Level _level;
         private Hero _hero;
         private MillPress _mill;
@@ -35,7 +31,7 @@ namespace Assets.Scripts.Core
         private Dictionary<int, ICollidable> _units;//private _units: { [index number]: ICollidable; };
         private List<IActivatable> _items;
 
-        //private _helpGameObject
+        private GameObject _help;
         //private _helpShape: createjs.Shape;
         //private _top: createjs.Shape;
         //private _bottom: createjs.Shape;
@@ -47,7 +43,6 @@ namespace Assets.Scripts.Core
 
         //private _isStartArrowCheck: boolean = false;
 
-        //public static Sprite sprite = null;// test
         public Game()
         {
             //those came from app.ts, they were first ones -----------------------------------------------------
@@ -56,37 +51,8 @@ namespace Assets.Scripts.Core
             new Controller(managerBg);//singleton
             //this._mainStage.addChild(this._core);
 
-
             _model = Controller.instance.model;
             _grid = _model.grid;
-
-
-            //this.x = Config.STAGE_W - Config.WIDTH * Config.SIZE_W >> 1;
-            //this.y = Config.MARGIN_TOP;
-
-            //this.createGUI();
-
-            //move to awake from here ------------------------------->>>>>>>>>>>>>>>>>
-            //
-
-
-            //var g: createjs.Graphics = new createjs.Graphics();
-            //var shape: createjs.Shape = new createjs.Shape();
-            //g.beginFill('rgba(255,255,255, 1)');
-            //g.drawRect(0, 0, Config.WIDTH * Config.SIZE_W, Config.HEIGHT * Config.SIZE_H);
-            //g.endFill();
-            //shape.snapToPixel = true;
-            //shape.hitArea = new createjs.Shape(g);
-            //this.addChildAt(shape, 0);
-            //this.on(GUIEvent.MOUSE_DOWN, this.movedownHandler, this);
-
-            //this.on(GameEvent.COLLISION, this.collisionProcess, this);
-
-            //for (int i = 0; i < 15; i++)   //put on pool
-            //    {
-            //    this.createPathPoint();
-            //}
-
         }
 
         private void Awake()
@@ -107,11 +73,6 @@ namespace Assets.Scripts.Core
             _hero = _level.hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
-
-            //this._hero.on(GameEvent.HERO_REACHED, this.reachedHandler, this);
-            //this._hero.on(GameEvent.HERO_ONE_CELL_AWAY, this.hideLastPoint, this);
-            //this._hero.on(GameEvent.HERO_GET_TRAP, this.getTrapHandler, this);
-            //this._hero.on(GameEvent.LEVEL_COMPLETE, this.showVictory, this);
 
             MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
             MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
@@ -152,11 +113,6 @@ namespace Assets.Scripts.Core
                 return;
             }
 
-            //    if (e.target.parent instanceof Button)
-            //        {
-            //        return;
-            //    }
-
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
             int index = GridUtils.getIndex(point.x, point.y);
             //Debug.Log("[tap tile]: " + point + "   " + index);
@@ -169,16 +125,9 @@ namespace Assets.Scripts.Core
             //        return;
             //    }
 
-            //seems not nessasery - look hero reached-------------------------------------------------------
-            //    if (e.target instanceof MillPress && Utils.isNeighbours(index, this._hero.index))
-            //        {
-            //        (< MillPress > e.target).startRotateMill();
-            //    }
-
             //Debug.Log("OnMouseDown " + _grid[index].isWall);
             if (_grid[index].isWall)
                 return;
-
 
             _pathfinder.Init(_grid); //TODO must be single Init
             _pathfinder.FindPath(_hero.index, index);
@@ -262,76 +211,6 @@ namespace Assets.Scripts.Core
                 }
             }
         }
-
-        //private collisionProcess(e: GameEvent): void
-        //{
-        //    e.stopPropagation();
-
-        //}
-
-        //private animationCompleteHandler(e: GameEvent): void
-        //{
-        //    var mc: createjs.Sprite = < createjs.Sprite > e.currentTarget;
-        //    mc.removeAllEventListeners();
-        //    this.removeChild(mc);
-        //}
-
-        //private createGUI(): void
-        //{
-        //    //console.log("[add gui]");
-        //    //Utils.addBitmap(0, 0, ImagesRes.GAME_FIELD, this, true);
-
-        //    var bgMap: Object[] = [
-        //            { type: ImagesRes.GAME_BG, x: 0, y: 0 },
-        //            { type: ImagesRes.UI_LEVEL_BOARD, x: 50, y: 254 },
-        //            { type: ImagesRes.SPEAR_UI + '1', x: -280, y: 243 },
-        //            { type: ImagesRes.SPEAR_UI + '0', x: 292, y: 200 }
-        //        ];
-        //    Core.instance.bg.addBitmaps(bgMap);
-
-        //    var container: createjs.Container = new createjs.Container();
-        //    this.addChild(container);
-        //    container.y = -130;
-
-        //    this._buttonSound = new Button(ImagesRes.BUTTON_SOUND_ON, ImagesRes.BUTTON_SOUND_ON_OVER, ImagesRes.BUTTON_SOUND_OFF, ImagesRes.BUTTON_SOUND_OFF_OVER);
-        //    container.addChild(this._buttonSound);
-        //    this._buttonSound.x = Config.STAGE_W - this._buttonSound.width - 55;
-        //    this._buttonSound.y = 1;
-        //    this._buttonSound.name = "";
-
-        //    this._buttonMenu = new Button(ImagesRes.BUTTON_MENU, ImagesRes.BUTTON_MENU_OVER);
-        //    container.addChild(this._buttonMenu);
-        //    this._buttonMenu.x = this._buttonSound.x - this._buttonMenu.width - 12;
-        //    this._buttonMenu.name = "";
-        //    this._buttonMenu.y = -4;
-        //    this._buttonMenu.on(GUIEvent.MOUSE_CLICK, this.menuClickHandler, this);
-
-        //    this._buttonRestart = new Button(ImagesRes.BUTTON_RESET, ImagesRes.BUTTON_RESET_OVER);
-        //    container.addChild(this._buttonRestart);
-        //    this._buttonRestart.x = this._buttonMenu.x - this._buttonRestart.width - 12;
-        //    this._buttonRestart.y = -8;
-        //    this._buttonRestart.name = "";
-        //    this._buttonRestart.on(GUIEvent.MOUSE_CLICK, this.restartClickHandler, this);
-
-        //    //Progress.currentLevel = 2;
-        //    var level: createjs.Text = new createjs.Text((Progress.currentLevel + 1).toString(), "33px Georgia", "#301213");
-        //    container.addChild(level);
-        //    level.mouseEnabled = false;
-        //    level.snapToPixel = true;
-        //    level.x = 92;
-        //    level.y = 72;
-
-        //    this.addMill(false);
-        //    this.vane.x -= this.x;
-        //    this.vane.y -= 52;
-        //}
-
-        //private menuClickHandler(e: createjs.MouseEvent): void
-        //{
-        //    var ev: GUIEvent = new GUIEvent(GUIEvent.GOTO_WINDOW);
-        //    ev.window = View.LEVELS;
-        //    this.dispatchEvent(ev);
-        //}
 
         //gone to Unity Editor
         private void restartHandler()//e: createjs.MouseEvent = null) : void
@@ -768,8 +647,6 @@ namespace Assets.Scripts.Core
             yield return new WaitForSeconds(delay / 1000);
             callback(unit, flag);
         }
-
-
     }
 
 
