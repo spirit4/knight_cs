@@ -26,12 +26,12 @@ namespace Assets.Scripts.Units
 
         public Monster(string type, int index, int id, GameObject view, Component container) : base(index, type, view)
         {
-            this._grid = Controller.instance.model.grid;
+            _grid = Controller.instance.model.grid;
             this.id = id;
 
             _pontIndex1 = index;
-            this.x = this._grid[index].x; //for choosing direction --> Level
-            this.y = this._grid[index].y;
+            this.x = _grid[index].x; //for choosing direction --> Level
+            this.y = _grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 95;//TODO --------------??
@@ -43,17 +43,15 @@ namespace Assets.Scripts.Units
 
         private void move(float x, float y)
         {
-            //Debug.Log("[Monster ] " + index);
             float time = 0;
-            if (_directionX == 1 || _directionX == -1) //!= 0
+            if (_directionX == 1 || _directionX == -1) 
             {
-                time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2);
+                time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2);
                 view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
             else if (_directionY == 1 || _directionY == -1)
             {
-                //Debug.Log("[move ]" + y + "   " + time);
-                time = SPEED * Math.Abs(this._pontIndex1 - this._pontIndex2) / Config.WIDTH;
+                time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2) / Config.WIDTH;
                 view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(setDirection);
             }
         }
@@ -88,8 +86,8 @@ namespace Assets.Scripts.Units
             move(tile.x, tile.y);
             this.index = directionIndex;
 
-            this.x = this._grid[index].x;
-            this.y = this._grid[index].y;
+            this.x = _grid[index].x;
+            this.y = _grid[index].y;
         }
 
         private void FlipView()
@@ -106,21 +104,20 @@ namespace Assets.Scripts.Units
 
         public void setPointIndex2(int index)
         {
-            //Debug.Log("[setPointIndex2 ]" + index);
             _pontIndex2 = index;
             setDirection();
         }
 
         public void activate()
         {
-            //     //empty
+            //empty
         }
 
         public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
-            //    if (this._directionX == 1 || this._directionY == 1)
+            //    if (_directionX == 1 || _directionY == 1)
             //    {
-            //        this._grid[this._pontIndex2].setIndex(this);
+            //        _grid[_pontIndex2].setIndex(this);
             //    }
         }
 

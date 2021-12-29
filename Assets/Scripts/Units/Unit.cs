@@ -6,7 +6,7 @@ namespace Assets.Scripts.Units
 {
     public abstract class Unit : ICollidable
     {
-        //    //states
+        //states
         public const string ON = "on";
         public const string OFF = "off";
         public const string STARTED = "started";
@@ -22,8 +22,6 @@ namespace Assets.Scripts.Units
 
         public Unit(int index, string type, GameObject view, Tile tile = null)//view?: createjs.DisplayObject, tile?: Tile)
         {
-            //this.mouseChildren = false;
-
             _view = view;
             _tile = tile;
             _index = index;
@@ -37,8 +35,8 @@ namespace Assets.Scripts.Units
             //        createjs.Tween.removeTweens(this);
             //        this.removeAllChildren();
 
-            //        this._view = null;
-            //        this._tile = null;
+            //        _view = null;
+            //        _tile = null;
             //MessageDispatcher.ClearListeners(); //TODO not sure
 
             //Debug.Log("unit destroyed: " + _view.name + _view.transform.DOKill());
@@ -52,23 +50,6 @@ namespace Assets.Scripts.Units
             _view.transform.DOKill();
         }
 
-        //    //--------------------setters
-        //    public set view(value: createjs.DisplayObject)
-        //    {
-        //        this._view = value;
-        //    }
-
-        //    public set index(value: number)
-        //    {
-        //        this._index = value;
-        //    }
-
-        //    public set state(value: string)
-        //    {
-        //        
-        //    }
-        //    //--------------------setters
-
         public GameObject view
         {
             get
@@ -76,16 +57,6 @@ namespace Assets.Scripts.Units
                 return _view;
             }
         }
-
-        //    public get mc(): createjs.Sprite
-        //    {
-        //        return <createjs.Sprite> this._view;
-        //    }
-
-        //    public get bitmap(): createjs.Bitmap
-        //    {
-        //        return <createjs.Bitmap> this._view;
-        //    }
 
         public int index
         {
@@ -110,7 +81,6 @@ namespace Assets.Scripts.Units
             set
             {
                 _state = value;
-                //console.log("[set state]",value, this)
             }
             get
             {

@@ -36,11 +36,7 @@ namespace Assets.Scripts.Core
             this.types.Add(type);
             GameObject dObject = this.GetAlignedGameObject(type, container);
 
-
-            // Debug.Log("TILE type: " + type + "   index" + index);
             this.objects.Add(dObject);
-
-            //Debug.Log("+++add  " + type + "   " + type.IndexOf(ImagesRes.DECOR));
 
             //everything by default
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
@@ -64,7 +60,7 @@ namespace Assets.Scripts.Core
             dObject.AddComponent<SpriteRenderer>();
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
 
-            dObject.name = type;// + index; seems I need only water
+            dObject.name = type;
             //Debug.Log("+++add " + type + "  " + index + "  " + x + "  " + y);
             switch (type)
             {
@@ -140,7 +136,6 @@ namespace Assets.Scripts.Core
                     break;
             }
 
-            //    dObject.snapToPixel = true;
             return dObject;
         }
 
@@ -148,13 +143,12 @@ namespace Assets.Scripts.Core
         public void remove(string type)
         {
             int index = types.IndexOf(type);
-            //console.log("test111", type, index, this.objects[index]);
+
             if (index != -1)
             {
                 GameObject dObject = this.objects[index];
 
-                //dObject.parent.removeChild(dObject);
-                this.objects.RemoveAt(index);//splice(index, 1);
+                this.objects.RemoveAt(index);
                 this.types.RemoveAt(index);
                 UnityEngine.Object.Destroy(dObject);
             }
@@ -220,22 +214,8 @@ namespace Assets.Scripts.Core
 
         public bool isContainTypes(string type)
         {
-            string str = String.Join(",", types);//types.ToString();// (type + 0);
-            //Debug.Log("isContainTypes: " + type + " 111: " + str);
+            string str = String.Join(",", types);
             return str.Contains(type);
-            //    types.( (Any(item => b.Contains(item))
-            //var index1 number = this.types.indexOf(type + 1);
-            //var index2 number = this.types.indexOf(type + 2);
-            //var index3 number = this.types.indexOf(type + 3);
-            //var index4 number = this.types.indexOf(type + 4);
-            //if (index0 != -1 || index1 != -1 || index2 != -1 || index3 != -1 || index4 != -1)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
         }
 
         public string getConcreteType(string type)

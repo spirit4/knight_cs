@@ -20,22 +20,6 @@ namespace Assets.Scripts.Unity
         public Text text;
         public Image hint;
 
-        //public static Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
-
-        void Awake()
-        {
-            //if (sprites.Count > 0)
-            //    return;
-
-            //Sprite[] ss = Resources.LoadAll<Sprite>("images/ui/Achs");
-            ////Debug.Log(sprites.Length);
-            //foreach (var s in ss)
-            //{
-            //    sprites.Add(s.name, s);
-            //    //Debug.Log("[PanelAchs] " + s.name);
-            //}
-        }
-
         // Start is called before the first frame update
         void Start()
         {
@@ -68,15 +52,12 @@ namespace Assets.Scripts.Unity
 
                     hint.enabled = true;
                     text.enabled = true;
-                    //Debug.Log(Input.mousePosition);
-                    //Debug.Log(movePos);
-                    //Debug.Log(hint.GetComponent<RectTransform>().rect.width + "" + hint.GetComponent<RectTransform>().rect.height);
+
                     hint.transform.localPosition = new Vector3(movePos.x + hint.GetComponent<RectTransform>().rect.width / 2 + 20,
                         movePos.y - hint.GetComponent<RectTransform>().rect.height / 2 - 10);
                 }
             }
         }
-
 
         private void createIcons()
         {

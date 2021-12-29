@@ -14,9 +14,9 @@ namespace Assets.Scripts.Units
         {
             this.state = Unit.OFF;
 
-            this._grid = Controller.instance.model.grid;
-            this.x = this._grid[index].x;
-            this.y = this._grid[index].y;
+            _grid = Controller.instance.model.grid;
+            this.x = _grid[index].x;
+            this.y = _grid[index].y;
 
             view.AddComponent<SpriteRenderer>();
             view.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);
@@ -45,8 +45,6 @@ namespace Assets.Scripts.Units
         private void comeback()
         {
             view.transform.localScale = new Vector3(1.0f, 1.0f);
-            //    this.x = this._grid[this.index].x;
-            //    this.y = this._grid[this.index].y;
         }
 
         private void AddVane()
@@ -81,10 +79,10 @@ namespace Assets.Scripts.Units
         //public destroy(): void
         //{
         //    super.destroy();
-        //    createjs.Tween.removeTweens(this._vane);
+        //    createjs.Tween.removeTweens(_vane);
 
-        //    this._vane = null;
-        //    this._grid = null;
+        //    _vane = null;
+        //    _grid = null;
         //}
     }
 }

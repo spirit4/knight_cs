@@ -28,13 +28,10 @@ namespace Assets.Scripts.Core
 
         private Pathfinder _pathfinder;
 
-        private Dictionary<int, ICollidable> _units;//private _units: { [index number]: ICollidable; };
+        private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
 
         private GameObject _help;
-        //private _helpShape: createjs.Shape;
-        //private _top: createjs.Shape;
-        //private _bottom: createjs.Shape;
 
         private TargetMark _targetMark;
         private List<GameObject> _poolPoints = new List<GameObject>();
@@ -45,11 +42,8 @@ namespace Assets.Scripts.Core
 
         public Game()
         {
-            //those came from app.ts, they were first ones -----------------------------------------------------
             var managerBg = new ManagerBg(this);
-            //this._bgStage.addChild(this._managerBg);
             new Controller(managerBg);//singleton
-            //this._mainStage.addChild(this._core);
 
             _model = Controller.instance.model;
             _grid = _model.grid;
@@ -58,15 +52,9 @@ namespace Assets.Scripts.Core
         private void Awake()
         {
             this.gameObject.isStatic = true;
-            //Debug.Log("[Awake]" + ImagesRes.prefabs.Count);
-
 
             DOTween.Init();
             DOTween.Clear();
-
-            //JSONRes.init();
-            //ImagesRes.initAnimations();
-            Controller.instance.bg.init();
 
             AchController ac = new AchController();//singleton
             ac.init(this);
@@ -97,20 +85,18 @@ namespace Assets.Scripts.Core
 
         private void getTrapHandler(IMessage rMessage)
         {
-            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [null], this);
             MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
             WaitAndCall(100, hideActors, null, true);
             showBoom();
         }
 
 
-        private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
+        private void OnMouseDown()
         {
 
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            //Debug.Log("OnMouseDown " + Input.c.name);
             if (_hero.HeroState != Hero.IDLE)
             {
                 _hero.stop();
@@ -124,7 +110,7 @@ namespace Assets.Scripts.Core
             if (_hero.index == index)
                 return;
 
-            //    if (Progress.currentLevel == 0 && this._hero.index == 10 && index != 54) //to guide
+            //    if (Progress.currentLevel == 0 && _hero.index == 10 && index != 54) //to guide
             //    {
             //        return;
             //    }
@@ -135,9 +121,8 @@ namespace Assets.Scripts.Core
 
             _pathfinder.Init(_grid); //TODO must be single Init
             _pathfinder.FindPath(_hero.index, index);
-            //Debug.Log("OnMouseDown " + _pathfinder.Path.Count);
-            //Debug.Log("Game Path  " + _pathfinder.Path.ToString()); //forget it, because of raycast
-            if (_pathfinder.Path.Count > 0)// && (!_grid[index].isContainType(ImagesRes.MILL)))// || e.target instanceof MillPress))
+
+            if (_pathfinder.Path.Count > 0)
             {
                 List<int> path = _pathfinder.Path;
                 if (_grid[index].isContainType(ImagesRes.MILL))
@@ -160,17 +145,13 @@ namespace Assets.Scripts.Core
                         if (!(pair.Value is TowerArrow))
                             continue;
 
-                        //Debug.Log("unit " + pair.Key + pair.Value.view.name);
                         arrow = pair.Value as TowerArrow;
-                        //Debug.Log("[++++11+]: " + GridUtils.GetPoint(arrow.index).y + " ==??==" + GridUtils.GetPoint(_hero.index).y);
-                        //Debug.Log("[++++22+]: " + arrow.isShooted());
                         if (GridUtils.GetPoint(arrow.index).y == GridUtils.GetPoint(_hero.index).y && arrow.isShooted())
                         {
                             _isStartArrowCheck = true;
                             break;
                         }
                     }
-                    //Debug.Log("Game [path]: " + path.Count);
 
                     _hero.moveToCell(path);
                 }
@@ -192,9 +173,6 @@ namespace Assets.Scripts.Core
 
         private void reachedHandler(IMessage rMessage)//e: GameEvent) : void
         {
-            //Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
-            //Debug.Log("[reached] " + GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL));
-            //Debug.Log("[+++++reached 1]");
             if (_isStartArrowCheck)
             {
                 //Debug.Log("[+++++reached 2]");
@@ -273,8 +251,8 @@ namespace Assets.Scripts.Core
         {
             GameObject dObject;
             //magic number
-            float heroX = _hero.view.transform.localPosition.x;// + 0.3f;// + Config.SIZE_W * 0.5f;
-            float heroY = _hero.view.transform.localPosition.y + 0.15f;// + Config.SIZE_H * 0.5f;
+            float heroX = _hero.view.transform.localPosition.x;
+            float heroY = _hero.view.transform.localPosition.y + 0.15f;
             float objX;
             float objY;
 
@@ -285,38 +263,20 @@ namespace Assets.Scripts.Core
                 objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5f;
                 objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5f;
 
-                //Debug.Log("-1-"+dObject.name  + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
-                //if (heroX > objX + x1 && heroX < objX + x2)
-                //{
-                //    if (heroY > objY + y1 && heroY < objY + y2)
                 if ((heroX + w1 >= objX - w2 && heroX - w1 <= objX + w2) && (heroY - h1 <= objY + h2 && heroY + h1 >= objY - h2))
                 {
-                    //if (heroY > objY + y1 && heroY < objY + y2)
-                    //{
                     if (_hero.HeroState != Hero.DEATH)
                     {
-                        //Debug.Log("-2---------"+ dObject.name + " heroX: " + heroX + "  heroY: " + heroY + "  objX: " + objX + "  objY: " + objY);
-
-                        //if (pair.Value is Monster)//dObject.name == ImagesRes.MONSTER)// instanceof Monster)
-                        //{
                         Monster monster = pair.Value as Monster;
-                        //var index number = this._items.indexOf(monster);
-                        //this._items.splice(index, 1);                  not now, maybe never
-                        //this.removeChild(monster);-------------------------------------------
-                        //}
 
-                        //vector[i] = null;
-                        //delete vector[i];
                         vector.Remove(pair.Key);
 
-                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(this._hero.stateItems != Hero.FULL)
+                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(_hero.stateItems != Hero.FULL)
                         {
                             if (pair.Value is Monster)
                                 AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
                             else if (pair.Value is TowerArrow)
                                 AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
-
-                            //Debug.Log("DEAD" + _isStartArrowCheck);
 
                             WaitAndCall(100, hideActors, pair.Value, true);
                             _hero.HeroState = Hero.DEATH;
@@ -337,7 +297,6 @@ namespace Assets.Scripts.Core
 
                         break;
                     }
-                    //}
                 }
             }
         }
@@ -358,8 +317,8 @@ namespace Assets.Scripts.Core
 
         private void showBoom(string boomType = ImagesRes.A_BOOM)
         {
-            float boomX = _hero.view.transform.localPosition.x;// + Config.SIZE_W / 2;
-            float boomY = _hero.view.transform.localPosition.y + 0.25f;// - Config.SIZE_H / 2 - 0.1f;
+            float boomX = _hero.view.transform.localPosition.x;
+            float boomY = _hero.view.transform.localPosition.y + 0.25f;
 
             if (_boom == null)
             {
@@ -374,16 +333,13 @@ namespace Assets.Scripts.Core
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
-            //MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, boomCompleteHandler);
             MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler, false);
         }
 
         public void boomCompleteHandler(IMessage rMessage)
         {
-            //Debug.Log("boomCompleteHandler]" + (rMessage.Sender as GameObject).name);
-
             MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
-            //Destroy(rMessage.Sender as GameObject);
+
             _boom.SetActive(false);
 
             if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
@@ -398,7 +354,6 @@ namespace Assets.Scripts.Core
                 {
                     this.createPathPoint();
                 }
-                // Debug.Log("--showPath--" + path.Count + " i " + i);
                 WaitAndCall(50 * i, appearPoint, path[i]);
             }
         }
@@ -412,7 +367,7 @@ namespace Assets.Scripts.Core
             bitmap.transform.localScale = new Vector3(0, 0);
             bitmap.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y, 0);
             bitmap.SetActive(true);
-            this._activePoints.Add(bitmap);
+            _activePoints.Add(bitmap);
 
             bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => reducePoint(bitmap.transform));
         }
@@ -424,7 +379,7 @@ namespace Assets.Scripts.Core
 
         private void hidePoints()
         {
-            while (this._activePoints.Count > 0)
+            while (_activePoints.Count > 0)
             {
                 GameObject bitmap = _activePoints[_activePoints.Count - 1];
                 _activePoints.RemoveAt(_activePoints.Count - 1);
@@ -435,17 +390,17 @@ namespace Assets.Scripts.Core
 
         private void hideLastPoint(IMessage rMessage)
         {
-            if (this._activePoints.Count == 0)
+            if (_activePoints.Count == 0)
                 return;
 
-            //if (this._isStartArrowCheck)
+            //if (_isStartArrowCheck)
             //{
             //    //console.log("[+++++reached]");
             //    AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-            //    this._isStartArrowCheck = false;
+            //    _isStartArrowCheck = false;
             //}
 
-            //console.log("[CELL AWAY]", this._hero.index, this._hero.mc.framerate);
+            //console.log("[CELL AWAY]", _hero.index, _hero.mc.framerate);
 
             GameObject bitmap = _activePoints[0];
             _activePoints.RemoveAt(0);
@@ -478,36 +433,36 @@ namespace Assets.Scripts.Core
 
             //MessageDispatcher.ClearListeners(); //TODO bug in inerating?
             //    this.removeAllEventListeners();
-            //    this._hero.removeAllEventListeners();
+            //    _hero.removeAllEventListeners();
 
-            //    //console.log("[destroy hero]", this._top)
-            //    this._hero.destroy();
+            //    //console.log("[destroy hero]", _top)
+            //    _hero.destroy();
 
-            //    if (this._top)
+            //    if (_top)
             //    {
-            //        this._top.graphics.clear();
-            //        this._bottom.graphics.clear();
-            //        Core.instance.bg.removeChild(this._top);
-            //        Core.instance.bg.removeChild(this._bottom);
+            //        _top.graphics.clear();
+            //        _bottom.graphics.clear();
+            //        Core.instance.bg.removeChild(_top);
+            //        Core.instance.bg.removeChild(_bottom);
             //        Core.instance.bg.update();
-            //        this._top = null;
-            //        this._bottom = null;
+            //        _top = null;
+            //        _bottom = null;
 
-            //        this._helpShape.graphics.clear();
-            //        Core.instance.removeChild(this._help);
-            //        Core.instance.removeChild(this._helpShape);
-            //        this._help = null;
-            //        this._helpShape = null;
+            //        _helpShape.graphics.clear();
+            //        Core.instance.removeChild(_help);
+            //        Core.instance.removeChild(_helpShape);
+            //        _help = null;
+            //        _helpShape = null;
             //}
 
             //    this.removeAllEventListeners();
 
             //    this.removeHint();
 
-            //    this._pathfinder.destroy();
-            //    this._pathfinder = null;
+            //    _pathfinder.destroy();
+            //    _pathfinder = null;
 
-            //    var grid: Tile[] = this._grid;
+            //    var grid: Tile[] = _grid;
             //    var len number = grid.Length;
             //    for (int i = 0; i < len; i++)
             //        {
@@ -524,22 +479,22 @@ namespace Assets.Scripts.Core
             _units = null;
             _items = null;
 
-            //    this._targetMark = null;
-            //    this._poolPoints.Length = 0;
-            //    this._poolPoints = null;
-            //    this._activePoints.Length = 0;
-            //    this._activePoints = null;
+            //    _targetMark = null;
+            //    _poolPoints.Length = 0;
+            //    _poolPoints = null;
+            //    _activePoints.Length = 0;
+            //    _activePoints = null;
 
-            //    this._grid = null;
-            //    this._model = null;
+            //    _grid = null;
+            //    _model = null;
 
-            //    this._hero = null;
-            //    this._level = null;
-            //    this._mill = null;
+            //    _hero = null;
+            //    _level = null;
+            //    _mill = null;
 
-            //    this._buttonMenu = null;
-            //    this._buttonSound = null;
-            //    this._buttonRestart = null;
+            //    _buttonMenu = null;
+            //    _buttonSound = null;
+            //    _buttonRestart = null;
         }
 
         /** <summary>delay (ms)</summary> */

@@ -41,7 +41,7 @@ namespace Assets.Scripts.Units
         //    {
         //        super.destroy();
 
-        //        this._grid = null;
+        //        _grid = null;
         //    }
 
         //}

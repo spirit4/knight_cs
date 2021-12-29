@@ -33,23 +33,15 @@ namespace Assets.Scripts.Data
         public const string TARGET_MARK = "target_";
 
         public const string ICON_ACH = "a";
-
-        public const string DECOR = "Decor";//???????????????????flovers
+        public const string DECOR = "Decor";// ====="flovers"
 
         //animations
-        //public const string A_HERO_IDLEs: Object[];
-        //public const string A_HERO_MOVEs: Object[];
-        //public static A_HERO_DEATHs: Object[];
-        //public const string A_ITEMs: Object;   // 0-helm, 1-shield, 2-sword
-        //public const string A_MONSTER: Object;
-        //public const string A_SMOKE string = "smoke";
         public const string A_BOOM = "Boom";
         public const string A_ATTACK_BOOM = "BoomSword";
-        //public const string A_TRAP string = "trap";
 
         public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
-        public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); //loader: createjs.LoadQueue;
-        public static Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>(); //loader: createjs.LoadQueue;
+        public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); 
+        public static Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>(); 
 
         public static void init()
         {
@@ -59,11 +51,10 @@ namespace Assets.Scripts.Data
             try
             {
                 Sprite[] sprites = Resources.LoadAll<Sprite>("images/tiles");
-                //Debug.Log(sprites.Length);
+
                 foreach (var s in sprites)
                 {
                     tileSprites.Add(s.name, s);
-                    //Debug.Log("[try] " + s.name);
                 }
                 Sprite gameEnd = Resources.Load<Sprite>("images/ui/game_end");
                 tileSprites.Add("game_end", gameEnd);//easy hack
@@ -76,11 +67,10 @@ namespace Assets.Scripts.Data
                 }
 
                 GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
-                //Debug.Log(clips.Length);
+                
                 foreach (var prefab in clips)
                 {
                     prefabs.Add(prefab.name, prefab);
-                    //Debug.Log("[try] " + prefab.name);
                 }
             }
             catch (Exception e)
@@ -89,8 +79,6 @@ namespace Assets.Scripts.Data
                 Debug.Log(e);
             }
         }
-
-
 
         /** <summary>type0 or type_0 are okay</summary> */
         public static Sprite getImage(string name)
@@ -107,13 +95,11 @@ namespace Assets.Scripts.Data
             if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes.numberImages[name] > 0)
             {
                 index = (int)Random.Range(0, ImagesRes.numberImages[name]);
-                //Debug.Log("[getImage] " + name + '_' + index);
                 bd = tileSprites[name + '_' + index];
             }
             else if (ImagesRes.tileSprites.ContainsKey(name))
             {
                 bd = tileSprites[name];
-                //Debug.Log("[getImage]!!!!!!!!!!!!!!!!!!!!!!!!: [" + name + "]");
             }
             else if (!ImagesRes.tileSprites.ContainsKey(name))
             {

@@ -68,52 +68,6 @@ namespace Assets.Scripts.Utils
 
             return -1;
         }
-
-        //public static addBitmap(x number, y number, type string, container: createjs.Container, mouseEnabled ?: boolean, rot ? number, isRegCenter ?: boolean): void;
-        //public static addBitmap(x number, y number, bd: HTMLImageElement, container: createjs.Container, mouseEnabled ?: boolean, rot ? number, isRegCenter ?: boolean): void;
-
-        //public static addBitmap(x number, y number, value: any, container: createjs.Container, mouseEnabled: boolean = false, rot number = 0, isRegCenter: boolean = false): void
-        //{
-        //    var bitmapGameObject
-        //    var bd: HTMLImageElement;
-        //    if (value && typeof value == "string")
-        //    {
-        //        bd = ImagesRes.getImage(value);
-        //        bitmap = new createjs.Bitmap(bd);
-        //    }
-        //    else if (value && value instanceof HTMLImageElement)
-        //        {
-        //        bd = < HTMLImageElement > value;
-        //        bitmap = new createjs.Bitmap(bd);
-        //    }
-        //        else
-        //    {
-        //        alert("WTF addBitmap");
-        //    }
-        //    bitmap.snapToPixel = true;
-        //    bitmap.mouseEnabled = mouseEnabled;
-        //    container.addChild(bitmap);
-        //    bitmap.x = x;
-        //    bitmap.y = y;
-        //    bitmap.rotation = rot;
-
-        //    if (isRegCenter)
-        //    {
-        //        bitmap.regX = bd.width >> 1;
-        //        bitmap.regY = bd.height >> 1;
-        //    }
-        //}
-
-        //public static getLength(object:Object) number
-        //{
-        //    var count number = 0;
-        //        for (var i in object)
-        //    {
-        //        count++;
-        //    }
-        //    return count;
-        //}
-
     }
 
 }

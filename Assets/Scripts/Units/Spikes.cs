@@ -12,9 +12,9 @@ namespace Assets.Scripts.Units
             tile.isWall = true;
         }
 
-        public void  init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
+        public void init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
         {
-        //    //empty
+            //empty
         }
 
         public void activate()

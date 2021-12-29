@@ -10,15 +10,11 @@ namespace Assets.Scripts.Unity
 {
     public class PanelLevels : MonoBehaviour
     {
-
-
-
         // Start is called before the first frame update
         void Start()
         {
             ShowButtons();
         }
-
 
         private void ShowButtons()
         {
@@ -26,7 +22,6 @@ namespace Assets.Scripts.Unity
             Transform transform;
             for (int i = 3; i < this.transform.childCount; i++)
             {
-                //Debug.Log("ShowButtons: " + this.transform.GetChild(i).name);
 
                 transform = this.transform.GetChild(i);
                 if (i - 3 < Progress.levelsCompleted)
@@ -48,16 +43,11 @@ namespace Assets.Scripts.Unity
                     transform.gameObject.SetActive(false);
                 }
 
-                if (i-3 == Progress.levelsCompleted - 1)
+                if (i - 3 == Progress.levelsCompleted - 1)
                 {
                     transform.GetChild(0).gameObject.AddComponent<Swayer>();
                 }
             }
-        }
-
-        private void OnMouseDown()// movedownHandler(e: createjs.MouseEvent) : void
-        {
-            Debug.Log("ShowButtons: " );
         }
     }
 }

@@ -18,6 +18,6 @@ namespace Assets.Scripts.Units
             color.a = 0.4f;
             view.GetComponent<SpriteRenderer>().color = color;
         }
-        
+
     }
 }

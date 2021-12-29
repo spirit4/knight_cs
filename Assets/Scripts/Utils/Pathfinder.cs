@@ -153,8 +153,6 @@ namespace Assets.Scripts.Utils
             do
             {
                 _path.Insert(0, node.index);
-                //Debug.Log("SetPath  " + node.index);
-
                 node = node.parent;
             }
             while (node.parent != null);

@@ -12,7 +12,7 @@ namespace Assets.Scripts.Utils.Display
     public class MusicButton : MonoBehaviour
     {
 
-        //off images
+        //turn off images
         public Sprite image;
         public Sprite pressedImage;
 
@@ -20,7 +20,6 @@ namespace Assets.Scripts.Utils.Display
 
         void Start()
         {
-            //Debug.Log("[MusicButton] Start " + SoundManager.getInstance().isMusic);
             _isActive = SoundManager.getInstance().isMusic;
             SoundManager.getInstance().CurrentButton = this;
 
@@ -35,7 +34,6 @@ namespace Assets.Scripts.Utils.Display
 
         public void SetState()
         {
-            //Debug.Log("[MusicButton] SetState " + SoundManager.getInstance().isMusic);
             _isActive = SoundManager.getInstance().isMusic;
 
             Sprite image = this.image;

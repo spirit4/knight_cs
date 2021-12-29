@@ -32,7 +32,7 @@ namespace Assets.Scripts.Core
 
         public SoundManager()
         {
-            // SoundManager.instance = this;
+
         }
 
         public static SoundManager getInstance()
@@ -59,10 +59,8 @@ namespace Assets.Scripts.Core
         }
 
 
-        //TODO save position on scene reload
-        public void setLocation(string type)//, bool isRestart)
+        public void setLocation(string type)
         {
-           // Debug.Log("[SoundManager] setLocation " + _currentLocation + "   " + type);
             if (_isMusic)
             {
                 if (type != _currentLocation)
@@ -82,8 +80,6 @@ namespace Assets.Scripts.Core
 
         private void playMusicTrack()
         {
-            //Debug.Log("playMusicTrack " + _musicPositions.ContainsKey(_currentLocation));
-
             if (!_musicPositions.ContainsKey(_currentLocation))
                 _musicPositions[_currentLocation] = 0;
 
@@ -91,21 +87,16 @@ namespace Assets.Scripts.Core
             _audioSource.loop = true;
             _audioSource.time = _musicPositions[_currentLocation];
             _audioSource.Play();
-
-            //Debug.Log("playMusicTrack " + _audioSource.time);
         }
 
         public void stopMusicTrack()
         {
-            //Debug.Log("stopMusicTrack " + _currentLocation);
             if (_currentLocation == null)
                 return;
 
             //Debug.Log("stopMusicTrack" + _audioSource.time);
             _musicPositions[_currentLocation] = _audioSource.time;
             _audioSource.Stop();
-
-            
         }
 
         public void muteOnOff()
@@ -140,8 +131,8 @@ namespace Assets.Scripts.Core
 
         //public set savingState(state: boolean)
         //    {
-        //    this._isMusic = state;
-        //    this._isSFX = state;
+        //    _isMusic = state;
+        //    _isSFX = state;
         //}
 
         public MusicButton CurrentButton

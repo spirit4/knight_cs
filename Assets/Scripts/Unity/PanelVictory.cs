@@ -15,27 +15,11 @@ namespace Assets.Scripts.Unity
         // Start is called before the first frame update
         void Awake()
         {
-
             //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
             //{
             //    Progress.levelsCompleted++;
             //}
-            
-            
         }
-
-        private void Start()
-        {
-            //Debug.Log("PanelVictory start");
-            //MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);
-        }
-
-        // Update is called once per frame
-        public void Update()
-        {
-
-        }
-
 
         //logic in Editor's buttons
         public void Activate(IMessage rMessage = null)
@@ -52,7 +36,7 @@ namespace Assets.Scripts.Unity
 
             if (Progress.deadOnLevel[Progress.currentLevel] == 0)
                 AchController.instance.addParam(AchController.LEVEL_WITHOUT_DEATH);
-            
+
             CreateStars();
         }
 
@@ -72,7 +56,7 @@ namespace Assets.Scripts.Unity
                 dObject.transform.SetParent(this.gameObject.transform);
                 dObject.transform.localPosition = new Vector3(53.2f + 50, 17.0f + 50);
                 dObject.transform.localScale = new Vector3(200, 200);
-                //dObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+
                 color = dObject.GetComponent<SpriteRenderer>().color;
                 color.a = 0f;
                 dObject.GetComponent<SpriteRenderer>().color = color;
@@ -92,23 +76,14 @@ namespace Assets.Scripts.Unity
                 dObject.transform.SetParent(this.gameObject.transform);
                 dObject.transform.localPosition = new Vector3(21.9f + 50, -28.4f + 50);
                 dObject.transform.localScale = new Vector3(200, 200);
+
                 color = dObject.GetComponent<SpriteRenderer>().color;
                 color.a = 0f;
                 dObject.GetComponent<SpriteRenderer>().color = color;
-                //    bd = ImagesRes.getImage(ImagesRes.STAR + '2');
-                //    bitmap = new createjs.Bitmap(bd);
-                //    bitmap.snapToPixel = true;
-                //    this.addChild(bitmap);
-                //    bitmap.regX = bd.width >> 1;
-                //    bitmap.regY = bd.height >> 1;
-                //    bitmap.x = 347 + bitmap.regX;
-                //    bitmap.y = 315 + bitmap.regY;
 
-                //sequence.AppendInterval(0.25f);
                 sequence.Insert(0.25f, dObject.transform.DOLocalMove(new Vector3(21.9f, -28.4f), 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
-                //    createjs.Tween.get(bitmap, { ignoreGlobalPause: true }).wait(250).from({ alpha: 0, scaleX: 2, scaleY: 2, y: bitmap.y - 50 }, 500, createjs.Ease.quartOut);
             }
             if (Progress.starsAllLevels[Progress.currentLevel, 1] == 1)
             {
@@ -120,17 +95,15 @@ namespace Assets.Scripts.Unity
                 dObject.transform.SetParent(this.gameObject.transform);
                 dObject.transform.localPosition = new Vector3(-10.8f + 50, 17.8f + 50);
                 dObject.transform.localScale = new Vector3(200, 200);
+
                 color = dObject.GetComponent<SpriteRenderer>().color;
                 color.a = 0f;
                 dObject.GetComponent<SpriteRenderer>().color = color;
 
-                //sequence.AppendInterval(0.25f);
                 sequence.Insert(0.5f, dObject.transform.DOLocalMove(new Vector3(-10.8f, 17.8f), 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
             }
-
-            
 
             //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
             //{

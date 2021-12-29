@@ -20,8 +20,6 @@ namespace Assets.Scripts.Unity
         }
         public void SmokeCompleteHandler(IMessage rMessage)
         {
-            //Debug.Log("SmokeCompleteHandler]");
-
             Animator anim = _smoke.GetComponent<Animator>();
             anim.enabled = false;
 

@@ -19,12 +19,5 @@ namespace Assets.Scripts.Unity
             new MainView(vane, smoke);
         }
 
-        // Update is called once per frame
-        public void Update()
-        {
-
-        }
-
-
     }
 }

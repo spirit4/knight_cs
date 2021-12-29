@@ -58,7 +58,6 @@ namespace Assets.Scripts.Unity
             _victoryPanel = GameObject.Find("PanelVictory");
             if (_victoryPanel)
             {
-                //Debug.Log("UIManager _victoryPanel" + _victoryPanel);
                 MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, _victoryPanel.GetComponent<PanelVictory>().Activate);
                 _victoryPanel.SetActive(false);
             }
@@ -66,8 +65,7 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            //Debug.Log("UIManager start" + GameObject.Find("Panel_MainMenu") + GameObject.Find("Panel_Levels"));
-            if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2ndtest only
+            if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2nd test only
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);

@@ -44,12 +44,11 @@ namespace Assets.Scripts.Units
 
         public void activate()
         {
-            //Debug.Log("TowerArrow");
             GameObject dObject = new GameObject(ImagesRes.ARROW);
             dObject.AddComponent<SpriteRenderer>();
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.ARROW);
             dObject.transform.SetParent(_container.gameObject.transform);
-            //dObject.transform.localPosition = new Vector3(this.x - 0.01f, this.y + 0.3f);
+
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 98;
             dObject.SetActive(false);
@@ -64,12 +63,10 @@ namespace Assets.Scripts.Units
                 return;
 
             _arrow.view.transform.localPosition = new Vector3(this.x - 0.01f, this.y + 0.3f);
-            //    this._arrow.x = this.view.x + 3;
-            //    this._arrow.y = this.view.y + 20;
             int localIndex = (int)Math.Round(_grid[this.index].x / Config.SIZE_W);
 
             _arrow.view.SetActive(true);
-            //this._arrow.visible = true;
+
             if (this.index > _directionIndex)
             {
                 _speedTime = SPEED + localIndex * SPEED;
@@ -82,15 +79,12 @@ namespace Assets.Scripts.Units
             }
 
             DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(shoot);
-            //    createjs.Tween.get(this).wait(this._speedTime * 7 + 700 * this._count).call(this.shoot, [], this);
+
         }
 
         public override void destroy()
         {
             base.destroy();
-
-            //    this._grid = null;
-            //_arrow.destroy(); it's destroyed in _units
             _arrow = null;
         }
     }

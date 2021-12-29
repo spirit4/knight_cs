@@ -9,16 +9,9 @@ namespace Assets.Scripts.Unity
 {
     public class EventReceiver : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
 
         public void AnimationCompleteHandler()
         {
-            //Debug.Log("AnimationCompleteHandler] " + this.name);
             MessageDispatcher.SendMessage(GameEvent.ANIMATION_COMPLETE, this.name);
         }
 
