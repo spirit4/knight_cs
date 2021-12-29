@@ -259,19 +259,12 @@ namespace Assets.Scripts.Units
             }
         }
 
-        //public destroy(): void
-        //{
-        //    super.destroy();
-
-        //    _path.length = 0;
-        //    _path = null;
-        //    _grid = null;
-        //    _wearItems.length = 0;
-        //    _wearItems = null;
-
-        //    Hero.currentTween = null;
-        //    Hero.currentView = null;
-        //}
+        public override void destroy()
+        {
+            base.destroy();
+            _path = null;
+            _grid = null;
+        }
 
         private void reclothe(string type)
         {

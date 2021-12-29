@@ -244,10 +244,10 @@ namespace Assets.Scripts.Core
             }
         }
 
-        //public clear(): void
+        //public void clear()
         //{
-        //    for (int i = 0; i < this.objects.Length; i++)
-        //        {
+        //    for (int i = 0; i < this.objects.Count; i++)
+        //    {
         //        if (this.objects[i].parent)
         //        {
         //            this.objects[i].parent.removeChild(this.objects[i]);

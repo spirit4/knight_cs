@@ -44,7 +44,8 @@ namespace Assets.Scripts.Units
 
         private void comeback()
         {
-            view.transform.localScale = new Vector3(1.0f, 1.0f);
+            if (view != null)
+                view.transform.localScale = new Vector3(1.0f, 1.0f);
         }
 
         private void AddVane()
@@ -76,13 +77,14 @@ namespace Assets.Scripts.Units
             _vane.transform.DORotate(new Vector3(0, 0, -395), 1.7f).SetLoops(-1).SetEase(Ease.Linear);
         }
 
-        //public destroy(): void
-        //{
-        //    super.destroy();
-        //    createjs.Tween.removeTweens(_vane);
+        public override void destroy()
+        {
+            //Debug.Log("mill kill");
+            _vane.transform.DOKill();
+            base.destroy();
 
-        //    _vane = null;
-        //    _grid = null;
-        //}
+            _vane = null;
+            _grid = null;
+        }
     }
 }

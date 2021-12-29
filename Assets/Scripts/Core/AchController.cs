@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Core
 {
@@ -43,10 +44,20 @@ namespace Assets.Scripts.Core
 
         public static AchController instance;
         private GameObject _icon;
+        Sequence _mySequence;
 
         public AchController()
         {
             AchController.instance = this;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
+        }
+
+        private void OnSceneUnloaded(Scene current)
+        {
+            //Debug.Log("OnSceneUnloaded: " + 111111);
+            removeAchievement();
+            //DOTween.KillAll();
+            _icon = null;
         }
 
         public void addParam(int type)
@@ -59,7 +70,7 @@ namespace Assets.Scripts.Core
             {
                 Progress.deadOnLevel[Progress.currentLevel]++;
             }
-
+            //Debug.Log("addParam: "+ _icon.GetComponentInParent<Game>());
             checkAchievements(type);
         }
 
@@ -109,39 +120,51 @@ namespace Assets.Scripts.Core
                         }
                         break;
                 }
-
             }
         }
 
         private void letAchievement(int type)
         {
-            if (_icon.activeSelf)
-                this.removeAchievement();
+            if (_icon == null)
+                return;
 
+            if (_icon.activeSelf)
+                removeAchievement();
+
+            //Debug.Log("letAchievement: " + _icon);
             _icon.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.ICON_ACH + (type + 1).ToString());
             _icon.SetActive(true);
 
-            Sequence mySequence = DOTween.Sequence();
-            mySequence.SetEase(Ease.InOutQuad);
-            mySequence.Append(_icon.transform.DOScale(1.5f, 0.4f));
-            mySequence.Join(_icon.GetComponent<SpriteRenderer>().DOFade(1, 0.4f));
-            mySequence.Append(_icon.transform.DOScale(0.8f, 0.4f));
-            mySequence.Append(_icon.transform.DOScale(1.3f, 0.4f));
-            mySequence.Append(_icon.transform.DOScale(0.6f, 0.4f));
-            mySequence.Append(_icon.transform.DOScale(1f, 0.4f));
-            mySequence.AppendCallback(hideAchievement);
+            _mySequence = DOTween.Sequence();
+            _mySequence.SetEase(Ease.InOutQuad);
+            _mySequence.Append(_icon.transform.DOScale(1.5f, 0.4f));
+            _mySequence.Join(_icon.GetComponent<SpriteRenderer>().DOFade(1, 0.4f));
+            _mySequence.Append(_icon.transform.DOScale(0.8f, 0.4f));
+            _mySequence.Append(_icon.transform.DOScale(1.3f, 0.4f));
+            _mySequence.Append(_icon.transform.DOScale(0.6f, 0.4f));
+            _mySequence.Append(_icon.transform.DOScale(1f, 0.4f));
+            _mySequence.AppendCallback(hideAchievement);
         }
 
         private void hideAchievement()
         {
+            //Debug.Log("hideAchievement: " + _icon);
             _icon.GetComponent<SpriteRenderer>().DOFade(0, 0.4f).SetEase(Ease.InOutQuad);
             _icon.transform.DOScale(0.3f, 0.4f).SetEase(Ease.InOutQuad).OnComplete(removeAchievement);
         }
 
-        public void removeAchievement()
+        private void removeAchievement()
         {
-            _icon.transform.DOKill(true);
-            _icon.GetComponent<SpriteRenderer>().DOKill(true);
+            _mySequence.Kill();
+            //Debug.Log("removeAchievement1: " + _icon);
+            if (_icon == null)
+                return;
+
+            //Debug.Log("removeAchievement2: " + _icon);
+            //_icon.transform.DOKill(true);
+            
+            //DOTween.Sequence(_icon.GetComponent<SpriteRenderer>()).Kill(true);
+            //_icon.GetComponent<SpriteRenderer>().DOKill(true);
 
             Color color = _icon.GetComponent<SpriteRenderer>().color;
             color.a = 0;
@@ -151,6 +174,7 @@ namespace Assets.Scripts.Core
 
         public void init(Component container)
         {
+            //Debug.Log("init: " + _icon);
             _icon = new GameObject("ach");
             _icon.AddComponent<SpriteRenderer>();
             _icon.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.ICON_ACH + 1);

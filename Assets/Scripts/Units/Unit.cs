@@ -40,8 +40,11 @@ namespace Assets.Scripts.Units
             //MessageDispatcher.ClearListeners(); //TODO not sure
 
             //Debug.Log("unit destroyed: " + _view.name + _view.transform.DOKill());
+
             _view.transform.DOKill();
-            UnityEngine.Object.Destroy(view);
+            _view.GetComponent<SpriteRenderer>();
+            UnityEngine.Object.Destroy(_view);
+            _view = null;
         }
 
         public virtual void stop()

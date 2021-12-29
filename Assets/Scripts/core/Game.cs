@@ -342,7 +342,7 @@ namespace Assets.Scripts.Core
 
             _boom.SetActive(false);
 
-            if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
+            if (_hero == null || !_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
                 restartHandler();
         }
 
@@ -431,43 +431,23 @@ namespace Assets.Scripts.Core
             MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
             MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
 
-            //MessageDispatcher.ClearListeners(); //TODO bug in inerating?
-            //    this.removeAllEventListeners();
-            //    _hero.removeAllEventListeners();
-
-            //    //console.log("[destroy hero]", _top)
-            //    _hero.destroy();
-
-            //    if (_top)
-            //    {
-            //        _top.graphics.clear();
-            //        _bottom.graphics.clear();
-            //        Core.instance.bg.removeChild(_top);
-            //        Core.instance.bg.removeChild(_bottom);
-            //        Core.instance.bg.update();
-            //        _top = null;
-            //        _bottom = null;
-
-            //        _helpShape.graphics.clear();
-            //        Core.instance.removeChild(_help);
-            //        Core.instance.removeChild(_helpShape);
-            //        _help = null;
-            //        _helpShape = null;
-            //}
+            if(_hero != null) //T
+                _hero.destroy();
+            
 
             //    this.removeAllEventListeners();
 
             //    this.removeHint();
 
-            //    _pathfinder.destroy();
-            //    _pathfinder = null;
+            //_pathfinder.Destroy();
+            //_pathfinder = null;
 
             //    var grid: Tile[] = _grid;
             //    var len number = grid.Length;
-            //    for (int i = 0; i < len; i++)
-            //        {
-            //        grid[i].clear();
-            //    }
+            //for (int i = 0; i < _grid.Length; i++)
+            //{
+            //    _grid[i].clear();
+            //}
 
             //    this.removeAllChildren();
             if (_level != null)
@@ -488,13 +468,13 @@ namespace Assets.Scripts.Core
             //    _grid = null;
             //    _model = null;
 
-            //    _hero = null;
-            //    _level = null;
-            //    _mill = null;
+                _hero = null;
+                _level = null;
 
-            //    _buttonMenu = null;
-            //    _buttonSound = null;
-            //    _buttonRestart = null;
+            if (_mill != null)
+                _mill.destroy();
+
+            _mill = null;
         }
 
         /** <summary>delay (ms)</summary> */
