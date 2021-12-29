@@ -22,10 +22,6 @@ namespace Assets.Scripts.Units
 
         private List<int> _path;
         private int _directionX = 1;
-        //private int _directionY = 1;
-
-        //static currentTween: createjs.Tween;
-        //static currentView: createjs.Sprite;
 
         private const float MARGIN_X = -0.3f;
         private const float MARGIN_Y = 0.65f;
@@ -61,27 +57,8 @@ namespace Assets.Scripts.Units
 
             view.transform.localPosition = new Vector3(this.x, this.y);
             _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
-            //_inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
 
             _heroState = IDLE;
-
-            //    this.mouseEnabled = false;
-
-            //    this._stateItems = Hero.NO_ITEMS;
-            //    
-            //    var ss: any[] = this.getAnimation();
-
-            //    Hero.currentView = this.view = new createjs.Sprite(ss[0], ss[1]);
-            //    this.view.snapToPixel = true;
-            //    this.mc.framerate = 15;
-
-            //    this.x = this._grid[index].x;
-            //    this.y = this._grid[index].y;
-            //    this.regX = this.view.getBounds().width >> 1;
-            //    this.regY = this.view.getBounds().height;
-            //    this.view.x = 4 + Config.SIZE_W >> 1;
-            //    this.view.y = Config.SIZE_H - 20;
-
         }
 
 
@@ -93,9 +70,7 @@ namespace Assets.Scripts.Units
         public void moveToCell(List<int> path = null)
         {
             if (path != null)
-            {
                 _path = path;
-            }
 
             int currentIndex = index;
             index = _path[0];
@@ -158,7 +133,7 @@ namespace Assets.Scripts.Units
                     break;
             }
             //Debug.Log("--hack== " + hack + " [path]: " + _path.Count);
-            this.move(true);
+            move(true);
 
         }
 
@@ -217,10 +192,8 @@ namespace Assets.Scripts.Units
         ////-------actions---------------------------------
         private void idle()
         {
-            //    if (this.state == Hero.DEATH)
-            //    {
-            //        return;
-            //    }
+            if (_heroState == Hero.DEATH)
+                return;
 
             //    //console.log("idle", this.index, this._directionX, this._directionY);
 
@@ -275,10 +248,9 @@ namespace Assets.Scripts.Units
 
                 //        }
 
-                //        if (this._wearItems[0] == 0 && this._wearItems[1] == 0 && this._wearItems[2] == 0)
-                //        {
-                //            AchController.instance.addParam(AchController.LEVEL_WITHOUT_ITEMS);
-                //        }
+                if (!_hasHelmet && !_hasShield && !_hasSword)
+                    AchController.instance.addParam(AchController.LEVEL_WITHOUT_ITEMS);
+
 
                 levelComplete();
                 //        //this.dispatchEvent(new GameEvent(GameEvent.RESTART, true));
@@ -288,12 +260,11 @@ namespace Assets.Scripts.Units
             //    //this._directionIndex = 0;
 
             _heroState = Hero.IDLE;
-            //Debug.Log("changeView IDLE" + _heroState + "   " + _hasHelmet);
+            //Debug.Log("changeView IDLE" + _heroState);
             changeView();
 
 
-            MessageDispatcher.SendMessage(this, GameEvent.HERO_REACHED, null, 0);
-
+            MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
 
             //    this.parent.addChild(this);//up top
         }
@@ -307,8 +278,7 @@ namespace Assets.Scripts.Units
 
         private void trapTweenComplete()
         {
-            //    AchController.instance.addParam(AchController.HERO_DEAD_BY_TRAP);
-            //this.dispatchEvent(new GameEvent(GameEvent.HERO_GET_TRAP));
+            AchController.instance.addParam(AchController.HERO_DEAD_BY_TRAP);
             MessageDispatcher.SendMessage(GameEvent.HERO_GET_TRAP);
         }
 
@@ -371,10 +341,8 @@ namespace Assets.Scripts.Units
 
         private void keepMove()
         {
-            //    if (this.state == Hero.DEATH)
-            //    {
-            //        return;
-            //    }
+            if (_heroState == Hero.DEATH)
+                return;
 
             if (this._path.Count == 0)
             {
@@ -421,17 +389,17 @@ namespace Assets.Scripts.Units
             if (type == ImagesRes.STAR + 0)
             {
                 _hasHelmet = true;
-                //AchController.instance.addParam(AchController.HELMET_TAKED);
+                AchController.instance.addParam(AchController.HELMET_TAKED);
             }
             else if (type == ImagesRes.STAR + 1)
             {
                 _hasShield = true;
-                //AchController.instance.addParam(AchController.SHIELD_TAKED);
+                AchController.instance.addParam(AchController.SHIELD_TAKED);
             }
             else if (type == ImagesRes.STAR + 2)
             {
                 _hasSword = true;
-                //AchController.instance.addParam(AchController.SWORD_TAKED);
+                AchController.instance.addParam(AchController.SWORD_TAKED);
             }
 
             changeView();

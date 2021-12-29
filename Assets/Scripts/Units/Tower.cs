@@ -15,7 +15,7 @@ namespace Assets.Scripts.Units
         private TowerArrow _arrow;
 
         private float _speedTime = 0;
-        private const float SPEED = 0.080f;
+        private const float SPEED = 0.090f;
 
         private int _count = 0;
 

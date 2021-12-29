@@ -20,8 +20,8 @@ namespace Assets.Scripts.Core
         private static SoundManager instance;
 
         //    //false = true;
-        private bool _isMusic = true; //TODO has
-        //private bool _isMusic = false; //TODO has
+        //private bool _isMusic = true; //TODO has
+        private bool _isMusic = false; //TODO has
 
         private MusicButton _currentButton;
         private string _currentLocation; //menu or game

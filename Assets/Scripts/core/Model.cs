@@ -36,7 +36,7 @@ namespace Assets.Scripts.Core
         //    var progress: any = { };
         //    progress.levelsCompleted = Progress.levelsCompleted;
         //    progress.starsAllLevels = Progress.starsAllLevels;
-        //    progress.achs = Progress.achs;
+        //    progress.achs = Progress.achs; //TODO add params
 
         //    try
         //    {

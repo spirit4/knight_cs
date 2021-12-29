@@ -5,22 +5,22 @@ namespace Assets.Scripts.Data
     public static class Progress
     {
         public static int levelsCompleted = 20;
-        public static int currentLevel = 5;
+        public static int currentLevel = 4;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
         public static int[,] starsAllLevels = new int[20, 3]
         {
-             {0, 0, 1},
-             {1, 0, 0},
-             {0, 1, 0},
+             {0, 0, 0},
+             {0, 0, 0},
+             {0, 0, 0},
              {0, 0, 0},
              {0, 0, 0},//5
 
              {0, 0, 0},
-             {1, 1, 0},
-             {0, 1, 1},
              {0, 0, 0},
-             {1, 0, 1},//10
+             {0, 0, 0},
+             {0, 0, 0},
+             {0, 0, 0},//10
 
              {0, 0, 0},
              {0, 0, 0},
@@ -31,8 +31,8 @@ namespace Assets.Scripts.Data
              {0, 0, 0},
              {0, 0, 0},
              {0, 0, 0},
-             {1, 1, 1},
-             {0, 1, 0}//20
+             {0, 0, 0},
+             {0, 0, 0}//20
     };
 
         /**0 or 1*/
@@ -52,6 +52,10 @@ namespace Assets.Scripts.Data
             0,
             0
         };
+
+        public static int[] achParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public static int[] deadOnLevel = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
 
         public static List<string> hintAchs = new List<string>()
         {

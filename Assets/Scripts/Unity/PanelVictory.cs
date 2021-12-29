@@ -1,3 +1,4 @@
+using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using com.ootii.Messages;
@@ -14,13 +15,19 @@ namespace Assets.Scripts.Unity
         // Start is called before the first frame update
         void Awake()
         {
-            this.gameObject.SetActive(false);
 
             //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
             //{
             //    Progress.levelsCompleted++;
             //}
-            MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);
+            
+            
+        }
+
+        private void Start()
+        {
+            //Debug.Log("PanelVictory start");
+            //MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);
         }
 
         // Update is called once per frame
@@ -33,7 +40,6 @@ namespace Assets.Scripts.Unity
         //logic in Editor's buttons
         public void Activate(IMessage rMessage = null)
         {
-            MessageDispatcher.RemoveListener(GameEvent.LEVEL_COMPLETE, Activate); //TODO destroy?
             this.gameObject.SetActive(true);
 
             if (Progress.currentLevel != 19)
@@ -44,6 +50,9 @@ namespace Assets.Scripts.Unity
                 vane.SetActive(false);
             }
 
+            if (Progress.deadOnLevel[Progress.currentLevel] == 0)
+                AchController.instance.addParam(AchController.LEVEL_WITHOUT_DEATH);
+            
             CreateStars();
         }
 

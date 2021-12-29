@@ -52,7 +52,6 @@ namespace Assets.Scripts.Units
         private void endHandler()
         {
             view.SetActive(false);
-            //    this.visible = false;
         }
 
         public bool isShooted()

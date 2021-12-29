@@ -41,7 +41,7 @@ namespace Assets.Scripts.Core
         private List<GameObject> _activePoints = new List<GameObject>();
         private GameObject _boom;
 
-        //private _isStartArrowCheck: boolean = false;
+        private bool _isStartArrowCheck = false;
 
         public Game()
         {
@@ -59,8 +59,7 @@ namespace Assets.Scripts.Core
         {
             this.gameObject.isStatic = true;
             //Debug.Log("[Awake]" + ImagesRes.prefabs.Count);
-            if (ImagesRes.prefabs.Count == 0) // loading resources to static
-                ImagesRes.init();
+
 
             DOTween.Init();
             DOTween.Clear();
@@ -68,6 +67,9 @@ namespace Assets.Scripts.Core
             //JSONRes.init();
             //ImagesRes.initAnimations();
             Controller.instance.bg.init();
+
+            AchController ac = new AchController();//singleton
+            ac.init(this);
 
             _level = new Level(this, _model);
             _hero = _level.hero;
@@ -149,22 +151,25 @@ namespace Assets.Scripts.Core
                     removeHint();
 
                     _targetMark.placeByTap(index);
-                    showPath(this._pathfinder.Path);
+                    showPath(_pathfinder.Path);
 
-                    //            var arrow: Unit;
-                    //                for (var i in this._units)
-                    //            {
-                    //                arrow = < Unit > this._units[i];
-                    //                if (this._units[i] instanceof TowerArrow &&
-                    //                    arrow.y == this._hero.y + 5 &&
-                    //                    (< TowerArrow > arrow).isShooted())
-                    //                    {
+                    TowerArrow arrow;
+                    foreach (var pair in _units)
+                    {
 
-                    //                    //console.log("[+++++]: ", i, arrow.y, this._hero.y + 5);
-                    //                    this._isStartArrowCheck = true;
-                    //                    break;
-                    //                }
-                    //            }
+                        if (!(pair.Value is TowerArrow))
+                            continue;
+
+                        //Debug.Log("unit " + pair.Key + pair.Value.view.name);
+                        arrow = pair.Value as TowerArrow;
+                        //Debug.Log("[++++11+]: " + GridUtils.GetPoint(arrow.index).y + " ==??==" + GridUtils.GetPoint(_hero.index).y);
+                        //Debug.Log("[++++22+]: " + arrow.isShooted());
+                        if (GridUtils.GetPoint(arrow.index).y == GridUtils.GetPoint(_hero.index).y && arrow.isShooted())
+                        {
+                            _isStartArrowCheck = true;
+                            break;
+                        }
+                    }
                     //Debug.Log("Game [path]: " + path.Count);
 
                     _hero.moveToCell(path);
@@ -189,13 +194,13 @@ namespace Assets.Scripts.Core
         {
             //Debug.Log("[reached] " + (rMessage.Sender as Hero).index + " === " + _hero.index);
             //Debug.Log("[reached] " + GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL));
-
-            //    if (this._isStartArrowCheck)
-            //    {
-            //        //console.log("[+++++reached]");
-            //        AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-            //        this._isStartArrowCheck = false;
-            //    }
+            //Debug.Log("[+++++reached 1]");
+            if (_isStartArrowCheck)
+            {
+                //Debug.Log("[+++++reached 2]");
+                AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
+                _isStartArrowCheck = false;
+            }
 
             hidePoints();
 
@@ -261,7 +266,7 @@ namespace Assets.Scripts.Core
         public void Update()
         {
             if (_units != null)
-                checkCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);
+                checkCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);//TODO maybe need to make arrow more narrow
         }
 
         public void checkCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
@@ -306,15 +311,13 @@ namespace Assets.Scripts.Core
 
                         if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(this._hero.stateItems != Hero.FULL)
                         {
-                            //    if (dObject instanceof Monster)
-                            //            {
-                            //        AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
-                            //    }
-                            //            else if (dObject instanceof TowerArrow)
-                            //            {
-                            //        AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
-                            //    }
-                            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject], this);
+                            if (pair.Value is Monster)
+                                AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
+                            else if (pair.Value is TowerArrow)
+                                AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
+
+                            //Debug.Log("DEAD" + _isStartArrowCheck);
+
                             WaitAndCall(100, hideActors, pair.Value, true);
                             _hero.HeroState = Hero.DEATH;
                             showBoom();
@@ -326,9 +329,8 @@ namespace Assets.Scripts.Core
                         }
                         else if (pair.Value is Monster)
                         {
-                            //    AchController.instance.addParam(AchController.MONSTER_DEAD);
+                            AchController.instance.addParam(AchController.MONSTER_DEAD);
 
-                            //    createjs.Tween.get(this).wait(100).call(this.hideActors, [dObject, false], this);
                             WaitAndCall(100, hideActors, pair.Value, false); //killing the monster
                             showBoom(ImagesRes.A_ATTACK_BOOM);
                         }

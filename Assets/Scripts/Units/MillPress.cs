@@ -67,7 +67,7 @@ namespace Assets.Scripts.Units
             if (this.state == Unit.ON)
                 return;
 
-            //AchController.instance.addParam(AchController.MILL_LAUNCHED);
+            AchController.instance.addParam(AchController.MILL_LAUNCHED);
 
             this.state = Unit.ON;
             rotateMill();

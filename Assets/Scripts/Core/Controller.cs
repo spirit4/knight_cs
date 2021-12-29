@@ -85,8 +85,7 @@ namespace Assets.Scripts.Core
         //    
         //        this.model.loadProgress();
 
-        //        var ac: AchController = new AchController();//singleton
-        //        ac.init(this);
+        
 
         //     //console.log("[adding first screen]");
 

@@ -16,10 +16,17 @@ namespace Assets.Scripts.Unity
         private GameObject _achsPanel;
         private GameObject _introPanel;
 
+        private GameObject _victoryPanel;
+
         private static bool isFirstLoad = true;
 
         private void Awake()
         {
+            MessageDispatcher.ClearListeners();//after scene reload
+
+            if (ImagesRes.prefabs.Count == 0) // loading resources to static
+                ImagesRes.init();
+
             //Debug.Log("UIManager awake");
             this.gameObject.AddComponent<AudioSource>();
             SoundManager.getInstance().init(this.gameObject.GetComponent<AudioSource>());
@@ -48,6 +55,13 @@ namespace Assets.Scripts.Unity
                 _levelsPanel.SetActive(true);
             }
 
+            _victoryPanel = GameObject.Find("PanelVictory");
+            if (_victoryPanel)
+            {
+                //Debug.Log("UIManager _victoryPanel" + _victoryPanel);
+                MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, _victoryPanel.GetComponent<PanelVictory>().Activate);
+                _victoryPanel.SetActive(false);
+            }
             UIManager.isFirstLoad = false;
         }
         void Start()

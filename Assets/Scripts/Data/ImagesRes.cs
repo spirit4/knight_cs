@@ -32,6 +32,8 @@ namespace Assets.Scripts.Data
         public const string BOULDER_MARK  = "boulderMark";
         public const string TARGET_MARK = "target_";
 
+        public const string ICON_ACH = "a";
+
         public const string DECOR = "Decor";//???????????????????flovers
 
         //animations
@@ -66,6 +68,13 @@ namespace Assets.Scripts.Data
                 Sprite gameEnd = Resources.Load<Sprite>("images/ui/game_end");
                 tileSprites.Add("game_end", gameEnd);//easy hack
 
+
+                sprites = Resources.LoadAll<Sprite>("images/ui/Achs");
+                foreach (var s in sprites)
+                {
+                    tileSprites.Add(s.name, s);
+                }
+
                 GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
                 //Debug.Log(clips.Length);
                 foreach (var prefab in clips)
@@ -76,7 +85,7 @@ namespace Assets.Scripts.Data
             }
             catch (Exception e)
             {
-                Debug.Log("Proper Method failed with the following exception: ");
+                Debug.Log("Loading failed with the following exception: ");
                 Debug.Log(e);
             }
         }

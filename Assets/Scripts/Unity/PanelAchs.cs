@@ -20,20 +20,20 @@ namespace Assets.Scripts.Unity
         public Text text;
         public Image hint;
 
-        public static Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
+        //public static Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
 
         void Awake()
         {
-            if (sprites.Count > 0)
-                return;
+            //if (sprites.Count > 0)
+            //    return;
 
-            Sprite[] ss = Resources.LoadAll<Sprite>("images/ui/Achs");
-            //Debug.Log(sprites.Length);
-            foreach (var s in ss)
-            {
-                sprites.Add(s.name, s);
-                //Debug.Log("[PanelAchs] " + s.name);
-            }
+            //Sprite[] ss = Resources.LoadAll<Sprite>("images/ui/Achs");
+            ////Debug.Log(sprites.Length);
+            //foreach (var s in ss)
+            //{
+            //    sprites.Add(s.name, s);
+            //    //Debug.Log("[PanelAchs] " + s.name);
+            //}
         }
 
         // Start is called before the first frame update
@@ -95,7 +95,7 @@ namespace Assets.Scripts.Unity
                 dObject.AddComponent<BoxCollider2D>(); //for click and hint
                 dObject.GetComponent<BoxCollider2D>().size = new Vector2(0.72f, 0.72f);
 
-                dObject.GetComponent<SpriteRenderer>().sprite = sprites["a" + (i + 1)];
+                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage("a" + (i + 1));
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
 
                 if (Progress.achs[i] == 0)
@@ -107,7 +107,7 @@ namespace Assets.Scripts.Unity
 
                 dObject = new GameObject("at" + (i + 1));
                 dObject.AddComponent<SpriteRenderer>();
-                sprite = sprites["at" + (i + 1)];
+                sprite = ImagesRes.getImage("at" + (i + 1));
                 dObject.GetComponent<SpriteRenderer>().sprite = sprite;
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
 
