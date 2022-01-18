@@ -154,7 +154,7 @@ namespace Assets.Scripts.Core
 
                     foreach (KeyValuePair<int, ICollidable> pair in _units)
                     {
-                        //Debug.Log("[case ImagesRes.MONSTER2: ]" + pair.Value.type + pair.Key);
+                        //Debug.Log("[case MONSTER1: ]" +id + pair.Value.type + pair.Key);
                         if (pair.Value.type == type)
                         {
                             monster = pair.Value as Monster;
@@ -170,7 +170,7 @@ namespace Assets.Scripts.Core
 
                     GameObject view = GameObject.Instantiate(ImagesRes.prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     monster = new Monster(type, index, id, view, _container);
-
+                    //Debug.Log("[case MONSTER2] " + id);
                     _units.Add(index, monster);
                     //_items.Add(monster);//to set index position ?
                     //TODO it's in Game Update

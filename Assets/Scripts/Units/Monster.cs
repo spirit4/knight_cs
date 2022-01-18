@@ -44,7 +44,7 @@ namespace Assets.Scripts.Units
         private void move(float x, float y)
         {
             float time = 0;
-            if (_directionX == 1 || _directionX == -1) 
+            if (_directionX == 1 || _directionX == -1)
             {
                 time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2);
                 view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Units
             int directionIndex = (this.index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
             Tile tile = _grid[directionIndex];
 
-            if (tile.y == this.y && tile.x > this.x)
+            if (tile.y == this.y && tile.x > this.x)//directionIndex >= _pontIndex1)// 
             {
                 _directionX = 1;
                 _directionY = 0;
@@ -74,24 +74,28 @@ namespace Assets.Scripts.Units
             else if (tile.x == this.x && tile.y > this.y)
             {
                 _directionX = 0;
-                _directionY = 1;
+                _directionY = -1;
             }
             else if (tile.x == this.x && tile.y < this.y)
             {
                 _directionX = 0;
-                _directionY = -1;
+                _directionY = 1;
             }
 
             FlipView();
             move(tile.x, tile.y);
             this.index = directionIndex;
+            //Debug.Log("[setDirection1: ]" + tile.y  + "   " +  this.y);
+            // Debug.Log("[setDirection2: ]" + _directionX + "   " + _directionY);
 
-            this.x = _grid[index].x;
-            this.y = _grid[index].y;
+
+            this.x = _grid[index].x;//TODO fix hack ?
+            //this.y = _grid[index].y;
         }
 
         private void FlipView()
         {
+            //Debug.Log("setPointIndex2" + index);
             if (_directionX == 1)
             {
                 view.GetComponent<SpriteRenderer>().flipX = true;
@@ -105,6 +109,7 @@ namespace Assets.Scripts.Units
         public void setPointIndex2(int index)
         {
             _pontIndex2 = index;
+            //Debug.Log("setPointIndex2" + index);
             setDirection();
         }
 
