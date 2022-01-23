@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Utils.Display;
+using BayatGames.SaveGameFree;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,11 @@ namespace Assets.Scripts.Core
         private static SoundManager instance;
 
         //    //false = true;
-        //private bool _isMusic = true; //TODO has
-        private bool _isMusic = false; //TODO has
+        private bool _isMusic = true; //TODO has
+        //private bool _isMusic = false; //TODO has
 
         private MusicButton _currentButton;
-        private string _currentLocation; //menu or game
+        private string _currentLocation = ""; //menu or game
         private AudioSource _audioSource;
 
         private Dictionary<string, float> _musicPositions = new Dictionary<string, float>();
@@ -32,7 +33,7 @@ namespace Assets.Scripts.Core
 
         public SoundManager()
         {
-
+            
         }
 
         public static SoundManager getInstance()
@@ -71,7 +72,7 @@ namespace Assets.Scripts.Core
                     _musicPositions[SoundManager.MUSIC_MENU] = 0;
                 }
             }
-     
+
             _currentLocation = type;
 
             if (_isMusic)
@@ -94,18 +95,21 @@ namespace Assets.Scripts.Core
             if (_currentLocation == null)
                 return;
 
-            //Debug.Log("stopMusicTrack" + _audioSource.time);
             _musicPositions[_currentLocation] = _audioSource.time;
             _audioSource.Stop();
         }
 
         public void muteOnOff()
         {
-            //Debug.Log("[SoundManager] muteOnOff " + SoundManager.getInstance().isMusic);
             this.isMusic = !_isMusic;
 
+            if (_isMusic)
+                playMusicTrack();
+            else
+                stopMusicTrack();
+
             if (_currentButton)
-                _currentButton.SetState();
+                _currentButton.SwitchState();
         }
 
         public bool isMusic
@@ -117,23 +121,12 @@ namespace Assets.Scripts.Core
             set
             {
                 _isMusic = value;
+                SaveGame.Save<bool>("isMusic", _isMusic);
 
-                if (_isMusic)
-                {
-                    playMusicTrack();
-                }
-                else
-                {
-                    stopMusicTrack();
-                }
+                if (_currentButton && _currentButton.isActive != _isMusic)
+                    _currentButton.SwitchState();
             }
         }
-
-        //public set savingState(state: boolean)
-        //    {
-        //    _isMusic = state;
-        //    _isSFX = state;
-        //}
 
         public MusicButton CurrentButton
         {

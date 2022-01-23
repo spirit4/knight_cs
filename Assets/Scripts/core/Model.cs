@@ -1,6 +1,5 @@
 using Assets.Scripts.Data;
-using System;
-using System.Collections.Generic;
+using BayatGames.SaveGameFree;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
@@ -29,42 +28,48 @@ namespace Assets.Scripts.Core
             }
         }
 
-        //    public saveProgress(): void
-        //{
-        //    var progress: any = { };
-        //    progress.levelsCompleted = Progress.levelsCompleted;
-        //    progress.starsAllLevels = Progress.starsAllLevels;
-        //    progress.achs = Progress.achs; //TODO add params
+        public void saveProgress()
+        {
+            SaveGame.Save<int>("levelsCompleted", Progress.levelsCompleted);
 
-        //    try
-        //    {
-        //        window.localStorage.setItem(Config.GAME_NAME + Config.GAME_VERSION + "Progress", JSON.stringify(progress));
-        //    }
-        //    catch (error)
-        //    {
-        //        //console.log("[local storage error setItem]", error);
-        //    }
-        //}
+            SaveGame.Save<int[]>("achs", Progress.achs);
+            SaveGame.Save<int[]>("achParams", Progress.achParams);
+            SaveGame.Save<int[]>("deadOnLevel", Progress.deadOnLevel);
 
-        //public loadProgress(): void
-        //{
-        //    try
-        //    {
-        //        var progress: any = window.localStorage.getItem(Config.GAME_NAME + Config.GAME_VERSION + "Progress");
-        //    }
-        //    catch (error)
-        //    {
-        //        //console.log("[local storage error getItem]", error);
-        //    }
+            int[] stars = new int[60];
+            int i = 0;
+            foreach (int star in Progress.starsAllLevels)
+            {
+                stars[i] = star;
+                i++;
+            }
+            SaveGame.Save<int[]>("starsAllLevels", stars);
+        }
 
-        //    if (progress)
-        //    {
-        //        var progress = JSON.parse(progress);
-        //        Progress.levelsCompleted = progress.levelsCompleted;
-        //        Progress.starsAllLevels = progress.starsAllLevels;
-        //        Progress.achs = progress.achs;
-        //    }
-        //}
+        public void loadProgress()
+        {
+            //SaveGame.DeleteAll();
+            if (!SaveGame.Exists("levelsCompleted"))//first load
+                return;
+
+            Progress.levelsCompleted = SaveGame.Load<int>("levelsCompleted");
+            SoundManager.getInstance().isMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
+
+            Progress.achs = SaveGame.Load<int[]>("achs");
+            Progress.achParams = SaveGame.Load<int[]>("achParams");
+            Progress.deadOnLevel = SaveGame.Load<int[]>("deadOnLevel");
+
+            int[] stars = SaveGame.Load<int[]>("starsAllLevels");
+            int k = 0;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Progress.starsAllLevels[i, j] = stars[k];
+                    k++;
+                }
+            }
+        }
 
         public Tile[] grid
         {

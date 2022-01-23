@@ -12,14 +12,6 @@ namespace Assets.Scripts.Unity
     {
         public GameObject vane;
 
-        // Start is called before the first frame update
-        void Awake()
-        {
-            //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
-            //{
-            //    Progress.levelsCompleted++;
-            //}
-        }
 
         //logic in Editor's buttons
         public void Activate(IMessage rMessage = null)
@@ -38,6 +30,11 @@ namespace Assets.Scripts.Unity
                 AchController.instance.addParam(AchController.LEVEL_WITHOUT_DEATH);
 
             CreateStars();
+
+            if (Progress.starsAllLevels.Length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
+                Progress.levelsCompleted++;
+
+            Controller.instance.model.saveProgress();
         }
 
         public void CreateStars()
@@ -104,11 +101,6 @@ namespace Assets.Scripts.Unity
                 sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
             }
-
-            //if (Progress.starsAllLevels.length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
-            //{
-            //    Progress.levelsCompleted++;
-            //}
         }
 
         private void RotateMill()

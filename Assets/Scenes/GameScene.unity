@@ -1322,7 +1322,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 131739008209289870, guid: 3a17d5c58a6b07a4f878fb24ba817e71, type: 3}
       propertyPath: m_Name
-      value: ButtonSound
+      value: ButtonSound1
       objectReference: {fileID: 0}
     - target: {fileID: 131739008209289873, guid: 3a17d5c58a6b07a4f878fb24ba817e71, type: 3}
       propertyPath: m_Pivot.x

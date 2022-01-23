@@ -65,6 +65,8 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
+            Controller.instance.model.loadProgress();
+
             if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2nd test only
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
@@ -107,6 +109,8 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
+            Controller.instance.model.saveProgress();
+
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
@@ -116,6 +120,7 @@ namespace Assets.Scripts.Unity
 
         public void EndGame()
         {
+
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT);
             //Debug.Log("EndGame");

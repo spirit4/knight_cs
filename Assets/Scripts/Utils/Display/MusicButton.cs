@@ -24,7 +24,7 @@ namespace Assets.Scripts.Utils.Display
             SoundManager.getInstance().CurrentButton = this;
 
             if (!_isActive)
-                SetState();
+                SwitchState();
         }
 
         public void Update()
@@ -32,7 +32,7 @@ namespace Assets.Scripts.Utils.Display
 
         }
 
-        public void SetState()
+        public void SwitchState()
         {
             _isActive = SoundManager.getInstance().isMusic;
 
@@ -54,6 +54,14 @@ namespace Assets.Scripts.Utils.Display
         {
             _isActive = !_isActive;
             SoundManager.getInstance().muteOnOff();
+        }
+
+        public bool isActive
+        {
+            get
+            {
+                return _isActive;
+            }
         }
     }
 }

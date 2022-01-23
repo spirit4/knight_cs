@@ -4,7 +4,7 @@ namespace Assets.Scripts.Data
 {
     public static class Progress
     {
-        public static int levelsCompleted = 20;
+        public static int levelsCompleted = 11;
         public static int currentLevel = 10;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
@@ -53,9 +53,9 @@ namespace Assets.Scripts.Data
             0
         };
 
-        public static int[] achParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public static int[] achParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         public static int[] deadOnLevel = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+                                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         public static List<string> hintAchs = new List<string>()
         {
