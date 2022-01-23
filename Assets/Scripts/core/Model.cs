@@ -28,7 +28,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        public void saveProgress()
+        public static void saveProgress() //TODO fix static
         {
             SaveGame.Save<int>("levelsCompleted", Progress.levelsCompleted);
 
@@ -46,7 +46,7 @@ namespace Assets.Scripts.Core
             SaveGame.Save<int[]>("starsAllLevels", stars);
         }
 
-        public void loadProgress()
+        public static void loadProgress()
         {
             //SaveGame.DeleteAll();
             if (!SaveGame.Exists("levelsCompleted"))//first load

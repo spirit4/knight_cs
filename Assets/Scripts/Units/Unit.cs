@@ -42,7 +42,7 @@ namespace Assets.Scripts.Units
             //Debug.Log("unit destroyed: " + _view.name + _view.transform.DOKill());
 
             _view.transform.DOKill();
-            _view.GetComponent<SpriteRenderer>();
+            _view.GetComponent<SpriteRenderer>().DOKill();
             UnityEngine.Object.Destroy(_view);
             _view = null;
         }

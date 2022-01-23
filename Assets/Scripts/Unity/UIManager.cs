@@ -2,6 +2,7 @@ using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using com.ootii.Messages;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -65,7 +66,7 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            Controller.instance.model.loadProgress();
+            Model.loadProgress();
 
             if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2nd test only
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
@@ -109,7 +110,7 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
-            Controller.instance.model.saveProgress();
+            Model.saveProgress();
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
@@ -120,10 +121,11 @@ namespace Assets.Scripts.Unity
 
         public void EndGame()
         {
+            DOTween.Clear();//PanelVictory tweens
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT);
-            //Debug.Log("EndGame");
+
             SoundManager.getInstance().stopMusicTrack();
             SceneManager.LoadScene("MainScene");
         }
