@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8006765629667612098}
   - component: {fileID: 8006765629667612097}
   m_Layer: 5
-  m_Name: ButtonBack_Levels
+  m_Name: ButtonBackLevels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -50,17 +50,17 @@ namespace Assets.Scripts.Data
 
             try
             {
-                Sprite[] sprites = Resources.LoadAll<Sprite>("images/tiles");
+                Sprite[] sprites = Resources.LoadAll<Sprite>("Images/Tiles");
 
                 foreach (var s in sprites)
                 {
                     tileSprites.Add(s.name, s);
                 }
-                Sprite gameEnd = Resources.Load<Sprite>("images/ui/game_end");
+                Sprite gameEnd = Resources.Load<Sprite>("Images/UI/game_end");
                 tileSprites.Add("game_end", gameEnd);//easy hack
 
 
-                sprites = Resources.LoadAll<Sprite>("images/ui/Achs");
+                sprites = Resources.LoadAll<Sprite>("Images/UI/Achievements");
                 foreach (var s in sprites)
                 {
                     tileSprites.Add(s.name, s);

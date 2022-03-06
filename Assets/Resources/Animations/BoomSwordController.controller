@@ -28,7 +28,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: boom_sword_0
+  m_Name: BoomSwordController
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
