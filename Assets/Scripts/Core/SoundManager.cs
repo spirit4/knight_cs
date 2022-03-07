@@ -15,8 +15,8 @@ namespace Assets.Scripts.Core
         public static Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
 
         //music
-        public const string MUSIC_MENU = "menu";
-        public const string MUSIC_GAME = "game";
+        public const string MUSIC_MENU = "Menu";
+        public const string MUSIC_GAME = "Game";
 
         private static SoundManager instance;
 

@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 457810270}
   - component: {fileID: 457810269}
   m_Layer: 0
-  m_Name: text_level
+  m_Name: TextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 733378579}
   - component: {fileID: 733378580}
   m_Layer: 0
-  m_Name: level_board
+  m_Name: LevelBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 847180954}
   - component: {fileID: 847180953}
   m_Layer: 5
-  m_Name: Image_spear0
+  m_Name: ImageSpear0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 1216697110}
   - component: {fileID: 1216697113}
   m_Layer: 5
-  m_Name: ButtonPlay_Levels
+  m_Name: ButtonPlayLevels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 1473697899}
   - component: {fileID: 1473697898}
   m_Layer: 5
-  m_Name: Image_spear1
+  m_Name: ImageSpear1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 1519877688}
   - component: {fileID: 1519877689}
   m_Layer: 0
-  m_Name: levelcomplete_head
+  m_Name: TopBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 1562140489}
   - component: {fileID: 1562140488}
   m_Layer: 0
-  m_Name: mill_paddle_shadow
+  m_Name: Mill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,7 +1533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8006765629667612103, guid: 7503e28263b66b943a3906c0346fa97d, type: 3}
       propertyPath: m_Name
-      value: ButtonBack_Levels
+      value: ButtonBackLevels
       objectReference: {fileID: 0}
     - target: {fileID: 8006765629667612103, guid: 7503e28263b66b943a3906c0346fa97d, type: 3}
       propertyPath: m_IsActive
@@ -1634,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3250350830672080849, guid: daa0e9eee641785448a7780753e7f543, type: 3}
       propertyPath: m_Name
-      value: ButtonReplay_Levels
+      value: ButtonReplayLevels
       objectReference: {fileID: 0}
     - target: {fileID: 3250350830672080851, guid: daa0e9eee641785448a7780753e7f543, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1657,7 +1657,7 @@ GameObject:
   - component: {fileID: 1846866582}
   - component: {fileID: 1846866583}
   m_Layer: 0
-  m_Name: levelcomplete_foot
+  m_Name: BottomBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,7 +1847,7 @@ GameObject:
   - component: {fileID: 2127935066}
   - component: {fileID: 2127935067}
   m_Layer: 0
-  m_Name: Vane
+  m_Name: Mill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2011,7 +2011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3250350830672080849, guid: daa0e9eee641785448a7780753e7f543, type: 3}
       propertyPath: m_Name
-      value: ButtonReplay_Levels
+      value: ButtonReplayLevels
       objectReference: {fileID: 0}
     - target: {fileID: 3250350830672080851, guid: daa0e9eee641785448a7780753e7f543, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2124,7 +2124,7 @@ PrefabInstance:
       objectReference: {fileID: 1283468395}
     - target: {fileID: 8006765629667612103, guid: 7503e28263b66b943a3906c0346fa97d, type: 3}
       propertyPath: m_Name
-      value: ButtonBack_Levels
+      value: ButtonBackLevels
       objectReference: {fileID: 0}
     - target: {fileID: 8006765629667612103, guid: 7503e28263b66b943a3906c0346fa97d, type: 3}
       propertyPath: m_IsActive

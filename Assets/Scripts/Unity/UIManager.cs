@@ -34,11 +34,11 @@ namespace Assets.Scripts.Unity
 
             if (!_levelsPanel)
             {
-                _levelsPanel = GameObject.Find("Panel_Levels");
-                _mainPanel = GameObject.Find("Panel_MainMenu");
-                _creditsPanel = GameObject.Find("Panel_Credits");
-                _achsPanel = GameObject.Find("Panel_Achs");
-                _introPanel = GameObject.Find("Panel_Intro");
+                _levelsPanel = GameObject.Find("PanelLevels");
+                _mainPanel = GameObject.Find("PanelMainMenu");
+                _creditsPanel = GameObject.Find("PanelCredits");
+                _achsPanel = GameObject.Find("PanelAchs");
+                _introPanel = GameObject.Find("PanelIntro");
             }
 
             if (_levelsPanel)
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Unity
         {
             Model.loadProgress();
 
-            if (GameObject.Find("Panel_MainMenu") != null || GameObject.Find("Panel_Levels") !=null)//TODO 2nd test only
+            if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)//TODO 2nd test only
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);

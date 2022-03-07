@@ -76,7 +76,7 @@ namespace Assets.Scripts.Core
             _mill = _level.mill;
             _items = _level.items;
 
-            Text level = GameObject.Find("Canvas/PanelGameUI/Image_spear1/level_board/text_level").GetComponent<Text>();
+            Text level = GameObject.Find("Canvas/PanelGameUI/ImageSpear1/LevelBoard/TextLevel").GetComponent<Text>();
             level.text = (Progress.currentLevel + 1).ToString();
 
             createHint(true);
