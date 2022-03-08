@@ -84,7 +84,6 @@ namespace Assets.Scripts.Core
                     grid[index].AddObject(gameObject);
                     break;
 
-                //TODO fix animations pivots all 3
                 case string x when x.StartsWith(ImagesRes.STAR + 0): //helmet
                     gameObject = GameObject.Instantiate(ImagesRes.prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
@@ -128,7 +127,6 @@ namespace Assets.Scripts.Core
 
                 case ImagesRes.TOWER:
                     Tower tower = new Tower(type, index, grid[index].add(type, _container, grid), grid[index], _container);
-                    //_units[index] = tower;
                     _items.Add(tower);
                     break;
 
@@ -154,12 +152,11 @@ namespace Assets.Scripts.Core
 
                     foreach (KeyValuePair<int, ICollidable> pair in _units)
                     {
-                        //Debug.Log("[case MONSTER1: ]" +id + pair.Value.type + pair.Key);
                         if (pair.Value.type == type)
                         {
                             monster = pair.Value as Monster;
 
-                            if (monster.type == type && (monster.x == grid[index].x || monster.y == grid[index].y))
+                            if (monster.type == type && (monster.X == grid[index].x || monster.Y == grid[index].y))
                             {
                                 monster.setPointIndex2(index);
                                 return;
@@ -170,10 +167,7 @@ namespace Assets.Scripts.Core
 
                     GameObject view = GameObject.Instantiate(ImagesRes.prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     monster = new Monster(type, index, id, view, _container);
-                    //Debug.Log("[case MONSTER2] " + id);
                     _units.Add(index, monster);
-                    //_items.Add(monster);//to set index position ?
-                    //TODO it's in Game Update
                     break;
 
                 case ImagesRes.GRASS:

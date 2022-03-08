@@ -10,7 +10,7 @@ namespace Assets.Scripts.Units
             Tile[] grid = Controller.instance.model.grid;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 10;//TODO --------------??
+            view.GetComponent<SpriteRenderer>().sortingOrder = 10;
             view.name = type;
         }
     }

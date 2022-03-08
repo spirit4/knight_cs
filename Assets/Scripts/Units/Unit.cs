@@ -17,8 +17,8 @@ namespace Assets.Scripts.Units
         private string _state;
         private Tile _tile;
 
-        public float x;
-        public float y; //TODO uppercase
+        private float _x;
+        private float _y;
 
         public Unit(int index, string type, GameObject view, Tile tile = null)//view?: createjs.DisplayObject, tile?: Tile)
         {
@@ -99,5 +99,7 @@ namespace Assets.Scripts.Units
             }
         }
 
+        public float X { get => _x; set => _x = value; }
+        public float Y { get => _y; set => _y = value; }
     }
 }

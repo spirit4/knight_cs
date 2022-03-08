@@ -42,7 +42,7 @@ namespace Assets.Scripts.Core
             if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
             {
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = index;//TODO???
+                dObject.GetComponent<SpriteRenderer>().sortingOrder = index;
             }
 
             return dObject;

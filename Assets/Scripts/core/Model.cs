@@ -28,7 +28,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        public static void saveProgress() //TODO fix static
+        public void saveProgress()
         {
             SaveGame.Save<int>("levelsCompleted", Progress.levelsCompleted);
 
@@ -46,14 +46,14 @@ namespace Assets.Scripts.Core
             SaveGame.Save<int[]>("starsAllLevels", stars);
         }
 
-        public static void loadProgress()
+        public void loadProgress()
         {
             //SaveGame.DeleteAll();
             if (!SaveGame.Exists("levelsCompleted"))//first load
                 return;
 
             Progress.levelsCompleted = SaveGame.Load<int>("levelsCompleted");
-            SoundManager.getInstance().isMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
+            SoundManager.getInstance().hasMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
 
             Progress.achs = SaveGame.Load<int[]>("achs");
             Progress.achParams = SaveGame.Load<int[]>("achParams");

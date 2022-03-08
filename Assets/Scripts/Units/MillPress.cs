@@ -15,8 +15,8 @@ namespace Assets.Scripts.Units
             this.state = Unit.OFF;
 
             _grid = Controller.instance.model.grid;
-            this.x = _grid[index].x;
-            this.y = _grid[index].y;
+            this.X = _grid[index].x;
+            this.Y = _grid[index].y;
 
             view.AddComponent<SpriteRenderer>();
             view.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(type);

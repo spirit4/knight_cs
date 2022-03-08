@@ -35,8 +35,8 @@ namespace Assets.Scripts.Units
             _grid = grid;
             _directionIndex = GridUtils.findAround(grid, this.index, ImagesRes.ARROW);
             _count = i;
-            this.x = _grid[index].x;
-            this.y = _grid[index].y;
+            this.X = _grid[index].x;
+            this.Y = _grid[index].y;
 
             activate();
             units[this.index] = _arrow;
@@ -62,7 +62,7 @@ namespace Assets.Scripts.Units
             if (_arrow == null)
                 return;
 
-            _arrow.view.transform.localPosition = new Vector3(this.x - 0.01f, this.y + 0.3f);
+            _arrow.view.transform.localPosition = new Vector3(this.X - 0.01f, this.Y + 0.3f);
             int localIndex = (int)Math.Round(_grid[this.index].x / Config.SIZE_W);
 
             _arrow.view.SetActive(true);

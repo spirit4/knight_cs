@@ -16,7 +16,7 @@ namespace Assets.Scripts.Unity
             _vane = vane;
             _smoke = smoke;
             RotateMill();
-            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, SmokeCompleteHandler); //TODO remove?
+            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, SmokeCompleteHandler); //GC removes it?
         }
         public void SmokeCompleteHandler(IMessage rMessage)
         {

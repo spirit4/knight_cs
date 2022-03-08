@@ -20,9 +20,8 @@ namespace Assets.Scripts.Core
 
         private static SoundManager instance;
 
-        //    //false = true;
-        private bool _isMusic = true; //TODO has
-        //private bool _isMusic = false; //TODO has
+        private bool _hasMusic = true;
+        //private bool _isMusic = false;
 
         private MusicButton _currentButton;
         private string _currentLocation = ""; //menu or game
@@ -62,7 +61,7 @@ namespace Assets.Scripts.Core
 
         public void setLocation(string type)
         {
-            if (_isMusic)
+            if (_hasMusic)
             {
                 if (type != _currentLocation)
                 {
@@ -75,7 +74,7 @@ namespace Assets.Scripts.Core
 
             _currentLocation = type;
 
-            if (_isMusic)
+            if (_hasMusic)
                 playMusicTrack();
         }
 
@@ -101,9 +100,9 @@ namespace Assets.Scripts.Core
 
         public void muteOnOff()
         {
-            this.isMusic = !_isMusic;
+            hasMusic = !_hasMusic;
 
-            if (_isMusic)
+            if (_hasMusic)
                 playMusicTrack();
             else
                 stopMusicTrack();
@@ -112,18 +111,18 @@ namespace Assets.Scripts.Core
                 _currentButton.SwitchState();
         }
 
-        public bool isMusic
+        public bool hasMusic
         {
             get
             {
-                return _isMusic;
+                return _hasMusic;
             }
             set
             {
-                _isMusic = value;
-                SaveGame.Save<bool>("isMusic", _isMusic);
+                _hasMusic = value;
+                SaveGame.Save<bool>("isMusic", _hasMusic);
 
-                if (_currentButton && _currentButton.isActive != _isMusic)
+                if (_currentButton && _currentButton.isActive != _hasMusic)
                     _currentButton.SwitchState();
             }
         }

@@ -66,9 +66,9 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            Model.loadProgress();
+            Controller.instance.model.loadProgress();
 
-            if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)//TODO 2nd test only
+            if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
             else
                 SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
@@ -110,7 +110,7 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
-            Model.saveProgress();
+            Controller.instance.model.saveProgress();
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?

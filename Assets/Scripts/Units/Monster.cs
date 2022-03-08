@@ -30,11 +30,11 @@ namespace Assets.Scripts.Units
             this.id = id;
 
             _pontIndex1 = index;
-            this.x = _grid[index].x; //for choosing direction --> Level
-            this.y = _grid[index].y;
+            this.X = _grid[index].x; //for choosing direction --> Level
+            this.Y = _grid[index].y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 95;//TODO --------------??
+            view.GetComponent<SpriteRenderer>().sortingOrder = 95;
             view.name = type + id;
 
             view.transform.SetParent(container.gameObject.transform);
@@ -61,22 +61,22 @@ namespace Assets.Scripts.Units
             int directionIndex = (this.index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
             Tile tile = _grid[directionIndex];
 
-            if (tile.y == this.y && tile.x > this.x)//directionIndex >= _pontIndex1)// 
+            if (tile.y == this.Y && tile.x > this.X)//directionIndex >= _pontIndex1)// 
             {
                 _directionX = 1;
                 _directionY = 0;
             }
-            else if (tile.y == this.y && tile.x < this.x)
+            else if (tile.y == this.Y && tile.x < this.X)
             {
                 _directionX = -1;
                 _directionY = 0;
             }
-            else if (tile.x == this.x && tile.y > this.y)
+            else if (tile.x == this.X && tile.y > this.Y)
             {
                 _directionX = 0;
                 _directionY = -1;
             }
-            else if (tile.x == this.x && tile.y < this.y)
+            else if (tile.x == this.X && tile.y < this.Y)
             {
                 _directionX = 0;
                 _directionY = 1;
@@ -85,11 +85,9 @@ namespace Assets.Scripts.Units
             FlipView();
             move(tile.x, tile.y);
             this.index = directionIndex;
-            //Debug.Log("[setDirection1: ]" + tile.y  + "   " +  this.y);
-            // Debug.Log("[setDirection2: ]" + _directionX + "   " + _directionY);
 
 
-            this.x = _grid[index].x;//TODO fix hack ?
+            this.X = _grid[index].x;//TODO find better solution?
             //this.y = _grid[index].y;
         }
 
@@ -109,7 +107,6 @@ namespace Assets.Scripts.Units
         public void setPointIndex2(int index)
         {
             _pontIndex2 = index;
-            //Debug.Log("setPointIndex2" + index);
             setDirection();
         }
 
@@ -120,10 +117,7 @@ namespace Assets.Scripts.Units
 
         public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
-            //    if (_directionX == 1 || _directionY == 1)
-            //    {
-            //        _grid[_pontIndex2].setIndex(this);
-            //    }
+
         }
 
         public override void destroy()

@@ -42,8 +42,8 @@ namespace Assets.Scripts.Units
         {
             _grid = Controller.instance.model.grid;
 
-            this.x = _grid[index].x; //for choosing direction
-            this.y = _grid[index].y;
+            this.X = _grid[index].x; //for choosing direction
+            this.Y = _grid[index].y;
 
             _inside = inside;
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts.Units
             _inside.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             _inside.GetComponent<SpriteRenderer>().sortingOrder = 100;
 
-            view.transform.localPosition = new Vector3(this.x, this.y);
+            view.transform.localPosition = new Vector3(this.X, this.Y);
             _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
 
             _heroState = IDLE;
@@ -81,33 +81,33 @@ namespace Assets.Scripts.Units
             //_directionY = 0;
 
 
-            this.x = view.transform.localPosition.x;
-            this.y = view.transform.localPosition.y;
+            this.X = view.transform.localPosition.x;
+            this.Y = view.transform.localPosition.y;
 
             int step = 0;
-            if (point.y == this.y && point.x > this.x)
+            if (point.y == this.Y && point.x > this.X)
             {
                 step = 1;
                 _directionX = 1;
                 _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
             }
-            else if (point.y == this.y && point.x < this.x)
+            else if (point.y == this.Y && point.x < this.X)
             {
                 step = -1;
                 _directionX = -1;
                 _inside.transform.localPosition = new Vector3(-MARGIN_X, MARGIN_Y);
             }
-            else if (point.x == this.x && point.y > this.y)
+            else if (point.x == this.X && point.y > this.Y)
             {
                 step = -Config.WIDTH;
             }
-            else if (point.x == this.x && point.y < this.y)
+            else if (point.x == this.X && point.y < this.Y)
             {
                 step = Config.WIDTH;
             }
 
-            this.x = view.transform.localPosition.x;
-            this.y = view.transform.localPosition.y;
+            this.X = view.transform.localPosition.x;
+            this.Y = view.transform.localPosition.y;
             view.transform.localPosition = new Vector3(_grid[currentIndex].x, _grid[currentIndex].y);
 
             int hack = 0;

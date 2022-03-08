@@ -105,21 +105,14 @@ namespace Assets.Scripts.Core
 
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
             int index = GridUtils.getIndex(point.x, point.y);
-            //Debug.Log("[tap tile]: " + point + "   " + index);
 
             if (_hero.index == index)
                 return;
 
-            //    if (Progress.currentLevel == 0 && _hero.index == 10 && index != 54) //to guide
-            //    {
-            //        return;
-            //    }
-
-            //Debug.Log("OnMouseDown " + _grid[index].isWall);
             if (_grid[index].isWall)
                 return;
 
-            _pathfinder.Init(_grid); //TODO must be single Init
+            _pathfinder.Init(_grid); //clearing and rechecking the grid
             _pathfinder.FindPath(_hero.index, index);
 
             if (_pathfinder.Path.Count > 0)
@@ -326,7 +319,7 @@ namespace Assets.Scripts.Core
                 gameObject.transform.SetParent(this.gameObject.transform);
 
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//TODO sorting2
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//works fine
                 _boom = gameObject;
                 _boom.name = ImagesRes.A_BOOM;
             }
@@ -422,34 +415,24 @@ namespace Assets.Scripts.Core
         }
 
 
-        private void destroy(IMessage rMessage = null)//TODO continue
+        private void destroy(IMessage rMessage = null)
         {
-            //Debug.Log("GAME destroyed: " + rMessage + " level: " + _level);
             MessageDispatcher.RemoveListener(GameEvent.QUIT, destroy);
             MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
             MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, reachedHandler);
             MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
             MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
 
-            if(_hero != null) //T
+            if (_hero != null)
                 _hero.destroy();
-            
 
-            //    this.removeAllEventListeners();
+            removeHint();
 
-            //    this.removeHint();
+            _pathfinder.Destroy();
+            _pathfinder = null;
 
-            //_pathfinder.Destroy();
-            //_pathfinder = null;
+            //TODO clear grid here?
 
-            //    var grid: Tile[] = _grid;
-            //    var len number = grid.Length;
-            //for (int i = 0; i < _grid.Length; i++)
-            //{
-            //    _grid[i].clear();
-            //}
-
-            //    this.removeAllChildren();
             if (_level != null)
             {
                 _level.destroy();
@@ -459,23 +442,27 @@ namespace Assets.Scripts.Core
             _units = null;
             _items = null;
 
-            //    _targetMark = null;
-            //    _poolPoints.Length = 0;
-            //    _poolPoints = null;
-            //    _activePoints.Length = 0;
-            //    _activePoints = null;
+            _targetMark = null;
+            _poolPoints.Clear();
+            _poolPoints = null;
+            _activePoints.Clear();
+            _activePoints = null;
 
-            //    _grid = null;
-            //    _model = null;
+            _grid = null;
+            _model = null;
 
-                _hero = null;
-                _level = null;
+            _hero = null;
+            _level = null;
 
             if (_mill != null)
                 _mill.destroy();
 
             _mill = null;
         }
+
+
+        //let it be, althought this shorter:
+        //DOTween.Sequence().AppendInterval(delay).AppendCallback(callback);
 
         /** <summary>delay (ms)</summary> */
         private void WaitAndCall(float delay, Action<int> callback, int index)

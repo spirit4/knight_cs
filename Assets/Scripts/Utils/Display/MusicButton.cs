@@ -22,7 +22,7 @@ namespace Assets.Scripts.Utils.Display
 
         void Start()
         {
-            _isActive = SoundManager.getInstance().isMusic;
+            _isActive = SoundManager.getInstance().hasMusic;
             SoundManager.getInstance().CurrentButton = this;
 
             if (!_isActive)
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Utils.Display
 
         public void SwitchState()
         {
-            _isActive = SoundManager.getInstance().isMusic;
+            _isActive = SoundManager.getInstance().hasMusic;
 
             Sprite image = _image;
             Sprite pressedImage = _pressedImage;
