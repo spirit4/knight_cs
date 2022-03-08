@@ -13,17 +13,20 @@ namespace Assets.Scripts.Unity
 {
     public class PanelAchs : MonoBehaviour
     {
-
-        public GameObject vane;
-        public GameObject smoke;
-
-        public Text text;
-        public Image hint;
+        [SerializeField]
+        private GameObject _vane;
+        [SerializeField]
+        private GameObject _smoke;
+        
+        [SerializeField]
+        private Text _text;
+        [SerializeField]
+        private Image _hint;
 
         // Start is called before the first frame update
         void Start()
         {
-            new MainView(vane, smoke);
+            new MainView(_vane, _smoke);
 
             createIcons();
         }
@@ -33,8 +36,8 @@ namespace Assets.Scripts.Unity
         {
             if (Input.GetMouseButtonDown(0))
             {
-                hint.enabled = false;
-                text.enabled = false;
+                _hint.enabled = false;
+                _text.enabled = false;
 
                 RaycastHit2D hit;
 
@@ -42,7 +45,7 @@ namespace Assets.Scripts.Unity
                 if (hit = Physics2D.Raycast(ray.origin, Vector2.zero))
                 {
                     int index = int.Parse(Regex.Match(hit.collider.name, @"\d+").Value);
-                    text.text = Progress.hintAchs[index - 1];
+                    _text.text = Progress.hintAchs[index - 1];
 
                     Vector2 movePos;
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -50,11 +53,11 @@ namespace Assets.Scripts.Unity
                         Input.mousePosition, Camera.main,
                         out movePos);
 
-                    hint.enabled = true;
-                    text.enabled = true;
+                    _hint.enabled = true;
+                    _text.enabled = true;
 
-                    hint.transform.localPosition = new Vector3(movePos.x + hint.GetComponent<RectTransform>().rect.width / 2 + 20,
-                        movePos.y - hint.GetComponent<RectTransform>().rect.height / 2 - 10);
+                    _hint.transform.localPosition = new Vector3(movePos.x + _hint.GetComponent<RectTransform>().rect.width / 2 + 20,
+                        movePos.y - _hint.GetComponent<RectTransform>().rect.height / 2 - 10);
                 }
             }
         }

@@ -369,11 +369,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5399169150923529629, guid: 1912a8a674910334da143c383a9be94b, type: 3}
   m_PrefabInstance: {fileID: 111451745}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &111451747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3835862451947038995, guid: 1912a8a674910334da143c383a9be94b, type: 3}
-  m_PrefabInstance: {fileID: 111451745}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &149843227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1005,8 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90694754bcd4684bb43a16ccfbc003d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vane: {fileID: 655040303}
-  smoke: {fileID: 111451747}
+  _vane: {fileID: 0}
+  _smoke: {fileID: 0}
 --- !u!95 &358383239
 Animator:
   serializedVersion: 3
@@ -2154,9 +2149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250377fe1efebac4b99822ffb754ff6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intro1: {fileID: 737613390}
-  intro2: {fileID: 356183720}
-  intro3: {fileID: 2041162572}
+  _intro1: {fileID: 737613390}
+  _intro2: {fileID: 356183720}
+  _intro3: {fileID: 2041162572}
 --- !u!114 &755211311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,7 +2378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!1 &870731830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,7 +2576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!1 &876525319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,7 +2776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!114 &898872576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3593,7 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!1 &1283397639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,10 +3731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83bd93dcf24d80142ad77f49ea5f691b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vane: {fileID: 733437795}
-  smoke: {fileID: 682893256}
-  text: {fileID: 184763267}
-  hint: {fileID: 1258325796}
+  _vane: {fileID: 733437795}
+  _smoke: {fileID: 682893256}
+  _text: {fileID: 184763267}
+  _hint: {fileID: 1258325796}
 --- !u!95 &1313620016
 Animator:
   serializedVersion: 3
@@ -4249,7 +4244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!1001 &1472644944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4552,7 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!224 &1627961875 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5847758570165746934, guid: fb74369b6f52dfb43a045b793bf559f0, type: 3}
@@ -4820,7 +4815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!1001 &1786715518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5193,7 +5188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: 1
+  _direction3D: 1
 --- !u!1 &1838450072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,8 +5686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90694754bcd4684bb43a16ccfbc003d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vane: {fileID: 1093606564}
-  smoke: {fileID: 1039181076}
+  _vane: {fileID: 1093606564}
+  _smoke: {fileID: 1039181076}
 --- !u!114 &2004423949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6326,7 +6321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!1001 &5847758568885012989
 PrefabInstance:
   m_ObjectHideFlags: 0

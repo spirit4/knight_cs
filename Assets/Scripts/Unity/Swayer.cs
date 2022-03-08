@@ -7,7 +7,9 @@ namespace Assets.Scripts.Unity
     public class Swayer : MonoBehaviour
     {
         private float _direction = 10.0f;
-        public int direction3D = 1; //can be changed in editor
+
+        [SerializeField]
+        private int _direction3D = 1; //can be changed in editor
         public Swayer()
         {
 
@@ -16,14 +18,14 @@ namespace Assets.Scripts.Unity
         void Start()
         {
             ChangePivot(new Vector2(0.5f, 1f));
-            this.transform.Rotate(_direction, 25 * direction3D, 0);
+            this.transform.Rotate(_direction, 25 * _direction3D, 0);
             Sway();
 
         }
         private void Sway()
         {
             _direction = -_direction;
-            this.transform.DORotate(new Vector3(_direction, 25 * direction3D, 0), 2.0f).SetEase(Ease.InOutQuad).OnComplete(Sway);
+            this.transform.DORotate(new Vector3(_direction, 25 * _direction3D, 0), 2.0f).SetEase(Ease.InOutQuad).OnComplete(Sway);
         }
 
         private void ChangePivot(Vector2 pivot)

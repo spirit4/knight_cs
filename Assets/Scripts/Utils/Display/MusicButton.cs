@@ -12,9 +12,11 @@ namespace Assets.Scripts.Utils.Display
     public class MusicButton : MonoBehaviour
     {
 
-        //turn off images
-        public Sprite image;
-        public Sprite pressedImage;
+        //turned off images
+        [SerializeField]
+        private Sprite _image;
+        [SerializeField]
+        private Sprite _pressedImage;
 
         private bool _isActive;
 
@@ -36,16 +38,16 @@ namespace Assets.Scripts.Utils.Display
         {
             _isActive = SoundManager.getInstance().isMusic;
 
-            Sprite image = this.image;
-            Sprite pressedImage = this.pressedImage;
+            Sprite image = _image;
+            Sprite pressedImage = _pressedImage;
             var ss = new SpriteState();
 
             Button button = this.GetComponent<Button>();
 
-            this.image = button.image.sprite;
+            _image = button.image.sprite;
             button.image.sprite = image;
 
-            this.pressedImage = button.spriteState.pressedSprite;
+            _pressedImage = button.spriteState.pressedSprite;
             ss.pressedSprite = pressedImage;
             button.spriteState = ss;
         }

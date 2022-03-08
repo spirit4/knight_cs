@@ -9,14 +9,15 @@ namespace Assets.Scripts.Unity
 {
     public class PanelMainMenu : MonoBehaviour 
     {
-
-        public GameObject vane;
-        public GameObject smoke;
+        [SerializeField]
+        private GameObject _vane;
+        [SerializeField]
+        private GameObject _smoke;
 
         // Start is called before the first frame update
         void Start()
         {
-            new MainView(vane, smoke);
+            new MainView(_vane, _smoke);
         }
 
     }

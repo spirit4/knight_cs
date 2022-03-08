@@ -14,16 +14,19 @@ namespace Assets.Scripts.Unity
 
         private List<Image> _frames = new List<Image>();
 
-        public Image intro1;
-        public Image intro2;
-        public Image intro3;
+        [SerializeField]
+        private Image _intro1;
+        [SerializeField]
+        private Image _intro2;
+        [SerializeField]
+        private Image _intro3;
 
         // Start is called before the first frame update
         void Start()
         {
-            _frames.Add(intro1);
-            _frames.Add(intro2);
-            _frames.Add(intro3);
+            _frames.Add(_intro1);
+            _frames.Add(_intro2);
+            _frames.Add(_intro3);
 
             _frames[0].color = new Color(_frames[1].color.r, _frames[1].color.g, _frames[1].color.b, 0);
             _frames[1].color = new Color(_frames[1].color.r, _frames[1].color.g, _frames[1].color.b, 0);

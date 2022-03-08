@@ -10,7 +10,8 @@ namespace Assets.Scripts.Unity
 {
     public class PanelVictory : MonoBehaviour
     {
-        public GameObject vane;
+        [SerializeField]
+        private GameObject _vane;
 
 
         //logic in Editor's buttons
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Unity
             else
             {
                 this.gameObject.GetComponent<Image>().sprite = ImagesRes.getImage("game_end");
-                vane.SetActive(false);
+                _vane.SetActive(false);
             }
 
             if (Progress.deadOnLevel[Progress.currentLevel] == 0)
@@ -105,7 +106,7 @@ namespace Assets.Scripts.Unity
 
         private void RotateMill()
         {
-            vane.transform.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);
+            _vane.transform.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);
         }
 
     }

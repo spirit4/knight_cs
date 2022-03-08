@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!224 &683902034 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8006765629667612096, guid: 7503e28263b66b943a3906c0346fa97d, type: 3}
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3734cf05191ab844bbe1ce79dbcf7473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vane: {fileID: 2127935065}
+  _vane: {fileID: 2127935065}
 --- !u!114 &752723290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!1 &1283468390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf10ecf78b24d0043ae7ec533f82d8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction3D: -1
+  _direction3D: 1
 --- !u!1001 &1835268649
 PrefabInstance:
   m_ObjectHideFlags: 0

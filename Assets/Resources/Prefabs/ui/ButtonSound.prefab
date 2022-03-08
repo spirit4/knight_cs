@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff32be31d1b5776489db8e29ba940f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 21a424e02a796fa48835cffed3f1cf4e, type: 3}
-  pressedImage: {fileID: 21300000, guid: 294b9efb896291245962001cce623458, type: 3}
+  _image: {fileID: 21300000, guid: 21a424e02a796fa48835cffed3f1cf4e, type: 3}
+  _pressedImage: {fileID: 21300000, guid: 294b9efb896291245962001cce623458, type: 3}
