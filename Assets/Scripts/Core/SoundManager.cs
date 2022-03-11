@@ -1,12 +1,7 @@
 ﻿using Assets.Scripts.Utils.Display;
 using BayatGames.SaveGameFree;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Core
 {
@@ -35,7 +30,7 @@ namespace Assets.Scripts.Core
             
         }
 
-        public static SoundManager getInstance()
+        public static SoundManager GetInstance()
         {
             if (instance == null)
                 instance = new SoundManager();
@@ -43,7 +38,7 @@ namespace Assets.Scripts.Core
             return instance;
         }
 
-        public void init(AudioSource audioSource)
+        public void Init(AudioSource audioSource)
         {
             _audioSource = audioSource;
 
@@ -59,13 +54,13 @@ namespace Assets.Scripts.Core
         }
 
 
-        public void setLocation(string type)
+        public void SetLocation(string type)
         {
             if (_hasMusic)
             {
                 if (type != _currentLocation)
                 {
-                    stopMusicTrack();
+                    StopMusicTrack();
 
                     _musicPositions[SoundManager.MUSIC_GAME] = 0;
                     _musicPositions[SoundManager.MUSIC_MENU] = 0;
@@ -75,10 +70,10 @@ namespace Assets.Scripts.Core
             _currentLocation = type;
 
             if (_hasMusic)
-                playMusicTrack();
+                PlayMusicTrack();
         }
 
-        private void playMusicTrack()
+        private void PlayMusicTrack()
         {
             if (!_musicPositions.ContainsKey(_currentLocation))
                 _musicPositions[_currentLocation] = 0;
@@ -89,7 +84,7 @@ namespace Assets.Scripts.Core
             _audioSource.Play();
         }
 
-        public void stopMusicTrack()
+        public void StopMusicTrack()
         {
             if (_currentLocation == null)
                 return;
@@ -98,20 +93,20 @@ namespace Assets.Scripts.Core
             _audioSource.Stop();
         }
 
-        public void muteOnOff()
+        public void MuteOnOff()
         {
-            hasMusic = !_hasMusic;
+            HasMusic = !_hasMusic;
 
             if (_hasMusic)
-                playMusicTrack();
+                PlayMusicTrack();
             else
-                stopMusicTrack();
+                StopMusicTrack();
 
             if (_currentButton)
                 _currentButton.SwitchState();
         }
 
-        public bool hasMusic
+        public bool HasMusic
         {
             get
             {
@@ -122,7 +117,7 @@ namespace Assets.Scripts.Core
                 _hasMusic = value;
                 SaveGame.Save<bool>("isMusic", _hasMusic);
 
-                if (_currentButton && _currentButton.isActive != _hasMusic)
+                if (_currentButton && _currentButton.IsActive != _hasMusic)
                     _currentButton.SwitchState();
             }
         }

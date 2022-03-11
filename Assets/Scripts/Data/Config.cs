@@ -15,6 +15,6 @@ namespace Assets.Scripts.Data
         public const float PIXEL_SIZE = 60; //html5 version
 
         public const string GAME_NAME = "Knight_cs";
-        public const string GAME_VERSION = "1.1.1";
+        public const string GAME_VERSION = "1.1.2";
     }
 }

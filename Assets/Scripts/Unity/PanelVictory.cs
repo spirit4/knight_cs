@@ -19,23 +19,23 @@ namespace Assets.Scripts.Unity
         {
             this.gameObject.SetActive(true);
 
-            if (Progress.currentLevel != 19)
+            if (Progress.CurrentLevel != 19)
                 RotateMill();
             else
             {
-                this.gameObject.GetComponent<Image>().sprite = ImagesRes.getImage("game_end");
+                this.gameObject.GetComponent<Image>().sprite = ImagesRes.GetImage("game_end");
                 _vane.SetActive(false);
             }
 
-            if (Progress.deadOnLevel[Progress.currentLevel] == 0)
-                AchController.instance.addParam(AchController.LEVEL_WITHOUT_DEATH);
+            if (Progress.DeadOnLevel[Progress.CurrentLevel] == 0)
+                AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_DEATH);
 
             CreateStars();
 
-            if (Progress.starsAllLevels.Length > Progress.levelsCompleted && Progress.currentLevel + 1 == Progress.levelsCompleted)
-                Progress.levelsCompleted++;
+            if (Progress.StarsAllLevels.Length > Progress.LevelsCompleted && Progress.CurrentLevel + 1 == Progress.LevelsCompleted)
+                Progress.LevelsCompleted++;
 
-            Controller.instance.model.saveProgress();
+            Controller.instance.model.SaveProgress();
         }
 
         public void CreateStars()
@@ -44,11 +44,11 @@ namespace Assets.Scripts.Unity
             Color color;
             Sequence sequence = DOTween.Sequence();
 
-            if (Progress.starsAllLevels[Progress.currentLevel, 2] == 1)
+            if (Progress.StarsAllLevels[Progress.CurrentLevel, 2] == 1)
             {
                 dObject = new GameObject();
                 dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage("LevelSword");
+                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelSword");
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
                 dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 dObject.transform.SetParent(this.gameObject.transform);
@@ -64,11 +64,11 @@ namespace Assets.Scripts.Unity
                 sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
             }
 
-            if (Progress.starsAllLevels[Progress.currentLevel, 0] == 1)
+            if (Progress.StarsAllLevels[Progress.CurrentLevel, 0] == 1)
             {
                 dObject = new GameObject();
                 dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage("LevelHelmet");
+                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelHelmet");
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
                 dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 dObject.transform.SetParent(this.gameObject.transform);
@@ -83,11 +83,11 @@ namespace Assets.Scripts.Unity
                 sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
                 sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
             }
-            if (Progress.starsAllLevels[Progress.currentLevel, 1] == 1)
+            if (Progress.StarsAllLevels[Progress.CurrentLevel, 1] == 1)
             {
                 dObject = new GameObject();
                 dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage("LevelShield");
+                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelShield");
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
                 dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 dObject.transform.SetParent(this.gameObject.transform);

@@ -39,14 +39,14 @@ namespace Assets.Scripts.Data
         public const string A_BOOM = "Boom";
         public const string A_ATTACK_BOOM = "BoomSword";
 
-        public static readonly Dictionary<string, float> numberImages = new Dictionary<string, float>();
-        public static Dictionary<string, Sprite> tileSprites = new Dictionary<string, Sprite>(); 
-        public static Dictionary<string, GameObject> prefabs = new Dictionary<string, GameObject>(); 
+        public static readonly Dictionary<string, float> NumberImages = new Dictionary<string, float>();
+        public static Dictionary<string, Sprite> TileSprites = new Dictionary<string, Sprite>(); 
+        public static Dictionary<string, GameObject> Prefabs = new Dictionary<string, GameObject>(); 
 
-        public static void init()
+        public static void Init()
         {
-            ImagesRes.numberImages[ImagesRes.GRASS] = 5.0f;
-            ImagesRes.numberImages[ImagesRes.WATER] = 3.0f;
+            ImagesRes.NumberImages[ImagesRes.GRASS] = 5.0f;
+            ImagesRes.NumberImages[ImagesRes.WATER] = 3.0f;
 
             try
             {
@@ -54,23 +54,23 @@ namespace Assets.Scripts.Data
 
                 foreach (var s in sprites)
                 {
-                    tileSprites.Add(s.name, s);
+                    TileSprites.Add(s.name, s);
                 }
                 Sprite gameEnd = Resources.Load<Sprite>("Images/UI/game_end");
-                tileSprites.Add("game_end", gameEnd);//easy hack
+                TileSprites.Add("game_end", gameEnd);//easy hack
 
 
                 sprites = Resources.LoadAll<Sprite>("Images/UI/Achievements");
                 foreach (var s in sprites)
                 {
-                    tileSprites.Add(s.name, s);
+                    TileSprites.Add(s.name, s);
                 }
 
                 GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
                 
                 foreach (var prefab in clips)
                 {
-                    prefabs.Add(prefab.name, prefab);
+                    Prefabs.Add(prefab.name, prefab);
                 }
             }
             catch (Exception e)
@@ -81,7 +81,7 @@ namespace Assets.Scripts.Data
         }
 
         /** <summary>type0 or type_0 are okay</summary> */
-        public static Sprite getImage(string name)
+        public static Sprite GetImage(string name)
         {
             Sprite bd = null;
             int index;
@@ -89,25 +89,25 @@ namespace Assets.Scripts.Data
 
             if (name.StartsWith(DECOR))
             {
-                return tileSprites["flovers_" + digit]; //artist's spelling
+                return TileSprites["flovers_" + digit]; //artist's spelling
             }
 
-            if (ImagesRes.numberImages.ContainsKey(name) && ImagesRes.numberImages[name] > 0)
+            if (ImagesRes.NumberImages.ContainsKey(name) && ImagesRes.NumberImages[name] > 0)
             {
-                index = (int)Random.Range(0, ImagesRes.numberImages[name]);
-                bd = tileSprites[name + '_' + index];
+                index = (int)Random.Range(0, ImagesRes.NumberImages[name]);
+                bd = TileSprites[name + '_' + index];
             }
-            else if (ImagesRes.tileSprites.ContainsKey(name))
+            else if (ImagesRes.TileSprites.ContainsKey(name))
             {
-                bd = tileSprites[name];
+                bd = TileSprites[name];
             }
-            else if (!ImagesRes.tileSprites.ContainsKey(name))
+            else if (!ImagesRes.TileSprites.ContainsKey(name))
             {
 
                 try
                 {
                     index = int.Parse(digit);      //checking if there is actually an index in the string
-                    bd = tileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
+                    bd = TileSprites[name.Substring(0, name.LastIndexOf(digit)) + '_' + digit];
                 }
                 catch (Exception e)
                 {

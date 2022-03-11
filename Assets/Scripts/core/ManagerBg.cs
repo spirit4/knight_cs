@@ -18,7 +18,7 @@ namespace Assets.Scripts.Core
         }
 
         /** <summary>Adding grass, water, decor to Background, Game is container</summary> Component containter,*/
-        public void addTiles(List<GameObject> bitmaps, Tile[] grid, bool isDecor = false)
+        public void AddTiles(List<GameObject> bitmaps, Tile[] grid, bool isDecor = false)
         {
 
             if (isDecor)
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Core
                 {
                     bitmaps[i].transform.SetParent(_game.gameObject.transform);
                     bitmaps[i].GetComponent<SpriteRenderer>().sortingOrder = i + 1;
-                    bitmaps[i].transform.localPosition = new Vector3(grid[i].x, grid[i].y, 0);
+                    bitmaps[i].transform.localPosition = new Vector3(grid[i].X, grid[i].Y, 0);
                 }
 
                 if (bitmaps[i].name == ImagesRes.WATER && i - Config.WIDTH >= 0 && bitmaps[i - Config.WIDTH].name != ImagesRes.WATER)

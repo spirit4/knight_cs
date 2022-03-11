@@ -45,15 +45,15 @@ namespace Assets.Scripts.Utils
             for (int i = 0; i < grid.Length; i++)
             {
                 _grid.Add(new PathNode());
-                _grid[i].index = i;
+                _grid[i].Index = i;
 
-                if (grid[i].isWall)
+                if (grid[i].IsWall)
                 {
-                    _grid[i].cost = WALL_COST;
+                    _grid[i].Cost = WALL_COST;
                 }
-                else if (grid[i].isDear)
+                else if (grid[i].IsDear)
                 {
-                    _grid[i].cost = DEAR_COST;
+                    _grid[i].Cost = DEAR_COST;
                 }
             }
         }
@@ -95,14 +95,14 @@ namespace Assets.Scripts.Utils
                     index = y * _sizeX + x;
                     node = _grid[index];
 
-                    if (node.cost != WALL_COST && !_closeList.Contains(node) && ((x0 == x || y0 == y)))
+                    if (node.Cost != WALL_COST && !_closeList.Contains(node) && ((x0 == x || y0 == y)))
                     {
                         if (!_openList.Contains(node))
                         {
                             _openList.Add(node);
                             node.parent = startNode;
-                            node.costToStart = startNode.costToStart + GetCost(x0, y0, x, y) + node.cost;
-                            node.costToEnd = GetCostToEnd(x, y);
+                            node.CostToStart = startNode.CostToStart + GetCost(x0, y0, x, y) + node.Cost;
+                            node.CostToEnd = GetCostToEnd(x, y);
 
                             node.CalculateTotalCost();
                         }
@@ -110,7 +110,7 @@ namespace Assets.Scripts.Utils
                 }
             }
 
-            this.Check();
+            Check();
         }
 
         private void Check()
@@ -133,17 +133,17 @@ namespace Assets.Scripts.Utils
                 }
             }
 
-            _openList.Sort((node1, node2) => node1.totalCost - node2.totalCost);
+            _openList.Sort((node1, node2) => node1.TotalCost - node2.TotalCost);
 
             if (_openList.Count == 0)
             {
-                return;//a path doesn't exist
+                return;//path doesn't exist
             }
-            _currentIndex = _openList[0].index;
+            _currentIndex = _openList[0].Index;
             _closeList.Add(_openList[0]);
             _openList.RemoveAt(0);
 
-            this.Iterate();
+            Iterate();
         }
 
         private void SetPath()
@@ -152,7 +152,7 @@ namespace Assets.Scripts.Utils
             PathNode node = _grid[_endIndex];
             do
             {
-                _path.Insert(0, node.index);
+                _path.Insert(0, node.Index);
                 node = node.parent;
             }
             while (node.parent != null);

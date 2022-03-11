@@ -21,14 +21,14 @@ namespace Assets.Scripts.Core
             //Core.instance.api = null;//window["famobi"];
 
             this.bg = bg;
-            init();
+            Init();
         }
 
-        private void init()
+        private void Init()
         {
             this.model = new Model();
 
-            JSONRes.init();
+            JSONRes.Init();
 
             //        if (this.ga)
             //        {

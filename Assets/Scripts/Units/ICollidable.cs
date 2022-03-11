@@ -4,12 +4,12 @@ namespace Assets.Scripts.Units
 {
     public interface ICollidable
     {
-        GameObject view { get; }
-        int index { get; }
-        string type { get; }
-        string state { get; }
+        GameObject View { get; }
+        int Index { get; }
+        string Type { get; }
+        string State { get; }
 
-        public void stop();
-        public void destroy();
+        public void Stop();
+        public void Destroy();
     }
 }

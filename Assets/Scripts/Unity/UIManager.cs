@@ -25,12 +25,12 @@ namespace Assets.Scripts.Unity
         {
             MessageDispatcher.ClearListeners();//after scene reload
 
-            if (ImagesRes.prefabs.Count == 0) // loading resources to static
-                ImagesRes.init();
+            if (ImagesRes.Prefabs.Count == 0) // loading resources to static
+                ImagesRes.Init();
 
             //Debug.Log("UIManager awake");
             this.gameObject.AddComponent<AudioSource>();
-            SoundManager.getInstance().init(this.gameObject.GetComponent<AudioSource>());
+            SoundManager.GetInstance().Init(this.gameObject.GetComponent<AudioSource>());
 
             if (!_levelsPanel)
             {
@@ -66,12 +66,12 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            Controller.instance.model.loadProgress();
+            Controller.instance.model.LoadProgress();
 
             if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
-                SoundManager.getInstance().setLocation(SoundManager.MUSIC_MENU);
+                SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_MENU);
             else
-                SoundManager.getInstance().setLocation(SoundManager.MUSIC_GAME);
+                SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_GAME);
 
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
         }
@@ -97,25 +97,25 @@ namespace Assets.Scripts.Unity
 
         public void GoToNextLevel()
         {
-            Progress.currentLevel++;
+            Progress.CurrentLevel++;
             StartGame();
         }
 
         public void GoToLevel(Text level)
         {
-            Progress.currentLevel = int.Parse(level.text) - 1;
+            Progress.CurrentLevel = int.Parse(level.text) - 1;
 
             StartGame();
         }
 
         public void StartGame()
         {
-            Controller.instance.model.saveProgress();
+            Controller.instance.model.SaveProgress();
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
-            SoundManager.getInstance().stopMusicTrack();
+            SoundManager.GetInstance().StopMusicTrack();
             SceneManager.LoadScene("GameScene");
         }
 
@@ -126,7 +126,7 @@ namespace Assets.Scripts.Unity
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT);
 
-            SoundManager.getInstance().stopMusicTrack();
+            SoundManager.GetInstance().StopMusicTrack();
             SceneManager.LoadScene("MainScene");
         }
 

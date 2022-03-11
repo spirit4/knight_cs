@@ -7,41 +7,38 @@ namespace Assets.Scripts.Units
 {
     class TowerArrow : Unit
     {
-        private int _pontIndex1 = 0;
-
-        public int id = -1;
 
         public TowerArrow(string type, int index, GameObject view) : base(index, type, view)
         {
-            _pontIndex1 = index;
+            
         }
 
-        public void shoot(int direction, float speed)
+        public void Shoot(int direction, float speed)
         {
             if (direction == 1)
             {
-                view.GetComponent<SpriteRenderer>().flipX = true;
-                view.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(endHandler);
+                View.GetComponent<SpriteRenderer>().flipX = true;
+                View.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
             }
             else
             {
-                view.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(endHandler);
+                View.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
             }
         }
 
-        private void endHandler()
+        private void EndHandler()
         {
-            view.SetActive(false);
+            View.SetActive(false);
         }
 
-        public bool isShooted()
+        public bool IsShooted()
         {
-            return view.activeSelf;
+            return View.activeSelf;
         }
 
-        public override void destroy()
+        public override void Destroy()
         {
-            base.destroy();
+            base.Destroy();
         }
     }
 }

@@ -4,11 +4,11 @@ namespace Assets.Scripts.Data
 {
     public static class Progress
     {
-        public static int levelsCompleted = 1;
-        public static int currentLevel = 0;
+        public static int LevelsCompleted = 20;
+        public static int CurrentLevel = 15;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
-        public static int[,] starsAllLevels = new int[20, 3]
+        public static int[,] StarsAllLevels = new int[20, 3]
         {
              {0, 0, 0},
              {0, 0, 0},
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Data
     };
 
         /**0 or 1*/
-        public static int[] achs = new int[12]{
+        public static int[] Achievements = new int[12]{
             0,
             0,
             0,
@@ -53,11 +53,11 @@ namespace Assets.Scripts.Data
             0
         };
 
-        public static int[] achParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        public static int[] deadOnLevel = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        public static int[] AchievementParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        public static int[] DeadOnLevel = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        public static List<string> hintAchs = new List<string>()
+        public static List<string> HintAchievements = new List<string>()
         {
             "Let an arrow \nkill the knight",
             "Obtain the entire outfit \nand kill the beast",

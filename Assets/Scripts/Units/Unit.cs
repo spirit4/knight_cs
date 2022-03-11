@@ -20,7 +20,7 @@ namespace Assets.Scripts.Units
         private float _x;
         private float _y;
 
-        public Unit(int index, string type, GameObject view, Tile tile = null)//view?: createjs.DisplayObject, tile?: Tile)
+        public Unit(int index, string type, GameObject view, Tile tile = null)
         {
             _view = view;
             _tile = tile;
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Units
             _state = Unit.ON;
         }
 
-        public virtual void destroy()
+        public virtual void Destroy()
         {
             //        this.removeAllEventListeners();
             //        createjs.Tween.removeTweens(this);
@@ -47,13 +47,13 @@ namespace Assets.Scripts.Units
             _view = null;
         }
 
-        public virtual void stop()
+        public virtual void Stop()
         {
             //createjs.Tween.removeTweens(this);
             _view.transform.DOKill();
         }
 
-        public GameObject view
+        public GameObject View
         {
             get
             {
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Units
             }
         }
 
-        public int index
+        public int Index
         {
             get
             {
@@ -72,14 +72,14 @@ namespace Assets.Scripts.Units
                 _index = value;
             }
         }
-        public string type
+        public string Type
         {
             get
             {
                 return _type;
             }
         }
-        public string state
+        public string State
         {
             set
             {
@@ -91,7 +91,7 @@ namespace Assets.Scripts.Units
             }
         }
 
-        public Tile tile
+        public Tile Tile
         {
             get
             {

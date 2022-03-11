@@ -5,7 +5,7 @@ namespace Assets.Scripts.Data
     public static class Hints
     {
         /** <summary>level: path</summary> */
-        public static readonly Dictionary<int, string> hints = new Dictionary<int, string>()
+        public static readonly Dictionary<int, string> HintImages = new Dictionary<int, string>()
         {
             { 0, "images/ui/Hints/help1_1" },
             { -1, "images/ui/Hints/help1_2" },

@@ -9,19 +9,19 @@ namespace Assets.Scripts.Units
     {
         public Spikes(string type, int index, GameObject view, Tile tile) : base(index, type, view, tile)
         {
-            tile.isWall = true;
+            tile.IsWall = true;
         }
 
-        public void init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
+        public void Init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
         {
             //empty
         }
 
-        public void activate()
+        public void Activate()
         {
-            this.state = Unit.ON;
-            view.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.SPIKES + "1");
-            tile.isWall = false;
+            State = Unit.ON;
+            View.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.SPIKES + "1");
+            Tile.IsWall = false;
         }
 
     }

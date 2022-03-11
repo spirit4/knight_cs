@@ -23,68 +23,68 @@ namespace Assets.Scripts.Units
 
         public Tower(string type, int index, GameObject view, Tile tile, Component container) : base(index, type, view, tile)
         {
-            tile.isWall = true;
+            tile.IsWall = true;
             _container = container;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 97;
         }
 
-        public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        public void Init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
             _grid = grid;
-            _directionIndex = GridUtils.findAround(grid, this.index, ImagesRes.ARROW);
+            _directionIndex = GridUtils.FindAround(grid, Index, ImagesRes.ARROW);
             _count = i;
-            this.X = _grid[index].x;
-            this.Y = _grid[index].y;
+            this.X = _grid[Index].X;
+            this.Y = _grid[Index].Y;
 
-            activate();
-            units[this.index] = _arrow;
+            Activate();
+            units[Index] = _arrow;
         }
 
-        public void activate()
+        public void Activate()
         {
             GameObject dObject = new GameObject(ImagesRes.ARROW);
             dObject.AddComponent<SpriteRenderer>();
-            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.ARROW);
+            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.ARROW);
             dObject.transform.SetParent(_container.gameObject.transform);
 
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 98;
             dObject.SetActive(false);
 
-            _arrow = new TowerArrow(ImagesRes.ARROW, this.index, dObject);
-            DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(shoot);
+            _arrow = new TowerArrow(ImagesRes.ARROW, Index, dObject);
+            DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(Shoot);
         }
 
-        private void shoot()
+        private void Shoot()
         {
             if (_arrow == null)
                 return;
 
-            _arrow.view.transform.localPosition = new Vector3(this.X - 0.01f, this.Y + 0.3f);
-            int localIndex = (int)Math.Round(_grid[this.index].x / Config.SIZE_W);
+            _arrow.View.transform.localPosition = new Vector3(this.X - 0.01f, this.Y + 0.3f);
+            int localIndex = (int)Math.Round(_grid[Index].X / Config.SIZE_W);
 
-            _arrow.view.SetActive(true);
+            _arrow.View.SetActive(true);
 
-            if (this.index > _directionIndex)
+            if (Index > _directionIndex)
             {
                 _speedTime = SPEED + localIndex * SPEED;
-                _arrow.shoot(-1, _speedTime);
+                _arrow.Shoot(-1, _speedTime);
             }
             else
             {
                 _speedTime = (Config.WIDTH - localIndex) * SPEED;
-                _arrow.shoot(1, _speedTime);
+                _arrow.Shoot(1, _speedTime);
             }
 
-            DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(shoot);
+            DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(Shoot);
 
         }
 
-        public override void destroy()
+        public override void Destroy()
         {
-            base.destroy();
+            base.Destroy();
             _arrow = null;
         }
     }

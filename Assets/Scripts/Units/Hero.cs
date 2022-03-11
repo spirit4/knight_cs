@@ -40,10 +40,10 @@ namespace Assets.Scripts.Units
 
         public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
         {
-            _grid = Controller.instance.model.grid;
+            _grid = Controller.instance.model.Grid;
 
-            this.X = _grid[index].x; //for choosing direction
-            this.Y = _grid[index].y;
+            this.X = _grid[index].X; //for choosing direction
+            this.Y = _grid[index].Y;
 
             _inside = inside;
 
@@ -51,7 +51,7 @@ namespace Assets.Scripts.Units
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 100;
 
-            _inside.name = type;
+            _inside.name = Type;
             _inside.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             _inside.GetComponent<SpriteRenderer>().sortingOrder = 100;
 
@@ -62,27 +62,27 @@ namespace Assets.Scripts.Units
         }
 
 
-        public override void stop()
+        public override void Stop()
         {
             _path.Clear();
         }
 
-        public void moveToCell(List<int> path = null)
+        public void MoveToCell(List<int> path = null)
         {
             if (path != null)
                 _path = path;
 
-            int currentIndex = index;
-            index = _path[0];
+            int currentIndex = Index;
+            Index = _path[0];
             _path.RemoveAt(0);
-            Vector2 point = GridUtils.GetPoint(index);
+            Vector2 point = GridUtils.GetPoint(Index);
 
             _directionX = 0;
             //_directionY = 0;
 
 
-            this.X = view.transform.localPosition.x;
-            this.Y = view.transform.localPosition.y;
+            this.X = View.transform.localPosition.x;
+            this.Y = View.transform.localPosition.y;
 
             int step = 0;
             if (point.y == this.Y && point.x > this.X)
@@ -106,18 +106,18 @@ namespace Assets.Scripts.Units
                 step = Config.WIDTH;
             }
 
-            this.X = view.transform.localPosition.x;
-            this.Y = view.transform.localPosition.y;
-            view.transform.localPosition = new Vector3(_grid[currentIndex].x, _grid[currentIndex].y);
+            this.X = View.transform.localPosition.x;
+            this.Y = View.transform.localPosition.y;
+            View.transform.localPosition = new Vector3(_grid[currentIndex].X, _grid[currentIndex].Y);
 
             int hack = 0;
-            while (this.index != currentIndex)
+            while (Index != currentIndex)
             {
                 currentIndex += step;
 
-                if (_grid[currentIndex].isContainTypes(ImagesRes.STAR) || _grid[currentIndex].isContainType(ImagesRes.TRAP))
+                if (_grid[currentIndex].IsContainTypes(ImagesRes.STAR) || _grid[currentIndex].IsContainType(ImagesRes.TRAP))
                 {
-                    this.index = currentIndex;
+                    Index = currentIndex;
                     _path.Clear();
                 }
                 hack++;
@@ -125,11 +125,11 @@ namespace Assets.Scripts.Units
                     break;
             }
 
-            move(true);
+            Move(true);
 
         }
 
-        private void changeView()
+        private void ChangeView()
         {
             Animator a = _inside.GetComponent<Animator>();
             a.SetInteger("HeroState", _heroState);
@@ -145,146 +145,143 @@ namespace Assets.Scripts.Units
         }
 
         ////-------actions---------------------------------
-        private void idle()
+        private void Idle()
         {
             if (_heroState == Hero.DEATH)
                 return;
 
-            if (_grid[index].isContainTypes(ImagesRes.STAR))
+            if (_grid[Index].IsContainTypes(ImagesRes.STAR))
             {
-                string type = _grid[this.index].getConcreteType(ImagesRes.STAR);
-                int index = _grid[this.index].types.IndexOf(type);
+                string type = _grid[Index].GetConcreteType(ImagesRes.STAR);
+                int index = _grid[Index].Types.IndexOf(type);
 
-                GameObject dObject = _grid[this.index].objects[index];
+                GameObject dObject = _grid[Index].Objects[index];
 
-                dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => starTweenComplete(type));
+                dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(type));
             }
 
-            else if (_grid[this.index].isContainType(ImagesRes.TRAP))
+            else if (_grid[Index].IsContainType(ImagesRes.TRAP))
             {
-                GameObject trap = _grid[this.index].getObject(ImagesRes.TRAP);
+                GameObject trap = _grid[Index].GetObject(ImagesRes.TRAP);
 
                 Animator anim = trap.GetComponent<Animator>();
                 anim.enabled = true;
                 trap.GetComponent<SpriteRenderer>().DOFade(1, 0.15f).SetEase(Ease.OutQuad);
-                DOTween.Sequence().AppendInterval(0.15f).AppendCallback(trapTweenComplete);
-                MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, trapAnimationComplete, false);
+                DOTween.Sequence().AppendInterval(0.15f).AppendCallback(TrapTweenComplete);
+                MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete, false);
             }
-            else if (_grid[this.index].isContainType(ImagesRes.EXIT))
+            else if (_grid[Index].IsContainType(ImagesRes.EXIT))
             {
                 if (_hasHelmet)
-                    Progress.starsAllLevels[Progress.currentLevel, 0] = 1;
+                    Progress.StarsAllLevels[Progress.CurrentLevel, 0] = 1;
 
                 if (_hasShield)
-                    Progress.starsAllLevels[Progress.currentLevel, 1] = 1;
+                    Progress.StarsAllLevels[Progress.CurrentLevel, 1] = 1;
 
                 if (_hasSword)
-                    Progress.starsAllLevels[Progress.currentLevel, 2] = 1;
+                    Progress.StarsAllLevels[Progress.CurrentLevel, 2] = 1;
 
                 if (!_hasHelmet && !_hasShield && !_hasSword)
-                    AchController.instance.addParam(AchController.LEVEL_WITHOUT_ITEMS);
+                    AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_ITEMS);
 
-                levelComplete();
+                LevelComplete();
             }
 
             _heroState = Hero.IDLE;
 
-            changeView();
+            ChangeView();
 
             MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
         }
 
-        private void starTweenComplete(string type)
+        private void StarTweenComplete(string type)
         {
-            //console.log("starTweenComplete", type, this.index);
-            _grid[this.index].remove(type);
-            reclothe(type);
+            _grid[Index].Remove(type);
+            Reclothe(type);
         }
 
-        private void trapTweenComplete()
+        private void TrapTweenComplete()
         {
-            AchController.instance.addParam(AchController.HERO_DEAD_BY_TRAP);
+            AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_TRAP);
             MessageDispatcher.SendMessage(GameEvent.HERO_GET_TRAP);
         }
 
-        private void trapAnimationComplete(IMessage rMessage)
+        private void TrapAnimationComplete(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, trapAnimationComplete);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete);
 
-            Animator anim = _grid[this.index].getObject(ImagesRes.TRAP).GetComponent<Animator>();
+            Animator anim = _grid[Index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
             anim.enabled = false;
-            _grid[this.index].remove(ImagesRes.TRAP);
+            _grid[Index].Remove(ImagesRes.TRAP);
         }
 
-        private void levelComplete()
+        private void LevelComplete()
         {
-            //Debug.Log("EXIT");
-            //    this.view.removeAllEventListeners();
             MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
         }
 
-        private void move(bool isContinue = false)
+        private void Move(bool isContinue = false)
         {
-            TweenCallback handler = idle;
+            TweenCallback handler = Idle;
             if (isContinue)
-                handler = keepMove;
+                handler = KeepMove;
 
             _heroState = Hero.MOVE;
 
-            view.transform.DOLocalMove(new Vector3(_grid[index].x, _grid[index].y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            if (_path.Count == 0 && _grid[this.index].isContainType(ImagesRes.EXIT))
+            View.transform.DOLocalMove(new Vector3(_grid[Index].X, _grid[Index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
+            if (_path.Count == 0 && _grid[Index].IsContainType(ImagesRes.EXIT))
             {
-                view.transform.DOKill();
-                view.transform.DOLocalMove(new Vector3(_grid[index].x, _grid[index].y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
-                view.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
-                view.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
+                View.transform.DOKill();
+                View.transform.DOLocalMove(new Vector3(_grid[Index].X, _grid[Index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                View.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
+                View.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }
 
-            changeView();
+            ChangeView();
         }
 
-        private void keepMove()
+        private void KeepMove()
         {
             if (_heroState == Hero.DEATH)
                 return;
 
             if (_path.Count == 0)
             {
-                idle();
+                Idle();
             }
             else
             {
                 MessageDispatcher.SendMessage(GameEvent.HERO_ONE_CELL_AWAY);
-                moveToCell();
+                MoveToCell();
             }
         }
 
-        public override void destroy()
+        public override void Destroy()
         {
-            base.destroy();
+            base.Destroy();
             _path = null;
             _grid = null;
         }
 
-        private void reclothe(string type)
+        private void Reclothe(string type)
         {
             if (type == ImagesRes.STAR + 0)
             {
                 _hasHelmet = true;
-                AchController.instance.addParam(AchController.HELMET_TAKED);
+                AchievementController.Instance.AddParam(AchievementController.HELMET_TAKED);
             }
             else if (type == ImagesRes.STAR + 1)
             {
                 _hasShield = true;
-                AchController.instance.addParam(AchController.SHIELD_TAKED);
+                AchievementController.Instance.AddParam(AchievementController.SHIELD_TAKED);
             }
             else if (type == ImagesRes.STAR + 2)
             {
                 _hasSword = true;
-                AchController.instance.addParam(AchController.SWORD_TAKED);
+                AchievementController.Instance.AddParam(AchievementController.SWORD_TAKED);
             }
 
-            changeView();
+            ChangeView();
         }
 
         public int HeroState

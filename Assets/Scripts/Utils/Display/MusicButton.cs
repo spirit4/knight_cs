@@ -22,8 +22,8 @@ namespace Assets.Scripts.Utils.Display
 
         void Start()
         {
-            _isActive = SoundManager.getInstance().hasMusic;
-            SoundManager.getInstance().CurrentButton = this;
+            _isActive = SoundManager.GetInstance().HasMusic;
+            SoundManager.GetInstance().CurrentButton = this;
 
             if (!_isActive)
                 SwitchState();
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Utils.Display
 
         public void SwitchState()
         {
-            _isActive = SoundManager.getInstance().hasMusic;
+            _isActive = SoundManager.GetInstance().HasMusic;
 
             Sprite image = _image;
             Sprite pressedImage = _pressedImage;
@@ -55,10 +55,10 @@ namespace Assets.Scripts.Utils.Display
         public void ClickHandler()
         {
             _isActive = !_isActive;
-            SoundManager.getInstance().muteOnOff();
+            SoundManager.GetInstance().MuteOnOff();
         }
 
-        public bool isActive
+        public bool IsActive
         {
             get
             {

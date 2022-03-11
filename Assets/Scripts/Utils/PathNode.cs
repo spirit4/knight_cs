@@ -8,12 +8,12 @@ namespace Assets.Scripts.Utils
 {
     public class PathNode
     {
-        public int cost = 0;
-        public int costToStart = 0;
-        public int costToEnd = 0;
-        public int totalCost = 0;
+        public int Cost = 0;
+        public int CostToStart = 0;
+        public int CostToEnd = 0;
+        public int TotalCost = 0;
 
-        public int index = 0;
+        public int Index = 0;
 
         public PathNode parent = null;
 
@@ -23,7 +23,7 @@ namespace Assets.Scripts.Utils
         }
         public void CalculateTotalCost()
         {
-            this.totalCost = this.costToStart + this.costToEnd;
+            TotalCost = CostToStart + CostToEnd;
         }
 
     }

@@ -46,7 +46,7 @@ namespace Assets.Scripts.Core
             new Controller(managerBg);//singleton
 
             _model = Controller.instance.model;
-            _grid = _model.grid;
+            _grid = _model.Grid;
         }
 
         private void Awake()
@@ -56,38 +56,38 @@ namespace Assets.Scripts.Core
             DOTween.Init();
             DOTween.Clear();
 
-            AchController ac = new AchController();//singleton
-            ac.init(this);
+            AchievementController ac = new AchievementController();//singleton
+            ac.Init(this);
 
             _level = new Level(this, _model);
-            _hero = _level.hero;
+            _hero = _level.Hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
 
-            MessageDispatcher.AddListener(GameEvent.HERO_REACHED, reachedHandler);
-            MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
-            MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
+            MessageDispatcher.AddListener(GameEvent.HERO_REACHED, ReachedHandler);
+            MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
+            MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, HideLastPoint);
 
-            MessageDispatcher.AddListener(GameEvent.QUIT, destroy);//leave game, from UIManager
+            MessageDispatcher.AddListener(GameEvent.QUIT, Destroy);//leave game, from UIManager
 
             _targetMark = new TargetMark(this.gameObject);
 
-            _units = _level.units;
-            _mill = _level.mill;
-            _items = _level.items;
+            _units = _level.Units;
+            _mill = _level.Mill;
+            _items = _level.Items;
 
             Text level = GameObject.Find("Canvas/PanelGameUI/ImageSpear1/LevelBoard/TextLevel").GetComponent<Text>();
-            level.text = (Progress.currentLevel + 1).ToString();
+            level.text = (Progress.CurrentLevel + 1).ToString();
 
-            createHint(true);
+            CreateHint(true);
         }
 
 
-        private void getTrapHandler(IMessage rMessage)
+        private void GetTrapHandler(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
-            WaitAndCall(100, hideActors, null, true);
-            showBoom();
+            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
+            WaitAndCall(100, HideActors, null, true);
+            ShowBoom();
         }
 
 
@@ -99,37 +99,37 @@ namespace Assets.Scripts.Core
 
             if (_hero.HeroState != Hero.IDLE)
             {
-                _hero.stop();
+                _hero.Stop();
                 return;
             }
 
             Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-            int index = GridUtils.getIndex(point.x, point.y);
+            int index = GridUtils.GetIndex(point.x, point.y);
 
-            if (_hero.index == index)
+            if (_hero.Index == index)
                 return;
 
-            if (_grid[index].isWall)
+            if (_grid[index].IsWall)
                 return;
 
             _pathfinder.Init(_grid); //clearing and rechecking the grid
-            _pathfinder.FindPath(_hero.index, index);
+            _pathfinder.FindPath(_hero.Index, index);
 
             if (_pathfinder.Path.Count > 0)
             {
                 List<int> path = _pathfinder.Path;
-                if (_grid[index].isContainType(ImagesRes.MILL))
+                if (_grid[index].IsContainType(ImagesRes.MILL))
                 {
-                    _mill.activate();
+                    _mill.Activate();
                     path.RemoveAt(path.Count - 1);
                 }
 
                 if (path.Count > 0)
                 {
-                    removeHint();
+                    RemoveHint();
 
-                    _targetMark.placeByTap(index);
-                    showPath(_pathfinder.Path);
+                    _targetMark.PlaceByTap(index);
+                    ShowPath(_pathfinder.Path);
 
                     TowerArrow arrow;
                     foreach (var pair in _units)
@@ -139,76 +139,76 @@ namespace Assets.Scripts.Core
                             continue;
 
                         arrow = pair.Value as TowerArrow;
-                        if (GridUtils.GetPoint(arrow.index).y == GridUtils.GetPoint(_hero.index).y && arrow.isShooted())
+                        if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
                         {
                             _isStartArrowCheck = true;
                             break;
                         }
                     }
 
-                    _hero.moveToCell(path);
+                    _hero.MoveToCell(path);
                 }
 
             }
         }
 
-        public void activateItems()
+        public void ActivateItems()
         {
             int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
                 if (!(_items[i] is Tower))
                 {
-                    _items[i].activate();
+                    _items[i].Activate();
                 }
             }
         }
 
-        private void reachedHandler(IMessage rMessage)//e: GameEvent) : void
+        private void ReachedHandler(IMessage rMessage)//e: GameEvent) : void
         {
             if (_isStartArrowCheck)
             {
                 //Debug.Log("[+++++reached 2]");
-                AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
+                AchievementController.Instance.AddParam(AchievementController.AWAY_FROM_ARROW);
                 _isStartArrowCheck = false;
             }
 
-            hidePoints();
+            HidePoints();
 
-            if (Progress.currentLevel == 0 && _hero.index == 54) //to guide
-                createHintAfterAction();
+            if (Progress.CurrentLevel == 0 && _hero.Index == 54) //to guide
+                CreateHintAfterAction();
 
 
-            if (GridUtils.findAround(_grid, _hero.index, ImagesRes.MILL) != -1)
+            if (GridUtils.FindAround(_grid, _hero.Index, ImagesRes.MILL) != -1)
             {
-                if (_mill.state != Unit.ON)
+                if (_mill.State != Unit.ON)
                 {
-                    _mill.startRotateMill();
-                    activateItems();
+                    _mill.StartRotateMill();
+                    ActivateItems();
                 }
             }
         }
 
         //gone to Unity Editor
-        private void restartHandler()//e: createjs.MouseEvent = null) : void
+        private void RestartHandler()//e: createjs.MouseEvent = null) : void
         {
             //destroy();
 
             MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
-        private void createHint(bool isFirst)
+        private void CreateHint(bool isFirst)
         {
-            if (!Hints.hints.ContainsKey(Progress.currentLevel))
+            if (!Hints.HintImages.ContainsKey(Progress.CurrentLevel))
                 return;
 
             int key;
             if (isFirst)
-                key = Progress.currentLevel;
+                key = Progress.CurrentLevel;
             else
                 key = -1;
 
-            Sprite sprite = Resources.Load<Sprite>(Hints.hints[key]);
+            Sprite sprite = Resources.Load<Sprite>(Hints.HintImages[key]);
 
             _help = new GameObject("Help");
             _help.AddComponent<SpriteRenderer>();
@@ -219,12 +219,12 @@ namespace Assets.Scripts.Core
             _help.transform.localPosition = new Vector3(2.45f, -1.9f);
         }
 
-        public void createHintAfterAction()
+        public void CreateHintAfterAction()
         {
-            createHint(false);//second hint
+            CreateHint(false);//second hint
         }
 
-        private void removeHint()
+        private void RemoveHint()
         {
             if (_help != null)
             {
@@ -237,21 +237,21 @@ namespace Assets.Scripts.Core
         public void Update()
         {
             if (_units != null)
-                checkCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);//TODO maybe need to make arrow more narrow
+                CheckCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);//TODO maybe need to make arrow more narrow
         }
 
-        public void checkCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
+        public void CheckCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
         {
             GameObject dObject;
             //magic number
-            float heroX = _hero.view.transform.localPosition.x;
-            float heroY = _hero.view.transform.localPosition.y + 0.15f;
+            float heroX = _hero.View.transform.localPosition.x;
+            float heroY = _hero.View.transform.localPosition.y + 0.15f;
             float objX;
             float objY;
 
             foreach (KeyValuePair<int, ICollidable> pair in vector)
             {
-                dObject = pair.Value.view;
+                dObject = pair.Value.View;
 
                 objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5f;
                 objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5f;
@@ -267,13 +267,13 @@ namespace Assets.Scripts.Core
                         if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(_hero.stateItems != Hero.FULL)
                         {
                             if (pair.Value is Monster)
-                                AchController.instance.addParam(AchController.HERO_DEAD_BY_MONSTER);
+                                AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_MONSTER);
                             else if (pair.Value is TowerArrow)
-                                AchController.instance.addParam(AchController.HERO_DEAD_BY_ARROW);
+                                AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_ARROW);
 
-                            WaitAndCall(100, hideActors, pair.Value, true);
+                            WaitAndCall(100, HideActors, pair.Value, true);
                             _hero.HeroState = Hero.DEATH;
-                            showBoom();
+                            ShowBoom();
 
                             //    if (Core.instance.api)
                             //    {
@@ -282,10 +282,10 @@ namespace Assets.Scripts.Core
                         }
                         else if (pair.Value is Monster)
                         {
-                            AchController.instance.addParam(AchController.MONSTER_DEAD);
+                            AchievementController.Instance.AddParam(AchievementController.MONSTER_DEAD);
 
-                            WaitAndCall(100, hideActors, pair.Value, false); //killing the monster
-                            showBoom(ImagesRes.A_ATTACK_BOOM);
+                            WaitAndCall(100, HideActors, pair.Value, false); //killing the monster
+                            ShowBoom(ImagesRes.A_ATTACK_BOOM);
                         }
 
                         break;
@@ -294,28 +294,28 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void hideActors(ICollidable unit, bool IsEnd)
+        private void HideActors(ICollidable unit, bool IsEnd)
         {
             if (unit != null)
             {
-                unit.stop();
-                _hero.stop();
-                unit.view.SetActive(false);
-                unit.destroy();
+                unit.Stop();
+                _hero.Stop();
+                unit.View.SetActive(false);
+                unit.Destroy();
             }
 
             if (IsEnd)
-                _hero.view.SetActive(false);
+                _hero.View.SetActive(false);
         }
 
-        private void showBoom(string boomType = ImagesRes.A_BOOM)
+        private void ShowBoom(string boomType = ImagesRes.A_BOOM)
         {
-            float boomX = _hero.view.transform.localPosition.x;
-            float boomY = _hero.view.transform.localPosition.y + 0.25f;
+            float boomX = _hero.View.transform.localPosition.x;
+            float boomY = _hero.View.transform.localPosition.y + 0.25f;
 
             if (_boom == null)
             {
-                GameObject gameObject = GameObject.Instantiate(ImagesRes.prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                GameObject gameObject = GameObject.Instantiate(ImagesRes.Prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 gameObject.transform.SetParent(this.gameObject.transform);
 
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
@@ -326,51 +326,50 @@ namespace Assets.Scripts.Core
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
-            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler, false);
+            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler, false);
         }
 
-        public void boomCompleteHandler(IMessage rMessage)
+        public void BoomCompleteHandler(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
 
             _boom.SetActive(false);
 
             if (_hero == null || !_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
-                restartHandler();
+                RestartHandler();
         }
 
-        private void showPath(List<int> path)
+        private void ShowPath(List<int> path)
         {
             for (int i = 0; i < path.Count; i++)
             {
                 if (_poolPoints.Count < path.Count)
                 {
-                    this.createPathPoint();
+                    this.CreatePathPoint();
                 }
-                WaitAndCall(50 * i, appearPoint, path[i]);
+                WaitAndCall(50 * i, AppearPoint, path[i]);
             }
         }
 
-        private void appearPoint(int index)
+        private void AppearPoint(int index)
         {
-            //Debug.Log("--appearPoint--" + Time.time);
             GameObject bitmap = _poolPoints[_poolPoints.Count - 1];
             _poolPoints.RemoveAt(_poolPoints.Count - 1);
 
             bitmap.transform.localScale = new Vector3(0, 0);
-            bitmap.transform.localPosition = new Vector3(_grid[index].x, _grid[index].y, 0);
+            bitmap.transform.localPosition = new Vector3(_grid[index].X, _grid[index].Y, 0);
             bitmap.SetActive(true);
             _activePoints.Add(bitmap);
 
-            bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => reducePoint(bitmap.transform));
+            bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => ReducePoint(bitmap.transform));
         }
 
-        private void reducePoint(Transform transform)
+        private void ReducePoint(Transform transform)
         {
             transform.DOScale(1, 0.06f).SetEase(Ease.InQuart);
         }
 
-        private void hidePoints()
+        private void HidePoints()
         {
             while (_activePoints.Count > 0)
             {
@@ -381,19 +380,10 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void hideLastPoint(IMessage rMessage)
+        private void HideLastPoint(IMessage rMessage)
         {
             if (_activePoints.Count == 0)
                 return;
-
-            //if (_isStartArrowCheck)
-            //{
-            //    //console.log("[+++++reached]");
-            //    AchController.instance.addParam(AchController.AWAY_FROM_ARROW);
-            //    _isStartArrowCheck = false;
-            //}
-
-            //console.log("[CELL AWAY]", _hero.index, _hero.mc.framerate);
 
             GameObject bitmap = _activePoints[0];
             _activePoints.RemoveAt(0);
@@ -401,11 +391,11 @@ namespace Assets.Scripts.Core
             _poolPoints.Add(bitmap);
         }
 
-        private void createPathPoint()
+        private void CreatePathPoint()
         {
             GameObject dObject = new GameObject();
             dObject.AddComponent<SpriteRenderer>();
-            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage(ImagesRes.TARGET_MARK + 0);
+            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.TARGET_MARK + 0);
             dObject.transform.SetParent(this.gameObject.transform);
             dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
@@ -415,18 +405,18 @@ namespace Assets.Scripts.Core
         }
 
 
-        private void destroy(IMessage rMessage = null)
+        private void Destroy(IMessage rMessage = null)
         {
-            MessageDispatcher.RemoveListener(GameEvent.QUIT, destroy);
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, boomCompleteHandler);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, reachedHandler);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, hideLastPoint);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, getTrapHandler);
+            MessageDispatcher.RemoveListener(GameEvent.QUIT, Destroy);
+            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, ReachedHandler);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, HideLastPoint);
+            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
 
             if (_hero != null)
-                _hero.destroy();
+                _hero.Destroy();
 
-            removeHint();
+            RemoveHint();
 
             _pathfinder.Destroy();
             _pathfinder = null;
@@ -435,7 +425,7 @@ namespace Assets.Scripts.Core
 
             if (_level != null)
             {
-                _level.destroy();
+                _level.Destroy();
                 _level = null;
             }
 
@@ -455,7 +445,7 @@ namespace Assets.Scripts.Core
             _level = null;
 
             if (_mill != null)
-                _mill.destroy();
+                _mill.Destroy();
 
             _mill = null;
         }

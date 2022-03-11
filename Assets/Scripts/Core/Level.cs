@@ -31,7 +31,7 @@ namespace Assets.Scripts.Core
             _tilesBg = new List<GameObject>();
             _decorBg = new List<GameObject>();
 
-            var cells = JSON.Parse(JSONRes.levels[Progress.currentLevel]);
+            var cells = JSON.Parse(JSONRes.Levels[Progress.CurrentLevel]);
 
             int index;
             List<string> types;
@@ -44,33 +44,33 @@ namespace Assets.Scripts.Core
 
                 for (int j = 0; j < types.Count; j++)
                 {
-                    this.checkCell(index, types[j], types, cells[i]);
+                    CheckCell(index, types[j], types, cells[i]);
                 }
             }
-            Controller.instance.bg.addTiles(_tilesBg, _model.grid);
-            Controller.instance.bg.addTiles(_decorBg, _model.grid, true);
+            Controller.instance.bg.AddTiles(_tilesBg, _model.Grid);
+            Controller.instance.bg.AddTiles(_decorBg, _model.Grid, true);
             _tilesBg = null;
             _decorBg = null;
 
             int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
-                _items[i].init(i, _model.grid, _units);
+                _items[i].Init(i, _model.Grid, _units);
             }
         }
 
         //node has local coordinates of decor
-        private void checkCell(int index, string type, List<string> types, JSONNode node)
+        private void CheckCell(int index, string type, List<string> types, JSONNode node)
         {
             GameObject gameObject;
 
-            Tile[] grid = _model.grid;
+            Tile[] grid = _model.Grid;
 
             switch (type)
             {
                 case ImagesRes.HERO:
                     var gObject = new GameObject("HeroContainer");
-                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(gObject.transform);
                     gObject.transform.SetParent(_container.gameObject.transform);
                     _hero = new Hero(index, gameObject, gObject);
@@ -79,54 +79,54 @@ namespace Assets.Scripts.Core
                 case ImagesRes.MILL:
                     gameObject = new GameObject();
                     _mill = new MillPress(type, index, gameObject, _container);
-                    grid[index].isDear = true;
+                    grid[index].IsDear = true;
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.STAR + 0): //helmet
-                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.03f, grid[index].y - 0.07f);
+                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.03f, grid[index].Y - 0.07f);
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.STAR + 1): //shield
-                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Shield"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Shield"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.03f, grid[index].y + 0.05f, 0);
+                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.03f, grid[index].Y + 0.05f, 0);
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.STAR + 2): //sword
-                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Sword"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Sword"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].x + 0.01f, grid[index].y + 0.15f, 0);
+                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.01f, grid[index].Y + 0.15f, 0);
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
 
                 case ImagesRes.TRAP:
-                    gameObject = GameObject.Instantiate(ImagesRes.prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     gameObject.transform.SetParent(_container.gameObject.transform);
                     new Trap(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].x, grid[index].y + 0.03f);
+                    gameObject.transform.localPosition = new Vector3(grid[index].X, grid[index].Y + 0.03f);
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
 
                 case ImagesRes.BOULDER:
-                    Boulder boulder = new Boulder(type, index, grid[index].add(type, _container, grid), grid[index]);
+                    Boulder boulder = new Boulder(type, index, grid[index].Add(type, _container, grid), grid[index]);
                     _items.Add(boulder);
                     break;
 
                 case ImagesRes.TOWER:
-                    Tower tower = new Tower(type, index, grid[index].add(type, _container, grid), grid[index], _container);
+                    Tower tower = new Tower(type, index, grid[index].Add(type, _container, grid), grid[index], _container);
                     _items.Add(tower);
                     break;
 
@@ -136,13 +136,13 @@ namespace Assets.Scripts.Core
                     break;
 
                 case ImagesRes.SPIKES + "0":
-                    Spikes spikes = new Spikes(type, index, grid[index].add(type, _container, grid), grid[index]);
+                    Spikes spikes = new Spikes(type, index, grid[index].Add(type, _container, grid), grid[index]);
                     _items.Add(spikes);
                     break;
 
                 case string x when x.StartsWith(ImagesRes.DECOR):
                     grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
-                    gameObject = grid[index].add(type, _container, grid);
+                    gameObject = grid[index].Add(type, _container, grid);
                     _decorBg.Add(gameObject);
                     break;
 
@@ -152,38 +152,38 @@ namespace Assets.Scripts.Core
 
                     foreach (KeyValuePair<int, ICollidable> pair in _units)
                     {
-                        if (pair.Value.type == type)
+                        if (pair.Value.Type == type)
                         {
                             monster = pair.Value as Monster;
 
-                            if (monster.type == type && (monster.X == grid[index].x || monster.Y == grid[index].y))
+                            if (monster.Type == type && (monster.X == grid[index].X || monster.Y == grid[index].Y))
                             {
-                                monster.setPointIndex2(index);
+                                monster.SetPointIndex2(index);
                                 return;
                             }
                             id++;
                         }
                     }
 
-                    GameObject view = GameObject.Instantiate(ImagesRes.prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    GameObject view = GameObject.Instantiate(ImagesRes.Prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     monster = new Monster(type, index, id, view, _container);
                     _units.Add(index, monster);
                     break;
 
                 case ImagesRes.GRASS:
                 case ImagesRes.WATER:
-                    gameObject = grid[index].add(type, _container, grid);
+                    gameObject = grid[index].Add(type, _container, grid);
                     _tilesBg.Add(gameObject);
                     break;
 
                 default:
-                    grid[index].add(type, _container, grid);
+                    grid[index].Add(type, _container, grid);
                     break;
             }
 
         }
 
-        public void destroy()
+        public void Destroy()
         {
             //    Core.instance.bg.removeTiles();
 
@@ -194,12 +194,12 @@ namespace Assets.Scripts.Core
             //    }
             foreach (ICollidable item in _items)
             {
-                item.destroy();
+                item.Destroy();
             }
 
             foreach (KeyValuePair<int, ICollidable> pair in _units)
             {
-                pair.Value.destroy();
+                pair.Value.Destroy();
             }
 
             //    _model = null;
@@ -211,7 +211,7 @@ namespace Assets.Scripts.Core
             //    _items = null;
         }
 
-        public Hero hero
+        public Hero Hero
         {
             get
             {
@@ -220,7 +220,7 @@ namespace Assets.Scripts.Core
 
         }
 
-        public MillPress mill
+        public MillPress Mill
         {
             get
             {
@@ -229,7 +229,7 @@ namespace Assets.Scripts.Core
 
         }
 
-        public Dictionary<int, ICollidable> units
+        public Dictionary<int, ICollidable> Units
         {
             get
             {
@@ -237,7 +237,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        public List<IActivatable> items
+        public List<IActivatable> Items
         {
             get
             {

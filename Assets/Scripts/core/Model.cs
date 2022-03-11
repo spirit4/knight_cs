@@ -12,10 +12,10 @@ namespace Assets.Scripts.Core
         {
             _grid = new Tile[Config.WIDTH * Config.HEIGHT];
 
-            this.createGrid();
+            CreateGrid();
         }
 
-        private void createGrid()
+        private void CreateGrid()
         {
             float xCell;
             float yCell;
@@ -28,17 +28,17 @@ namespace Assets.Scripts.Core
             }
         }
 
-        public void saveProgress()
+        public void SaveProgress()
         {
-            SaveGame.Save<int>("levelsCompleted", Progress.levelsCompleted);
+            SaveGame.Save<int>("levelsCompleted", Progress.LevelsCompleted);
 
-            SaveGame.Save<int[]>("achs", Progress.achs);
-            SaveGame.Save<int[]>("achParams", Progress.achParams);
-            SaveGame.Save<int[]>("deadOnLevel", Progress.deadOnLevel);
+            SaveGame.Save<int[]>("achs", Progress.Achievements);
+            SaveGame.Save<int[]>("achParams", Progress.AchievementParams);
+            SaveGame.Save<int[]>("deadOnLevel", Progress.DeadOnLevel);
 
             int[] stars = new int[60];
             int i = 0;
-            foreach (int star in Progress.starsAllLevels)
+            foreach (int star in Progress.StarsAllLevels)
             {
                 stars[i] = star;
                 i++;
@@ -46,18 +46,18 @@ namespace Assets.Scripts.Core
             SaveGame.Save<int[]>("starsAllLevels", stars);
         }
 
-        public void loadProgress()
+        public void LoadProgress()
         {
             //SaveGame.DeleteAll();
             if (!SaveGame.Exists("levelsCompleted"))//first load
                 return;
 
-            Progress.levelsCompleted = SaveGame.Load<int>("levelsCompleted");
-            SoundManager.getInstance().hasMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
+            Progress.LevelsCompleted = SaveGame.Load<int>("levelsCompleted");
+            SoundManager.GetInstance().HasMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
 
-            Progress.achs = SaveGame.Load<int[]>("achs");
-            Progress.achParams = SaveGame.Load<int[]>("achParams");
-            Progress.deadOnLevel = SaveGame.Load<int[]>("deadOnLevel");
+            Progress.Achievements = SaveGame.Load<int[]>("achs");
+            Progress.AchievementParams = SaveGame.Load<int[]>("achParams");
+            Progress.DeadOnLevel = SaveGame.Load<int[]>("deadOnLevel");
 
             int[] stars = SaveGame.Load<int[]>("starsAllLevels");
             int k = 0;
@@ -65,13 +65,13 @@ namespace Assets.Scripts.Core
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Progress.starsAllLevels[i, j] = stars[k];
+                    Progress.StarsAllLevels[i, j] = stars[k];
                     k++;
                 }
             }
         }
 
-        public Tile[] grid
+        public Tile[] Grid
         {
             get { return _grid; }
         }

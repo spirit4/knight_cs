@@ -1,11 +1,5 @@
 ﻿using Assets.Scripts.Core;
 using Assets.Scripts.Data;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils
@@ -13,7 +7,7 @@ namespace Assets.Scripts.Utils
     public static class GridUtils
     {
 
-        public static int getIndex(float localX, float localY)
+        public static int GetIndex(float localX, float localY)
         {
             int cellX = (int)((localX + Config.SIZE_W / 2) / Config.SIZE_W);
             int cellY = (int)((localY - Config.SIZE_H / 2) / Config.SIZE_H);
@@ -34,34 +28,21 @@ namespace Assets.Scripts.Utils
             return new Vector2(cellX, -cellY);
         }
 
-        //public static isNeighbours(index1 number, index2 number): boolean
-        //{
-        //    if (index1 + 1 == index2 ||
-        //        index1 - 1 == index2 ||
-        //        index1 + Config.WIDTH == index2 ||
-        //        index1 - Config.WIDTH == index2)
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
-        public static int findAround(Tile[] grid, int index, string type)
+        public static int FindAround(Tile[] grid, int index, string type)
         {
-            if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].isContainType(type))
+            if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].IsContainType(type))
             {
                 return index + 1;
             }
-            else if (index - 1 >= 0 && grid[index - 1].isContainType(type))
+            else if (index - 1 >= 0 && grid[index - 1].IsContainType(type))
             {
                 return index - 1;
             }
-            else if (index + Config.WIDTH < Config.WIDTH * Config.HEIGHT && grid[index + Config.WIDTH].isContainType(type))
+            else if (index + Config.WIDTH < Config.WIDTH * Config.HEIGHT && grid[index + Config.WIDTH].IsContainType(type))
             {
                 return index + Config.WIDTH;
             }
-            else if (index - Config.WIDTH >= 0 && grid[index - Config.WIDTH].isContainType(type))
+            else if (index - Config.WIDTH >= 0 && grid[index - Config.WIDTH].IsContainType(type))
             {
                 return index - Config.WIDTH;
             }

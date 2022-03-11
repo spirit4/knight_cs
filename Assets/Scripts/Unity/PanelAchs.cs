@@ -28,7 +28,7 @@ namespace Assets.Scripts.Unity
         {
             new MainView(_vane, _smoke);
 
-            createIcons();
+            CreateIcons();
         }
 
         // Update is called once per frame
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Unity
                 if (hit = Physics2D.Raycast(ray.origin, Vector2.zero))
                 {
                     int index = int.Parse(Regex.Match(hit.collider.name, @"\d+").Value);
-                    _text.text = Progress.hintAchs[index - 1];
+                    _text.text = Progress.HintAchievements[index - 1];
 
                     Vector2 movePos;
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -62,14 +62,14 @@ namespace Assets.Scripts.Unity
             }
         }
 
-        private void createIcons()
+        private void CreateIcons()
         {
             GameObject dObject;
             Sprite sprite;
             int col;
             int row;
 
-            for (int i = 0; i < Progress.achs.Length; i++)
+            for (int i = 0; i < Progress.Achievements.Length; i++)
             {
                 col = i % 2;
                 row = (i - col) / 2;
@@ -79,10 +79,10 @@ namespace Assets.Scripts.Unity
                 dObject.AddComponent<BoxCollider2D>(); //for click and hint
                 dObject.GetComponent<BoxCollider2D>().size = new Vector2(0.72f, 0.72f);
 
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.getImage("a" + (i + 1));
+                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("a" + (i + 1));
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
 
-                if (Progress.achs[i] == 0)
+                if (Progress.Achievements[i] == 0)
                     dObject.GetComponent<SpriteRenderer>().color = Color.gray;
 
                 dObject.transform.SetParent(this.gameObject.transform);
@@ -91,7 +91,7 @@ namespace Assets.Scripts.Unity
 
                 dObject = new GameObject("at" + (i + 1));
                 dObject.AddComponent<SpriteRenderer>();
-                sprite = ImagesRes.getImage("at" + (i + 1));
+                sprite = ImagesRes.GetImage("at" + (i + 1));
                 dObject.GetComponent<SpriteRenderer>().sprite = sprite;
                 dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
 

@@ -21,108 +21,107 @@ namespace Assets.Scripts.Units
         private const float MARGIN_X = 0f;
         private const float MARGIN_Y = 0.1f;
 
-        public int id = -1;
+        private int _id = -1;
 
 
         public Monster(string type, int index, int id, GameObject view, Component container) : base(index, type, view)
         {
-            _grid = Controller.instance.model.grid;
-            this.id = id;
+            _grid = Controller.instance.model.Grid;
+            _id = id;
 
             _pontIndex1 = index;
-            this.X = _grid[index].x; //for choosing direction --> Level
-            this.Y = _grid[index].y;
+            this.X = _grid[index].X; //for choosing direction --> Level
+            this.Y = _grid[index].Y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 95;
             view.name = type + id;
 
             view.transform.SetParent(container.gameObject.transform);
-            view.transform.localPosition = new Vector3(_grid[index].x + MARGIN_X, _grid[index].y + MARGIN_Y, 0);
+            view.transform.localPosition = new Vector3(_grid[index].X + MARGIN_X, _grid[index].Y + MARGIN_Y, 0);
         }
 
-        private void move(float x, float y)
+        private void Move(float x, float y)
         {
             float time = 0;
             if (_directionX == 1 || _directionX == -1)
             {
                 time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2);
-                view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(setDirection);
+                View.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(SetDirection);
             }
             else if (_directionY == 1 || _directionY == -1)
             {
                 time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2) / Config.WIDTH;
-                view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(setDirection);
+                View.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(SetDirection);
             }
         }
 
-        private void setDirection()
+        private void SetDirection()
         {
-            int directionIndex = (this.index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
+            int directionIndex = (Index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
             Tile tile = _grid[directionIndex];
 
-            if (tile.y == this.Y && tile.x > this.X)//directionIndex >= _pontIndex1)// 
+            if (tile.Y == this.Y && tile.X > this.X)//directionIndex >= _pontIndex1)// 
             {
                 _directionX = 1;
                 _directionY = 0;
             }
-            else if (tile.y == this.Y && tile.x < this.X)
+            else if (tile.Y == this.Y && tile.X < this.X)
             {
                 _directionX = -1;
                 _directionY = 0;
             }
-            else if (tile.x == this.X && tile.y > this.Y)
+            else if (tile.X == this.X && tile.Y > this.Y)
             {
                 _directionX = 0;
                 _directionY = -1;
             }
-            else if (tile.x == this.X && tile.y < this.Y)
+            else if (tile.X == this.X && tile.Y < this.Y)
             {
                 _directionX = 0;
                 _directionY = 1;
             }
 
             FlipView();
-            move(tile.x, tile.y);
-            this.index = directionIndex;
+            Move(tile.X, tile.Y);
+            Index = directionIndex;
 
 
-            this.X = _grid[index].x;//TODO find better solution?
+            this.X = _grid[Index].X;//TODO find better solution?
             //this.y = _grid[index].y;
         }
 
         private void FlipView()
         {
-            //Debug.Log("setPointIndex2" + index);
             if (_directionX == 1)
             {
-                view.GetComponent<SpriteRenderer>().flipX = true;
+                View.GetComponent<SpriteRenderer>().flipX = true;
             }
             else if (_directionX == -1)
             {
-                view.GetComponent<SpriteRenderer>().flipX = false;
+                View.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
 
-        public void setPointIndex2(int index)
+        public void SetPointIndex2(int index)
         {
             _pontIndex2 = index;
-            setDirection();
+            SetDirection();
         }
 
-        public void activate()
+        public void Activate()
         {
             //empty
         }
 
-        public void init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        public void Init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
 
         }
 
-        public override void destroy()
+        public override void Destroy()
         {
-            base.destroy();
+            base.Destroy();
         }
     }
 }

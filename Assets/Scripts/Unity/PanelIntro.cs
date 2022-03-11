@@ -32,7 +32,7 @@ namespace Assets.Scripts.Unity
             _frames[1].color = new Color(_frames[1].color.r, _frames[1].color.g, _frames[1].color.b, 0);
             _frames[2].color = new Color(_frames[2].color.r, _frames[2].color.g, _frames[2].color.b, 0);
 
-            showNext();
+            ShowNext();
         }
 
 
@@ -46,14 +46,14 @@ namespace Assets.Scripts.Unity
         }
 
 
-        private void showNext()
+        private void ShowNext()
         {
             if (_frames.Count == 0)
                 return;
 
             _frames[0].DOFade(1, 0.5f).SetEase(Ease.Linear);
             _frames.RemoveAt(0);
-            DOTween.Sequence().AppendInterval(1.5f).AppendCallback(showNext);
+            DOTween.Sequence().AppendInterval(1.5f).AppendCallback(ShowNext);
         }
 
     }

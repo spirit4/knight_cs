@@ -24,18 +24,18 @@ namespace Assets.Scripts.Unity
             {
 
                 transform = this.transform.GetChild(i);
-                if (i - 3 < Progress.levelsCompleted)
+                if (i - 3 < Progress.LevelsCompleted)
                 {
                     level = transform.GetChild(0).GetChild(0).GetComponent<Text>() as Text;
                     level.text = (i - 2).ToString();
 
-                    if (Progress.starsAllLevels[i - 3, 0] == 0)
+                    if (Progress.StarsAllLevels[i - 3, 0] == 0)
                         transform.GetChild(0).GetChild(2).gameObject.SetActive(false);//helmet deeper for swayer
 
-                    if (Progress.starsAllLevels[i - 3, 2] == 0)
+                    if (Progress.StarsAllLevels[i - 3, 2] == 0)
                         transform.GetChild(2).gameObject.SetActive(false);
 
-                    if (Progress.starsAllLevels[i - 3, 1] == 0)
+                    if (Progress.StarsAllLevels[i - 3, 1] == 0)
                         transform.GetChild(4).gameObject.SetActive(false);
                 }
                 else
@@ -43,7 +43,7 @@ namespace Assets.Scripts.Unity
                     transform.gameObject.SetActive(false);
                 }
 
-                if (i - 3 == Progress.levelsCompleted - 1)
+                if (i - 3 == Progress.LevelsCompleted - 1)
                 {
                     transform.GetChild(0).gameObject.AddComponent<Swayer>();
                 }
