@@ -33,7 +33,7 @@ namespace Assets.Scripts.Data
         public const string TARGET_MARK = "target_";
 
         public const string ICON_ACH = "a";
-        public const string DECOR = "Decor";// ====="flovers"
+        public const string DECOR = "Decor";// ====="flovers" spelling from artist
 
         //animations
         public const string A_BOOM = "Boom";

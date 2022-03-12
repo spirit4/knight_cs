@@ -8,22 +8,6 @@ namespace Assets.Scripts.Core
 {
     public class AchievementController
     {
-        //achs
-        public const int ACH_CATCH_ARROW = 0;
-        public const int ACH_KILL_MONSTER = 1;
-        public const int ACH_NO_TAKE_ITEMS = 2;
-        public const int ACH_TAKE_ALL_ITEMS = 3;
-
-        public const int ACH_STEP_ON_TRAP = 4;
-        public const int ACH_LAUNCH_MILL = 5;
-        public const int ACH_10_HELMETS = 6;
-        public const int ACH_FIRST_DEATH = 7;
-
-        public const int ACH_10_SHIELDS = 8;
-        public const int ACH_10_LEVELS_WITHOUT_DEATH = 9;
-        public const int ACH_10_SWORDS = 10;
-        public const int ACH_FAST_REACTION = 11;
-
         //param actions
         public const int HERO_DEAD_BY_MONSTER = 0;
         public const int HERO_DEAD_BY_ARROW = 1;
@@ -37,6 +21,21 @@ namespace Assets.Scripts.Core
         public const int LEVEL_WITHOUT_DEATH = 9;
         public const int AWAY_FROM_ARROW = 10;
 
+        private enum AchType : int
+        {
+            CatchArrow,
+            KillMonster,
+            NoTakeItems,
+            TakeAllItems,
+            StepOnTrap,
+            LaunchMill,
+            TenHelmets,
+            FirstDeath,
+            TenShields,
+            TenLevelsWithoutDeath,
+            TenSwords,
+            FastReaction
+        }
 
         public static AchievementController Instance;
         private GameObject _icon;
@@ -50,9 +49,7 @@ namespace Assets.Scripts.Core
 
         private void OnSceneUnloaded(Scene current)
         {
-            //Debug.Log("OnSceneUnloaded: " + 111111);
             RemoveAchievement();
-            //DOTween.KillAll();
             _icon = null;
         }
 
@@ -66,37 +63,39 @@ namespace Assets.Scripts.Core
             {
                 Progress.DeadOnLevel[Progress.CurrentLevel]++;
             }
-            //Debug.Log("addParam: "+ _icon.GetComponentInParent<Game>());
+
             CheckAchievements(type);
         }
 
 
         private void CheckAchievements(int currentEvent)
         {
+            AchType type;
             int[] achs = Progress.Achievements;
             for (int i = 0; i < achs.Length; i++)
             {
                 if (achs[i] == 1)
                     continue;
 
-                switch (i)
+                type = (AchType)i;
+                switch (type)
                 {
-                    case AchievementController.ACH_CATCH_ARROW when Progress.AchievementParams[AchievementController.HERO_DEAD_BY_ARROW] > 0:
-                    case AchievementController.ACH_KILL_MONSTER when Progress.AchievementParams[AchievementController.MONSTER_DEAD] > 0:
-                    case AchievementController.ACH_NO_TAKE_ITEMS when Progress.AchievementParams[AchievementController.LEVEL_WITHOUT_ITEMS] > 0:
-                    case AchievementController.ACH_10_HELMETS when Progress.AchievementParams[AchievementController.HELMET_TAKED] >= 10:
-                    case AchievementController.ACH_10_SHIELDS when Progress.AchievementParams[AchievementController.SHIELD_TAKED] >= 10:
-                    case AchievementController.ACH_10_SWORDS when Progress.AchievementParams[AchievementController.SWORD_TAKED] >= 10:
-                    case AchievementController.ACH_STEP_ON_TRAP when Progress.AchievementParams[AchievementController.HERO_DEAD_BY_TRAP] > 0:
-                    case AchievementController.ACH_LAUNCH_MILL when Progress.AchievementParams[AchievementController.MILL_LAUNCHED] > 0:
-                    case AchievementController.ACH_FAST_REACTION when Progress.AchievementParams[AchievementController.AWAY_FROM_ARROW] > 0:
-                    case AchievementController.ACH_10_LEVELS_WITHOUT_DEATH when Progress.AchievementParams[AchievementController.LEVEL_WITHOUT_DEATH] >= 10:
+                    case AchType.CatchArrow when Progress.AchievementParams[AchievementController.HERO_DEAD_BY_ARROW] > 0:
+                    case AchType.KillMonster when Progress.AchievementParams[AchievementController.MONSTER_DEAD] > 0:
+                    case AchType.NoTakeItems when Progress.AchievementParams[AchievementController.LEVEL_WITHOUT_ITEMS] > 0:
+                    case AchType.TenHelmets when Progress.AchievementParams[AchievementController.HELMET_TAKED] >= 10:
+                    case AchType.TenShields when Progress.AchievementParams[AchievementController.SHIELD_TAKED] >= 10:
+                    case AchType.TenSwords when Progress.AchievementParams[AchievementController.SWORD_TAKED] >= 10:
+                    case AchType.StepOnTrap when Progress.AchievementParams[AchievementController.HERO_DEAD_BY_TRAP] > 0:
+                    case AchType.LaunchMill when Progress.AchievementParams[AchievementController.MILL_LAUNCHED] > 0:
+                    case AchType.FastReaction when Progress.AchievementParams[AchievementController.AWAY_FROM_ARROW] > 0:
+                    case AchType.TenLevelsWithoutDeath when Progress.AchievementParams[AchievementController.LEVEL_WITHOUT_DEATH] >= 10:
                         achs[i] = 1;
                         LetAchievement(i);
 
                         break;
 
-                    case AchievementController.ACH_TAKE_ALL_ITEMS:
+                    case AchType.TakeAllItems:
                         if (Progress.AchievementParams[AchievementController.HELMET_TAKED] >= 20 &&
                             Progress.AchievementParams[AchievementController.SWORD_TAKED] >= 20 &&
                             Progress.AchievementParams[AchievementController.SHIELD_TAKED] >= 20)
@@ -106,13 +105,13 @@ namespace Assets.Scripts.Core
                         }
                         break;
 
-                    case AchievementController.ACH_FIRST_DEATH:
+                    case AchType.FirstDeath:
                         if (Progress.AchievementParams[AchievementController.HERO_DEAD_BY_ARROW] > 0 ||
                             Progress.AchievementParams[AchievementController.HERO_DEAD_BY_MONSTER] > 0 ||
                             Progress.AchievementParams[AchievementController.HERO_DEAD_BY_TRAP] > 0)
                         {
                             achs[i] = 1;
-                            this.LetAchievement(i);
+                            LetAchievement(i);
                         }
                         break;
                 }
@@ -143,7 +142,6 @@ namespace Assets.Scripts.Core
 
         private void HideAchievement()
         {
-            //Debug.Log("hideAchievement: " + _icon);
             _icon.GetComponent<SpriteRenderer>().DOFade(0, 0.4f).SetEase(Ease.InOutQuad);
             _icon.transform.DOScale(0.3f, 0.4f).SetEase(Ease.InOutQuad).OnComplete(RemoveAchievement);
         }
@@ -162,7 +160,6 @@ namespace Assets.Scripts.Core
 
         public void Init(Component container)
         {
-            //Debug.Log("init: " + _icon);
             _icon = new GameObject("ach");
             _icon.AddComponent<SpriteRenderer>();
             _icon.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.ICON_ACH + 1);

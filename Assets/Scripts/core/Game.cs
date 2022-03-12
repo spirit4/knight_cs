@@ -164,11 +164,10 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void ReachedHandler(IMessage rMessage)//e: GameEvent) : void
+        private void ReachedHandler(IMessage rMessage)
         {
             if (_isStartArrowCheck)
             {
-                //Debug.Log("[+++++reached 2]");
                 AchievementController.Instance.AddParam(AchievementController.AWAY_FROM_ARROW);
                 _isStartArrowCheck = false;
             }

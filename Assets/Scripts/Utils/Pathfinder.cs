@@ -10,7 +10,7 @@ namespace Assets.Scripts.Utils
         private List<PathNode> _grid = new List<PathNode>();
         private List<PathNode> _openList = new List<PathNode>();
         private List<PathNode> _closeList = new List<PathNode>();
-        private List<int> _path;
+        private List<int> _path = new List<int>();
 
         private int _currentIndex;
         private int _endIndex;
@@ -62,8 +62,6 @@ namespace Assets.Scripts.Utils
 
         public void FindPath(int start, int end)
         {
-            _path = new List<int>();
-
             _openList.Add(_grid[start]);
             _currentIndex = start;
             _endIndex = end;
