@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Utils;
 using DG.Tweening;
 using System.Linq;
 using UnityEngine;
@@ -37,13 +38,22 @@ namespace Assets.Scripts.Core
             FastReaction
         }
 
-        public static AchievementController Instance;
         private GameObject _icon;
         Sequence _mySequence;
 
-        public AchievementController()
+        private static AchievementController _instance;
+        public static AchievementController Instance
         {
-            AchievementController.Instance = this;
+            get
+            {
+                if (_instance == null)
+                    _instance = new AchievementController();
+
+                return _instance;
+            }
+        }
+        private AchievementController()
+        {
             SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
@@ -55,6 +65,7 @@ namespace Assets.Scripts.Core
 
         public void AddParam(int type)
         {
+            
             Progress.AchievementParams[type]++;
 
             if (type == AchievementController.HERO_DEAD_BY_ARROW ||
@@ -63,7 +74,7 @@ namespace Assets.Scripts.Core
             {
                 Progress.DeadOnLevel[Progress.CurrentLevel]++;
             }
-
+            
             CheckAchievements(type);
         }
 
@@ -78,6 +89,7 @@ namespace Assets.Scripts.Core
                     continue;
 
                 type = (AchType)i;
+                
                 switch (type)
                 {
                     case AchType.CatchArrow when Progress.AchievementParams[AchievementController.HERO_DEAD_BY_ARROW] > 0:
@@ -92,7 +104,7 @@ namespace Assets.Scripts.Core
                     case AchType.TenLevelsWithoutDeath when Progress.AchievementParams[AchievementController.LEVEL_WITHOUT_DEATH] >= 10:
                         achs[i] = 1;
                         LetAchievement(i);
-
+                        
                         break;
 
                     case AchType.TakeAllItems:
@@ -106,6 +118,7 @@ namespace Assets.Scripts.Core
                         break;
 
                     case AchType.FirstDeath:
+                        
                         if (Progress.AchievementParams[AchievementController.HERO_DEAD_BY_ARROW] > 0 ||
                             Progress.AchievementParams[AchievementController.HERO_DEAD_BY_MONSTER] > 0 ||
                             Progress.AchievementParams[AchievementController.HERO_DEAD_BY_TRAP] > 0)

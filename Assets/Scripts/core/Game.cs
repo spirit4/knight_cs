@@ -56,8 +56,7 @@ namespace Assets.Scripts.Core
             DOTween.Init();
             DOTween.Clear();
 
-            AchievementController ac = new AchievementController();//singleton
-            ac.Init(this);
+            AchievementController.Instance.Init(this);
 
             _level = new Level(this, _model);
             _hero = _level.Hero;
