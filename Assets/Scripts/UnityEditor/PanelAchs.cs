@@ -20,7 +20,7 @@ namespace Assets.Scripts.UnityEditor
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("PanelAchs Start");
+            //Debug.Log("PanelAchs Start");
             new MainView(_vane, _smoke);
 
             CreateIcons();

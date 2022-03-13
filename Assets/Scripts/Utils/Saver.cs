@@ -32,7 +32,7 @@ namespace Assets.Scripts.Utils
                 return;
 
             Progress.LevelsCompleted = SaveGame.Load<int>("levelsCompleted");
-            SoundManager.GetInstance().HasMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
+            SoundManager.Instance.HasMusic = SaveGame.Load<bool>("isMusic");//save in SoundManager
 
             Progress.Achievements = SaveGame.Load<int[]>("achs");
             Progress.AchievementParams = SaveGame.Load<int[]>("achParams");

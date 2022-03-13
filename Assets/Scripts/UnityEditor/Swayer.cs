@@ -17,7 +17,6 @@ namespace Assets.Scripts.UnityEditor
 
         void Start()
         {
-            Debug.Log("Swayer Start");
             ChangePivot(new Vector2(0.5f, 1f));
             this.transform.Rotate(_direction, 25 * _direction3D, 0);
             Sway();

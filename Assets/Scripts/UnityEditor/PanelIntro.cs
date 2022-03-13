@@ -24,7 +24,7 @@ namespace Assets.Scripts.UnityEditor
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("PanelIntro Start");
+            //Debug.Log("PanelIntro Start");
             _frames.Add(_intro1);
             _frames.Add(_intro2);
             _frames.Add(_intro3);

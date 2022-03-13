@@ -13,7 +13,7 @@ namespace Assets.Scripts.UnityEditor
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("PanelLeveks Start");
+            //Debug.Log("PanelLeveks Start");
             ShowButtons();
         }
 

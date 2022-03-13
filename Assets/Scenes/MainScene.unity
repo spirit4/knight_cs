@@ -1000,8 +1000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90694754bcd4684bb43a16ccfbc003d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vane: {fileID: 0}
-  _smoke: {fileID: 0}
+  _vane: {fileID: 655040303}
+  _smoke: {fileID: 1603142044}
 --- !u!95 &358383239
 Animator:
   serializedVersion: 3
@@ -4548,6 +4548,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _direction3D: 1
+--- !u!1 &1603142044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3835862451947038995, guid: 1912a8a674910334da143c383a9be94b, type: 3}
+  m_PrefabInstance: {fileID: 111451745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1627961875 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5847758570165746934, guid: fb74369b6f52dfb43a045b793bf559f0, type: 3}

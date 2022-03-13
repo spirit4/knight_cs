@@ -31,7 +31,7 @@ namespace Assets.Scripts.Core
 
             Debug.Log("UIManager Awake");
             this.gameObject.AddComponent<AudioSource>();
-            SoundManager.GetInstance().Init(this.gameObject.GetComponent<AudioSource>());
+            SoundManager.Instance.Init(this.gameObject.GetComponent<AudioSource>());
 
             if (!_levelsPanel)
             {
@@ -71,9 +71,9 @@ namespace Assets.Scripts.Core
             Saver.LoadProgress();
 
             if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
-                SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_MENU);
+                SoundManager.Instance.SetLocation(SoundManager.MUSIC_MENU);
             else
-                SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_GAME);
+                SoundManager.Instance.SetLocation(SoundManager.MUSIC_GAME);
 
             MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
         }
@@ -117,7 +117,7 @@ namespace Assets.Scripts.Core
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
-            SoundManager.GetInstance().StopMusicTrack();
+            SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("GameScene");
         }
 
@@ -128,7 +128,7 @@ namespace Assets.Scripts.Core
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT);
 
-            SoundManager.GetInstance().StopMusicTrack();
+            SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("MainScene");
         }
 

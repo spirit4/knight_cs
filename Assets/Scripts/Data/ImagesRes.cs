@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;

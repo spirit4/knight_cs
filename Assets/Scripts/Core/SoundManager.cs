@@ -1,11 +1,12 @@
-﻿using Assets.Scripts.Utils.Display;
+﻿using Assets.Scripts.Utils;
+using Assets.Scripts.Utils.Display;
 using BayatGames.SaveGameFree;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
-    public class SoundManager
+    public class SoundManager : Singleton<SoundManager>
     {
         public static Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
 
@@ -13,10 +14,7 @@ namespace Assets.Scripts.Core
         public const string MUSIC_MENU = "Menu";
         public const string MUSIC_GAME = "Game";
 
-        private static SoundManager instance;
-
         private bool _hasMusic = true;
-        //private bool _isMusic = false;
 
         private MusicButton _currentButton;
         private string _currentLocation = ""; //menu or game
@@ -24,18 +22,9 @@ namespace Assets.Scripts.Core
 
         private Dictionary<string, float> _musicPositions = new Dictionary<string, float>();
 
-
-        public SoundManager()
+        private SoundManager()
         {
-            
-        }
 
-        public static SoundManager GetInstance()
-        {
-            if (instance == null)
-                instance = new SoundManager();
-
-            return instance;
         }
 
         public void Init(AudioSource audioSource)

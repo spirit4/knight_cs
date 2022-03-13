@@ -17,7 +17,7 @@ namespace Assets.Scripts.UnityEditor
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log("PanelMainMenu Start");
+            //Debug.Log("PanelMainMenu Start");
             new MainView(_vane, _smoke);
         }
 
