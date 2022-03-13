@@ -1,17 +1,18 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Utils;
 
 namespace Assets.Scripts.Core
 {
-    public class Controller
+    public class Controller// : Singleton<Controller>
     {
         public ManagerBg bg;
         public Model model;
 
-        public static Controller instance;
+        public static Controller Instance;
 
         public Controller(ManagerBg bg)
         {
-            Controller.instance = this;
+            Controller.Instance = this;
 
             this.bg = bg;
             Init();

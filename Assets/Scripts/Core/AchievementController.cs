@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Core
 {
-    public class AchievementController
+    public class AchievementController : Singleton<AchievementController>
     {
         //param actions
         public const int HERO_DEAD_BY_MONSTER = 0;
@@ -41,17 +41,6 @@ namespace Assets.Scripts.Core
         private GameObject _icon;
         Sequence _mySequence;
 
-        private static AchievementController _instance;
-        public static AchievementController Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new AchievementController();
-
-                return _instance;
-            }
-        }
         private AchievementController()
         {
             SceneManager.sceneUnloaded += OnSceneUnloaded;

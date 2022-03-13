@@ -35,7 +35,7 @@ namespace Assets.Scripts.Unity
             if (Progress.StarsAllLevels.Length > Progress.LevelsCompleted && Progress.CurrentLevel + 1 == Progress.LevelsCompleted)
                 Progress.LevelsCompleted++;
 
-            Controller.instance.model.SaveProgress();
+            Controller.Instance.model.SaveProgress();
         }
 
         public void CreateStars()

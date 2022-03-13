@@ -33,7 +33,7 @@ namespace Assets.Scripts.Utils.Display
 
         public void PlaceByTap(int index)
         {
-            Tile[] grid = Controller.instance.model.Grid;
+            Tile[] grid = Controller.Instance.model.Grid;
 
             _center.transform.localScale = new Vector3(0.9f, 0.9f);
             _outer.transform.localScale = new Vector3(0.9f, 0.9f);

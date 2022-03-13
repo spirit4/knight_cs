@@ -45,7 +45,7 @@ namespace Assets.Scripts.Core
             var managerBg = new ManagerBg(this);
             new Controller(managerBg);//singleton
 
-            _model = Controller.instance.model;
+            _model = Controller.Instance.model;
             _grid = _model.Grid;
         }
 

@@ -47,8 +47,8 @@ namespace Assets.Scripts.Core
                     CheckCell(index, types[j], types, cells[i]);
                 }
             }
-            Controller.instance.bg.AddTiles(_tilesBg, _model.Grid);
-            Controller.instance.bg.AddTiles(_decorBg, _model.Grid, true);
+            Controller.Instance.bg.AddTiles(_tilesBg, _model.Grid);
+            Controller.Instance.bg.AddTiles(_decorBg, _model.Grid, true);
             _tilesBg = null;
             _decorBg = null;
 

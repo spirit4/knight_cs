@@ -1,28 +1,35 @@
 ﻿using System;
-using UnityEngine;
+using System.Reflection;
 
 namespace Assets.Scripts.Utils
 {
-    public abstract class Singleton<T> where T : class, new()
+    public abstract class Singleton<T> where T : Singleton<T>
     {
-        private static T _instance;
+        private static readonly Lazy<T> _instance;
 
-        //non private constructor
-        public Singleton()
+        static Singleton()
         {
-            //Anti-pattern without factory
+            _instance = new Lazy<T>(() =>
+            {
+                try
+                {
+                    var constructor = typeof(T).GetConstructor(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+                    return (T)constructor.Invoke(null);
+                }
+                catch (Exception exception)
+                {
+                    throw new Exception(" === Singleton === ", exception);
+                }
+            });
         }
+
 
         public static T Instance
         {
             get
             {
-                if (_instance == null)
-                    _instance = new T();
-
-                return _instance;
+                return _instance.Value;
             }
         }
-
     }
 }

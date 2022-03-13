@@ -1,13 +1,14 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
+using Assets.Scripts.Unity;
 using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.Core
 {
     public class UIManager : MonoBehaviour
     {
@@ -66,7 +67,7 @@ namespace Assets.Scripts.Unity
         }
         void Start()
         {
-            Controller.instance.model.LoadProgress();
+            Controller.Instance.model.LoadProgress();
 
             if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
                 SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_MENU);
@@ -110,7 +111,7 @@ namespace Assets.Scripts.Unity
 
         public void StartGame()
         {
-            Controller.instance.model.SaveProgress();
+            Controller.Instance.model.SaveProgress();
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
