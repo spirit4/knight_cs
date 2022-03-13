@@ -36,14 +36,5 @@ namespace Assets.Scripts.Units
             Tile.IsWall = false;
             _grid[Index].IsWall = true;
         }
-
-        //    public destroy(): void
-        //    {
-        //        super.destroy();
-
-        //        _grid = null;
-        //    }
-
-        //}
     }
 }

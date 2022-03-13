@@ -56,7 +56,7 @@ namespace Assets.Scripts.Data
                     TileSprites.Add(s.name, s);
                 }
                 Sprite gameEnd = Resources.Load<Sprite>("Images/UI/game_end");
-                TileSprites.Add("game_end", gameEnd);//easy hack
+                TileSprites.Add("game_end", gameEnd);//TODO do it proper way
 
 
                 sprites = Resources.LoadAll<Sprite>("Images/UI/Achievements");

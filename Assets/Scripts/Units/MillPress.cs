@@ -12,7 +12,7 @@ namespace Assets.Scripts.Units
 
         public MillPress(string type, int index, GameObject view, Component container) : base(index, type, view)
         {
-            this.State = Unit.OFF;
+            State = Unit.OFF;
 
             _grid = Model.Grid;
             this.X = _grid[index].X;

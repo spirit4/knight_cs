@@ -61,7 +61,7 @@ namespace Assets.Scripts.Core
             dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(type);
 
             dObject.name = type;
-            //Debug.Log("+++add " + type + "  " + index + "  " + x + "  " + y);
+
             switch (type)
             {
                 case ImagesRes.GRASS:
@@ -136,7 +136,6 @@ namespace Assets.Scripts.Core
             return dObject;
         }
 
-
         public void Remove(string type)
         {
             int index = Types.IndexOf(type);
@@ -170,26 +169,6 @@ namespace Assets.Scripts.Core
                 _objects.Add(gameObject);
             }
         }
-
-        //public removeType(type string): void
-        //{
-        //    var index number = this.types.indexOf(type);
-
-        //    if (index != -1)
-        //    {
-        //        this.types.splice(index, 1);
-        //    }
-        //}
-
-        //public removeObject(dObject: createjs.DisplayObject): void
-        //{
-        //    var index number = this.objects.indexOf(dObject);
-
-        //    if (index != -1)
-        //    {
-        //        this.objects.splice(index, 1);
-        //    }
-        //}
 
         public GameObject GetObject(string type)
         {
@@ -240,105 +219,6 @@ namespace Assets.Scripts.Core
                 return null;
             }
         }
-
-        //public void clear()
-        //{
-        //    for (int i = 0; i < this.objects.Count; i++)
-        //    {
-        //        if (this.objects[i].parent)
-        //        {
-        //            this.objects[i].parent.removeChild(this.objects[i]);
-        //        }
-        //    }
-        //    this.objects.Length = 0;
-        //    this.types.Length = 0;
-        //    this.isWall = true;
-        //    this.isDear = false;
-        //}
-
-        //public getFirstIndex() number
-        //{
-        //    if (this.objects.Length == 0)
-        //    {
-        //        return -1;
-        //    }
-
-        //    return this.objects[0].parent.getChildIndex(this.objects[0]);
-        //}
-
-
-        //public getLastIndex(container: createjs.Container) number
-        //{
-        //    var grid: Tile[] = Core.instance.model.grid;
-        //    var index number = this.index;
-        //    var objects: createjs.DisplayObject[] = grid[index].objects;
-
-        //    //console.log("[index000]: ", index, container.getChildIndex(objects[1]));
-        //    while (container.getChildIndex(objects[1]) == -1)
-        //    {
-        //        index--;
-
-        //        if (index == -1)
-        //        {
-        //            return 0;  //gui + grid
-        //        }
-
-        //        objects = grid[index].objects;
-        //    }
-
-        //    //console.log("[index1]: ", index, container.getChildIndex(objects[1]), objects.Length);
-        //    return container.getChildIndex(objects[1]) + 1;
-        //}
-
-        //public getIndex(type string) number //-1 if no exist
-        //{
-        //    var arrayIndex number = this.types.indexOf(type);
-
-        //    if (arrayIndex == -1)
-        //        return -1;
-
-        //    var container: createjs.Container = < createjs.Container > this.objects[arrayIndex].parent;
-        //    return container.getChildIndex(this.objects[arrayIndex]);
-        //}
-
-        //public setIndex(dObject: createjs.Container, isHeroUnder: boolean = true): void
-        //{
-        //    //if (!dObject)
-        //    //{
-        //    //console.log("WTF dObject doesn't exist");
-        //    //}
-
-        //    var index number;
-        //    //if (this.isContainTypes(ImagesRes.STAR) || this.isContainType(ImagesRes.EXIT))
-        //    //{
-        //    //    index = this.getIndex(ImagesRes.STAR);
-
-        //    //    if (index == -1)
-        //    //        index = this.getIndex(ImagesRes.DARK);
-
-        //    //    if (index == -1)
-        //    //    {
-        //    //        index = this.getIndex(ImagesRes.EXIT);
-        //    //        index +=2; //above the right
-        //    //    }
-
-        //    //    if (isHeroUnder)
-        //    //        index--;
-
-        //    // //console.log("[index1]: ", index);
-        //    //    dObject.parent.addChildAt(dObject, index);
-
-        //    //}
-        //    //else
-        //    //{
-        //    index = this.getLastIndex(dObject.parent);
-
-        //    //console.log("[index2]: ", index, dObject.parent);
-        //    dObject.parent.addChildAt(dObject, index);
-        //    //console.log("[index3]: ", dObject.parent.getChildIndex(dObject));
-        //    //}
-
-        //}
 
         public List<GameObject> Objects { get => _objects; set => _objects = value; }
         public List<string> Types { get => _types; set => _types = value; }

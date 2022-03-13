@@ -31,16 +31,6 @@ namespace Assets.Scripts.Units
 
         public virtual void Destroy()
         {
-            //        this.removeAllEventListeners();
-            //        createjs.Tween.removeTweens(this);
-            //        this.removeAllChildren();
-
-            //        _view = null;
-            //        _tile = null;
-            //MessageDispatcher.ClearListeners(); //TODO not sure
-
-            //Debug.Log("unit destroyed: " + _view.name + _view.transform.DOKill());
-
             _view.transform.DOKill();
             _view.GetComponent<SpriteRenderer>().DOKill();
             UnityEngine.Object.Destroy(_view);
@@ -49,7 +39,6 @@ namespace Assets.Scripts.Units
 
         public virtual void Stop()
         {
-            //createjs.Tween.removeTweens(this);
             _view.transform.DOKill();
         }
 

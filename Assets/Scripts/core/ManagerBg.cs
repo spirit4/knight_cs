@@ -59,7 +59,6 @@ namespace Assets.Scripts.Core
                 {
                     _levelBitmaps.Add(bitmaps[i]);
                 }
-
             }
         }
 

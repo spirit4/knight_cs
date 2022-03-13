@@ -78,8 +78,6 @@ namespace Assets.Scripts.Units
             Vector2 point = GridUtils.GetPoint(Index);
 
             _directionX = 0;
-            //_directionY = 0;
-
 
             this.X = View.transform.localPosition.x;
             this.Y = View.transform.localPosition.y;
@@ -233,7 +231,7 @@ namespace Assets.Scripts.Units
             {
                 View.transform.DOKill();
                 View.transform.DOLocalMove(new Vector3(_grid[Index].X, _grid[Index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
-                View.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);//.OnComplete(handler);
+                View.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);
                 View.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }
 

@@ -61,7 +61,7 @@ namespace Assets.Scripts.Units
             int directionIndex = (Index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
             Tile tile = _grid[directionIndex];
 
-            if (tile.Y == this.Y && tile.X > this.X)//directionIndex >= _pontIndex1)// 
+            if (tile.Y == this.Y && tile.X > this.X)
             {
                 _directionX = 1;
                 _directionY = 0;
@@ -116,7 +116,7 @@ namespace Assets.Scripts.Units
 
         public void Init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
-
+            //empty
         }
 
         public override void Destroy()

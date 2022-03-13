@@ -36,9 +36,7 @@ namespace Assets.Scripts.Core
             for (int i = 0; i < cells.Count; i++)
             {
                 index = cells[i]["index"];
-
-                types = (List<string>)cells[i]["types"];
-                //Debug.Log(types);
+                types = cells[i]["types"];
 
                 for (int j = 0; j < types.Count; j++)
                 {
@@ -183,13 +181,6 @@ namespace Assets.Scripts.Core
 
         public void Destroy()
         {
-            //    Core.instance.bg.removeTiles();
-
-            //    var len number = _items.Length;
-            //    for (int i = 0; i < len; i++)
-            //        {
-            //        _items[i].destroy();
-            //    }
             foreach (ICollidable item in _items)
             {
                 item.Destroy();
@@ -199,14 +190,6 @@ namespace Assets.Scripts.Core
             {
                 pair.Value.Destroy();
             }
-
-            //    _model = null;
-            //    _container = null;
-            //    _hero = null;
-            //    _units = null;
-            //    _mill = null;
-            //    _items.Length = 0;
-            //    _items = null;
         }
 
         public Hero Hero

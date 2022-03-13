@@ -17,10 +17,8 @@ namespace Assets.Scripts.Core
 {
     /** <summary>the script of GameContainer (Sprite on Unity GameScene)</summary> */
     public class Game : MonoBehaviour
-
     {
         private Tile[] _grid;
-        private Model _model;
 
         private Level _level;
         private Hero _hero;
@@ -46,10 +44,10 @@ namespace Assets.Scripts.Core
             var managerBg = new ManagerBg(this);
 
             JSONRes.Init();
-            _model = new Model();
+            new Model();
             _grid = Model.Grid;
 
-            Debug.Log("Game Awake");
+            //Debug.Log("Game Awake");
             this.gameObject.isStatic = true;
 
             DOTween.Init();
@@ -66,7 +64,7 @@ namespace Assets.Scripts.Core
             MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
             MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, HideLastPoint);
 
-            MessageDispatcher.AddListener(GameEvent.QUIT, Destroy);//leave game, from UIManager
+            MessageDispatcher.AddListener(GameEvent.QUIT, Destroy);//leaving game, from UIManager
 
             _targetMark = new TargetMark(this.gameObject);
 
@@ -186,11 +184,8 @@ namespace Assets.Scripts.Core
             }
         }
 
-        //gone to Unity Editor
-        private void RestartHandler()//e: createjs.MouseEvent = null) : void
+        private void RestartHandler()
         {
-            //destroy();
-
             MessageDispatcher.SendMessage(GameEvent.RESTART);
         }
 
@@ -230,7 +225,6 @@ namespace Assets.Scripts.Core
             }
         }
 
-        //Bounds m_Collider, m_Collider2;
         public void Update()
         {
             if (_units != null)
@@ -240,9 +234,9 @@ namespace Assets.Scripts.Core
         public void CheckCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
         {
             GameObject dObject;
-            //magic number
+            
             float heroX = _hero.View.transform.localPosition.x;
-            float heroY = _hero.View.transform.localPosition.y + 0.15f;
+            float heroY = _hero.View.transform.localPosition.y + 0.15f;//magic number
             float objX;
             float objY;
 
@@ -250,8 +244,8 @@ namespace Assets.Scripts.Core
             {
                 dObject = pair.Value.View;
 
-                objX = dObject.transform.localPosition.x;// + Config.SIZE_W * 0.5f;
-                objY = dObject.transform.localPosition.y;// + Config.SIZE_H * 0.5f;
+                objX = dObject.transform.localPosition.x;
+                objY = dObject.transform.localPosition.y;
 
                 if ((heroX + w1 >= objX - w2 && heroX - w1 <= objX + w2) && (heroY - h1 <= objY + h2 && heroY + h1 >= objY - h2))
                 {
@@ -261,7 +255,7 @@ namespace Assets.Scripts.Core
 
                         vector.Remove(pair.Key);
 
-                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) //(_hero.stateItems != Hero.FULL)
+                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) 
                         {
                             if (pair.Value is Monster)
                                 AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_MONSTER);
@@ -271,11 +265,6 @@ namespace Assets.Scripts.Core
                             WaitAndCall(100, HideActors, pair.Value, true);
                             _hero.HeroState = Hero.DEATH;
                             ShowBoom();
-
-                            //    if (Core.instance.api)
-                            //    {
-                            //        Core.instance.api.gameOver();
-                            //    }
                         }
                         else if (pair.Value is Monster)
                         {
@@ -284,7 +273,6 @@ namespace Assets.Scripts.Core
                             WaitAndCall(100, HideActors, pair.Value, false); //killing the monster
                             ShowBoom(ImagesRes.A_ATTACK_BOOM);
                         }
-
                         break;
                     }
                 }
@@ -436,7 +424,6 @@ namespace Assets.Scripts.Core
             _activePoints = null;
 
             _grid = null;
-            _model = null;
 
             _hero = null;
             _level = null;

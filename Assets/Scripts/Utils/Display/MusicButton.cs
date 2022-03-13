@@ -1,10 +1,5 @@
 using Assets.Scripts.Core;
-using Assets.Scripts.Data;
-using Assets.Scripts.Events;
-using com.ootii.Messages;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Utils.Display

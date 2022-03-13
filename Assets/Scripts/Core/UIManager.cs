@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Core
 {
+    //If it works don't touch it
+    /** <summary>Instance of UIManager in each scene</summary> */
     public class UIManager : MonoBehaviour
     {
         private GameObject _mainPanel;
@@ -29,7 +31,7 @@ namespace Assets.Scripts.Core
             if (ImagesRes.Prefabs.Count == 0) // loading resources to static
                 ImagesRes.Init();
 
-            Debug.Log("UIManager Awake");
+            //Debug.Log("UIManager Awake " + SceneManager.GetActiveScene().name);
             this.gameObject.AddComponent<AudioSource>();
             SoundManager.Instance.Init(this.gameObject.GetComponent<AudioSource>());
 
@@ -67,7 +69,7 @@ namespace Assets.Scripts.Core
         }
         void Start()
         {
-            Debug.Log("UIManager Start");
+            //Debug.Log("UIManager Start");
             Saver.LoadProgress();
 
             if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
