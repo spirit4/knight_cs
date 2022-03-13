@@ -1,7 +1,7 @@
-using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
-using Assets.Scripts.Unity;
+using Assets.Scripts.UnityEditor;
+using Assets.Scripts.Utils;
 using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Core
             if (ImagesRes.Prefabs.Count == 0) // loading resources to static
                 ImagesRes.Init();
 
-            //Debug.Log("UIManager awake");
+            Debug.Log("UIManager Awake");
             this.gameObject.AddComponent<AudioSource>();
             SoundManager.GetInstance().Init(this.gameObject.GetComponent<AudioSource>());
 
@@ -67,7 +67,8 @@ namespace Assets.Scripts.Core
         }
         void Start()
         {
-            Controller.Instance.model.LoadProgress();
+            Debug.Log("UIManager Start");
+            Saver.LoadProgress();
 
             if (GameObject.Find("PanelMainMenu") != null || GameObject.Find("PanelLevels") !=null)
                 SoundManager.GetInstance().SetLocation(SoundManager.MUSIC_MENU);
@@ -111,7 +112,7 @@ namespace Assets.Scripts.Core
 
         public void StartGame()
         {
-            Controller.Instance.model.SaveProgress();
+            Saver.SaveProgress();
 
             MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
             MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?

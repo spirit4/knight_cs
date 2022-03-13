@@ -8,7 +8,6 @@ namespace Assets.Scripts.Core
 {
     public class Level
     {
-        private Model _model;
         private Component _container;
 
         private Hero _hero;
@@ -21,10 +20,9 @@ namespace Assets.Scripts.Core
         /** <summary>Static Sprites</summary> */
         private List<GameObject> _decorBg;
 
-        public Level(Component container, Model model)
+        public Level(Component container, ManagerBg bg)
         {
             _container = container;
-            _model = model;
 
             _units = new Dictionary<int, ICollidable>();
             _items = new List<IActivatable>();
@@ -47,15 +45,15 @@ namespace Assets.Scripts.Core
                     CheckCell(index, types[j], types, cells[i]);
                 }
             }
-            Controller.Instance.bg.AddTiles(_tilesBg, _model.Grid);
-            Controller.Instance.bg.AddTiles(_decorBg, _model.Grid, true);
+            bg.AddTiles(_tilesBg, Model.Grid);
+            bg.AddTiles(_decorBg, Model.Grid, true);
             _tilesBg = null;
             _decorBg = null;
 
             int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
-                _items[i].Init(i, _model.Grid, _units);
+                _items[i].Init(i, Model.Grid, _units);
             }
         }
 
@@ -64,7 +62,7 @@ namespace Assets.Scripts.Core
         {
             GameObject gameObject;
 
-            Tile[] grid = _model.Grid;
+            Tile[] grid = Model.Grid;
 
             switch (type)
             {

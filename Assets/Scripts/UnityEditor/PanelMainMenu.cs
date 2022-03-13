@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class PanelMainMenu : MonoBehaviour 
     {
@@ -17,6 +17,7 @@ namespace Assets.Scripts.Unity
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("PanelMainMenu Start");
             new MainView(_vane, _smoke);
         }
 

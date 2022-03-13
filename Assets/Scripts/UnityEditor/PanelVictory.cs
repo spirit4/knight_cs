@@ -1,12 +1,12 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
-using Assets.Scripts.Events;
+using Assets.Scripts.Utils;
 using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class PanelVictory : MonoBehaviour
     {
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Unity
             if (Progress.StarsAllLevels.Length > Progress.LevelsCompleted && Progress.CurrentLevel + 1 == Progress.LevelsCompleted)
                 Progress.LevelsCompleted++;
 
-            Controller.Instance.model.SaveProgress();
+            Saver.SaveProgress();
         }
 
         public void CreateStars()

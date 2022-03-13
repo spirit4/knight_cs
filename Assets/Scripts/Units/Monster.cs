@@ -26,7 +26,7 @@ namespace Assets.Scripts.Units
 
         public Monster(string type, int index, int id, GameObject view, Component container) : base(index, type, view)
         {
-            _grid = Controller.Instance.model.Grid;
+            _grid = Model.Grid;
             _id = id;
 
             _pontIndex1 = index;

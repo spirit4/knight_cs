@@ -22,6 +22,7 @@ namespace Assets.Scripts.Utils.Display
 
         void Start()
         {
+            Debug.Log("MusicButton Start");
             _isActive = SoundManager.GetInstance().HasMusic;
             SoundManager.GetInstance().CurrentButton = this;
 

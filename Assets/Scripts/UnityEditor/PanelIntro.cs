@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class PanelIntro : MonoBehaviour
     {
@@ -24,6 +24,7 @@ namespace Assets.Scripts.Unity
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("PanelIntro Start");
             _frames.Add(_intro1);
             _frames.Add(_intro2);
             _frames.Add(_intro3);

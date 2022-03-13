@@ -40,7 +40,7 @@ namespace Assets.Scripts.Units
 
         public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
         {
-            _grid = Controller.Instance.model.Grid;
+            _grid = Model.Grid;
 
             this.X = _grid[index].X; //for choosing direction
             this.Y = _grid[index].Y;

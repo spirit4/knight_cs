@@ -7,7 +7,7 @@ namespace Assets.Scripts.Units
     {
         public Star(string type, int index, GameObject view) : base(index, type, view)
         {
-            Tile[] grid = Controller.Instance.model.Grid;
+            Tile[] grid = Model.Grid;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 10;

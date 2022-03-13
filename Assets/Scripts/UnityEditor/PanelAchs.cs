@@ -1,15 +1,9 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Events;
-using com.ootii.Messages;
-using DG.Tweening;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class PanelAchs : MonoBehaviour
     {
@@ -26,6 +20,7 @@ namespace Assets.Scripts.Unity
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("PanelAchs Start");
             new MainView(_vane, _smoke);
 
             CreateIcons();

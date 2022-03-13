@@ -6,13 +6,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class PanelLevels : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("PanelLeveks Start");
             ShowButtons();
         }
 

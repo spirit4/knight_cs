@@ -40,17 +40,16 @@ namespace Assets.Scripts.Core
 
         private bool _isStartArrowCheck = false;
 
-        public Game()
-        {
-            var managerBg = new ManagerBg(this);
-            new Controller(managerBg);//singleton
-
-            _model = Controller.Instance.model;
-            _grid = _model.Grid;
-        }
 
         private void Awake()
         {
+            var managerBg = new ManagerBg(this);
+
+            JSONRes.Init();
+            _model = new Model();
+            _grid = Model.Grid;
+
+            Debug.Log("Game Awake");
             this.gameObject.isStatic = true;
 
             DOTween.Init();
@@ -58,7 +57,7 @@ namespace Assets.Scripts.Core
 
             AchievementController.Instance.Init(this);
 
-            _level = new Level(this, _model);
+            _level = new Level(this, managerBg);
             _hero = _level.Hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);

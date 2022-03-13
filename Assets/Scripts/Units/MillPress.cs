@@ -14,7 +14,7 @@ namespace Assets.Scripts.Units
         {
             this.State = Unit.OFF;
 
-            _grid = Controller.Instance.model.Grid;
+            _grid = Model.Grid;
             this.X = _grid[index].X;
             this.Y = _grid[index].Y;
 

@@ -3,7 +3,7 @@ using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Assets.Scripts.Unity
+namespace Assets.Scripts.UnityEditor
 {
     public class MainView
     {
