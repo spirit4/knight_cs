@@ -11,22 +11,24 @@ namespace Assets.Scripts.Units
         public const string OFF = "off";
         public const string STARTED = "started";
 
-        private GameObject _view;
-        private int _index;
-        private string _type;
-        private string _state;
-        private Tile _tile;
+        protected GameObject _view;
+        protected int _index;
+        protected string _type;
+        protected string _state;
+        protected Tile _tile;
+        protected Tile[] _grid;
 
-        private float _x;
-        private float _y;
+        protected float _x;
+        protected float _y;
 
-        public Unit(int index, string type, GameObject view, Tile tile = null)
+        public Unit(int index, string type, GameObject view, Tile tile = null, Tile[] grid = null)
         {
             _view = view;
             _tile = tile;
             _index = index;
             _type = type;
             _state = Unit.ON;
+            _grid = grid;
         }
 
         public virtual void Destroy()

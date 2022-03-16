@@ -13,7 +13,6 @@ namespace Assets.Scripts.Units
         private int _directionX = 0;
         private int _directionY = 0;
 
-        private Tile[] _grid;
         private int _pontIndex1 = 0;
         private int _pontIndex2 = 0;
 
@@ -30,8 +29,8 @@ namespace Assets.Scripts.Units
             _id = id;
 
             _pontIndex1 = index;
-            this.X = _grid[index].X; //for choosing direction --> Level
-            this.Y = _grid[index].Y;
+            _x = _grid[index].X; //for choosing direction --> Level
+            _y = _grid[index].Y;
 
             view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             view.GetComponent<SpriteRenderer>().sortingOrder = 95;
@@ -47,12 +46,12 @@ namespace Assets.Scripts.Units
             if (_directionX == 1 || _directionX == -1)
             {
                 time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2);
-                View.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(SetDirection);
+                _view.transform.DOLocalMoveX(x + MARGIN_X, time).SetEase(Ease.Linear).OnComplete(SetDirection);
             }
             else if (_directionY == 1 || _directionY == -1)
             {
                 time = SPEED * Math.Abs(_pontIndex1 - _pontIndex2) / Config.WIDTH;
-                View.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(SetDirection);
+                _view.transform.DOLocalMoveY(y + MARGIN_Y, time).SetEase(Ease.Linear).OnComplete(SetDirection);
             }
         }
 
@@ -61,22 +60,22 @@ namespace Assets.Scripts.Units
             int directionIndex = (Index == _pontIndex1) ? _pontIndex2 : _pontIndex1;
             Tile tile = _grid[directionIndex];
 
-            if (tile.Y == this.Y && tile.X > this.X)
+            if (tile.Y == _y && tile.X > _x)
             {
                 _directionX = 1;
                 _directionY = 0;
             }
-            else if (tile.Y == this.Y && tile.X < this.X)
+            else if (tile.Y == _y && tile.X < _x)
             {
                 _directionX = -1;
                 _directionY = 0;
             }
-            else if (tile.X == this.X && tile.Y > this.Y)
+            else if (tile.X == _x && tile.Y > _y)
             {
                 _directionX = 0;
                 _directionY = -1;
             }
-            else if (tile.X == this.X && tile.Y < this.Y)
+            else if (tile.X == _x && tile.Y < _y)
             {
                 _directionX = 0;
                 _directionY = 1;
@@ -87,7 +86,7 @@ namespace Assets.Scripts.Units
             Index = directionIndex;
 
 
-            this.X = _grid[Index].X;//TODO find better solution?
+            _x = _grid[Index].X;//TODO find better solution?
             //this.y = _grid[index].y;
         }
 
@@ -95,11 +94,11 @@ namespace Assets.Scripts.Units
         {
             if (_directionX == 1)
             {
-                View.GetComponent<SpriteRenderer>().flipX = true;
+                _view.GetComponent<SpriteRenderer>().flipX = true;
             }
             else if (_directionX == -1)
             {
-                View.GetComponent<SpriteRenderer>().flipX = false;
+                _view.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
 

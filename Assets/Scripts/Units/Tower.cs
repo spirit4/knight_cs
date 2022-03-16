@@ -11,7 +11,6 @@ namespace Assets.Scripts.Units
     public class Tower : Unit, IActivatable
     {
         private int _directionIndex;
-        private Tile[] _grid;
         private TowerArrow _arrow;
 
         private float _speedTime = 0;
@@ -33,13 +32,13 @@ namespace Assets.Scripts.Units
         public void Init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
         {
             _grid = grid;
-            _directionIndex = GridUtils.FindAround(grid, Index, ImagesRes.ARROW);
+            _directionIndex = GridUtils.FindAround(grid, _index, ImagesRes.ARROW);
             _count = i;
-            this.X = _grid[Index].X;
-            this.Y = _grid[Index].Y;
+            _x = _grid[_index].X;
+            _y = _grid[_index].Y;
 
             Activate();
-            units[Index] = _arrow;
+            units[_index] = _arrow;
         }
 
         public void Activate()
@@ -53,7 +52,7 @@ namespace Assets.Scripts.Units
             dObject.GetComponent<SpriteRenderer>().sortingOrder = 98;
             dObject.SetActive(false);
 
-            _arrow = new TowerArrow(ImagesRes.ARROW, Index, dObject);
+            _arrow = new TowerArrow(ImagesRes.ARROW, _index, dObject);
             DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(Shoot);
         }
 
@@ -62,12 +61,12 @@ namespace Assets.Scripts.Units
             if (_arrow == null)
                 return;
 
-            _arrow.View.transform.localPosition = new Vector3(this.X - 0.01f, this.Y + 0.3f);
-            int localIndex = (int)Math.Round(_grid[Index].X / Config.SIZE_W);
+            _arrow.View.transform.localPosition = new Vector3(_x - 0.01f,_y + 0.3f);
+            int localIndex = (int)Math.Round(_grid[_index].X / Config.SIZE_W);
 
             _arrow.View.SetActive(true);
 
-            if (Index > _directionIndex)
+            if (_index > _directionIndex)
             {
                 _speedTime = SPEED + localIndex * SPEED;
                 _arrow.Shoot(-1, _speedTime);

@@ -17,23 +17,23 @@ namespace Assets.Scripts.Units
         {
             if (direction == 1)
             {
-                View.GetComponent<SpriteRenderer>().flipX = true;
-                View.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
+                _view.GetComponent<SpriteRenderer>().flipX = true;
+                _view.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
             }
             else
             {
-                View.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
+                _view.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
             }
         }
 
         private void EndHandler()
         {
-            View.SetActive(false);
+            _view.SetActive(false);
         }
 
         public bool IsShooted()
         {
-            return View.activeSelf;
+            return _view.activeSelf;
         }
 
         public override void Destroy()

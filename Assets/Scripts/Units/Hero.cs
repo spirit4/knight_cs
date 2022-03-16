@@ -42,8 +42,8 @@ namespace Assets.Scripts.Units
         {
             _grid = Model.Grid;
 
-            this.X = _grid[index].X; //for choosing direction
-            this.Y = _grid[index].Y;
+            _x = _grid[index].X; //for choosing direction
+            _y = _grid[index].Y;
 
             _inside = inside;
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts.Units
             _inside.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             _inside.GetComponent<SpriteRenderer>().sortingOrder = 100;
 
-            view.transform.localPosition = new Vector3(this.X, this.Y);
+            view.transform.localPosition = new Vector3(_x, _y);
             _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
 
             _heroState = IDLE;
@@ -72,50 +72,50 @@ namespace Assets.Scripts.Units
             if (path != null)
                 _path = path;
 
-            int currentIndex = Index;
-            Index = _path[0];
+            int currentIndex = _index;
+            _index = _path[0];
             _path.RemoveAt(0);
-            Vector2 point = GridUtils.GetPoint(Index);
+            Vector2 point = GridUtils.GetPoint(_index);
 
             _directionX = 0;
 
-            this.X = View.transform.localPosition.x;
-            this.Y = View.transform.localPosition.y;
+            _x = _view.transform.localPosition.x;
+            _y = _view.transform.localPosition.y;
 
             int step = 0;
-            if (point.y == this.Y && point.x > this.X)
+            if (point.y == _y && point.x > _x)
             {
                 step = 1;
                 _directionX = 1;
                 _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
             }
-            else if (point.y == this.Y && point.x < this.X)
+            else if (point.y == _y && point.x < _x)
             {
                 step = -1;
                 _directionX = -1;
                 _inside.transform.localPosition = new Vector3(-MARGIN_X, MARGIN_Y);
             }
-            else if (point.x == this.X && point.y > this.Y)
+            else if (point.x == _x && point.y > _y)
             {
                 step = -Config.WIDTH;
             }
-            else if (point.x == this.X && point.y < this.Y)
+            else if (point.x == _x && point.y < _y)
             {
                 step = Config.WIDTH;
             }
 
-            this.X = View.transform.localPosition.x;
-            this.Y = View.transform.localPosition.y;
-            View.transform.localPosition = new Vector3(_grid[currentIndex].X, _grid[currentIndex].Y);
+            _x = _view.transform.localPosition.x;
+            _y = _view.transform.localPosition.y;
+            _view.transform.localPosition = new Vector3(_grid[currentIndex].X, _grid[currentIndex].Y);
 
             int hack = 0;
-            while (Index != currentIndex)
+            while (_index != currentIndex)
             {
                 currentIndex += step;
 
                 if (_grid[currentIndex].IsContainTypes(ImagesRes.STAR) || _grid[currentIndex].IsContainType(ImagesRes.TRAP))
                 {
-                    Index = currentIndex;
+                    _index = currentIndex;
                     _path.Clear();
                 }
                 hack++;
@@ -148,19 +148,19 @@ namespace Assets.Scripts.Units
             if (_heroState == Hero.DEATH)
                 return;
 
-            if (_grid[Index].IsContainTypes(ImagesRes.STAR))
+            if (_grid[_index].IsContainTypes(ImagesRes.STAR))
             {
-                string type = _grid[Index].GetConcreteType(ImagesRes.STAR);
-                int index = _grid[Index].Types.IndexOf(type);
+                string type = _grid[_index].GetConcreteType(ImagesRes.STAR);
+                int index = _grid[_index].Types.IndexOf(type);
 
-                GameObject dObject = _grid[Index].Objects[index];
+                GameObject dObject = _grid[_index].Objects[index];
 
                 dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(type));
             }
 
-            else if (_grid[Index].IsContainType(ImagesRes.TRAP))
+            else if (_grid[_index].IsContainType(ImagesRes.TRAP))
             {
-                GameObject trap = _grid[Index].GetObject(ImagesRes.TRAP);
+                GameObject trap = _grid[_index].GetObject(ImagesRes.TRAP);
 
                 Animator anim = trap.GetComponent<Animator>();
                 anim.enabled = true;
@@ -168,7 +168,7 @@ namespace Assets.Scripts.Units
                 DOTween.Sequence().AppendInterval(0.15f).AppendCallback(TrapTweenComplete);
                 MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete, false);
             }
-            else if (_grid[Index].IsContainType(ImagesRes.EXIT))
+            else if (_grid[_index].IsContainType(ImagesRes.EXIT))
             {
                 if (_hasHelmet)
                     Progress.StarsAllLevels[Progress.CurrentLevel, 0] = 1;
@@ -194,7 +194,7 @@ namespace Assets.Scripts.Units
 
         private void StarTweenComplete(string type)
         {
-            _grid[Index].Remove(type);
+            _grid[_index].Remove(type);
             Reclothe(type);
         }
 
@@ -208,9 +208,9 @@ namespace Assets.Scripts.Units
         {
             MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete);
 
-            Animator anim = _grid[Index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
+            Animator anim = _grid[_index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
             anim.enabled = false;
-            _grid[Index].Remove(ImagesRes.TRAP);
+            _grid[_index].Remove(ImagesRes.TRAP);
         }
 
         private void LevelComplete()
@@ -226,13 +226,13 @@ namespace Assets.Scripts.Units
 
             _heroState = Hero.MOVE;
 
-            View.transform.DOLocalMove(new Vector3(_grid[Index].X, _grid[Index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            if (_path.Count == 0 && _grid[Index].IsContainType(ImagesRes.EXIT))
+            _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
+            if (_path.Count == 0 && _grid[_index].IsContainType(ImagesRes.EXIT))
             {
-                View.transform.DOKill();
-                View.transform.DOLocalMove(new Vector3(_grid[Index].X, _grid[Index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
-                View.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);
-                View.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
+                _view.transform.DOKill();
+                _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
+                _view.transform.DOScale(0, SPEED * 2).SetEase(Ease.Linear);
+                _view.GetComponent<SpriteRenderer>().DOFade(0, SPEED * 2).SetEase(Ease.Linear);
             }
 
             ChangeView();

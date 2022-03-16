@@ -19,9 +19,9 @@ namespace Assets.Scripts.Units
 
         public void Activate()
         {
-            State = Unit.ON;
-            View.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.SPIKES + "1");
-            Tile.IsWall = false;
+            _state = Unit.ON;
+            _view.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.SPIKES + "1");
+            _tile.IsWall = false;
         }
 
     }

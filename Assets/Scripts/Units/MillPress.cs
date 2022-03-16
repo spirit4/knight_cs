@@ -12,11 +12,11 @@ namespace Assets.Scripts.Units
 
         public MillPress(string type, int index, GameObject view, Component container) : base(index, type, view)
         {
-            State = Unit.OFF;
+            _state = Unit.OFF;
 
             _grid = Model.Grid;
-            this.X = _grid[index].X;
-            this.Y = _grid[index].Y;
+            _x = _grid[index].X;
+            _y = _grid[index].Y;
 
             view.AddComponent<SpriteRenderer>();
             view.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(type);
@@ -33,19 +33,19 @@ namespace Assets.Scripts.Units
 
         public void Activate()
         {
-            if (State != Unit.OFF)
+            if (_state != Unit.OFF)
                 return;
 
-            State = Unit.STARTED;
+            _state = Unit.STARTED;
 
-            View.transform.localScale = new Vector3(1.2f, 1.2f);
+            _view.transform.localScale = new Vector3(1.2f, 1.2f);
             DOTween.Sequence().AppendInterval(0.3f).AppendCallback(Comeback);
         }
 
         private void Comeback()
         {
-            if (View != null)
-                View.transform.localScale = new Vector3(1.0f, 1.0f);
+            if (_view != null)
+                _view.transform.localScale = new Vector3(1.0f, 1.0f);
         }
 
         private void AddVane()
@@ -56,19 +56,19 @@ namespace Assets.Scripts.Units
             _vane.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
             _vane.GetComponent<SpriteRenderer>().sortingOrder = Index + 1;
 
-            _vane.transform.SetParent(View.transform);
+            _vane.transform.SetParent(_view.transform);
             _vane.transform.localPosition = new Vector3(0.02f, 0.28f);
             _vane.transform.Rotate(0, 0, -45);
         }
 
         public void StartRotateMill()
         {
-            if (State == Unit.ON)
+            if (_state == Unit.ON)
                 return;
 
             AchievementController.Instance.AddParam(AchievementController.MILL_LAUNCHED);
 
-            State = Unit.ON;
+            _state = Unit.ON;
             RotateMill();
         }
 
