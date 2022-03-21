@@ -6,6 +6,8 @@ namespace Assets.Scripts.Data
         public const int HEIGHT = WIDTH;
 
         public const float STAGE_W = 5.4f;
+        public const float CAMERA_SIZE = 5.7f;
+        public const float CAMERA_SIZE_MIN = 4.1f;
         public const float STAGE_H_MIN = STAGE_W * 750 / 640;
         public const float STAGE_H_MAX = STAGE_W * 1138 / 640;
 
@@ -15,6 +17,6 @@ namespace Assets.Scripts.Data
         public const float PIXEL_SIZE = 60; //html5 version
 
         public const string GAME_NAME = "Knight_cs";
-        public const string GAME_VERSION = "v1.1.3";
+        public const string GAME_VERSION = "v1.1.4";
     }
 }

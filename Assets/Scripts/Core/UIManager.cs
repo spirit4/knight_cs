@@ -66,6 +66,8 @@ namespace Assets.Scripts.Core
                 _victoryPanel.SetActive(false);
             }
             UIManager.isFirstLoad = false;
+
+            Resize();
         }
         void Start()
         {
@@ -134,6 +136,15 @@ namespace Assets.Scripts.Core
             SceneManager.LoadScene("MainScene");
         }
 
+
+        private void Resize()
+        {
+            Camera.main.orthographicSize =  Screen.height * Config.CAMERA_SIZE * 9 / Screen.width / 16;
+            if (Camera.main.orthographicSize < Config.CAMERA_SIZE_MIN)
+                Camera.main.orthographicSize = Config.CAMERA_SIZE_MIN;
+
+            //Debug.Log($"w: {Screen.width} h: {Screen.height} size: {Camera.main.orthographicSize}" );
+        }
     }
 }
 
