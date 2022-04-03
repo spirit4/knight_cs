@@ -4,6 +4,9 @@ using Assets.Scripts.UnityEditor;
 using Assets.Scripts.Utils;
 using com.ootii.Messages;
 using DG.Tweening;
+using System.IO;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,6 +29,22 @@ namespace Assets.Scripts.Core
 
         private void Awake()
         {
+            string[] scenes = EditorBuildSettings.scenes
+              .Where(scene => scene.enabled)
+              .Select(scene => scene.path)
+              .ToArray();
+            Debug.Log($"Where {scenes[0]}   {scenes[1]}");
+
+            var sceneNumber = SceneManager.sceneCountInBuildSettings;
+            string[] arrayOfNames;
+            arrayOfNames = new string[sceneNumber];
+            for (int i = 0; i < sceneNumber; i++)
+            {
+                arrayOfNames[i] = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
+                Debug.Log($"{SceneUtility.GetScenePathByBuildIndex(i)}   UIManager2222   {arrayOfNames[i]}");
+            }
+
+
             MessageDispatcher.ClearListeners();//after scene reload
 
             if (ImagesRes.Prefabs.Count == 0) // loading resources to static
@@ -69,6 +88,8 @@ namespace Assets.Scripts.Core
 
             Resize();
         }
+
+
         void Start()
         {
             //Debug.Log("UIManager Start");
@@ -103,13 +124,13 @@ namespace Assets.Scripts.Core
 
         public void GoToNextLevel()
         {
-            Progress.CurrentLevel++;
+            Assets.Scripts.Data.Progress.CurrentLevel++;
             StartGame();
         }
 
         public void GoToLevel(Text level)
         {
-            Progress.CurrentLevel = int.Parse(level.text) - 1;
+            Assets.Scripts.Data.Progress.CurrentLevel = int.Parse(level.text) - 1;
 
             StartGame();
         }
