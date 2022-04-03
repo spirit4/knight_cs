@@ -8,7 +8,6 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -200,7 +199,7 @@ namespace Assets.Scripts.Core
             else
                 key = -1;
 
-            Sprite sprite = Resources.Load<Sprite>(Hints.HintImages[key]);
+            Sprite sprite = Resources.Load<Sprite>(Hints.HintImages[key]); //TODO move it
 
             _help = new GameObject("Help");
             _help.AddComponent<SpriteRenderer>();

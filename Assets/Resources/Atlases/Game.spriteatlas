@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Game
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 0f986b16af0b5124d9aafe820e56ae6e, type: 3}
+    - {fileID: 102900000, guid: d38a6e269219b5643966474b6e244a2f, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d504e30025e0d374094e33516676996d, type: 3}
+  - {fileID: 21300000, guid: 2add511042d8ee64a88e94903f1e108b, type: 3}
+  - {fileID: 21300000, guid: 8dfe0d30740508d4695337efc003da6b, type: 3}
+  - {fileID: 21300000, guid: a4e38d308eb5cee4b96c8a030cc8d4b0, type: 3}
+  - {fileID: 21300000, guid: 280e4c012f2ddb94db2714701b853a4f, type: 3}
+  - {fileID: 21300000, guid: 7b3e0a219e4545747ab00efbe8233c7c, type: 3}
+  - {fileID: 21300000, guid: a340a131df3718a478f87aefcf3ba39a, type: 3}
+  - {fileID: 21300000, guid: 770fad5139678a14ca10e607673c686e, type: 3}
+  - {fileID: 21300000, guid: 3465aa81ac1268a498dcb68e29d6d247, type: 3}
+  - {fileID: 21300000, guid: 6c80c7a1a773c2842a4d5322aaefd590, type: 3}
+  - {fileID: 21300000, guid: cdc2f5b19fe6ded4fab7bafb26a700eb, type: 3}
+  - {fileID: 21300000, guid: 3f2fcdb14fa1cc546918a83bb8293221, type: 3}
+  - {fileID: 21300000, guid: d734cc622aa823b47ad35253b27c8eb5, type: 3}
+  - {fileID: 21300000, guid: cfafd7e26cf4d884ca24cdd65eebceca, type: 3}
+  - {fileID: 21300000, guid: eef6f8f281ddd504fbd9944dcf848688, type: 3}
+  - {fileID: 21300000, guid: 3be8a13358e5a2d4c8367f568b8d4c11, type: 3}
+  - {fileID: 21300000, guid: 3d0eed43786a9064eb9fbbf54e962f79, type: 3}
+  - {fileID: 21300000, guid: c91c93c3c1e8c41419586235809a7c2a, type: 3}
+  - {fileID: 21300000, guid: 158b77f3c4ffa624980dac63c0dc8a8c, type: 3}
+  - {fileID: 21300000, guid: 75425ef340ac34f4d8db685c6d70ca47, type: 3}
+  - {fileID: 21300000, guid: dc228e048a922b44cae00630ed410f1c, type: 3}
+  - {fileID: 21300000, guid: a9a00274d45f42d408f44c5079996446, type: 3}
+  - {fileID: 21300000, guid: f3ebd184f61229244a14edc0461bb919, type: 3}
+  - {fileID: 21300000, guid: 59908d45d81d57a418d8c52a906c3dde, type: 3}
+  - {fileID: 21300000, guid: 62a38065c313d1543976a3403de1dcf4, type: 3}
+  - {fileID: 21300000, guid: 5d67a4659cef6814b86c80f5cae14bca, type: 3}
+  - {fileID: 21300000, guid: 395b4f163c4f2694ebaf2f55f5e90823, type: 3}
+  - {fileID: 21300000, guid: 7382f166896baec459634615f1e92560, type: 3}
+  - {fileID: 21300000, guid: 12ca3566cedb3b14ba9a181f3bfde894, type: 3}
+  - {fileID: 21300000, guid: 55fd6808bf845ba49a50102a8889f2d9, type: 3}
+  - {fileID: 21300000, guid: a4be1428b939b494cb3e10afe27c6aa1, type: 3}
+  - {fileID: 21300000, guid: ad961158ebc324943b500b8940164c4a, type: 3}
+  - {fileID: 21300000, guid: 2c0e9958ceb6ff34d87eb49ddfab0941, type: 3}
+  - {fileID: 21300000, guid: 7c564688f8009874999322e2a0a2fb1b, type: 3}
+  - {fileID: 21300000, guid: e55aaea859a486447b0d36a9691e5215, type: 3}
+  - {fileID: 21300000, guid: 5b96c1c86142a7c4facf2cababdc9e81, type: 3}
+  - {fileID: 21300000, guid: 6c91f2291a1e02c4895f851863b2bf54, type: 3}
+  - {fileID: 21300000, guid: 53d486f92a5d9a047a6fcfe29c2265e6, type: 3}
+  - {fileID: 21300000, guid: 4acb478ac2d995f45b20c41dd343ab30, type: 3}
+  - {fileID: 21300000, guid: 24a784aa3ac09fd44bf14934927ef6f1, type: 3}
+  - {fileID: 21300000, guid: 0abfcddbbf075e142ad1864e52c6de9c, type: 3}
+  - {fileID: 21300000, guid: e1dd103c451c3134ea3d721359c7c176, type: 3}
+  - {fileID: 21300000, guid: ad30ae7cc8c202f4d9a4caedca75ea48, type: 3}
+  - {fileID: 21300000, guid: 254d89ac3e18ac34e99c21eaab41df6e, type: 3}
+  - {fileID: 21300000, guid: 537c11fc8e3653c4a8ed18f4060e0488, type: 3}
+  - {fileID: 21300000, guid: 972d378d16d6cda4cb9ec513a20b1acd, type: 3}
+  - {fileID: 21300000, guid: 756c5addd520e2644a26d11c703e6620, type: 3}
+  - {fileID: 21300000, guid: b182f28e44544a843bbd474549996ae6, type: 3}
+  - {fileID: 21300000, guid: 00fa61beadd19184da44dc7bbb8df0f8, type: 3}
+  - {fileID: 21300000, guid: 1faaf4de50f70734fa6b05cfc2ca2c73, type: 3}
+  - {fileID: 21300000, guid: df7e66eff6c90a545a4148f88b6d4774, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - flovers_1
+  - water_1
+  - target_0
+  - boulder
+  - exit
+  - hero
+  - flovers_2
+  - levelcomplete_center
+  - arrow
+  - button_replay_level_complete_state_1
+  - LevelHelmet
+  - grass_1
+  - water_0
+  - pine_1
+  - grass_4
+  - spikes_0
+  - stone_1
+  - stump
+  - button_replay_level_complete_state_0
+  - level_board
+  - sword_0
+  - trap
+  - helmet_0
+  - water_2
+  - mill_paddle
+  - grass_0
+  - flovers_3
+  - mill_paddle_game
+  - LevelSword
+  - LevelShield
+  - grass_2
+  - grass_3
+  - wolwpig
+  - mill
+  - flovers_0
+  - brige_0
+  - button_levels_level_complete_state_0
+  - button_levels_level_complete_state_1
+  - pine_0
+  - levelcomplete_head
+  - spikes_1
+  - stone_0
+  - levelcomplete_foot
+  - pine_2
+  - shield_0
+  - flovers_4
+  - brige_1
+  - target_1
+  - boulder_mark
+  - pine_3
+  - tower
+  m_RenderDataMap: {}
+  m_Tag: Game
+  m_IsVariant: 0

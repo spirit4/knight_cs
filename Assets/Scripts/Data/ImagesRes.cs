@@ -49,17 +49,17 @@ namespace Assets.Scripts.Data
 
             try
             {
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Images/Tiles");
+                Sprite[] sprites = Resources.LoadAll<Sprite>("Images/GameScene/Tiles");
 
                 foreach (var s in sprites)
                 {
                     TileSprites.Add(s.name, s);
                 }
-                Sprite gameEnd = Resources.Load<Sprite>("Images/UI/game_end");
+                Sprite gameEnd = Resources.Load<Sprite>("Images/GameScene/game_end");
                 TileSprites.Add("game_end", gameEnd);//TODO do it proper way
 
 
-                sprites = Resources.LoadAll<Sprite>("Images/UI/Achievements");
+                sprites = Resources.LoadAll<Sprite>("Images/MainScene/Achievements");
                 foreach (var s in sprites)
                 {
                     TileSprites.Add(s.name, s);
