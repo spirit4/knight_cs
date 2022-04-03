@@ -139,7 +139,7 @@ namespace Assets.Scripts.Core
 
         private void Resize()
         {
-            Camera.main.orthographicSize =  Screen.height * Config.CAMERA_SIZE * 9 / Screen.width / 16;
+            Camera.main.orthographicSize =  Screen.height * Config.CAMERA_SIZE * 640 / Screen.width / 1138;
             if (Camera.main.orthographicSize < Config.CAMERA_SIZE_MIN)
                 Camera.main.orthographicSize = Config.CAMERA_SIZE_MIN;
 

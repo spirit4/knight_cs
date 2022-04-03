@@ -207,7 +207,7 @@ namespace Assets.Scripts.Core
             _help.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
             _help.GetComponent<SpriteRenderer>().sortingOrder = 999;
             _help.transform.SetParent(this.gameObject.transform);
-            _help.transform.localPosition = new Vector3(2.45f, -1.9f);
+            _help.transform.localPosition = new Vector3(2.4f, -1.9f); //TODO consts
         }
 
         public void CreateHintAfterAction()
