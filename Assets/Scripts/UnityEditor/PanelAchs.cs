@@ -5,29 +5,22 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UnityEditor
 {
-    public class PanelAchs : MonoBehaviour
+    public class PanelAchs : BasePanel
     {
-        [SerializeField]
-        private GameObject _vane;
-        [SerializeField]
-        private GameObject _smoke;
-        
         [SerializeField]
         private Text _text;
         [SerializeField]
         private Image _hint;
 
         // Start is called before the first frame update
-        void Start()
+       protected override void Start()
         {
-            //Debug.Log("PanelAchs Start");
-            new MainView(_vane, _smoke);
-
+            base.Start();
             CreateIcons();
         }
 
         // Update is called once per frame
-        public void Update()
+        void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {

@@ -1,18 +1,13 @@
-using Assets.Scripts.Data;
-using Assets.Scripts.Events;
-using com.ootii.Messages;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.UnityEditor
 {
-    public class PanelIntro : MonoBehaviour
+    public class PanelIntro : BasePanel
     {
-
-        private List<Image> _frames = new List<Image>();
+        private readonly List<Image> _frames = new List<Image>(3);
 
         [SerializeField]
         private Image _intro1;
@@ -22,9 +17,10 @@ namespace Assets.Scripts.UnityEditor
         private Image _intro3;
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
-            //Debug.Log("PanelIntro Start");
+            base.Start();
+
             _frames.Add(_intro1);
             _frames.Add(_intro2);
             _frames.Add(_intro3);

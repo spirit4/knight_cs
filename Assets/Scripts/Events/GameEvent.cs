@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Events
 {
-    public class GameEvent
+    public static class GameEvent //TODO make custom EventAgregator
     {
         public const string ANIMATION_COMPLETE = "animationEnded";
 
@@ -18,9 +18,6 @@ namespace Assets.Scripts.Events
         public const string HERO_ONE_CELL_AWAY = "heroOneCellAway";
         public const string HERO_GET_TRAP = "heroGetTrap";
 
-        public GameEvent()
-        {
-
-        }
+        //public static event Action LevelComplete = delegate { };
     }
 }

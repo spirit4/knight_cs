@@ -4,6 +4,7 @@ using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using com.ootii.Messages;
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -182,7 +183,7 @@ namespace Assets.Scripts.Units
                 if (!_hasHelmet && !_hasShield && !_hasSword)
                     AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_ITEMS);
 
-                LevelComplete();
+                MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
             }
 
             _heroState = Hero.IDLE;
@@ -191,6 +192,7 @@ namespace Assets.Scripts.Units
 
             MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
         }
+        
 
         private void StarTweenComplete(string type)
         {
@@ -211,11 +213,6 @@ namespace Assets.Scripts.Units
             Animator anim = _grid[_index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
             anim.enabled = false;
             _grid[_index].Remove(ImagesRes.TRAP);
-        }
-
-        private void LevelComplete()
-        {
-            MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
         }
 
         private void Move(bool isContinue = false)

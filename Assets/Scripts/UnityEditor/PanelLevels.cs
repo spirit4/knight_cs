@@ -1,23 +1,17 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Events;
-using com.ootii.Messages;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.UnityEditor
 {
     public class PanelLevels : MonoBehaviour
     {
-        // Start is called before the first frame update
         void Start()
         {
-            //Debug.Log("PanelLeveks Start");
-            ShowButtons();
+            ShowLevelsButtons();
         }
 
-        private void ShowButtons()
+        private void ShowLevelsButtons()
         {
             Text level;
             Transform transform;

@@ -1,5 +1,6 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using com.ootii.Messages;
 using DG.Tweening;
@@ -8,14 +9,15 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UnityEditor
 {
-    public class PanelVictory : MonoBehaviour
+    public class PanelVictory : BasePanel
     {
-        [SerializeField]
-        private GameObject _vane;
+        protected override void Start()
+        {
+            base.Start();
+            MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);//TODO move logic in Manager
+        }
 
-
-        //logic in Editor's buttons
-        public void Activate(IMessage rMessage = null)
+        private void Activate(IMessage rMessage = null)
         {
             this.gameObject.SetActive(true);
 
@@ -24,7 +26,7 @@ namespace Assets.Scripts.UnityEditor
             else
             {
                 this.gameObject.GetComponent<Image>().sprite = ImagesRes.GetImage("game_end");
-                _vane.SetActive(false);
+                _vane.gameObject.SetActive(false);
             }
 
             if (Progress.DeadOnLevel[Progress.CurrentLevel] == 0)
@@ -104,10 +106,9 @@ namespace Assets.Scripts.UnityEditor
             }
         }
 
-        private void RotateMill()
+        private void OnDestroy()
         {
-            _vane.transform.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);
+            MessageDispatcher.RemoveListener(GameEvent.LEVEL_COMPLETE, Activate);
         }
-
     }
 }
