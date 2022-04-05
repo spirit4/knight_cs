@@ -14,8 +14,8 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Core
 {
-    /** <summary>the script of GameContainer (Sprite on Unity GameScene)</summary> */
-    public class Game : MonoBehaviour
+    /** <summary>script of GameContainer</summary> */
+    public class GameController : MonoBehaviour
     {
         private Tile[] _grid;
 

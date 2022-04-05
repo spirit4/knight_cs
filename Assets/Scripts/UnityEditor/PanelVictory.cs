@@ -13,7 +13,6 @@ namespace Assets.Scripts.UnityEditor
     {
         protected override void Start()
         {
-            base.Start();
             MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);//TODO move logic in Manager
         }
 
@@ -32,7 +31,7 @@ namespace Assets.Scripts.UnityEditor
             if (Progress.DeadOnLevel[Progress.CurrentLevel] == 0)
                 AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_DEATH);
 
-            CreateStars();
+            ShowStars();
 
             if (Progress.StarsAllLevels.Length > Progress.LevelsCompleted && Progress.CurrentLevel + 1 == Progress.LevelsCompleted)
                 Progress.LevelsCompleted++;
@@ -40,71 +39,41 @@ namespace Assets.Scripts.UnityEditor
             Saver.SaveProgress();
         }
 
-        public void CreateStars()
+        private void ShowStars()
         {
-            GameObject dObject;
-            Color color;
             Sequence sequence = DOTween.Sequence();
 
             if (Progress.StarsAllLevels[Progress.CurrentLevel, 2] == 1)
-            {
-                dObject = new GameObject();
-                dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelSword");
-                dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                dObject.transform.SetParent(this.gameObject.transform);
-                dObject.transform.localPosition = new Vector3(53.2f + 50, 17.0f + 50);
-                dObject.transform.localScale = new Vector3(200, 200);
-
-                color = dObject.GetComponent<SpriteRenderer>().color;
-                color.a = 0f;
-                dObject.GetComponent<SpriteRenderer>().color = color;
-
-                sequence.Append(dObject.transform.DOLocalMove(new Vector3(53.2f, 17.0f), 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
-            }
+                CreateStar("LevelSword", new Vector3(53.2f, 17.0f), new Vector3(53.2f, 17.0f), sequence, 0);
 
             if (Progress.StarsAllLevels[Progress.CurrentLevel, 0] == 1)
-            {
-                dObject = new GameObject();
-                dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelHelmet");
-                dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                dObject.transform.SetParent(this.gameObject.transform);
-                dObject.transform.localPosition = new Vector3(21.9f + 50, -28.4f + 50);
-                dObject.transform.localScale = new Vector3(200, 200);
+                CreateStar("LevelHelmet", new Vector3(21.9f, -28.4f), new Vector3(21.9f, -28.4f), sequence, 0.25f);
 
-                color = dObject.GetComponent<SpriteRenderer>().color;
-                color.a = 0f;
-                dObject.GetComponent<SpriteRenderer>().color = color;
-
-                sequence.Insert(0.25f, dObject.transform.DOLocalMove(new Vector3(21.9f, -28.4f), 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
-            }
             if (Progress.StarsAllLevels[Progress.CurrentLevel, 1] == 1)
-            {
-                dObject = new GameObject();
-                dObject.AddComponent<SpriteRenderer>();
-                dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage("LevelShield");
-                dObject.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                dObject.transform.SetParent(this.gameObject.transform);
-                dObject.transform.localPosition = new Vector3(-10.8f + 50, 17.8f + 50);
-                dObject.transform.localScale = new Vector3(200, 200);
-
-                color = dObject.GetComponent<SpriteRenderer>().color;
-                color.a = 0f;
-                dObject.GetComponent<SpriteRenderer>().color = color;
-
-                sequence.Insert(0.5f, dObject.transform.DOLocalMove(new Vector3(-10.8f, 17.8f), 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
-                sequence.Join(dObject.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
-            }
+                CreateStar("LevelShield", new Vector3(-10.8f, 17.8f), new Vector3(-10.8f, 17.8f), sequence, 0.5f);
         }
+
+        private GameObject CreateStar(string sprite, Vector3 from, Vector3 to, Sequence sequence, float delay)
+        {
+            var star = new GameObject(sprite, typeof(SpriteRenderer));
+            star.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(sprite);
+            star.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+            star.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            star.transform.SetParent(this.gameObject.transform);
+            star.transform.localPosition = from + new Vector3(50, 50);
+            star.transform.localScale = new Vector3(200, 200);
+
+            Color color = star.GetComponent<SpriteRenderer>().color;
+            color.a = 0f;
+            star.GetComponent<SpriteRenderer>().color = color;
+
+            sequence.Insert(delay, star.transform.DOLocalMove(to, 0.5f).SetEase(Ease.OutQuart));
+            sequence.Join(star.transform.DOScale(100, 0.5f).SetEase(Ease.OutQuart));
+            sequence.Join(star.GetComponent<SpriteRenderer>().DOFade(1, 0.5f).SetEase(Ease.OutQuart));
+
+            return star;
+        }
+
 
         private void OnDestroy()
         {

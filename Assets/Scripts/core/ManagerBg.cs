@@ -9,10 +9,10 @@ namespace Assets.Scripts.Core
         private List<GameObject> _levelBitmaps;
         private List<GameObject> _decorBitmaps;
 
-        private readonly Game _game;
+        private readonly GameController _game;
 
         /** <summary>Game is a script of GameContainer (Sprite on Unity GameScene)</summary> */
-        public ManagerBg(Game game)
+        public ManagerBg(GameController game)
         {
             _game = game;
         }
