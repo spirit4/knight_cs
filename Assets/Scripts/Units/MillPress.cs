@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Core;
+﻿using Assets.Scripts.Achievements;
+using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using Assets.Scripts.Events;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,7 +10,6 @@ namespace Assets.Scripts.Units
     public class MillPress : Unit
     {
         private GameObject _vane;
-        private Tile[] _grid;
 
         public MillPress(string type, int index, GameObject view, Component container) : base(index, type, view)
         {
@@ -66,7 +67,7 @@ namespace Assets.Scripts.Units
             if (_state == Unit.ON)
                 return;
 
-            AchievementController.Instance.AddParam(AchievementController.MILL_LAUNCHED);
+            GameEvents.AchTriggered(Trigger.TriggerType.MillLaunched);
 
             _state = Unit.ON;
             RotateMill();

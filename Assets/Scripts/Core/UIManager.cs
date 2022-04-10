@@ -45,7 +45,7 @@ namespace Assets.Scripts.Core
             else
                 SoundManager.Instance.SetLocation(SoundManager.MUSIC_GAME);
 
-            MessageDispatcher.AddListener(GameEvent.RESTART, RestartGame);
+            MessageDispatcher.AddListener(GameEvents.RESTART, RestartGame);
         }
 
         //logic in Editor's buttons
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Core
         //not by button
         private void RestartGame(IMessage m)
         {
-            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
+            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
             StartGame();
         }
 
@@ -83,8 +83,8 @@ namespace Assets.Scripts.Core
         {
             Saver.SaveProgress();
 
-            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
-            MessageDispatcher.SendMessage(GameEvent.QUIT); //reloading whole scene without destroying units?
+            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
+            MessageDispatcher.SendMessage(GameEvents.QUIT); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
             SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("GameScene");
@@ -94,8 +94,8 @@ namespace Assets.Scripts.Core
         {
             DOTween.Clear();//PanelVictory tweens
 
-            MessageDispatcher.RemoveListener(GameEvent.RESTART, RestartGame);
-            MessageDispatcher.SendMessage(GameEvent.QUIT);
+            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
+            MessageDispatcher.SendMessage(GameEvents.QUIT);
 
             SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("MainScene");

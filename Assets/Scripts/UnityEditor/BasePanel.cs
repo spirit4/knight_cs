@@ -22,7 +22,7 @@ namespace Assets.Scripts.UnityEditor
                 RotateMill();
 
             if(_smoke != null)
-                MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, SmokeCompleteHandler); //TODO action
+                MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, SmokeCompleteHandler); //TODO action
         }
         private void SmokeCompleteHandler(IMessage rMessage)
         {

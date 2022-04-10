@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Achievements;
+using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Core
         private MillPress _mill;
 
         private Pathfinder _pathfinder;
+        private AchievementController _achController;
 
         private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
@@ -37,6 +39,7 @@ namespace Assets.Scripts.Core
 
         private bool _isStartArrowCheck = false;
 
+        [SerializeField] private AchConfig _achConfig;
 
         private void Awake()
         {
@@ -52,18 +55,19 @@ namespace Assets.Scripts.Core
             DOTween.Init();
             DOTween.Clear();
 
-            AchievementController.Instance.Init(this);
+            Debug.Log("GameController Awake");
+            _achController = new AchievementController(this, _achConfig);
 
             _level = new Level(this, managerBg);
             _hero = _level.Hero;
 
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
 
-            MessageDispatcher.AddListener(GameEvent.HERO_REACHED, ReachedHandler);
-            MessageDispatcher.AddListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
-            MessageDispatcher.AddListener(GameEvent.HERO_ONE_CELL_AWAY, HideLastPoint);
+            GameEvents.HeroReachedHandlers += HeroReachedHandler;
+            MessageDispatcher.AddListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
+            MessageDispatcher.AddListener(GameEvents.HERO_ONE_CELL_AWAY, HideLastPoint);
 
-            MessageDispatcher.AddListener(GameEvent.QUIT, Destroy);//leaving game, from UIManager
+            MessageDispatcher.AddListener(GameEvents.QUIT, Destroy);//leaving game, from UIManager
 
             _targetMark = new TargetMark(this.gameObject);
 
@@ -80,7 +84,7 @@ namespace Assets.Scripts.Core
 
         private void GetTrapHandler(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
+            MessageDispatcher.RemoveListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
             WaitAndCall(100, HideActors, null, true);
             ShowBoom();
         }
@@ -88,7 +92,6 @@ namespace Assets.Scripts.Core
 
         private void OnMouseDown()
         {
-
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
@@ -159,11 +162,11 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void ReachedHandler(IMessage rMessage)
+        private void HeroReachedHandler()
         {
             if (_isStartArrowCheck)
             {
-                AchievementController.Instance.AddParam(AchievementController.AWAY_FROM_ARROW);
+                //AchievementController.Instance.AddParam(AchievementController.AWAY_FROM_ARROW);
                 _isStartArrowCheck = false;
             }
 
@@ -185,7 +188,7 @@ namespace Assets.Scripts.Core
 
         private void RestartHandler()
         {
-            MessageDispatcher.SendMessage(GameEvent.RESTART);
+            MessageDispatcher.SendMessage(GameEvents.RESTART);
         }
 
         private void CreateHint(bool isFirst)
@@ -233,7 +236,7 @@ namespace Assets.Scripts.Core
         public void CheckCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
         {
             GameObject dObject;
-            
+
             float heroX = _hero.View.transform.localPosition.x;
             float heroY = _hero.View.transform.localPosition.y + 0.15f;//magic number
             float objX;
@@ -254,12 +257,12 @@ namespace Assets.Scripts.Core
 
                         vector.Remove(pair.Key);
 
-                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword) 
+                        if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
                         {
                             if (pair.Value is Monster)
-                                AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_MONSTER);
+                                GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByMonster);
                             else if (pair.Value is TowerArrow)
-                                AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_ARROW);
+                                GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByArrow);
 
                             WaitAndCall(100, HideActors, pair.Value, true);
                             _hero.HeroState = Hero.DEATH;
@@ -267,7 +270,7 @@ namespace Assets.Scripts.Core
                         }
                         else if (pair.Value is Monster)
                         {
-                            AchievementController.Instance.AddParam(AchievementController.MONSTER_DEAD);
+                            GameEvents.AchTriggered(Trigger.TriggerType.MonsterDead);
 
                             WaitAndCall(100, HideActors, pair.Value, false); //killing the monster
                             ShowBoom(ImagesRes.A_ATTACK_BOOM);
@@ -310,12 +313,12 @@ namespace Assets.Scripts.Core
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
-            MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler, false);
+            MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler, false);
         }
 
         public void BoomCompleteHandler(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
+            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
 
             _boom.SetActive(false);
 
@@ -391,11 +394,13 @@ namespace Assets.Scripts.Core
 
         private void Destroy(IMessage rMessage = null)
         {
-            MessageDispatcher.RemoveListener(GameEvent.QUIT, Destroy);
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, ReachedHandler);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_ONE_CELL_AWAY, HideLastPoint);
-            MessageDispatcher.RemoveListener(GameEvent.HERO_GET_TRAP, GetTrapHandler);
+            //Debug.Log("GameController Destroy");
+            GameEvents.Clear();
+            MessageDispatcher.RemoveListener(GameEvents.QUIT, Destroy);
+            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
+            //MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, ReachedHandler);
+            MessageDispatcher.RemoveListener(GameEvents.HERO_ONE_CELL_AWAY, HideLastPoint);
+            MessageDispatcher.RemoveListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
 
             if (_hero != null)
                 _hero.Destroy();
@@ -404,6 +409,10 @@ namespace Assets.Scripts.Core
 
             _pathfinder.Destroy();
             _pathfinder = null;
+
+            _achConfig = null;
+            _achController.Destroy();
+            _achController = null;
 
             //TODO clear grid here?
 

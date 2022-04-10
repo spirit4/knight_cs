@@ -1,3 +1,4 @@
+using Assets.Scripts.Achievements;
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
@@ -13,10 +14,11 @@ namespace Assets.Scripts.UnityEditor
     {
         protected override void Start()
         {
-            MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);//TODO move logic in Manager
+            //MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);//TODO move logic in Manager
+            GameEvents.LevelCompleteHandlers += Activate;
         }
 
-        private void Activate(IMessage rMessage = null)
+        private void Activate()
         {
             this.gameObject.SetActive(true);
 
@@ -29,7 +31,7 @@ namespace Assets.Scripts.UnityEditor
             }
 
             if (Progress.DeadOnLevel[Progress.CurrentLevel] == 0)
-                AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_DEATH);
+                GameEvents.AchTriggered(Trigger.TriggerType.LevelWithoutDeath);
 
             ShowStars();
 
@@ -77,7 +79,7 @@ namespace Assets.Scripts.UnityEditor
 
         private void OnDestroy()
         {
-            MessageDispatcher.RemoveListener(GameEvent.LEVEL_COMPLETE, Activate);
+            GameEvents.LevelCompleteHandlers -= Activate;
         }
     }
 }

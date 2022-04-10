@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Core;
+﻿using Assets.Scripts.Achievements;
+using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
@@ -18,8 +19,6 @@ namespace Assets.Scripts.Units
         public const int DEATH = 2;
 
         private const float SPEED = 0.3f;
-
-        private Tile[] _grid;
 
         private List<int> _path;
         private int _directionX = 1;
@@ -167,7 +166,7 @@ namespace Assets.Scripts.Units
                 anim.enabled = true;
                 trap.GetComponent<SpriteRenderer>().DOFade(1, 0.15f).SetEase(Ease.OutQuad);
                 DOTween.Sequence().AppendInterval(0.15f).AppendCallback(TrapTweenComplete);
-                MessageDispatcher.AddListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete, false);
+                MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete, false);
             }
             else if (_grid[_index].IsContainType(ImagesRes.EXIT))
             {
@@ -181,16 +180,18 @@ namespace Assets.Scripts.Units
                     Progress.StarsAllLevels[Progress.CurrentLevel, 2] = 1;
 
                 if (!_hasHelmet && !_hasShield && !_hasSword)
-                    AchievementController.Instance.AddParam(AchievementController.LEVEL_WITHOUT_ITEMS);
+                    GameEvents.AchTriggered(Trigger.TriggerType.LevelWithoutItems);
 
-                MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
+                //MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
+                GameEvents.LevelComplete();
             }
 
             _heroState = Hero.IDLE;
 
             ChangeView();
 
-            MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
+            //MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
+            GameEvents.HeroReached();
         }
         
 
@@ -202,13 +203,13 @@ namespace Assets.Scripts.Units
 
         private void TrapTweenComplete()
         {
-            AchievementController.Instance.AddParam(AchievementController.HERO_DEAD_BY_TRAP);
-            MessageDispatcher.SendMessage(GameEvent.HERO_GET_TRAP);
+            GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByTrap);
+            MessageDispatcher.SendMessage(GameEvents.HERO_GET_TRAP);
         }
 
         private void TrapAnimationComplete(IMessage rMessage)
         {
-            MessageDispatcher.RemoveListener(GameEvent.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete);
+            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete);
 
             Animator anim = _grid[_index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
             anim.enabled = false;
@@ -246,7 +247,7 @@ namespace Assets.Scripts.Units
             }
             else
             {
-                MessageDispatcher.SendMessage(GameEvent.HERO_ONE_CELL_AWAY);
+                MessageDispatcher.SendMessage(GameEvents.HERO_ONE_CELL_AWAY);
                 MoveToCell();
             }
         }
@@ -263,17 +264,17 @@ namespace Assets.Scripts.Units
             if (type == ImagesRes.STAR + 0)
             {
                 _hasHelmet = true;
-                AchievementController.Instance.AddParam(AchievementController.HELMET_TAKED);
+                GameEvents.AchTriggered(Trigger.TriggerType.HelmetTaked);
             }
             else if (type == ImagesRes.STAR + 1)
             {
                 _hasShield = true;
-                AchievementController.Instance.AddParam(AchievementController.SHIELD_TAKED);
+                GameEvents.AchTriggered(Trigger.TriggerType.ShieldTaked);
             }
             else if (type == ImagesRes.STAR + 2)
             {
                 _hasSword = true;
-                AchievementController.Instance.AddParam(AchievementController.SWORD_TAKED);
+                GameEvents.AchTriggered(Trigger.TriggerType.SwordTaked);
             }
 
             ChangeView();

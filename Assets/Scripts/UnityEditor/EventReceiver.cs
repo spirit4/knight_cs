@@ -12,7 +12,7 @@ namespace Assets.Scripts.UnityEditor
 
         public void AnimationCompleteHandler()
         {
-            MessageDispatcher.SendMessage(GameEvent.ANIMATION_COMPLETE, this.name);
+            MessageDispatcher.SendMessage(GameEvents.ANIMATION_COMPLETE, this.name);
         }
 
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
-    public class SoundManager : Singleton<SoundManager>
+    public class SoundManager : Singleton<SoundManager> 
     {
         public static Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
 
@@ -14,7 +14,7 @@ namespace Assets.Scripts.Core
         public const string MUSIC_MENU = "Menu";
         public const string MUSIC_GAME = "Game";
 
-        private bool _hasMusic = true;
+        private bool _hasMusic = false;//TODO not forget
 
         private MusicButton _currentButton;
         private string _currentLocation = ""; //menu or game

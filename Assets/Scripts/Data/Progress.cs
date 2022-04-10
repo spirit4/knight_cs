@@ -1,11 +1,12 @@
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Data
 {
     public static class Progress
     {
-        public static int LevelsCompleted = 1;
-        public static int CurrentLevel = 0;
+        public static int LevelsCompleted = 20;
+        public static int CurrentLevel = 5;
 
         /** <summary>starsAllLevels [level][helmet, shield, sword]</summary> */
         public static int[,] StarsAllLevels = new int[20, 3]
@@ -53,8 +54,13 @@ namespace Assets.Scripts.Data
             0
         };
 
-        public static int[] AchievementParams = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        public static int[] DeadOnLevel = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        public static bool isUnlocked(int type)
+        {
+            return Convert.ToBoolean(Achievements[type]);
+        }
+
+        public static int[] AchTriggers = new int[11] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public static int[] DeadOnLevel = new int[20]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
         public static List<string> HintAchievements = new List<string>()

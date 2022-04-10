@@ -64,6 +64,11 @@ namespace Assets.Scripts.Data
                 {
                     TileSprites.Add(s.name, s);
                 }
+                sprites = Resources.LoadAll<Sprite>("Images/Both/AchIcons");//TODO fix all
+                foreach (var s in sprites)
+                {
+                    TileSprites.Add(s.name, s);
+                }
 
                 GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
                 
