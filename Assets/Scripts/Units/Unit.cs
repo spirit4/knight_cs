@@ -4,7 +4,7 @@ using DG.Tweening;
 
 namespace Assets.Scripts.Units
 {
-    public abstract class Unit : ICollidable
+    public abstract class Unit : ICollidable, IDestroyable
     {
         //states
         public const string ON = "on";

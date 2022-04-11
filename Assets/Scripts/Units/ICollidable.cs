@@ -10,6 +10,5 @@ namespace Assets.Scripts.Units
         string State { get; }
 
         public void Stop();
-        public void Destroy();
     }
 }

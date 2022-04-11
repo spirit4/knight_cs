@@ -181,14 +181,14 @@ namespace Assets.Scripts.Core
 
         public void Destroy()
         {
-            foreach (ICollidable item in _items)
+            foreach (IDestroyable item in _items)
             {
                 item.Destroy();
             }
 
             foreach (KeyValuePair<int, ICollidable> pair in _units)
             {
-                pair.Value.Destroy();
+                (pair.Value as IDestroyable).Destroy();
             }
         }
 

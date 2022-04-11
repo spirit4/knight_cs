@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
-    public class Pathfinder
+    public class Pathfinder : IDestroyable
     {
         private List<PathNode> _grid = new List<PathNode>();
         private List<PathNode> _openList = new List<PathNode>();

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Data
         public const float STAGE_H_MIN = STAGE_W * 750 / 640;
         public const float STAGE_H_MAX = STAGE_W * 1138 / 640;
 
-        public const float SIZE_W = 0.6f;// STAGE_W * 60 / 640;
+        public const float SIZE_W = 0.6f;
         public const float SIZE_H = SIZE_W;
 
         public const float PIXEL_SIZE = 60; //html5 version

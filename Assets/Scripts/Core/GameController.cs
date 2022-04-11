@@ -5,7 +5,6 @@ using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Utils.Display;
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,17 +22,14 @@ namespace Assets.Scripts.Core
         private Hero _hero;
         private MillPress _mill;
 
-        private Pathfinder _pathfinder;
+        private PathKeeper _path;
         private AchievementController _achController;
 
         private Dictionary<int, ICollidable> _units;
         private List<IActivatable> _items;
 
         private GameObject _help;
-
         private TargetMark _targetMark;
-        private List<GameObject> _poolPoints = new List<GameObject>();
-        private List<GameObject> _activePoints = new List<GameObject>();
         private GameObject _boom;
 
         private bool _isStartArrowCheck = false;
@@ -56,15 +52,14 @@ namespace Assets.Scripts.Core
 
             Debug.Log("GameController Awake");
             _achController = new AchievementController(this, _achConfig);
+            _path = new PathKeeper();
 
             _level = new Level(this, managerBg);
             _hero = _level.Hero;
 
-            _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
-
             GameEvents.HeroReachedHandlers += HeroReachedHandler;
             GameEvents.HeroTrappedHandlers += GetTrapHandler;
-            GameEvents.HeroOneCellAwayHandlers += HideLastPoint;
+            GameEvents.HeroOneCellAwayHandlers += _path.HideLastPoint;
 
             GameEvents.GameQuitHandlers += Destroy;//leaving game, from UIManager
 
@@ -83,7 +78,7 @@ namespace Assets.Scripts.Core
 
         private void GetTrapHandler()
         {
-            WaitAndCall(100, HideActors, null, true);//TODO fix it
+            StartCoroutine(HideActors(100, null, true));
             ShowBoom();
         }
 
@@ -107,12 +102,12 @@ namespace Assets.Scripts.Core
             if (_grid[index].IsWall)
                 return;
 
-            _pathfinder.Init(_grid); //clearing and rechecking the grid
-            _pathfinder.FindPath(_hero.Index, index);
+            _path.Pathfinder.Init(_grid); //clearing and rechecking the grid
+            _path.Pathfinder.FindPath(_hero.Index, index);
 
-            if (_pathfinder.Path.Count > 0)
+            if (_path.Pathfinder.Path.Count > 0)
             {
-                List<int> path = _pathfinder.Path;
+                List<int> path = _path.Pathfinder.Path;
                 if (_grid[index].IsContainType(ImagesRes.MILL))
                 {
                     _mill.Activate();
@@ -124,7 +119,7 @@ namespace Assets.Scripts.Core
                     RemoveHint();
 
                     _targetMark.PlaceByTap(index);
-                    ShowPath(_pathfinder.Path);
+                    _path.ShowPath(this.transform);
 
                     TowerArrow arrow;
                     foreach (var pair in _units)
@@ -143,7 +138,6 @@ namespace Assets.Scripts.Core
 
                     _hero.MoveToCell(path);
                 }
-
             }
         }
 
@@ -163,11 +157,11 @@ namespace Assets.Scripts.Core
         {
             if (_isStartArrowCheck)
             {
-                //AchievementController.Instance.AddParam(AchievementController.AWAY_FROM_ARROW);
+                GameEvents.AchTriggered(Trigger.TriggerType.AwayFromArrow);
                 _isStartArrowCheck = false;
             }
 
-            HidePoints();
+            _path.HidePoints();
 
             if (Progress.CurrentLevel == 0 && _hero.Index == 54) //to guide
                 CreateHintAfterAction();
@@ -207,7 +201,7 @@ namespace Assets.Scripts.Core
             _help.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
             _help.GetComponent<SpriteRenderer>().sortingOrder = 999;
             _help.transform.SetParent(this.gameObject.transform);
-            _help.transform.localPosition = new Vector3(2.4f, -1.9f); //TODO consts
+            _help.transform.localPosition = new Vector3(2.4f, -1.9f);
         }
 
         public void CreateHintAfterAction()
@@ -227,7 +221,7 @@ namespace Assets.Scripts.Core
         public void Update()
         {
             if (_units != null)
-                CheckCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);//TODO maybe need to make arrow more narrow
+                CheckCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);
         }
 
         public void CheckCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
@@ -261,7 +255,7 @@ namespace Assets.Scripts.Core
                             else if (pair.Value is TowerArrow)
                                 GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByArrow);
 
-                            WaitAndCall(100, HideActors, pair.Value, true);
+                            StartCoroutine(HideActors(100, pair.Value, true));
                             _hero.HeroState = Hero.DEATH;
                             ShowBoom();
                         }
@@ -269,7 +263,7 @@ namespace Assets.Scripts.Core
                         {
                             GameEvents.AchTriggered(Trigger.TriggerType.MonsterDead);
 
-                            WaitAndCall(100, HideActors, pair.Value, false); //killing the monster
+                            StartCoroutine(HideActors(100, pair.Value, false)); //killing the monster
                             ShowBoom(ImagesRes.A_ATTACK_BOOM);
                         }
                         break;
@@ -278,14 +272,16 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void HideActors(ICollidable unit, bool IsEnd)
+        private IEnumerator HideActors(float delay, ICollidable unit, bool IsEnd)
         {
+            yield return new WaitForSeconds(delay);
+
             if (unit != null)
             {
                 unit.Stop();
                 _hero.Stop();
                 unit.View.SetActive(false);
-                unit.Destroy();
+                (unit as IDestroyable).Destroy();
             }
 
             if (IsEnd)
@@ -320,79 +316,13 @@ namespace Assets.Scripts.Core
 
             _boom.SetActive(false);
 
-            if (_hero == null || !_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
+            if (_hero == null || !_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)//TODO flags?
                 RestartHandler();
         }
 
-        private void ShowPath(List<int> path)
-        {
-            for (int i = 0; i < path.Count; i++)
-            {
-                if (_poolPoints.Count < path.Count)
-                {
-                    this.CreatePathPoint();
-                }
-                WaitAndCall(50 * i, AppearPoint, path[i]);
-            }
-        }
-
-        private void AppearPoint(int index)
-        {
-            GameObject bitmap = _poolPoints[_poolPoints.Count - 1];
-            _poolPoints.RemoveAt(_poolPoints.Count - 1);
-
-            bitmap.transform.localScale = new Vector3(0, 0);
-            bitmap.transform.localPosition = new Vector3(_grid[index].X, _grid[index].Y, 0);
-            bitmap.SetActive(true);
-            _activePoints.Add(bitmap);
-
-            bitmap.transform.DOScale(1.2f, 0.1f).SetEase(Ease.OutQuart).OnComplete(() => ReducePoint(bitmap.transform));
-        }
-
-        private void ReducePoint(Transform transform)
-        {
-            transform.DOScale(1, 0.06f).SetEase(Ease.InQuart);
-        }
-
-        private void HidePoints()
-        {
-            while (_activePoints.Count > 0)
-            {
-                GameObject bitmap = _activePoints[_activePoints.Count - 1];
-                _activePoints.RemoveAt(_activePoints.Count - 1);
-                bitmap.SetActive(false);
-                _poolPoints.Add(bitmap);
-            }
-        }
-
-        private void HideLastPoint()
-        {
-            if (_activePoints.Count == 0)
-                return;
-
-            GameObject bitmap = _activePoints[0];
-            _activePoints.RemoveAt(0);
-            bitmap.SetActive(false);
-            _poolPoints.Add(bitmap);
-        }
-
-        private void CreatePathPoint()
-        {
-            GameObject dObject = new GameObject();
-            dObject.AddComponent<SpriteRenderer>();
-            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.TARGET_MARK + 0);
-            dObject.transform.SetParent(this.gameObject.transform);
-            dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            dObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-            dObject.SetActive(false);
-
-            _poolPoints.Add(dObject);
-        }
-
-
         private void Destroy()
         {
-            Debug.Log("GameController Destroy");
+            //Debug.Log("GameController Destroy");
             GameEvents.GameQuitHandlers -= Destroy;//manual
             GameEvents.Clear();//auto
 
@@ -401,8 +331,8 @@ namespace Assets.Scripts.Core
 
             RemoveHint();
 
-            _pathfinder.Destroy();
-            _pathfinder = null;
+            _path.Destroy();
+            _path = null;
 
             _achConfig = null;
             _achController.Destroy();
@@ -420,11 +350,6 @@ namespace Assets.Scripts.Core
             _items = null;
 
             _targetMark = null;
-            _poolPoints.Clear();
-            _poolPoints = null;
-            _activePoints.Clear();
-            _activePoints = null;
-
             _grid = null;
 
             _hero = null;
@@ -436,32 +361,5 @@ namespace Assets.Scripts.Core
             _mill = null;
         }
 
-
-        //let it be, althought this shorter:
-        //DOTween.Sequence().AppendInterval(delay).AppendCallback(callback);
-
-        /** <summary>delay (ms)</summary> */
-        private void WaitAndCall(float delay, Action<int> callback, int index)
-        {
-            StartCoroutine(ExampleCoroutine(delay, callback, index));
-        }
-        private IEnumerator ExampleCoroutine(float delay, Action<int> callback, int index)
-        {
-            yield return new WaitForSeconds(delay / 1000);
-            callback(index);
-        }
-
-        //overloading
-        private void WaitAndCall(float delay, Action<ICollidable, bool> callback, ICollidable unit, bool flag)
-        {
-            StartCoroutine(ExampleCoroutine(delay, callback, unit, flag));
-        }
-        private IEnumerator ExampleCoroutine(float delay, Action<ICollidable, bool> callback, ICollidable unit, bool flag)
-        {
-            yield return new WaitForSeconds(delay / 1000);
-            callback(unit, flag);
-        }
     }
-
-
 }
