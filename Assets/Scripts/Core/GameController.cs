@@ -4,7 +4,6 @@ using Assets.Scripts.Events;
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Utils.Display;
-using com.ootii.Messages;
 using DG.Tweening;
 using System;
 using System.Collections;
@@ -64,10 +63,10 @@ namespace Assets.Scripts.Core
             _pathfinder = new Pathfinder(Config.WIDTH, Config.HEIGHT);
 
             GameEvents.HeroReachedHandlers += HeroReachedHandler;
-            MessageDispatcher.AddListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
-            MessageDispatcher.AddListener(GameEvents.HERO_ONE_CELL_AWAY, HideLastPoint);
+            GameEvents.HeroTrappedHandlers += GetTrapHandler;
+            GameEvents.HeroOneCellAwayHandlers += HideLastPoint;
 
-            MessageDispatcher.AddListener(GameEvents.QUIT, Destroy);//leaving game, from UIManager
+            GameEvents.GameQuitHandlers += Destroy;//leaving game, from UIManager
 
             _targetMark = new TargetMark(this.gameObject);
 
@@ -82,13 +81,11 @@ namespace Assets.Scripts.Core
         }
 
 
-        private void GetTrapHandler(IMessage rMessage)
+        private void GetTrapHandler()
         {
-            MessageDispatcher.RemoveListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
-            WaitAndCall(100, HideActors, null, true);
+            WaitAndCall(100, HideActors, null, true);//TODO fix it
             ShowBoom();
         }
-
 
         private void OnMouseDown()
         {
@@ -188,7 +185,7 @@ namespace Assets.Scripts.Core
 
         private void RestartHandler()
         {
-            MessageDispatcher.SendMessage(GameEvents.RESTART);
+            GameEvents.GameRestart();
         }
 
         private void CreateHint(bool isFirst)
@@ -313,12 +310,13 @@ namespace Assets.Scripts.Core
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
-            MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler, false);
+
+            GameEvents.AnimationEndedHandlers += BoomCompleteHandler;
         }
 
-        public void BoomCompleteHandler(IMessage rMessage)
+        public void BoomCompleteHandler()
         {
-            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
+            GameEvents.AnimationEndedHandlers -= BoomCompleteHandler;
 
             _boom.SetActive(false);
 
@@ -367,7 +365,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        private void HideLastPoint(IMessage rMessage)
+        private void HideLastPoint()
         {
             if (_activePoints.Count == 0)
                 return;
@@ -392,15 +390,11 @@ namespace Assets.Scripts.Core
         }
 
 
-        private void Destroy(IMessage rMessage = null)
+        private void Destroy()
         {
-            //Debug.Log("GameController Destroy");
-            GameEvents.Clear();
-            MessageDispatcher.RemoveListener(GameEvents.QUIT, Destroy);
-            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.A_BOOM, BoomCompleteHandler);
-            //MessageDispatcher.RemoveListener(GameEvent.HERO_REACHED, ReachedHandler);
-            MessageDispatcher.RemoveListener(GameEvents.HERO_ONE_CELL_AWAY, HideLastPoint);
-            MessageDispatcher.RemoveListener(GameEvents.HERO_GET_TRAP, GetTrapHandler);
+            Debug.Log("GameController Destroy");
+            GameEvents.GameQuitHandlers -= Destroy;//manual
+            GameEvents.Clear();//auto
 
             if (_hero != null)
                 _hero.Destroy();

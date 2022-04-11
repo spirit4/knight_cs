@@ -1,8 +1,4 @@
 using Assets.Scripts.Events;
-using com.ootii.Messages;
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.UnityEditor
@@ -12,7 +8,7 @@ namespace Assets.Scripts.UnityEditor
 
         public void AnimationCompleteHandler()
         {
-            MessageDispatcher.SendMessage(GameEvents.ANIMATION_COMPLETE, this.name);
+            GameEvents.AnimationEnded(); //basically it's a pecular smoke detector
         }
 
     }

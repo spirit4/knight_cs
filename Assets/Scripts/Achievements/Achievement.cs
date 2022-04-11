@@ -80,7 +80,7 @@ namespace Assets.Scripts.Achievements
 
         public void Destroy()
         {
-            _triggers.Clear();
+            _triggers?.Clear();
             _triggers = null;
             _icon = null;
         }

@@ -1,7 +1,6 @@
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
-using com.ootii.Messages;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +16,6 @@ namespace Assets.Scripts.Core
 
         private void Awake()
         {
-            MessageDispatcher.ClearListeners();//after scene reload
-
             if (ImagesRes.Prefabs.Count == 0) // loading resources to static
                 ImagesRes.Init();
 
@@ -45,7 +42,7 @@ namespace Assets.Scripts.Core
             else
                 SoundManager.Instance.SetLocation(SoundManager.MUSIC_GAME);
 
-            MessageDispatcher.AddListener(GameEvents.RESTART, RestartGame);
+            GameEvents.GameRestartHandlers += StartGame;
         }
 
         //logic in Editor's buttons
@@ -57,14 +54,6 @@ namespace Assets.Scripts.Core
             }
             window.SetActive(true);
         }
-
-        //not by button
-        private void RestartGame(IMessage m)
-        {
-            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
-            StartGame();
-        }
-
 
         public void GoToNextLevel()
         {
@@ -83,8 +72,7 @@ namespace Assets.Scripts.Core
         {
             Saver.SaveProgress();
 
-            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
-            MessageDispatcher.SendMessage(GameEvents.QUIT); //reloading whole scene without destroying units?
+            GameEvents.GameQuit(); //reloading whole scene without destroying units?
             //Debug.Log("StartGame");
             SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("GameScene");
@@ -94,8 +82,7 @@ namespace Assets.Scripts.Core
         {
             DOTween.Clear();//PanelVictory tweens
 
-            MessageDispatcher.RemoveListener(GameEvents.RESTART, RestartGame);
-            MessageDispatcher.SendMessage(GameEvents.QUIT);
+            GameEvents.GameQuit();
 
             SoundManager.Instance.StopMusicTrack();
             SceneManager.LoadScene("MainScene");

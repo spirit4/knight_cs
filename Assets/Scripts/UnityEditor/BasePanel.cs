@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Events;
-using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 
@@ -22,9 +21,9 @@ namespace Assets.Scripts.UnityEditor
                 RotateMill();
 
             if(_smoke != null)
-                MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, SmokeCompleteHandler); //TODO action
+                GameEvents.AnimationEndedHandlers += SmokeCompleteHandler;
         }
-        private void SmokeCompleteHandler(IMessage rMessage)
+        private void SmokeCompleteHandler()
         {
             Animator anim = _smoke.GetComponent<Animator>();
             anim.enabled = false;
@@ -41,6 +40,11 @@ namespace Assets.Scripts.UnityEditor
         protected void RotateMill()
         {
             _vane.DORotate(new Vector3(0, 0, -395), 3.0f).SetLoops(-1).SetEase(Ease.Linear);
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.AnimationEndedHandlers -= SmokeCompleteHandler;
         }
     }
 }

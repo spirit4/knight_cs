@@ -1,9 +1,7 @@
 using Assets.Scripts.Achievements;
-using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
-using com.ootii.Messages;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +12,6 @@ namespace Assets.Scripts.UnityEditor
     {
         protected override void Start()
         {
-            //MessageDispatcher.AddListener(GameEvent.LEVEL_COMPLETE, Activate);//TODO move logic in Manager
             GameEvents.LevelCompleteHandlers += Activate;
         }
 

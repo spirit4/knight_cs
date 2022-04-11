@@ -3,7 +3,6 @@ using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
-using com.ootii.Messages;
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
@@ -166,7 +165,8 @@ namespace Assets.Scripts.Units
                 anim.enabled = true;
                 trap.GetComponent<SpriteRenderer>().DOFade(1, 0.15f).SetEase(Ease.OutQuad);
                 DOTween.Sequence().AppendInterval(0.15f).AppendCallback(TrapTweenComplete);
-                MessageDispatcher.AddListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete, false);
+
+                GameEvents.AnimationEndedHandlers += TrapAnimationComplete;
             }
             else if (_grid[_index].IsContainType(ImagesRes.EXIT))
             {
@@ -182,7 +182,6 @@ namespace Assets.Scripts.Units
                 if (!_hasHelmet && !_hasShield && !_hasSword)
                     GameEvents.AchTriggered(Trigger.TriggerType.LevelWithoutItems);
 
-                //MessageDispatcher.SendMessage(GameEvent.LEVEL_COMPLETE);
                 GameEvents.LevelComplete();
             }
 
@@ -190,7 +189,6 @@ namespace Assets.Scripts.Units
 
             ChangeView();
 
-            //MessageDispatcher.SendMessage(GameEvent.HERO_REACHED);
             GameEvents.HeroReached();
         }
         
@@ -201,19 +199,19 @@ namespace Assets.Scripts.Units
             Reclothe(type);
         }
 
-        private void TrapTweenComplete()
+        private void TrapAnimationComplete()
         {
-            GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByTrap);
-            MessageDispatcher.SendMessage(GameEvents.HERO_GET_TRAP);
-        }
-
-        private void TrapAnimationComplete(IMessage rMessage)
-        {
-            MessageDispatcher.RemoveListener(GameEvents.ANIMATION_COMPLETE, ImagesRes.TRAP, TrapAnimationComplete);
+            GameEvents.AnimationEndedHandlers -= TrapAnimationComplete;
 
             Animator anim = _grid[_index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
             anim.enabled = false;
             _grid[_index].Remove(ImagesRes.TRAP);
+        }
+
+        private void TrapTweenComplete()
+        {
+            GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByTrap);
+            GameEvents.HeroTrapped();
         }
 
         private void Move(bool isContinue = false)
@@ -247,7 +245,7 @@ namespace Assets.Scripts.Units
             }
             else
             {
-                MessageDispatcher.SendMessage(GameEvents.HERO_ONE_CELL_AWAY);
+                GameEvents.HeroOneCellAway();
                 MoveToCell();
             }
         }
