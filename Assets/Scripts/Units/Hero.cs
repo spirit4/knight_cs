@@ -4,7 +4,6 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using DG.Tweening;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +30,11 @@ namespace Assets.Scripts.Units
         private bool _hasHelmet = false;
 
         private GameObject _inside;
+
+        public int HeroState { get => _heroState; set => _heroState = value; }
+        public bool HasShield { get => _hasShield; }
+        public bool HasSword { get => _hasSword; }
+        public bool HasHelmet { get => _hasHelmet; }
 
         //debug
         //private bool _hasShield = true;
@@ -59,7 +63,6 @@ namespace Assets.Scripts.Units
 
             _heroState = IDLE;
         }
-
 
         public override void Stop()
         {
@@ -141,7 +144,6 @@ namespace Assets.Scripts.Units
                 _inside.GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        ////-------actions---------------------------------
         private void Idle()
         {
             if (_heroState == Hero.DEATH)
@@ -191,7 +193,7 @@ namespace Assets.Scripts.Units
 
             GameEvents.HeroReached();
         }
-        
+
 
         private void StarTweenComplete(string type)
         {
@@ -240,21 +242,12 @@ namespace Assets.Scripts.Units
                 return;
 
             if (_path.Count == 0)
-            {
                 Idle();
-            }
             else
             {
                 GameEvents.HeroOneCellAway();
                 MoveToCell();
             }
-        }
-
-        public override void Destroy()
-        {
-            base.Destroy();
-            _path = null;
-            _grid = null;
         }
 
         private void Reclothe(string type)
@@ -278,37 +271,11 @@ namespace Assets.Scripts.Units
             ChangeView();
         }
 
-        public int HeroState
+        public override void Destroy()
         {
-            get
-            {
-                return _heroState;
-            }
-            set
-            {
-                _heroState = value;
-            }
-        }
-        public bool HasHelmet
-        {
-            get
-            {
-                return _hasHelmet;
-            }
-        }
-        public bool HasShield
-        {
-            get
-            {
-                return _hasShield;
-            }
-        }
-        public bool HasSword
-        {
-            get
-            {
-                return _hasSword;
-            }
+            base.Destroy();
+            _path = null;
+            _grid = null;
         }
     }
 }

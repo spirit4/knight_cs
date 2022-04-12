@@ -3,7 +3,7 @@ using Assets.Scripts.Data;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Assets.Scripts.Utils.Display
+namespace Assets.Scripts.Units
 {
     public class TargetMark
     {

@@ -32,7 +32,6 @@ namespace Assets.Scripts.UnityEditor
             ShowNext();
         }
 
-
         private void OnMouseDown()
         {
             if (_frames.Count == 0)

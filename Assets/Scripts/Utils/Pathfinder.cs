@@ -23,15 +23,9 @@ namespace Assets.Scripts.Utils
         private const int NORMAL_COST = 10;
         private const int DIAGONAL_COST = 10001;
         private const int WALL_COST = 10002;
-        private const int DEAR_COST = 10003;
+        private const int EXPENSIVE_COST = 10003;
 
-        public List<int> Path
-        {
-            get
-            {
-                return _path;
-            }
-        }
+        public List<int> Path { get { return _path; } }
 
         public Pathfinder(int sizeX, int sizeY)
         {
@@ -51,14 +45,12 @@ namespace Assets.Scripts.Utils
                 {
                     _grid[i].Cost = WALL_COST;
                 }
-                else if (grid[i].IsDear)
+                else if (grid[i].IsExpensive)
                 {
-                    _grid[i].Cost = DEAR_COST;
+                    _grid[i].Cost = EXPENSIVE_COST;
                 }
             }
         }
-
-
 
         public void FindPath(int start, int end)
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
-    public class Level
+    public class Level : IDestroyable
     {
         private Component _container;
 
@@ -20,7 +20,15 @@ namespace Assets.Scripts.Core
         /** <summary>Static Sprites</summary> */
         private List<GameObject> _decorBg;
 
-        public Level(Component container, ManagerBg bg)
+        private Creator _creator;
+
+        public Hero Hero { get => _hero; }
+        public MillPress Mill { get => _mill;  }
+        public Dictionary<int, ICollidable> Units { get => _units; }
+        public List<IActivatable> Items { get => _items;  }
+        public Creator Creator { get => _creator; }
+
+        public Level(Component container, ManagerBg bg, EntityConfig config)
         {
             _container = container;
 
@@ -30,6 +38,7 @@ namespace Assets.Scripts.Core
             _decorBg = new List<GameObject>();
 
             var cells = JSON.Parse(JSONRes.Levels[Progress.CurrentLevel]);
+            _creator = new Creator(config);
 
             int index;
             List<string> types;
@@ -75,7 +84,7 @@ namespace Assets.Scripts.Core
                 case ImagesRes.MILL:
                     gameObject = new GameObject();
                     _mill = new MillPress(type, index, gameObject, _container);
-                    grid[index].IsDear = true;
+                    grid[index].IsExpensive = true;
                     grid[index].AddType(type);
                     grid[index].AddObject(gameObject);
                     break;
@@ -173,6 +182,7 @@ namespace Assets.Scripts.Core
                     break;
 
                 default:
+                    Debug.Log(type + " ========= default in Level ============");
                     grid[index].Add(type, _container, grid);
                     break;
             }
@@ -190,40 +200,10 @@ namespace Assets.Scripts.Core
             {
                 (pair.Value as IDestroyable).Destroy();
             }
-        }
 
-        public Hero Hero
-        {
-            get
-            {
-                return _hero;
-            }
-
-        }
-
-        public MillPress Mill
-        {
-            get
-            {
-                return _mill;
-            }
-
-        }
-
-        public Dictionary<int, ICollidable> Units
-        {
-            get
-            {
-                return _units;
-            }
-        }
-
-        public List<IActivatable> Items
-        {
-            get
-            {
-                return _items;
-            }
+            _creator.Destroy();
+            _creator = null;
+            _container = null;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Assets.Scripts.Core
             _game = game;
         }
 
-        /** <summary>Adding grass, water, decor to Background, Game is container</summary> Component containter,*/
+        /** <summary>Adding grass, water, decor to Background, Game is container</summary>*/
         public void AddTiles(List<GameObject> bitmaps, Tile[] grid, bool isDecor = false)
         {
 

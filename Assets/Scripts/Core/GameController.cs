@@ -35,6 +35,7 @@ namespace Assets.Scripts.Core
         private bool _isStartArrowCheck = false;
 
         [SerializeField] private AchConfig _achConfig;
+        [SerializeField] private EntityConfig _entityConfig;
 
         private void Awake()
         {
@@ -54,7 +55,7 @@ namespace Assets.Scripts.Core
             _achController = new AchievementController(this, _achConfig);
             _path = new PathKeeper();
 
-            _level = new Level(this, managerBg);
+            _level = new Level(this, managerBg,_entityConfig);
             _hero = _level.Hero;
 
             GameEvents.HeroReachedHandlers += HeroReachedHandler;
@@ -119,7 +120,7 @@ namespace Assets.Scripts.Core
                     RemoveHint();
 
                     _targetMark.PlaceByTap(index);
-                    _path.ShowPath(this.transform);
+                    _path.ShowPath(this.transform, _level.Creator);
 
                     TowerArrow arrow;
                     foreach (var pair in _units)
@@ -195,7 +196,7 @@ namespace Assets.Scripts.Core
 
             Sprite sprite = Resources.Load<Sprite>(Hints.HintImages[key]); //TODO move it
 
-            _help = new GameObject("Help");
+            _help = new GameObject("Help");//TODO add to factory
             _help.AddComponent<SpriteRenderer>();
             _help.GetComponent<SpriteRenderer>().sprite = sprite;
             _help.GetComponent<SpriteRenderer>().sortingLayerName = "UI";

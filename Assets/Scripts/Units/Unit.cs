@@ -44,53 +44,12 @@ namespace Assets.Scripts.Units
             _view.transform.DOKill();
         }
 
-        public GameObject View
-        {
-            get
-            {
-                return _view;
-            }
-        }
-
-        public int Index
-        {
-            get
-            {
-                return _index;
-            }
-            set
-            {
-                _index = value;
-            }
-        }
-        public string Type
-        {
-            get
-            {
-                return _type;
-            }
-        }
-        public string State
-        {
-            set
-            {
-                _state = value;
-            }
-            get
-            {
-                return _state;
-            }
-        }
-
-        public Tile Tile
-        {
-            get
-            {
-                return _tile;
-            }
-        }
-
         public float X { get => _x; set => _x = value; }
         public float Y { get => _y; set => _y = value; }
+        public int Index { get => _index; set => _index = value; }
+        public GameObject View { get => _view; }
+        public string Type { get => _type;  }
+        public string State { get => _state; set => _state = value; }
+        public Tile Tile { get => _tile;  }
     }
 }

@@ -24,11 +24,6 @@ namespace Assets.Scripts.Utils.Display
                 SwitchState();
         }
 
-        public void Update()
-        {
-
-        }
-
         public void SwitchState()
         {
             _isActive = SoundManager.Instance.HasMusic;

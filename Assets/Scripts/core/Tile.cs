@@ -20,7 +20,7 @@ namespace Assets.Scripts.Core
         private List<string> _types;
 
         private bool _isWall = true;//for pathfinder
-        private bool _isDear = false;//for pathfinder  for mill
+        private bool _isExpensive = false;//for pathfinder for mill
 
         public Tile(float x, float y, int index)
         {
@@ -70,7 +70,7 @@ namespace Assets.Scripts.Core
                     break;
 
                 case ImagesRes.WATER:
-                    dObject.isStatic = true;
+                    dObject.isStatic = true; //TODO throw away everywhere
                     break;
 
                 case string x when x.StartsWith(ImagesRes.PINE):
@@ -223,6 +223,6 @@ namespace Assets.Scripts.Core
         public List<GameObject> Objects { get => _objects; set => _objects = value; }
         public List<string> Types { get => _types; set => _types = value; }
         public bool IsWall { get => _isWall; set => _isWall = value; }
-        public bool IsDear { get => _isDear; set => _isDear = value; }
+        public bool IsExpensive { get => _isExpensive; set => _isExpensive = value; }
     }
 }
