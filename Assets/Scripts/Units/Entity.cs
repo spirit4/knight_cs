@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Entity : IDestroyable
+    public abstract class Entity : IDestroyable
     {
         public enum Type
         {
@@ -22,27 +22,23 @@ namespace Assets.Scripts.Units
         }
 
         protected GameObject _view;
-        //protected int _index;
         protected Type _type;
 
         public GameObject View { get => _view; }
 
-        public Entity(EntityInput config)//Type type, string layer, int sortingOrder)
+        public Entity(EntityInput config)
         {
             _type = config.Type;
 
             _view = new GameObject(_type.ToString());
             _view.AddComponent<SpriteRenderer>();
             _view.GetComponent<SpriteRenderer>().sortingLayerName = config.Layer.ToString();
-            //_view.GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
             _view.SetActive(false);
-            //Debug.Log($"new Entity {_type}    view {_view}");
         }
 
-        public virtual void AddSprite(Sprite[] spites)
+        public virtual void AddView(Sprite[] spites, int spriteIndex = 0)
         {
-            //Debug.Log($"AddSprite {_type}    view {_view}");
-            _view.GetComponent<SpriteRenderer>().sprite = spites[0];
+            _view.GetComponent<SpriteRenderer>().sprite = spites[spriteIndex];
         }
 
         public virtual void Deploy(Transform container, Vector3 position)

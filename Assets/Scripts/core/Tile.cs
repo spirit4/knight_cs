@@ -13,9 +13,6 @@ namespace Assets.Scripts.Core
         public float Y;
         public int Index;
 
-        private int _localX;
-        private int _localY;
-
         private List<GameObject> _objects;
         private List<string> _types;
 
@@ -48,12 +45,6 @@ namespace Assets.Scripts.Core
             return dObject;
         }
 
-        public void AddLocalCoordinates(int localX, int localY)
-        {
-            _localX = localX;
-            _localY = localY;
-        }
-
         private GameObject GetAlignedGameObject(string type, Component container)
         {
             GameObject dObject = new GameObject();
@@ -64,14 +55,14 @@ namespace Assets.Scripts.Core
 
             switch (type)
             {
-                case ImagesRes.GRASS:
-                    this.IsWall = false;
-                    dObject.isStatic = true;
-                    break;
+                //case ImagesRes.GRASS:
+                //    this.IsWall = false;
+                //    dObject.isStatic = true;
+                //    break;
 
-                case ImagesRes.WATER:
-                    dObject.isStatic = true; //TODO throw away everywhere
-                    break;
+                //case ImagesRes.WATER:
+                //    dObject.isStatic = true; 
+                //    break;
 
                 case string x when x.StartsWith(ImagesRes.PINE):
                 case string y when y.StartsWith(ImagesRes.STONE):
@@ -120,11 +111,11 @@ namespace Assets.Scripts.Core
                     dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.13f);
                     break;
 
-                case string y when y.StartsWith(ImagesRes.DECOR):
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    var point = GridUtils.GetUnityPoint(_localX, _localY);
-                    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f);
-                    break;
+                //case string y when y.StartsWith(ImagesRes.DECOR):
+                //    dObject.transform.SetParent(container.gameObject.transform);
+                //    var point = GridUtils.GetUnityPoint(_localX, _localY);
+                //    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f);
+                //    break;
 
                 default:
                     Debug.Log(type + " ==================== default in Tile ============================");

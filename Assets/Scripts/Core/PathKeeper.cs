@@ -11,8 +11,8 @@ namespace Assets.Scripts.Core
         private Pathfinder _pathfinder;
         public Pathfinder Pathfinder { get => _pathfinder; }
 
-        private Stack<Entity> _poolPoints = new Stack<Entity>();
-        private Queue<Entity> _activePoints = new Queue<Entity>();// TODO make stacks
+        private Stack<PathPoint> _poolPoints = new Stack<PathPoint>();
+        private Queue<PathPoint> _activePoints = new Queue<PathPoint>();// TODO make stacks
         private Tile[] _grid;
 
         public PathKeeper()
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Core
             for (int i = 0; i < _pathfinder.Path.Count; i++)
             {
                 if (_poolPoints.Count < _pathfinder.Path.Count - i)
-                    _poolPoints.Push(creator.GetEntity(Entity.Type.target_0));
+                    _poolPoints.Push(creator.GetDefault(Entity.Type.target_0) as PathPoint);
 
                 AppearPoint(0.05f * i, _pathfinder.Path[i], container);
             }
@@ -34,9 +34,9 @@ namespace Assets.Scripts.Core
 
         private void AppearPoint(float delay, int index, Transform container)
         {
-            Entity point = _poolPoints.Pop();
+            PathPoint point = _poolPoints.Pop();
 
-            (point as PathPoint).DeployWithDelay(container, new Vector3(_grid[index].X, _grid[index].Y), delay);
+            point.DeployWithDelay(container, new Vector3(_grid[index].X, _grid[index].Y), delay);
             _activePoints.Enqueue(point);
         }
 
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Core
             if (_activePoints.Count == 0)
                 return;
 
-            Entity point = _activePoints.Dequeue();
+            PathPoint point = _activePoints.Dequeue();
             point.Withdraw();
             _poolPoints.Push(point);
         }

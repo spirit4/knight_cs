@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Units;
 using SimpleJSON;
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
@@ -18,7 +20,7 @@ namespace Assets.Scripts.Core
         /** <summary>Static Sprites</summary> */
         private List<GameObject> _tilesBg;
         /** <summary>Static Sprites</summary> */
-        private List<GameObject> _decorBg;
+        //private List<GameObject> _decorBg;
 
         private Creator _creator;
 
@@ -28,20 +30,27 @@ namespace Assets.Scripts.Core
         public List<IActivatable> Items { get => _items;  }
         public Creator Creator { get => _creator; }
 
-        public Level(Component container, ManagerBg bg, EntityConfig config)
+        public Level(Transform container, EntityConfig config)
         {
             _container = container;
 
             _units = new Dictionary<int, ICollidable>();
             _items = new List<IActivatable>();
-            _tilesBg = new List<GameObject>();
-            _decorBg = new List<GameObject>();
 
             var cells = JSON.Parse(JSONRes.Levels[Progress.CurrentLevel]);
             _creator = new Creator(config);
 
+            Tile[] grid = Model.Grid;
+            Entity entity;
+            Entity.Type entityType;
+
+            string digitString;
+            int digitInt;
+            string generalType;
+
             int index;
             List<string> types;
+            Vector3 position;
             for (int i = 0; i < cells.Count; i++)
             {
                 index = cells[i]["index"];
@@ -49,23 +58,48 @@ namespace Assets.Scripts.Core
 
                 for (int j = 0; j < types.Count; j++)
                 {
-                    CheckCell(index, types[j], types, cells[i]);
+                    digitString = Regex.Match(types[j], @"\d+").Value;
+                    digitInt = digitString == "" ? 0 : Int32.Parse(digitString);
+                    generalType = digitString == "" ? types[j] : types[j].Remove(types[j].Length - 1);
+
+                    //Debug.Log($"-digitString {digitString} -- {digitInt} ---- {generalType}");
+
+
+                    if (Enum.TryParse(generalType, out entityType))//TODO temp
+                    {
+                        entity = _creator.GetTileObject(entityType, grid[index], digitInt);
+                        if(entity == null)
+                        {
+                            CheckCell(index, types[j]); //TEMP
+                            continue;
+                        }
+
+                        grid[index].AddType(generalType);//TODO general or specific?
+                        grid[index].AddObject(entity.View);
+                        
+
+                        if (cells[i][types[j]] == null)
+                            position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
+                        else
+                            position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates
+
+                        entity.Deploy(container, position);
+                    }
+                    else
+                        CheckCell(index, types[j]);//, types, cells[i]);
                 }
             }
-            bg.AddTiles(_tilesBg, Model.Grid);
-            bg.AddTiles(_decorBg, Model.Grid, true);
-            _tilesBg = null;
-            _decorBg = null;
+
 
             int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
-                _items[i].Init(i, Model.Grid, _units);
+                _items[i].Init(i, grid, _units);
             }
         }
 
         //node has local coordinates of decor
-        private void CheckCell(int index, string type, List<string> types, JSONNode node)
+        private void CheckCell(int index, string type)//, List<string> types, JSONNode node)
         {
             GameObject gameObject;
 
@@ -145,11 +179,13 @@ namespace Assets.Scripts.Core
                     _items.Add(spikes);
                     break;
 
-                case string x when x.StartsWith(ImagesRes.DECOR):
-                    grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
-                    gameObject = grid[index].Add(type, _container, grid);
-                    _decorBg.Add(gameObject);
-                    break;
+                //case string x when x.StartsWith(ImagesRes.DECOR):
+                    //grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
+                    //gameObject = grid[index].Add(type, _container, grid);
+                    //_decorBg.Add(gameObject);
+
+
+                  //  break;
 
                 case ImagesRes.MONSTER:
                     Monster monster;
@@ -175,11 +211,12 @@ namespace Assets.Scripts.Core
                     _units.Add(index, monster);
                     break;
 
-                case ImagesRes.GRASS:
-                case ImagesRes.WATER:
-                    gameObject = grid[index].Add(type, _container, grid);
-                    _tilesBg.Add(gameObject);
-                    break;
+                //case ImagesRes.GRASS:
+                //    break;
+                //case ImagesRes.WATER:
+                //    gameObject = grid[index].Add(type, _container, grid);
+                //    _tilesBg.Add(gameObject);
+                //    break;
 
                 default:
                     Debug.Log(type + " ========= default in Level ============");

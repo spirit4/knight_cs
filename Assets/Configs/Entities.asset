@@ -15,22 +15,39 @@ MonoBehaviour:
   _entities:
   - _name: grass
     _type: 0
-    _cost: 0
-    _layer: 0
-    _sprites: []
-  - _name: water
-    _type: 1
     _cost: 1
     _layer: 0
-    _sprites: []
-  - _name: Decor
+    _prefab: {fileID: 0}
+    _sprites:
+    - {fileID: 21300000, guid: 5d67a4659cef6814b86c80f5cae14bca, type: 3}
+    - {fileID: 21300000, guid: 3f2fcdb14fa1cc546918a83bb8293221, type: 3}
+    - {fileID: 21300000, guid: a4be1428b939b494cb3e10afe27c6aa1, type: 3}
+    - {fileID: 21300000, guid: ad961158ebc324943b500b8940164c4a, type: 3}
+    - {fileID: 21300000, guid: eef6f8f281ddd504fbd9944dcf848688, type: 3}
+  - _name: water
+    _type: 1
+    _cost: 2
+    _layer: 0
+    _prefab: {fileID: 0}
+    _sprites:
+    - {fileID: 21300000, guid: d734cc622aa823b47ad35253b27c8eb5, type: 3}
+    - {fileID: 21300000, guid: 2add511042d8ee64a88e94903f1e108b, type: 3}
+    - {fileID: 21300000, guid: 59908d45d81d57a418d8c52a906c3dde, type: 3}
+  - _name: Decor0
     _type: 2
     _cost: 0
     _layer: 0
-    _sprites: []
+    _prefab: {fileID: 0}
+    _sprites:
+    - {fileID: 21300000, guid: e55aaea859a486447b0d36a9691e5215, type: 3}
+    - {fileID: 21300000, guid: d504e30025e0d374094e33516676996d, type: 3}
+    - {fileID: 21300000, guid: a340a131df3718a478f87aefcf3ba39a, type: 3}
+    - {fileID: 21300000, guid: 395b4f163c4f2694ebaf2f55f5e90823, type: 3}
+    - {fileID: 21300000, guid: 972d378d16d6cda4cb9ec513a20b1acd, type: 3}
   - _name: target_0
     _type: 3
     _cost: 0
     _layer: 1
+    _prefab: {fileID: 0}
     _sprites:
     - {fileID: 21300000, guid: 8dfe0d30740508d4695337efc003da6b, type: 3}

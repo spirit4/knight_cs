@@ -39,8 +39,6 @@ namespace Assets.Scripts.Core
 
         private void Awake()
         {
-            var managerBg = new ManagerBg(this);
-
             JSONRes.Init();
             new Model();
             _grid = Model.Grid;
@@ -55,7 +53,7 @@ namespace Assets.Scripts.Core
             _achController = new AchievementController(this, _achConfig);
             _path = new PathKeeper();
 
-            _level = new Level(this, managerBg,_entityConfig);
+            _level = new Level(this.transform,_entityConfig);
             _hero = _level.Hero;
 
             GameEvents.HeroReachedHandlers += HeroReachedHandler;
