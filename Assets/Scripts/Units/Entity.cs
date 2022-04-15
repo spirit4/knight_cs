@@ -11,6 +11,8 @@ namespace Assets.Scripts.Units
             water,
             Decor,//case is important for now
             target_0,
+            pine,
+            stone,
         }
 
         public enum Cost : int

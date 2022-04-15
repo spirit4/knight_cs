@@ -29,5 +29,10 @@ namespace Assets.Scripts.Units
 
             _view.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index + 20;
         }
+
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            _view.GetComponent<SpriteRenderer>().sprite = spites[Random.Range(0, spites.Length)];
+        }
     }
 }

@@ -33,7 +33,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: d734cc622aa823b47ad35253b27c8eb5, type: 3}
     - {fileID: 21300000, guid: 2add511042d8ee64a88e94903f1e108b, type: 3}
     - {fileID: 21300000, guid: 59908d45d81d57a418d8c52a906c3dde, type: 3}
-  - _name: Decor0
+  - _name: Decor
     _type: 2
     _cost: 0
     _layer: 0
@@ -51,3 +51,21 @@ MonoBehaviour:
     _prefab: {fileID: 0}
     _sprites:
     - {fileID: 21300000, guid: 8dfe0d30740508d4695337efc003da6b, type: 3}
+  - _name: pine
+    _type: 4
+    _cost: 2
+    _layer: 1
+    _prefab: {fileID: 0}
+    _sprites:
+    - {fileID: 21300000, guid: 4acb478ac2d995f45b20c41dd343ab30, type: 3}
+    - {fileID: 21300000, guid: cfafd7e26cf4d884ca24cdd65eebceca, type: 3}
+    - {fileID: 21300000, guid: 254d89ac3e18ac34e99c21eaab41df6e, type: 3}
+    - {fileID: 21300000, guid: 1faaf4de50f70734fa6b05cfc2ca2c73, type: 3}
+  - _name: stone
+    _type: 5
+    _cost: 2
+    _layer: 1
+    _prefab: {fileID: 0}
+    _sprites:
+    - {fileID: 21300000, guid: e1dd103c451c3134ea3d721359c7c176, type: 3}
+    - {fileID: 21300000, guid: 3d0eed43786a9064eb9fbbf54e962f79, type: 3}

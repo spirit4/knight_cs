@@ -64,13 +64,13 @@ namespace Assets.Scripts.Core
                 //    dObject.isStatic = true; 
                 //    break;
 
-                case string x when x.StartsWith(ImagesRes.PINE):
-                case string y when y.StartsWith(ImagesRes.STONE):
-                    dObject.isStatic = true;
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X - 0.03f, this.Y + 0.07f, 0);
-                    this.IsWall = true;
-                    break;
+                //case string x when x.StartsWith(ImagesRes.PINE):
+                //case string y when y.StartsWith(ImagesRes.STONE):
+                //    dObject.isStatic = true;
+                //    dObject.transform.SetParent(container.gameObject.transform);
+                //    dObject.transform.localPosition = new Vector3(this.X - 0.03f, this.Y + 0.07f, 0);
+                //    this.IsWall = true;
+                //    break;
 
                 case ImagesRes.STUMP:
                     dObject.isStatic = true;

@@ -30,6 +30,11 @@ namespace Assets.Scripts.Units
         {
             //empty
         }
+
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            //(this as TileObject).AddView(spites, spriteIndex);
+        }
     }
 }
 
