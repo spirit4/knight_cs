@@ -62,6 +62,7 @@ namespace Assets.Scripts.Achievements
                 tData = triggers[i];
                 _triggers.Add(new Trigger(tData.Type, tData.MaxValue, Progress.AchTriggers[(int)tData.Type]));
                 _triggers[i].TriggerHandler += MaxReachedHandler;
+               // Debug.Log($"atyp = {_achType} ----- tData.Type = {tData.Type}");
             }
         }
 

@@ -44,6 +44,7 @@ namespace Assets.Scripts.Achievements
                 if (!Progress.isUnlocked(i))
                 {
                     aData = config.Achievements[i];
+                    //Debug.Log($"CreateLists {aData.Type}");
                     _achievements[i] = new Achievement(aData.Type, aData.IsAnd, aData.Icon);
                     _achievements[i].Init(aData.Triggers);
                     _achievements[i].UnlockingHandler += Unlock;

@@ -40,11 +40,10 @@ namespace Assets.Scripts.Achievements
     public class AchInput
     {
         [SerializeField] [HideInInspector] private string _name;
+        [SerializeField] private Achievement.AchType _type;
         [SerializeField] private List<TriggerInput> _triggers;
         [SerializeField] private bool _isAnd = true; //&& or ||
         [SerializeField] private Sprite _icon;
-
-        private Achievement.AchType _type;
 
         public List<TriggerInput> Triggers { get => _triggers; }
         public Sprite Icon { get => _icon; }
