@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using System;
 using System.Collections.Generic;
@@ -55,42 +56,6 @@ namespace Assets.Scripts.Core
 
             switch (type)
             {
-                //case ImagesRes.GRASS:
-                //    this.IsWall = false;
-                //    dObject.isStatic = true;
-                //    break;
-
-                //case ImagesRes.WATER:
-                //    dObject.isStatic = true; 
-                //    break;
-
-                //case string x when x.StartsWith(ImagesRes.PINE):
-                //case string y when y.StartsWith(ImagesRes.STONE):
-                //    dObject.isStatic = true;
-                //    dObject.transform.SetParent(container.gameObject.transform);
-                //    dObject.transform.localPosition = new Vector3(this.X - 0.03f, this.Y + 0.07f, 0);
-                //    this.IsWall = true;
-                //    break;
-
-                case ImagesRes.STUMP:
-                    dObject.isStatic = true;
-                    this.IsWall = true;
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.06f, 0);
-                    break;
-
-                case ImagesRes.BRIDGE + "0":
-                    dObject.isStatic = true;
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y, 0);
-                    this.IsWall = false;
-                    break;
-                case ImagesRes.BRIDGE + "1":
-                    dObject.isStatic = true;
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X - 0.03f, this.Y + 0.04f, 0);
-                    this.IsWall = false;
-                    break;
 
                 case ImagesRes.SPIKES + "0":
                     dObject.transform.SetParent(container.gameObject.transform);
@@ -105,17 +70,6 @@ namespace Assets.Scripts.Core
                     dObject.transform.SetParent(container.gameObject.transform);
                     dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.16f);
                     break;
-
-                case ImagesRes.EXIT:
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.13f);
-                    break;
-
-                //case string y when y.StartsWith(ImagesRes.DECOR):
-                //    dObject.transform.SetParent(container.gameObject.transform);
-                //    var point = GridUtils.GetUnityPoint(_localX, _localY);
-                //    dObject.transform.localPosition = new Vector3(point.x - 0.15f, point.y + 0.19f);
-                //    break;
 
                 default:
                     Debug.Log(type + " ==================== default in Tile ============================");
@@ -179,10 +133,15 @@ namespace Assets.Scripts.Core
             return _types.Contains(type);
         }
 
-        public bool IsContainTypes(string type)
+        public bool IsContainTypes(string type)//TODO delete it
         {
             string str = String.Join(",", _types);
             return str.Contains(type);
+        }
+        public bool IsContainTypes(Entity.Type type)
+        {
+            string str = String.Join(",", _types);
+            return str.Contains(type.ToString());
         }
 
         public string GetConcreteType(string type)

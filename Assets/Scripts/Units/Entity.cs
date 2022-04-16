@@ -13,6 +13,10 @@ namespace Assets.Scripts.Units
             target_0,
             pine,
             stone,
+            star,
+            stump,
+            brige,//artist's spelling
+            exit,
         }
 
         public enum Cost : int
@@ -32,9 +36,14 @@ namespace Assets.Scripts.Units
         {
             _type = config.Type;
 
+            CreateView(config.Layer.ToString());
+        }
+
+        public virtual void CreateView(string layer)//TODO name better
+        {
             _view = new GameObject(_type.ToString());
             _view.AddComponent<SpriteRenderer>();
-            _view.GetComponent<SpriteRenderer>().sortingLayerName = config.Layer.ToString();
+            _view.GetComponent<SpriteRenderer>().sortingLayerName = layer;
             _view.SetActive(false);
         }
 

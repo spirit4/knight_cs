@@ -53,6 +53,7 @@ namespace Assets.Scripts.Achievements
 
         private void Unlock(Achievement ach)
         {
+            Debug.Log($"Unlock {ach.Type}");
             ach.UnlockingHandler -= Unlock;
 
             Progress.Achievements[ach.TypeInt] = 1;

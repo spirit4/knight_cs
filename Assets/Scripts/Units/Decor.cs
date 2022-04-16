@@ -33,7 +33,10 @@ namespace Assets.Scripts.Units
 
         public override void AddView(Sprite[] spites, int spriteIndex)
         {
+            //this line crushes Unity
             //(this as TileObject).AddView(spites, spriteIndex);
+
+            _view.GetComponent<SpriteRenderer>().sprite = spites[spriteIndex];
         }
     }
 }

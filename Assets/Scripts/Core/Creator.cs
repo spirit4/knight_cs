@@ -28,8 +28,12 @@ namespace Assets.Scripts.Core
                 {Entity.Type.water,  typeof(Water) },
                 {Entity.Type.Decor,  typeof(Decor) },
                 {Entity.Type.target_0,  typeof(PathPoint) },
-                {Entity.Type.pine,  typeof(StaticWall) },
-                {Entity.Type.stone,  typeof(StaticWall) },
+                {Entity.Type.pine,  typeof(StaticObject) },
+                {Entity.Type.stone,  typeof(StaticObject) },
+                {Entity.Type.stump,  typeof(StaticObject) },
+                {Entity.Type.brige,  typeof(StaticObject) },
+                {Entity.Type.exit,  typeof(StaticObject) },
+                {Entity.Type.star,  typeof(Star) },
             };
 
         //TODO if method list repeat, use sterategy

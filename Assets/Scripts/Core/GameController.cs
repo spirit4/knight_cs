@@ -77,7 +77,7 @@ namespace Assets.Scripts.Core
 
         private void GetTrapHandler()
         {
-            StartCoroutine(HideActors(100, null, true));
+            StartCoroutine(HideActors(0.1f, null, true));
             ShowBoom();
         }
 
@@ -254,7 +254,7 @@ namespace Assets.Scripts.Core
                             else if (pair.Value is TowerArrow)
                                 GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByArrow);
 
-                            StartCoroutine(HideActors(100, pair.Value, true));
+                            StartCoroutine(HideActors(0.1f, pair.Value, true));
                             _hero.HeroState = Hero.DEATH;
                             ShowBoom();
                         }
@@ -262,7 +262,7 @@ namespace Assets.Scripts.Core
                         {
                             GameEvents.AchTriggered(Trigger.TriggerType.MonsterDead);
 
-                            StartCoroutine(HideActors(100, pair.Value, false)); //killing the monster
+                            StartCoroutine(HideActors(0.1f, pair.Value, false)); //killing the monster
                             ShowBoom(ImagesRes.A_ATTACK_BOOM);
                         }
                         break;

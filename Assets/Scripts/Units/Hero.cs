@@ -25,9 +25,9 @@ namespace Assets.Scripts.Units
         private const float MARGIN_Y = 0.65f;
 
         private int _heroState;
-        private bool _hasShield = false;
-        private bool _hasSword = false;
-        private bool _hasHelmet = false;
+        //private bool _hasShield = false;
+        //private bool _hasSword = false;
+        //private bool _hasHelmet = false;
 
         private GameObject _inside;
 
@@ -37,9 +37,9 @@ namespace Assets.Scripts.Units
         public bool HasHelmet { get => _hasHelmet; }
 
         //debug
-        //private bool _hasShield = true;
-        //private bool _hasSword = true;
-        //private bool _hasHelmet = true;
+        private bool _hasShield = true;
+        private bool _hasSword = true;
+        private bool _hasHelmet = true;
 
         public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
         {
@@ -115,7 +115,7 @@ namespace Assets.Scripts.Units
             {
                 currentIndex += step;
 
-                if (_grid[currentIndex].IsContainTypes(ImagesRes.STAR) || _grid[currentIndex].IsContainType(ImagesRes.TRAP))
+                if (_grid[currentIndex].IsContainTypes(Entity.Type.star) || _grid[currentIndex].IsContainType(ImagesRes.TRAP))
                 {
                     _index = currentIndex;
                     _path.Clear();
@@ -149,7 +149,7 @@ namespace Assets.Scripts.Units
             if (_heroState == Hero.DEATH)
                 return;
 
-            if (_grid[_index].IsContainTypes(ImagesRes.STAR))
+            if (_grid[_index].IsContainTypes(Entity.Type.star))
             {
                 string type = _grid[_index].GetConcreteType(ImagesRes.STAR);
                 int index = _grid[_index].Types.IndexOf(type);

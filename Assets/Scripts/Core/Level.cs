@@ -74,7 +74,7 @@ namespace Assets.Scripts.Core
                             continue;
                         }
 
-                        grid[index].AddType(generalType);//TODO general or specific?
+                        grid[index].AddType(types[j]);//TODO  specific!!!?
                         grid[index].AddObject(entity.View);
                         
 
@@ -123,32 +123,6 @@ namespace Assets.Scripts.Core
                     grid[index].AddObject(gameObject);
                     break;
 
-                case string x when x.StartsWith(ImagesRes.STAR + 0): //helmet
-                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Helmet"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(_container.gameObject.transform);
-                    new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.03f, grid[index].Y - 0.07f);
-                    grid[index].AddType(type);
-                    grid[index].AddObject(gameObject);
-                    break;
-
-                case string x when x.StartsWith(ImagesRes.STAR + 1): //shield
-                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Shield"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(_container.gameObject.transform);
-                    new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.03f, grid[index].Y + 0.05f, 0);
-                    grid[index].AddType(type);
-                    grid[index].AddObject(gameObject);
-                    break;
-
-                case string x when x.StartsWith(ImagesRes.STAR + 2): //sword
-                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Sword"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(_container.gameObject.transform);
-                    new Star(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].X + 0.01f, grid[index].Y + 0.15f, 0);
-                    grid[index].AddType(type);
-                    grid[index].AddObject(gameObject);
-                    break;
 
                 case ImagesRes.TRAP:
                     gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -179,13 +153,6 @@ namespace Assets.Scripts.Core
                     _items.Add(spikes);
                     break;
 
-                //case string x when x.StartsWith(ImagesRes.DECOR):
-                    //grid[index].AddLocalCoordinates(node[type][0], node[type][1]);
-                    //gameObject = grid[index].Add(type, _container, grid);
-                    //_decorBg.Add(gameObject);
-
-
-                  //  break;
 
                 case ImagesRes.MONSTER:
                     Monster monster;
@@ -210,13 +177,6 @@ namespace Assets.Scripts.Core
                     monster = new Monster(type, index, id, view, _container);
                     _units.Add(index, monster);
                     break;
-
-                //case ImagesRes.GRASS:
-                //    break;
-                //case ImagesRes.WATER:
-                //    gameObject = grid[index].Add(type, _container, grid);
-                //    _tilesBg.Add(gameObject);
-                //    break;
 
                 default:
                     Debug.Log(type + " ========= default in Level ============");

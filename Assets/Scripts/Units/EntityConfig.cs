@@ -37,14 +37,14 @@ namespace Assets.Scripts.Units
         [SerializeField] private Entity.Type _type;
         [SerializeField] private Entity.Cost _cost;
         [SerializeField] private SortingLayer _layer;
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private GameObject[] _prefabs;
         [SerializeField] private Sprite[] _sprites;
 
         public Entity.Type Type { get => _type; }
         public Entity.Cost Cost { get => _cost; }
         public Sprite[] Sprites { get => _sprites; }
         public SortingLayer Layer { get => _layer; }
-        public GameObject Prefab { get => _prefab; }
+        public GameObject[] Prefabs { get => _prefabs; }
 
         public void Update()
         {

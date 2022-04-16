@@ -17,7 +17,7 @@ MonoBehaviour:
     _type: 0
     _cost: 1
     _layer: 0
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: 5d67a4659cef6814b86c80f5cae14bca, type: 3}
     - {fileID: 21300000, guid: 3f2fcdb14fa1cc546918a83bb8293221, type: 3}
@@ -28,7 +28,7 @@ MonoBehaviour:
     _type: 1
     _cost: 2
     _layer: 0
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: d734cc622aa823b47ad35253b27c8eb5, type: 3}
     - {fileID: 21300000, guid: 2add511042d8ee64a88e94903f1e108b, type: 3}
@@ -37,7 +37,7 @@ MonoBehaviour:
     _type: 2
     _cost: 0
     _layer: 0
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: e55aaea859a486447b0d36a9691e5215, type: 3}
     - {fileID: 21300000, guid: d504e30025e0d374094e33516676996d, type: 3}
@@ -48,14 +48,14 @@ MonoBehaviour:
     _type: 3
     _cost: 0
     _layer: 1
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: 8dfe0d30740508d4695337efc003da6b, type: 3}
   - _name: pine
     _type: 4
     _cost: 2
     _layer: 1
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: 4acb478ac2d995f45b20c41dd343ab30, type: 3}
     - {fileID: 21300000, guid: cfafd7e26cf4d884ca24cdd65eebceca, type: 3}
@@ -65,7 +65,38 @@ MonoBehaviour:
     _type: 5
     _cost: 2
     _layer: 1
-    _prefab: {fileID: 0}
+    _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: e1dd103c451c3134ea3d721359c7c176, type: 3}
     - {fileID: 21300000, guid: 3d0eed43786a9064eb9fbbf54e962f79, type: 3}
+  - _name: star
+    _type: 6
+    _cost: 1
+    _layer: 1
+    _prefabs:
+    - {fileID: 8400193240798076550, guid: cfd753a9b1c14e3438bf9ba08e3de3f6, type: 3}
+    - {fileID: 2976782799005639780, guid: a5416848d9dcbc54bab1b8ca552c3554, type: 3}
+    - {fileID: 1291146894538305305, guid: a745f88d1bf692d4494a81646cc244fc, type: 3}
+    _sprites: []
+  - _name: stump
+    _type: 7
+    _cost: 2
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: c91c93c3c1e8c41419586235809a7c2a, type: 3}
+  - _name: brige
+    _type: 8
+    _cost: 1
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: 5b96c1c86142a7c4facf2cababdc9e81, type: 3}
+    - {fileID: 21300000, guid: 756c5addd520e2644a26d11c703e6620, type: 3}
+  - _name: exit
+    _type: 9
+    _cost: 1
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: 280e4c012f2ddb94db2714701b853a4f, type: 3}

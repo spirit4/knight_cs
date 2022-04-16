@@ -15,7 +15,8 @@ namespace Assets.Scripts.Units
         public override void BindToTile(Tile tile)
         {
             base.BindToTile(tile);
-            _view.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index + 1;
+            //under the grass(TileObject)
+            _view.GetComponent<SpriteRenderer>().sortingOrder = _view.GetComponent<SpriteRenderer>().sortingOrder - 19;
         }
     }
 }
