@@ -4,6 +4,7 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,9 +26,9 @@ namespace Assets.Scripts.Units
         private const float MARGIN_Y = 0.65f;
 
         private int _heroState;
-        //private bool _hasShield = false;
-        //private bool _hasSword = false;
-        //private bool _hasHelmet = false;
+        private bool _hasShield = false;
+        private bool _hasSword = false;
+        private bool _hasHelmet = false;
 
         private GameObject _inside;
 
@@ -37,9 +38,9 @@ namespace Assets.Scripts.Units
         public bool HasHelmet { get => _hasHelmet; }
 
         //debug
-        private bool _hasShield = true;
-        private bool _hasSword = true;
-        private bool _hasHelmet = true;
+        //private bool _hasShield = true;
+        //private bool _hasSword = true;
+        //private bool _hasHelmet = true;
 
         public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
         {
@@ -115,7 +116,7 @@ namespace Assets.Scripts.Units
             {
                 currentIndex += step;
 
-                if (_grid[currentIndex].IsContainTypes(Entity.Type.star) || _grid[currentIndex].IsContainType(ImagesRes.TRAP))
+                if (_grid[currentIndex].IsContainTypes(Entity.Type.star) || _grid[currentIndex].IsContainType(Entity.Type.trap))
                 {
                     _index = currentIndex;
                     _path.Clear();
@@ -159,14 +160,14 @@ namespace Assets.Scripts.Units
                 dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(type));
             }
 
-            else if (_grid[_index].IsContainType(ImagesRes.TRAP))
+            else if (_grid[_index].IsContainType(Entity.Type.trap))
             {
-                GameObject trap = _grid[_index].GetObject(ImagesRes.TRAP);
-
-                Animator anim = trap.GetComponent<Animator>();
-                anim.enabled = true;
-                trap.GetComponent<SpriteRenderer>().DOFade(1, 0.15f).SetEase(Ease.OutQuad);
-                DOTween.Sequence().AppendInterval(0.15f).AppendCallback(TrapTweenComplete);
+                Trap trap = _grid[_index].GetEntity(Entity.Type.trap) as Trap;
+                trap.Activate();
+                //Animator anim = trap.GetComponent<Animator>();
+                //anim.enabled = true;
+                
+                DOTween.Sequence().AppendInterval(0.4f).AppendCallback(TrapTweenComplete);
 
                 GameEvents.AnimationEndedHandlers += TrapAnimationComplete;
             }
@@ -194,7 +195,6 @@ namespace Assets.Scripts.Units
             GameEvents.HeroReached();
         }
 
-
         private void StarTweenComplete(string type)
         {
             _grid[_index].Remove(type);
@@ -205,9 +205,9 @@ namespace Assets.Scripts.Units
         {
             GameEvents.AnimationEndedHandlers -= TrapAnimationComplete;
 
-            Animator anim = _grid[_index].GetObject(ImagesRes.TRAP).GetComponent<Animator>();
-            anim.enabled = false;
-            _grid[_index].Remove(ImagesRes.TRAP);
+            Trap trap = _grid[_index].GetEntity(Entity.Type.trap) as Trap;
+            trap.Stop();
+            _grid[_index].Remove(ImagesRes.TRAP);//TODO delete it
         }
 
         private void TrapTweenComplete()

@@ -14,8 +14,10 @@ namespace Assets.Scripts.Core
         public float Y;
         public int Index;
 
-        private List<GameObject> _objects;
+        private List<Entity> _entities;
+        private List<GameObject> _objects;//TODO remove it
         private List<string> _types;
+        //private List<Entity.Type> _eTypes;
 
         private bool _isWall = true;//for pathfinder
         private bool _isExpensive = false;//for pathfinder for mill
@@ -25,60 +27,10 @@ namespace Assets.Scripts.Core
             this.X = x;
             this.Y = y;
             Index = index;
+            _entities = new List<Entity>();
             _objects = new List<GameObject>();
             _types = new List<string>();
-        }
-
-        public GameObject Add(string type, Component container, Tile[] grid = null)
-        {
-            _types.Add(type);
-            GameObject dObject = this.GetAlignedGameObject(type, container);
-
-            _objects.Add(dObject);
-
-            //everything by default
-            if (type != ImagesRes.GRASS && type != ImagesRes.WATER && type.IndexOf(ImagesRes.DECOR) == -1)
-            {
-                dObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                dObject.GetComponent<SpriteRenderer>().sortingOrder = Index;
-            }
-
-            return dObject;
-        }
-
-        private GameObject GetAlignedGameObject(string type, Component container)
-        {
-            GameObject dObject = new GameObject();
-            dObject.AddComponent<SpriteRenderer>();
-            dObject.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(type);
-
-            dObject.name = type;
-
-            switch (type)
-            {
-
-                case ImagesRes.SPIKES + "0":
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.06f);
-                    break;
-
-                case ImagesRes.BOULDER:
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.13f);
-                    break;
-                case ImagesRes.TOWER:
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y + 0.16f);
-                    break;
-
-                default:
-                    Debug.Log(type + " ==================== default in Tile ============================");
-                    dObject.transform.SetParent(container.gameObject.transform);
-                    dObject.transform.localPosition = new Vector3(this.X, this.Y);
-                    break;
-            }
-
-            return dObject;
+            //_eTypes = new List<Entity.Type>();
         }
 
         public void Remove(string type)
@@ -107,12 +59,30 @@ namespace Assets.Scripts.Core
 
         public void AddObject(GameObject gameObject)
         {
-            int index = _objects.IndexOf(gameObject);
-
-            if (index == -1)
-            {
+            if (!_objects.Contains(gameObject))
                 _objects.Add(gameObject);
-            }
+        }
+
+        public void AddEntity(Entity entity)//TODO keep only this and similar
+        {
+            if (!_entities.Contains(entity))
+                _entities.Add(entity);
+        }
+
+        public Entity GetEntity(Entity.Type type)
+        {
+            return _entities.Find(entity => entity.Kind == type);
+        }
+
+        public Entity GetEntity(string type)//TODO make it enum
+        {
+            int index = _types.IndexOf(type);
+
+            if (index != -1)
+                return _entities[index];
+
+            Debug.Log("UNKNOWN TYPE:" + type);
+            return null;
         }
 
         public GameObject GetObject(string type)
@@ -128,9 +98,25 @@ namespace Assets.Scripts.Core
             return null;
         }
 
+        public bool IsContainType(Entity.Type type)
+        {
+            if (_entities.Find(entity => entity.Kind == type) != null)
+                return true;
+
+            return false;
+        }
+
         public bool IsContainType(string type)
         {
             return _types.Contains(type);
+        }
+
+        public bool IsContainDirection()
+        {
+            if (_entities.Find(entity => entity is Direction) != null)
+                return true;
+
+            return false;
         }
 
         public bool IsContainTypes(string type)//TODO delete it

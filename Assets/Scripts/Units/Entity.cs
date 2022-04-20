@@ -17,6 +17,13 @@ namespace Assets.Scripts.Units
             stump,
             brige,//artist's spelling
             exit,
+            mill,
+            spikes,
+            tower,
+            arrow,
+            boulder,
+            boulderMark,
+            trap,
         }
 
         public enum Cost : int
@@ -31,6 +38,7 @@ namespace Assets.Scripts.Units
         protected Type _type;
 
         public GameObject View { get => _view; }
+        public Type Kind { get => _type; }
 
         public Entity(EntityInput config)
         {

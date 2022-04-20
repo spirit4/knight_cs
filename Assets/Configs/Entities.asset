@@ -100,3 +100,53 @@ MonoBehaviour:
     _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: 280e4c012f2ddb94db2714701b853a4f, type: 3}
+  - _name: mill
+    _type: 10
+    _cost: 3
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: 7c564688f8009874999322e2a0a2fb1b, type: 3}
+    - {fileID: 21300000, guid: 7382f166896baec459634615f1e92560, type: 3}
+  - _name: spikes
+    _type: 11
+    _cost: 2
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: 3be8a13358e5a2d4c8367f568b8d4c11, type: 3}
+    - {fileID: 21300000, guid: 0abfcddbbf075e142ad1864e52c6de9c, type: 3}
+  - _name: tower
+    _type: 12
+    _cost: 2
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: df7e66eff6c90a545a4148f88b6d4774, type: 3}
+    - {fileID: 21300000, guid: 3465aa81ac1268a498dcb68e29d6d247, type: 3}
+  - _name: arrow
+    _type: 13
+    _cost: 0
+    _layer: 1
+    _prefabs: []
+    _sprites: []
+  - _name: boulder
+    _type: 14
+    _cost: 2
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: a4e38d308eb5cee4b96c8a030cc8d4b0, type: 3}
+  - _name: boulderMark
+    _type: 15
+    _cost: 0
+    _layer: 1
+    _prefabs: []
+    _sprites: []
+  - _name: trap
+    _type: 16
+    _cost: 1
+    _layer: 1
+    _prefabs:
+    - {fileID: 7694917860546739356, guid: 75912504f6f384c4188c2ca9e6f1e6b8, type: 3}
+    _sprites: []

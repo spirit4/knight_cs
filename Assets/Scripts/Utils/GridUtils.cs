@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using Assets.Scripts.Units;
 using UnityEngine;
 
 namespace Assets.Scripts.Utils
@@ -48,6 +49,28 @@ namespace Assets.Scripts.Utils
             }
 
             return -1;
+        }
+
+        public static Tile FindDirection(Tile[] grid, int index)
+        {
+            if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].IsContainDirection())
+            {
+                return grid[index + 1];
+            }
+            else if (index - 1 >= 0 && grid[index - 1].IsContainDirection())
+            {
+                return grid[index - 1];
+            }
+            else if (index + Config.WIDTH < Config.WIDTH * Config.HEIGHT && grid[index + Config.WIDTH].IsContainDirection())
+            {
+                return grid[index + Config.WIDTH];
+            }
+            else if (index - Config.WIDTH >= 0 && grid[index - Config.WIDTH].IsContainDirection())
+            {
+                return grid[index - Config.WIDTH];
+            }
+
+            return null;
         }
     }
 

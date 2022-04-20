@@ -10,11 +10,20 @@ namespace Assets.Scripts.Units
     {
         protected Tile _tile; //contains index
 
-        private bool _isWall = false;//for pathfinder
+        protected bool _isWall = false;//for pathfinder
         private bool _isExpensive = false;//for pathfinder for mill
+
+        protected bool _isActive = false;
+
+        public bool IsActive { get => _isActive; }
+        public int Index { get => _tile.Index; }
+
+        protected EntityInput _config;
 
         public TileObject(EntityInput config) : base(config)
         {
+            _config = config;
+
             if (config.Cost == Cost.Wall)//TODO refactor it in pathfinder first
                 _isWall = true;
             else if (config.Cost == Cost.Expensive)
@@ -34,5 +43,13 @@ namespace Assets.Scripts.Units
         {
             _view.GetComponent<SpriteRenderer>().sprite = spites[Random.Range(0, spites.Length)];
         }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+            _config = null;
+        }
+
+
     }
 }

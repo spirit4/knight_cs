@@ -8,7 +8,8 @@ namespace Assets.Scripts.UnityEditor
 
         public void AnimationCompleteHandler()
         {
-            GameEvents.AnimationEnded(); //basically it's a pecular smoke detector
+            //Debug.Log(this.name);
+            GameEvents.AnimationEnded(); 
         }
 
     }

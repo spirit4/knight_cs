@@ -5,6 +5,7 @@ using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
 using Assets.Scripts.Utils.Display;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Assets.Scripts.Core
 
         private Level _level;
         private Hero _hero;
-        private MillPress _mill;
+        //private MillPress _mill;
 
         private PathKeeper _path;
         private AchievementController _achController;
@@ -53,7 +54,7 @@ namespace Assets.Scripts.Core
             _achController = new AchievementController(this, _achConfig);
             _path = new PathKeeper();
 
-            _level = new Level(this.transform,_entityConfig);
+            _level = new Level(this.transform, _entityConfig);
             _hero = _level.Hero;
 
             GameEvents.HeroReachedHandlers += HeroReachedHandler;
@@ -65,7 +66,7 @@ namespace Assets.Scripts.Core
             _targetMark = new TargetMark(this.gameObject);
 
             _units = _level.Units;
-            _mill = _level.Mill;
+            //_mill = _level.Mill;
             _items = _level.Items;
 
             Text level = GameObject.Find("Canvas/PanelGameUI/ImageSpear1/LevelBoard/TextLevel").GetComponent<Text>();
@@ -73,7 +74,6 @@ namespace Assets.Scripts.Core
 
             CreateHint(true);
         }
-
 
         private void GetTrapHandler()
         {
@@ -109,7 +109,7 @@ namespace Assets.Scripts.Core
                 List<int> path = _path.Pathfinder.Path;
                 if (_grid[index].IsContainType(ImagesRes.MILL))
                 {
-                    _mill.Activate();
+                    (_grid[index].GetEntity(ImagesRes.MILL) as MillPress).Activate();
                     path.RemoveAt(path.Count - 1);
                 }
 
@@ -128,11 +128,12 @@ namespace Assets.Scripts.Core
                             continue;
 
                         arrow = pair.Value as TowerArrow;
-                        if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
-                        {
-                            _isStartArrowCheck = true;
-                            break;
-                        }
+                        //TODO position instead of index?
+                        //if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
+                        //{
+                        //    _isStartArrowCheck = true;
+                        //    break;
+                        //}
                     }
 
                     _hero.MoveToCell(path);
@@ -145,10 +146,7 @@ namespace Assets.Scripts.Core
             int len = _items.Count;
             for (int i = 0; i < len; i++)
             {
-                if (!(_items[i] is Tower))
-                {
-                    _items[i].Activate();
-                }
+                _items[i].Activate();
             }
         }
 
@@ -165,12 +163,14 @@ namespace Assets.Scripts.Core
             if (Progress.CurrentLevel == 0 && _hero.Index == 54) //to guide
                 CreateHintAfterAction();
 
+            int millIndex = GridUtils.FindAround(_grid, _hero.Index, ImagesRes.MILL);
 
-            if (GridUtils.FindAround(_grid, _hero.Index, ImagesRes.MILL) != -1)
+            if (millIndex != -1)
             {
-                if (_mill.State != Unit.ON)
+                MillPress mill = _grid[millIndex].GetEntity(ImagesRes.MILL) as MillPress;
+                if (!mill.IsActive)
                 {
-                    _mill.StartRotateMill();
+                    mill.StartRotateMill();
                     ActivateItems();
                 }
             }
@@ -279,7 +279,7 @@ namespace Assets.Scripts.Core
             {
                 unit.Stop();
                 _hero.Stop();
-                unit.View.SetActive(false);
+                unit.View.SetActive(false);// TODO withdraw
                 (unit as IDestroyable).Destroy();
             }
 
@@ -354,10 +354,10 @@ namespace Assets.Scripts.Core
             _hero = null;
             _level = null;
 
-            if (_mill != null)
-                _mill.Destroy();
+            //if (_mill != null)
+            //    _mill.Destroy();
 
-            _mill = null;
+            //_mill = null;
         }
 
     }

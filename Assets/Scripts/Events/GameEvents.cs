@@ -39,7 +39,7 @@ namespace Assets.Scripts.Events
             HeroOneCellAwayHandlers = null;
             HeroTrappedHandlers = null;
 
-            AnimationEndedHandlers = null;
+            AnimationEndedHandlers = null;//TODO normal manager with sender object
             LevelCompleteHandlers = null;
             GameRestartHandlers = null;
 

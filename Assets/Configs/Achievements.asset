@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _achievements:
   - _name: CatchArrow
+    _type: 0
     _triggers:
     - _name: HeroDeadByArrow
       _type: 1
@@ -21,6 +22,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: a388fce8e7c953b41b5df31fb52e67a3, type: 3}
   - _name: KillMonster
+    _type: 1
     _triggers:
     - _name: MonsterDead
       _type: 3
@@ -28,6 +30,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: 42a275d98940f2045b1dc8b928649786, type: 3}
   - _name: NoTakeItems
+    _type: 2
     _triggers:
     - _name: LevelWithoutItems
       _type: 4
@@ -35,6 +38,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: 543e37ed494f5904a8b58830d923a00b, type: 3}
   - _name: TakeAllItems
+    _type: 3
     _triggers:
     - _name: HelmetTaked
       _type: 6
@@ -48,6 +52,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: b97a113e35d31e5409beed3e7259b833, type: 3}
   - _name: StepOnTrap
+    _type: 4
     _triggers:
     - _name: HeroDeadByTrap
       _type: 2
@@ -55,6 +60,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: d995b83f11af2534e8151fcc485b4115, type: 3}
   - _name: LaunchMill
+    _type: 5
     _triggers:
     - _name: MillLaunched
       _type: 5
@@ -62,6 +68,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: cd8cb35a4d9e37d4182bae219e6102e1, type: 3}
   - _name: TenHelmets
+    _type: 6
     _triggers:
     - _name: HelmetTaked
       _type: 6
@@ -69,6 +76,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: 17506ac788cbea34a81b9fd57dfe90a4, type: 3}
   - _name: FirstDeath
+    _type: 7
     _triggers:
     - _name: HeroDeadByMonster
       _type: 0
@@ -82,6 +90,7 @@ MonoBehaviour:
     _isAnd: 0
     _icon: {fileID: 21300000, guid: e7b62a05d907f3b4ab4333fa1fd28536, type: 3}
   - _name: TenShields
+    _type: 8
     _triggers:
     - _name: ShieldTaked
       _type: 7
@@ -89,6 +98,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: bee22cfbdd5aa9547924ecd5653b575b, type: 3}
   - _name: TenLevelsWithoutDeath
+    _type: 9
     _triggers:
     - _name: LevelWithoutDeath
       _type: 9
@@ -96,6 +106,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: 1a028bd3860dec24288fa1c2330834b7, type: 3}
   - _name: TenSwords
+    _type: 10
     _triggers:
     - _name: SwordTaked
       _type: 8
@@ -103,6 +114,7 @@ MonoBehaviour:
     _isAnd: 1
     _icon: {fileID: 21300000, guid: 13667f92f31869a489d735fce02c3ad3, type: 3}
   - _name: FastReaction
+    _type: 11
     _triggers:
     - _name: AwayFromArrow
       _type: 10

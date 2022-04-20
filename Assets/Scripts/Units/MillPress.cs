@@ -7,37 +7,32 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class MillPress : Unit
+    public class MillPress : TileObject
     {
         private GameObject _vane;
 
-        public MillPress(string type, int index, GameObject view, Component container) : base(index, type, view)
+        public MillPress(EntityInput config) : base(config)
         {
-            _state = Unit.OFF;
+            
+        }
 
-            _grid = Model.Grid;
-            _x = _grid[index].X;
-            _y = _grid[index].Y;
-
-            view.AddComponent<SpriteRenderer>();
-            view.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(type);
-
-            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = index;
-            view.name = type;
-
-            view.transform.SetParent(container.gameObject.transform);
-            view.transform.localPosition = new Vector3(_grid[index].X, _grid[index].Y + 0.22f);
+        public override void BindToTile(Tile tile)
+        {
+            base.BindToTile(tile);
+            _view.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index;
 
             AddVane();
         }
 
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            _view.GetComponent<SpriteRenderer>().sprite = spites[0];
+        }
+
         public void Activate()
         {
-            if (_state != Unit.OFF)
+            if (_isActive)
                 return;
-
-            _state = Unit.STARTED;
 
             _view.transform.localScale = new Vector3(1.2f, 1.2f);
             DOTween.Sequence().AppendInterval(0.3f).AppendCallback(Comeback);
@@ -53,23 +48,23 @@ namespace Assets.Scripts.Units
         {
             _vane = new GameObject("vane");
             _vane.AddComponent<SpriteRenderer>();
-            _vane.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.MILL_VANE);
-            _vane.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            _vane.GetComponent<SpriteRenderer>().sortingOrder = Index + 1;
+            _vane.GetComponent<SpriteRenderer>().sprite = _config.Sprites[1];
+            _vane.GetComponent<SpriteRenderer>().sortingLayerName = _config.Layer.ToString();
+            _vane.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index + 1;
 
             _vane.transform.SetParent(_view.transform);
-            _vane.transform.localPosition = new Vector3(0.02f, 0.28f);
+            _vane.transform.localPosition = new Vector3(0.02f, 0.5f);
             _vane.transform.Rotate(0, 0, -45);
         }
 
         public void StartRotateMill()
         {
-            if (_state == Unit.ON)
+            if (_isActive)
                 return;
 
             GameEvents.AchTriggered(Trigger.TriggerType.MillLaunched);
 
-            _state = Unit.ON;
+            _isActive = true;
             RotateMill();
         }
 
@@ -81,10 +76,9 @@ namespace Assets.Scripts.Units
         public override void Destroy()
         {
             _vane.transform.DOKill();
+            UnityEngine.Object.Destroy(_vane);
             base.Destroy();
-
             _vane = null;
-            _grid = null;
         }
     }
 }

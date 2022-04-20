@@ -1,16 +1,23 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Data;
+﻿using Assets.Scripts.Data;
 using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    class TowerArrow : Unit
+    class TowerArrow : MovingUnit
     {
 
-        public TowerArrow(string type, int index, GameObject view) : base(index, type, view)
+        public TowerArrow(EntityInput config) : base(config)
         {
             
+        }
+
+        public override void CreateView(string layer)
+        {
+            _type = Entity.Type.arrow;
+
+            base.CreateView(layer);
+            _view.GetComponent<SpriteRenderer>().sortingLayerName = EntityInput.SortingLayer.Action.ToString();
         }
 
         public void Shoot(int direction, float speed)
@@ -18,17 +25,13 @@ namespace Assets.Scripts.Units
             if (direction == 1)
             {
                 _view.GetComponent<SpriteRenderer>().flipX = true;
-                _view.transform.DOLocalMoveX(Config.STAGE_W + 0.5f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
+                _view.transform.DOLocalMoveX(Config.STAGE_W + 0.6f, speed).SetEase(Ease.Linear).OnComplete(Withdraw);
             }
             else
             {
-                _view.transform.DOLocalMoveX(-1f, speed).SetEase(Ease.Linear).OnComplete(EndHandler);
+                _view.GetComponent<SpriteRenderer>().flipX = false;
+                _view.transform.DOLocalMoveX(-1.2f, speed).SetEase(Ease.Linear).OnComplete(Withdraw);
             }
-        }
-
-        private void EndHandler()
-        {
-            _view.SetActive(false);
         }
 
         public bool IsShooted()
@@ -36,9 +39,5 @@ namespace Assets.Scripts.Units
             return _view.activeSelf;
         }
 
-        public override void Destroy()
-        {
-            base.Destroy();
-        }
     }
 }

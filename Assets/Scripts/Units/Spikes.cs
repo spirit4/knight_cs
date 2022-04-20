@@ -3,26 +3,37 @@ using Assets.Scripts.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Assets.Scripts.Units
 {
-    public class Spikes : Unit, IActivatable
+    public class Spikes : TileObject, IActivatable
     {
-        public Spikes(string type, int index, GameObject view, Tile tile) : base(index, type, view, tile)
+        public Spikes(EntityInput config) : base(config)
         {
-            tile.IsWall = true;
+
         }
 
-        public void Init(int i = -1, Tile[] grid = null, Dictionary<int, ICollidable> units = null)
+        public override void BindToTile(Tile tile)
         {
-            //empty
+            base.BindToTile(tile);
+            _view.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index;
+        }
+
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            _view.GetComponent<SpriteRenderer>().sprite = spites[0];
         }
 
         public void Activate()
         {
-            _state = Unit.ON;
-            _view.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.SPIKES + "1");
+            _view.GetComponent<SpriteRenderer>().sprite = _config.Sprites[1];
             _tile.IsWall = false;
+            _isWall = false;
         }
 
+        public ICollidable Init(Tile tile)
+        {
+            return null;
+        }
     }
 }

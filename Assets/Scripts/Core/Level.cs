@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Data;
 using Assets.Scripts.Units;
+using Assets.Scripts.Utils;
 using SimpleJSON;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,13 @@ namespace Assets.Scripts.Core
         private Component _container;
 
         private Hero _hero;
-        private MillPress _mill;
-        private Dictionary<int, ICollidable> _units;
-        private List<IActivatable> _items;
 
-        /** <summary>Static Sprites</summary> */
-        private List<GameObject> _tilesBg;
-        /** <summary>Static Sprites</summary> */
-        //private List<GameObject> _decorBg;
+        private Dictionary<int, ICollidable> _units; //TODO make it list
+        private List<IActivatable> _items;
 
         private Creator _creator;
 
         public Hero Hero { get => _hero; }
-        public MillPress Mill { get => _mill;  }
         public Dictionary<int, ICollidable> Units { get => _units; }
         public List<IActivatable> Items { get => _items;  }
         public Creator Creator { get => _creator; }
@@ -76,9 +71,13 @@ namespace Assets.Scripts.Core
 
                         grid[index].AddType(types[j]);//TODO  specific!!!?
                         grid[index].AddObject(entity.View);
-                        
+                        grid[index].AddEntity(entity); //TODO clear 3 these
 
-                        if (cells[i][types[j]] == null)
+                        if (entity is IActivatable)
+                            _items.Add(entity as IActivatable);
+
+
+                            if (cells[i][types[j]] == null)
                             position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
                         else
                             position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates
@@ -92,9 +91,16 @@ namespace Assets.Scripts.Core
 
 
             int len = _items.Count;
+            ICollidable unit;
             for (int i = 0; i < len; i++)
             {
-                _items[i].Init(i, grid, _units);
+                //TODO temp// all have to be TO
+                if(_items[i] is TileObject)
+                {
+                    unit =_items[i].Init(GridUtils.FindDirection(grid, (_items[i] as TileObject).Index));
+                    if (unit != null)
+                        _units.Add(i, unit); // TODO TEMP for arrow
+                }
             }
         }
 
@@ -115,44 +121,15 @@ namespace Assets.Scripts.Core
                     _hero = new Hero(index, gameObject, gObject);
                     break;
 
-                case ImagesRes.MILL:
-                    gameObject = new GameObject();
-                    _mill = new MillPress(type, index, gameObject, _container);
-                    grid[index].IsExpensive = true;
-                    grid[index].AddType(type);
-                    grid[index].AddObject(gameObject);
-                    break;
 
-
-                case ImagesRes.TRAP:
-                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(_container.gameObject.transform);
-                    new Trap(type, index, gameObject);
-                    gameObject.transform.localPosition = new Vector3(grid[index].X, grid[index].Y + 0.03f);
-                    grid[index].AddType(type);
-                    grid[index].AddObject(gameObject);
-                    break;
-
-                case ImagesRes.BOULDER:
-                    Boulder boulder = new Boulder(type, index, grid[index].Add(type, _container, grid), grid[index]);
-                    _items.Add(boulder);
-                    break;
-
-                case ImagesRes.TOWER:
-                    Tower tower = new Tower(type, index, grid[index].Add(type, _container, grid), grid[index], _container);
-                    _items.Add(tower);
-                    break;
-
-                case ImagesRes.BOULDER_MARK:
-                case ImagesRes.ARROW:
-                    grid[index].AddType(type);//for setting the direction
-                    break;
-
-                case ImagesRes.SPIKES + "0":
-                    Spikes spikes = new Spikes(type, index, grid[index].Add(type, _container, grid), grid[index]);
-                    _items.Add(spikes);
-                    break;
-
+                //case ImagesRes.TRAP:
+                //    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                //    gameObject.transform.SetParent(_container.gameObject.transform);
+                //    new Trap(type, index, gameObject);
+                //    gameObject.transform.localPosition = new Vector3(grid[index].X, grid[index].Y + 0.03f);
+                //    grid[index].AddType(type);
+                //    grid[index].AddObject(gameObject);
+                //    break;
 
                 case ImagesRes.MONSTER:
                     Monster monster;
@@ -180,7 +157,7 @@ namespace Assets.Scripts.Core
 
                 default:
                     Debug.Log(type + " ========= default in Level ============");
-                    grid[index].Add(type, _container, grid);
+                    //grid[index].Add(type, _container, grid);
                     break;
             }
 

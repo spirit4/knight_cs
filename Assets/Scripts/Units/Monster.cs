@@ -112,9 +112,10 @@ namespace Assets.Scripts.Units
             //empty
         }
 
-        public void Init(int i, Tile[] grid, Dictionary<int, ICollidable> units = null)
+        public ICollidable Init(Tile tile)
         {
             //empty
+            return null;
         }
 
         public override void Destroy()

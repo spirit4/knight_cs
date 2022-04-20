@@ -7,6 +7,6 @@ namespace Assets.Scripts.Units
     public interface IActivatable
     {
         public void Activate();
-        public void Init(int i, Tile[] grid = null, Dictionary<int, ICollidable> units = null);
+        public ICollidable Init(Tile tile);
     }
 }
