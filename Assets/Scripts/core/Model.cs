@@ -3,7 +3,7 @@ namespace Assets.Scripts.Core
 {
     public class Model
     {
-        private static Tile[] _grid; //not the best way, but fine for now
+        private static Tile[] _grid; //TODO not the best way, but fine for now
 
         public Model()
         {

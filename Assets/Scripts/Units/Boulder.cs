@@ -13,7 +13,7 @@ namespace Assets.Scripts.Units
 
         }
 
-        public ICollidable Init(Tile activeTile)//TODO base class for this?
+        public ICollidable Init(Tile activeTile)
         {
             _activeTile = activeTile;
             return null;
@@ -28,8 +28,8 @@ namespace Assets.Scripts.Units
 
         private void CompleteHandler()
         {
-            _tile.IsWall = false;
-            _activeTile.IsWall = true;
+            _tile.SetCost(Cost.Normal);
+            _activeTile.SetCost(Cost.Wall);
         }
     }
 }

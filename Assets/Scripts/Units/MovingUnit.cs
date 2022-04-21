@@ -22,6 +22,5 @@ namespace Assets.Scripts.Units
             base.Destroy();
         }
 
-        public new string Type { get; }//temp
     }
 }

@@ -27,8 +27,7 @@ namespace Assets.Scripts.Units
         public void Activate()
         {
             _view.GetComponent<SpriteRenderer>().sprite = _config.Sprites[1];
-            _tile.IsWall = false;
-            _isWall = false;
+            _tile.SetCost(Cost.Normal);
         }
 
         public ICollidable Init(Tile tile)

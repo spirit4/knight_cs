@@ -1,14 +1,12 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Units;
+﻿using Assets.Scripts.Units;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
     public class Creator : IDestroyable
     {
-
+        //TODO rename in JSON
         /// <summary>
         /// Naming is such, cause this is how it was serialized in JSON levels once ago
         /// </summary>

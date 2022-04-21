@@ -29,7 +29,7 @@ namespace Assets.Scripts.Utils
             return new Vector2(cellX, -cellY);
         }
 
-        public static int FindAround(Tile[] grid, int index, string type)
+        public static int FindAround(Tile[] grid, int index, Entity.Type type)
         {
             if (index + 1 < Config.WIDTH * Config.HEIGHT && grid[index + 1].IsContainType(type))
             {

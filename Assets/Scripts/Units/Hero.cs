@@ -128,7 +128,7 @@ namespace Assets.Scripts.Units
             {
                 currentIndex += step;
 
-                if (_grid[currentIndex].IsContainTypes(Entity.Type.star) || _grid[currentIndex].IsContainType(Entity.Type.trap))
+                if (_grid[currentIndex].IsContainType(Entity.Type.star) || _grid[currentIndex].IsContainType(Entity.Type.trap))
                 {
                     _index = currentIndex;
                     _path.Clear();
@@ -162,14 +162,14 @@ namespace Assets.Scripts.Units
             if (_heroState == State.Death)
                 return;
 
-            if (_grid[_index].IsContainTypes(Entity.Type.star))
+            if (_grid[_index].IsContainType(Entity.Type.star))
             {
-                string type = _grid[_index].GetConcreteType(ImagesRes.STAR);
-                int index = _grid[_index].Types.IndexOf(type);
+                //string type = _grid[_index].GetConcreteType(ImagesRes.STAR);
+                //int index = _grid[_index].Types.IndexOf(type);
 
-                GameObject dObject = _grid[_index].Objects[index];
+                Star star = _grid[_index].GetEntity(Entity.Type.star) as Star;// _grid[_index].Objects[index];
 
-                dObject.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(type));
+                star.View.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(star.StarType));
             }
 
             else if (_grid[_index].IsContainType(Entity.Type.trap))
@@ -180,7 +180,7 @@ namespace Assets.Scripts.Units
 
                 GameEvents.AnimationEndedHandlers += TrapAnimationComplete;
             }
-            else if (_grid[_index].IsContainType(ImagesRes.EXIT))
+            else if (_grid[_index].IsContainType(Entity.Type.exit))
             {
                 if (_hasHelmet)
                     Progress.StarsAllLevels[Progress.CurrentLevel, 0] = 1;
@@ -204,9 +204,9 @@ namespace Assets.Scripts.Units
             GameEvents.HeroReached();
         }
 
-        private void StarTweenComplete(string type)
+        private void StarTweenComplete(Star.Kind type)
         {
-            _grid[_index].Remove(type);
+            _grid[_index].RemoveEntity(Entity.Type.star);
             Reclothe(type);
         }
 
@@ -216,7 +216,7 @@ namespace Assets.Scripts.Units
 
             Trap trap = _grid[_index].GetEntity(Entity.Type.trap) as Trap;
             trap.Stop();
-            _grid[_index].Remove(ImagesRes.TRAP);//TODO delete it
+            _grid[_index].RemoveEntity(trap);
         }
 
         private void TrapTweenComplete()
@@ -234,7 +234,7 @@ namespace Assets.Scripts.Units
             _heroState = State.Move;
 
             _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            if (_path.Count == 0 && _grid[_index].IsContainType(ImagesRes.EXIT))
+            if (_path.Count == 0 && _grid[_index].IsContainType(Entity.Type.exit))
             {
                 _view.transform.DOKill();
                 _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);
@@ -259,19 +259,19 @@ namespace Assets.Scripts.Units
             }
         }
 
-        private void Reclothe(string type)
+        private void Reclothe(Star.Kind type)
         {
-            if (type == ImagesRes.STAR + 0)
+            if (type == Star.Kind.Helmet)
             {
                 _hasHelmet = true;
                 GameEvents.AchTriggered(Trigger.TriggerType.HelmetTaked);
             }
-            else if (type == ImagesRes.STAR + 1)
+            else if (type == Star.Kind.Shield)
             {
                 _hasShield = true;
                 GameEvents.AchTriggered(Trigger.TriggerType.ShieldTaked);
             }
-            else if (type == ImagesRes.STAR + 2)
+            else if (type == Star.Kind.Sword)
             {
                 _hasSword = true;
                 GameEvents.AchTriggered(Trigger.TriggerType.SwordTaked);

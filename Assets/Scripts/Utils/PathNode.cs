@@ -8,6 +8,7 @@ namespace Assets.Scripts.Utils
 {
     public class PathNode
     {
+        //public fields, A* optimization
         public int Cost = 0;
         public int CostToStart = 0;
         public int CostToEnd = 0;

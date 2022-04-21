@@ -12,7 +12,7 @@ namespace Assets.Scripts.Core
     public class Level : IDestroyable
     {
         private Hero _hero;
-        private List<ICollidable> _units; 
+        private List<ICollidable> _units;
         private List<IActivatable> _items;
 
         private Creator _creator;
@@ -55,9 +55,7 @@ namespace Assets.Scripts.Core
                     Enum.TryParse(generalType, out entityType);
                     entity = _creator.GetTileObject(entityType, grid[index], digitInt);
 
-                    grid[index].AddType(types[j]);//TODO  specific!!!?
-                    grid[index].AddObject(entity.View);
-                    grid[index].AddEntity(entity); //TODO clear 3 these
+                    grid[index].AddEntity(entity);
 
                     if (cells[i][types[j]] == null)
                         position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
@@ -69,7 +67,7 @@ namespace Assets.Scripts.Core
                     else
                         entity.Deploy(container, position);
                 }
-            }
+            }//TODO extract methods
 
             ICollidable unit;
             Monster monster1;
@@ -100,7 +98,7 @@ namespace Assets.Scripts.Core
                     _items.RemoveAt(i);
                     _hero.Deploy(container, new Vector3(grid[_hero.Index].X, grid[_hero.Index].Y));
                 }
-                else 
+                else
                 {
                     unit = _items[i].Init(GridUtils.FindDirection(grid, (_items[i] as TileObject).Index));
                     if (unit != null)

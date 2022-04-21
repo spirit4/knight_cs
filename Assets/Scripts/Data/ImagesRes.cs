@@ -9,31 +9,6 @@ namespace Assets.Scripts.Data
 {
     public static class ImagesRes
     {
-        //tiles
-        //public const string HERO = "hero";
-        public const string GRASS = "grass";
-        public const string STAR = "star";   //helm, shield, sword
-        public const string EXIT = "exit";
-        public const string MILL = "mill";
-        public const string MILL_VANE  = "mill_paddle_game";
-        public const string WATER = "water";
-        public const string PINE = "pine";
-        public const string STONE = "stone";
-        public const string STUMP = "stump";
-        public const string MONSTER = "wolwpig";
-        public const string MONSTER_ANIMATION = "Wolf";
-        public const string BRIDGE = "brige";
-        public const string TOWER  = "tower";
-        public const string ARROW  = "arrow";
-        public const string SPIKES  = "spikes";
-        public const string TRAP = "trap";
-        public const string BOULDER  = "boulder";
-        public const string BOULDER_MARK  = "boulderMark";
-        //public const string TARGET_MARK = "target_";
-
-        public const string ICON_ACH = "a";
-        public const string DECOR = "Decor";// ====="flovers" spelling from artist
-
         //animations
         public const string A_BOOM = "Boom";
         public const string A_ATTACK_BOOM = "BoomSword";
@@ -44,17 +19,15 @@ namespace Assets.Scripts.Data
 
         public static void Init()
         {
-            ImagesRes.NumberImages[ImagesRes.GRASS] = 5.0f;
-            ImagesRes.NumberImages[ImagesRes.WATER] = 3.0f;
 
             try
             {
-                Sprite[] sprites;// = Resources.LoadAll<Sprite>("Images/GameScene/Tiles");
+                Sprite[] sprites = Resources.LoadAll<Sprite>("Images/GameScene/UI/ForLoad");
 
-                //foreach (var s in sprites)
-                //{
-                //    TileSprites.Add(s.name, s);
-                //}
+                foreach (var s in sprites)
+                {
+                    TileSprites.Add(s.name, s);
+                }
                 Sprite gameEnd = Resources.Load<Sprite>("Images/GameScene/game_end");
                 TileSprites.Add("game_end", gameEnd);//TODO do it proper way
 
@@ -90,11 +63,6 @@ namespace Assets.Scripts.Data
             Sprite bd = null;
             int index;
             string digit = Regex.Match(name, @"\d+").Value;
-
-            if (name.StartsWith(DECOR))
-            {
-                return TileSprites["flovers_" + digit]; //artist's spelling
-            }
 
             if (ImagesRes.NumberImages.ContainsKey(name) && ImagesRes.NumberImages[name] > 0)
             {

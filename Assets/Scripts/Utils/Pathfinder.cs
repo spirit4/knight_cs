@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Core;
+using Assets.Scripts.Units;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Assets.Scripts.Utils
 {
@@ -25,6 +25,14 @@ namespace Assets.Scripts.Utils
         private const int WALL_COST = 10002;
         private const int EXPENSIVE_COST = 10003;
 
+        private readonly Dictionary<Entity.Cost, int> _costs = new Dictionary<Entity.Cost, int>
+            {
+                {Entity.Cost.None,  NORMAL_COST},
+                {Entity.Cost.Normal,  NORMAL_COST},
+                {Entity.Cost.Wall,  WALL_COST},
+                {Entity.Cost.Expensive,  EXPENSIVE_COST},
+            };
+
         public List<int> Path { get { return _path; } }
 
         public Pathfinder(int sizeX, int sizeY)
@@ -33,22 +41,14 @@ namespace Assets.Scripts.Utils
             _sizeY = sizeY;
         }
 
-        public void Init(Tile[] grid)
+        public void Init(Tile[] tileGrid)
         {
             _grid.Clear();
-            for (int i = 0; i < grid.Length; i++)
+            for (int i = 0; i < tileGrid.Length; i++)
             {
                 _grid.Add(new PathNode());
                 _grid[i].Index = i;
-
-                if (grid[i].IsWall)
-                {
-                    _grid[i].Cost = WALL_COST;
-                }
-                else if (grid[i].IsExpensive)
-                {
-                    _grid[i].Cost = EXPENSIVE_COST;
-                }
+                _grid[i].Cost = _costs[tileGrid[i].Cost];
             }
         }
 
@@ -126,9 +126,8 @@ namespace Assets.Scripts.Utils
             _openList.Sort((node1, node2) => node1.TotalCost - node2.TotalCost);
 
             if (_openList.Count == 0)
-            {
                 return;//path doesn't exist
-            }
+
             _currentIndex = _openList[0].Index;
             _closeList.Add(_openList[0]);
             _openList.RemoveAt(0);

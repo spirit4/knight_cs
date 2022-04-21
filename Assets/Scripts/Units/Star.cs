@@ -5,7 +5,7 @@ namespace Assets.Scripts.Units
 {
     public class Star : TileObject
     {
-        public enum Kind
+        public new enum Kind
         {
             Helmet,
             Shield,

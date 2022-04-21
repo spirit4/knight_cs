@@ -8,10 +8,7 @@ namespace Assets.Scripts.Units
     /// </summary>
     public class TileObject : Entity
     {
-        protected Tile _tile; //contains index
-
-        protected bool _isWall = false;//for pathfinder
-        private bool _isExpensive = false;//for pathfinder for mill
+        protected Tile _tile;
 
         protected bool _isActive = false;
 
@@ -25,18 +22,12 @@ namespace Assets.Scripts.Units
         public TileObject(EntityInput config) : base(config)
         {
             _config = config;
-
-            if (config.Cost == Cost.Wall)//TODO refactor it in pathfinder first
-                _isWall = true;
-            else if (config.Cost == Cost.Expensive)
-                _isExpensive = true;
         }
 
         public virtual void BindToTile(Tile tile)
         {
             _tile = tile;
-            _tile.IsWall = _isWall;
-            _tile.IsExpensive = _isExpensive;
+            _tile.SetCost(_config.Cost);
 
             _view.GetComponent<SpriteRenderer>().sortingOrder = _tile.Index + 20;
         }

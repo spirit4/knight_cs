@@ -26,9 +26,10 @@ namespace Assets.Scripts.Units
             trap,
             wolwpig,
             hero,
-            TargetMark,
+            TargetMark, //TODO rename them
         }
 
+        //this should be in TileObject
         public enum Cost : int
         {
             None,
@@ -41,6 +42,10 @@ namespace Assets.Scripts.Units
         protected Type _type;
 
         public GameObject View { get => _view; }
+
+        /// <summary>
+        /// common Type of Entity (get => _type)
+        /// </summary>
         public Type Kind { get => _type; }
 
         public Entity(EntityInput config)
