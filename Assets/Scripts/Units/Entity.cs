@@ -10,7 +10,7 @@ namespace Assets.Scripts.Units
             grass,//TODO PascalCase
             water,
             Decor,//case is important for now
-            target_0,
+            PathPoint,
             pine,
             stone,
             star,
@@ -24,6 +24,9 @@ namespace Assets.Scripts.Units
             boulder,
             boulderMark,
             trap,
+            wolwpig,
+            hero,
+            TargetMark,
         }
 
         public enum Cost : int
@@ -47,7 +50,7 @@ namespace Assets.Scripts.Units
             CreateView(config.Layer.ToString());
         }
 
-        public virtual void CreateView(string layer)//TODO name better
+        public virtual void CreateView(string layer)
         {
             _view = new GameObject(_type.ToString());
             _view.AddComponent<SpriteRenderer>();

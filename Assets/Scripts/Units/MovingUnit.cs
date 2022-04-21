@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public abstract class MovingUnit : Entity, ICollidable
+    public abstract class MovingUnit : TileObject, ICollidable
     {
 
         public MovingUnit(EntityInput config) : base(config)

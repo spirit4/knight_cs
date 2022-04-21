@@ -44,13 +44,20 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a340a131df3718a478f87aefcf3ba39a, type: 3}
     - {fileID: 21300000, guid: 395b4f163c4f2694ebaf2f55f5e90823, type: 3}
     - {fileID: 21300000, guid: 972d378d16d6cda4cb9ec513a20b1acd, type: 3}
-  - _name: target_0
+  - _name: PathPoint
     _type: 3
     _cost: 0
     _layer: 1
     _prefabs: []
     _sprites:
     - {fileID: 21300000, guid: 8dfe0d30740508d4695337efc003da6b, type: 3}
+  - _name: TargetMark
+    _type: 19
+    _cost: 0
+    _layer: 1
+    _prefabs: []
+    _sprites:
+    - {fileID: 21300000, guid: b182f28e44544a843bbd474549996ae6, type: 3}
   - _name: pine
     _type: 4
     _cost: 2
@@ -149,4 +156,18 @@ MonoBehaviour:
     _layer: 1
     _prefabs:
     - {fileID: 7694917860546739356, guid: 75912504f6f384c4188c2ca9e6f1e6b8, type: 3}
+    _sprites: []
+  - _name: wolwpig
+    _type: 17
+    _cost: 0
+    _layer: 1
+    _prefabs:
+    - {fileID: 2047235301969808075, guid: 5c6cfaed67c21b7478ecc1fb4777712c, type: 3}
+    _sprites: []
+  - _name: hero
+    _type: 18
+    _cost: 0
+    _layer: 1
+    _prefabs:
+    - {fileID: 4129859176658417422, guid: 6c19efeca71a2844fa4ddc6ed90523d7, type: 3}
     _sprites: []

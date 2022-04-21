@@ -10,7 +10,7 @@ namespace Assets.Scripts.Data
     public static class ImagesRes
     {
         //tiles
-        public const string HERO = "hero";
+        //public const string HERO = "hero";
         public const string GRASS = "grass";
         public const string STAR = "star";   //helm, shield, sword
         public const string EXIT = "exit";
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Data
         public const string TRAP = "trap";
         public const string BOULDER  = "boulder";
         public const string BOULDER_MARK  = "boulderMark";
-        public const string TARGET_MARK = "target_";
+        //public const string TARGET_MARK = "target_";
 
         public const string ICON_ACH = "a";
         public const string DECOR = "Decor";// ====="flovers" spelling from artist
@@ -49,12 +49,12 @@ namespace Assets.Scripts.Data
 
             try
             {
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Images/GameScene/Tiles");
+                Sprite[] sprites;// = Resources.LoadAll<Sprite>("Images/GameScene/Tiles");
 
-                foreach (var s in sprites)
-                {
-                    TileSprites.Add(s.name, s);
-                }
+                //foreach (var s in sprites)
+                //{
+                //    TileSprites.Add(s.name, s);
+                //}
                 Sprite gameEnd = Resources.Load<Sprite>("Images/GameScene/game_end");
                 TileSprites.Add("game_end", gameEnd);//TODO do it proper way
 

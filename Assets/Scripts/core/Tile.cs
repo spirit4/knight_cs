@@ -1,6 +1,4 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Units;
-using Assets.Scripts.Utils;
+﻿using Assets.Scripts.Units;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

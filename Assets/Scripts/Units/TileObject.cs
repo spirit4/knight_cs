@@ -17,6 +17,8 @@ namespace Assets.Scripts.Units
 
         public bool IsActive { get => _isActive; }
         public int Index { get => _tile.Index; }
+        public float X { get => _tile.X; }
+        public float Y { get => _tile.Y; }
 
         protected EntityInput _config;
 

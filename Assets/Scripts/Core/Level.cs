@@ -11,25 +11,20 @@ namespace Assets.Scripts.Core
 {
     public class Level : IDestroyable
     {
-        private Component _container;
-
         private Hero _hero;
-
-        private Dictionary<int, ICollidable> _units; //TODO make it list
+        private List<ICollidable> _units; 
         private List<IActivatable> _items;
 
         private Creator _creator;
 
         public Hero Hero { get => _hero; }
-        public Dictionary<int, ICollidable> Units { get => _units; }
-        public List<IActivatable> Items { get => _items;  }
+        public List<ICollidable> Units { get => _units; }
+        public List<IActivatable> Items { get => _items; }
         public Creator Creator { get => _creator; }
 
         public Level(Transform container, EntityConfig config)
         {
-            _container = container;
-
-            _units = new Dictionary<int, ICollidable>();
+            _units = new List<ICollidable>();
             _items = new List<IActivatable>();
 
             var cells = JSON.Parse(JSONRes.Levels[Progress.CurrentLevel]);
@@ -54,113 +49,67 @@ namespace Assets.Scripts.Core
                 for (int j = 0; j < types.Count; j++)
                 {
                     digitString = Regex.Match(types[j], @"\d+").Value;
-                    digitInt = digitString == "" ? 0 : Int32.Parse(digitString);
+                    digitInt = digitString == "" ? 0 : int.Parse(digitString);
                     generalType = digitString == "" ? types[j] : types[j].Remove(types[j].Length - 1);
 
-                    //Debug.Log($"-digitString {digitString} -- {digitInt} ---- {generalType}");
+                    Enum.TryParse(generalType, out entityType);
+                    entity = _creator.GetTileObject(entityType, grid[index], digitInt);
 
+                    grid[index].AddType(types[j]);//TODO  specific!!!?
+                    grid[index].AddObject(entity.View);
+                    grid[index].AddEntity(entity); //TODO clear 3 these
 
-                    if (Enum.TryParse(generalType, out entityType))//TODO temp
-                    {
-                        entity = _creator.GetTileObject(entityType, grid[index], digitInt);
-                        if(entity == null)
-                        {
-                            CheckCell(index, types[j]); //TEMP
-                            continue;
-                        }
+                    if (cells[i][types[j]] == null)
+                        position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
+                    else
+                        position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates
 
-                        grid[index].AddType(types[j]);//TODO  specific!!!?
-                        grid[index].AddObject(entity.View);
-                        grid[index].AddEntity(entity); //TODO clear 3 these
-
-                        if (entity is IActivatable)
-                            _items.Add(entity as IActivatable);
-
-
-                            if (cells[i][types[j]] == null)
-                            position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
-                        else
-                            position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates
-
+                    if (entity is IActivatable)
+                        _items.Add(entity as IActivatable);
+                    else
                         entity.Deploy(container, position);
+                }
+            }
+
+            ICollidable unit;
+            Monster monster1;
+            Monster monster2;
+            TileObject item;
+            for (int i = _items.Count - 1; i > -1; i--)
+            {
+                if (_items[i] is Monster)
+                {
+                    monster1 = _items[i] as Monster;
+
+                    monster2 = _units.Find(monster2 => (monster2 is Monster) &&
+                        (monster1.X == (monster2 as Monster).X || monster1.Y == (monster2 as Monster).Y)) as Monster;
+
+                    if (monster2 != null)
+                    {
+                        monster2.Init(grid[monster1.Index]);
+                        monster2.Deploy(container, new Vector3(monster2.X, monster2.Y));
                     }
                     else
-                        CheckCell(index, types[j]);//, types, cells[i]);
+                        _units.Add(monster1);
+
+                    _items.RemoveAt(i);
                 }
-            }
-
-
-            int len = _items.Count;
-            ICollidable unit;
-            for (int i = 0; i < len; i++)
-            {
-                //TODO temp// all have to be TO
-                if(_items[i] is TileObject)
+                else if (_items[i] is Hero)
                 {
-                    unit =_items[i].Init(GridUtils.FindDirection(grid, (_items[i] as TileObject).Index));
+                    _hero = _items[i] as Hero;
+                    _items.RemoveAt(i);
+                    _hero.Deploy(container, new Vector3(grid[_hero.Index].X, grid[_hero.Index].Y));
+                }
+                else 
+                {
+                    unit = _items[i].Init(GridUtils.FindDirection(grid, (_items[i] as TileObject).Index));
                     if (unit != null)
-                        _units.Add(i, unit); // TODO TEMP for arrow
+                        _units.Add(unit);// adding arrow
+
+                    item = _items[i] as TileObject;
+                    item.Deploy(container, new Vector3(grid[item.Index].X, grid[item.Index].Y));
                 }
             }
-        }
-
-        //node has local coordinates of decor
-        private void CheckCell(int index, string type)//, List<string> types, JSONNode node)
-        {
-            GameObject gameObject;
-
-            Tile[] grid = Model.Grid;
-
-            switch (type)
-            {
-                case ImagesRes.HERO:
-                    var gObject = new GameObject("HeroContainer");
-                    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Hero"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    gameObject.transform.SetParent(gObject.transform);
-                    gObject.transform.SetParent(_container.gameObject.transform);
-                    _hero = new Hero(index, gameObject, gObject);
-                    break;
-
-
-                //case ImagesRes.TRAP:
-                //    gameObject = GameObject.Instantiate(ImagesRes.Prefabs["Trap"], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                //    gameObject.transform.SetParent(_container.gameObject.transform);
-                //    new Trap(type, index, gameObject);
-                //    gameObject.transform.localPosition = new Vector3(grid[index].X, grid[index].Y + 0.03f);
-                //    grid[index].AddType(type);
-                //    grid[index].AddObject(gameObject);
-                //    break;
-
-                case ImagesRes.MONSTER:
-                    Monster monster;
-                    int id = 0;
-
-                    foreach (KeyValuePair<int, ICollidable> pair in _units)
-                    {
-                        if (pair.Value.Type == type)
-                        {
-                            monster = pair.Value as Monster;
-
-                            if (monster.Type == type && (monster.X == grid[index].X || monster.Y == grid[index].Y))
-                            {
-                                monster.SetPointIndex2(index);
-                                return;
-                            }
-                            id++;
-                        }
-                    }
-
-                    GameObject view = GameObject.Instantiate(ImagesRes.Prefabs[ImagesRes.MONSTER_ANIMATION], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    monster = new Monster(type, index, id, view, _container);
-                    _units.Add(index, monster);
-                    break;
-
-                default:
-                    Debug.Log(type + " ========= default in Level ============");
-                    //grid[index].Add(type, _container, grid);
-                    break;
-            }
-
         }
 
         public void Destroy()
@@ -170,14 +119,13 @@ namespace Assets.Scripts.Core
                 item.Destroy();
             }
 
-            foreach (KeyValuePair<int, ICollidable> pair in _units)
+            foreach (IDestroyable unit in _units)
             {
-                (pair.Value as IDestroyable).Destroy();
+                unit.Destroy();
             }
 
             _creator.Destroy();
             _creator = null;
-            _container = null;
         }
     }
 }

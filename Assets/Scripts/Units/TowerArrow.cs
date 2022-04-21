@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using DG.Tweening;
 using UnityEngine;
 
@@ -37,6 +38,16 @@ namespace Assets.Scripts.Units
         public bool IsShooted()
         {
             return _view.activeSelf;
+        }
+
+        public override void BindToTile(Tile tile)
+        {
+            _tile = tile;
+        }
+
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            _view.GetComponent<SpriteRenderer>().sprite = spites[spriteIndex];
         }
 
     }

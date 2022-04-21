@@ -8,7 +8,7 @@ namespace Assets.Scripts.Units
     {
         public Trap(EntityInput config) : base(config)
         {
-
+            //Debug.Break();
         }
 
         public override void Deploy(Transform container, Vector3 position)

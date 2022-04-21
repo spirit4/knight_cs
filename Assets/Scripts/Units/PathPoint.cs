@@ -11,6 +11,11 @@ namespace Assets.Scripts.Units
         {
 
         }
+        public override void CreateView(string layer)
+        {
+            base.CreateView(layer);
+            _view.GetComponent<SpriteRenderer>().sortingOrder = 120;
+        }
 
         public void DeployWithDelay(Transform container, Vector3 position, float delay)
         {

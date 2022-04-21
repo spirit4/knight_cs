@@ -8,7 +8,6 @@ namespace Assets.Scripts.UnityEditor
 
         public void AnimationCompleteHandler()
         {
-            //Debug.Log(this.name);
             GameEvents.AnimationEnded(); 
         }
 

@@ -26,7 +26,7 @@ namespace Assets.Scripts.Core
             for (int i = 0; i < _pathfinder.Path.Count; i++)
             {
                 if (_poolPoints.Count < _pathfinder.Path.Count - i)
-                    _poolPoints.Push(creator.GetDefault(Entity.Type.target_0) as PathPoint);
+                    _poolPoints.Push(creator.GetDefault(Entity.Type.PathPoint) as PathPoint);
 
                 AppearPoint(0.05f * i, _pathfinder.Path[i], container);
             }

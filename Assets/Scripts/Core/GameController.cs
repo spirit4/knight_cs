@@ -3,9 +3,7 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Units;
 using Assets.Scripts.Utils;
-using Assets.Scripts.Utils.Display;
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,12 +19,11 @@ namespace Assets.Scripts.Core
 
         private Level _level;
         private Hero _hero;
-        //private MillPress _mill;
 
         private PathKeeper _path;
         private AchievementController _achController;
 
-        private Dictionary<int, ICollidable> _units;
+        private List<ICollidable> _units;
         private List<IActivatable> _items;
 
         private GameObject _help;
@@ -63,10 +60,9 @@ namespace Assets.Scripts.Core
 
             GameEvents.GameQuitHandlers += Destroy;//leaving game, from UIManager
 
-            _targetMark = new TargetMark(this.gameObject);
+            _targetMark = _level.Creator.GetDefault(Entity.Type.TargetMark) as TargetMark;
 
             _units = _level.Units;
-            //_mill = _level.Mill;
             _items = _level.Items;
 
             Text level = GameObject.Find("Canvas/PanelGameUI/ImageSpear1/LevelBoard/TextLevel").GetComponent<Text>();
@@ -86,7 +82,7 @@ namespace Assets.Scripts.Core
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
-            if (_hero.HeroState != Hero.IDLE)
+            if (_hero.HeroState != Hero.State.Idle)
             {
                 _hero.Stop();
                 return;
@@ -117,23 +113,23 @@ namespace Assets.Scripts.Core
                 {
                     RemoveHint();
 
-                    _targetMark.PlaceByTap(index);
+                    _targetMark.Deploy(this.transform, new Vector3(_grid[index].X, _grid[index].Y));//TODO move to pathKeeper
                     _path.ShowPath(this.transform, _level.Creator);
 
                     TowerArrow arrow;
-                    foreach (var pair in _units)
+                    foreach (var unit in _units)
                     {
 
-                        if (!(pair.Value is TowerArrow))
+                        if (!(unit is TowerArrow))
                             continue;
 
-                        arrow = pair.Value as TowerArrow;
-                        //TODO position instead of index?
-                        //if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
-                        //{
-                        //    _isStartArrowCheck = true;
-                        //    break;
-                        //}
+                        arrow = unit as TowerArrow;
+                        //TODO position instead of index ?
+                        if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
+                        {
+                            _isStartArrowCheck = true;
+                            break;
+                        }
                     }
 
                     _hero.MoveToCell(path);
@@ -223,7 +219,7 @@ namespace Assets.Scripts.Core
                 CheckCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);
         }
 
-        public void CheckCollision(Dictionary<int, ICollidable> vector, float w1, float w2, float h1, float h2)
+        public void CheckCollision(List<ICollidable> vector, float w1, float w2, float h1, float h2)//TODO optimize
         {
             GameObject dObject;
 
@@ -232,37 +228,35 @@ namespace Assets.Scripts.Core
             float objX;
             float objY;
 
-            foreach (KeyValuePair<int, ICollidable> pair in vector)
+            foreach (MovingUnit unit in vector)
             {
-                dObject = pair.Value.View;
+                dObject = unit.View;
 
                 objX = dObject.transform.localPosition.x;
                 objY = dObject.transform.localPosition.y;
 
                 if ((heroX + w1 >= objX - w2 && heroX - w1 <= objX + w2) && (heroY - h1 <= objY + h2 && heroY + h1 >= objY - h2))
                 {
-                    if (_hero.HeroState != Hero.DEATH)
+                    if (_hero.HeroState != Hero.State.Death)
                     {
-                        Monster monster = pair.Value as Monster;
-
-                        vector.Remove(pair.Key);
+                        vector.Remove(unit);
 
                         if (!_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)
                         {
-                            if (pair.Value is Monster)
+                            if (unit is Monster)
                                 GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByMonster);
-                            else if (pair.Value is TowerArrow)
+                            else if (unit is TowerArrow)
                                 GameEvents.AchTriggered(Trigger.TriggerType.HeroDeadByArrow);
 
-                            StartCoroutine(HideActors(0.1f, pair.Value, true));
-                            _hero.HeroState = Hero.DEATH;
+                            StartCoroutine(HideActors(0.1f, unit, true));
+                            _hero.HeroState = Hero.State.Death;
                             ShowBoom();
                         }
-                        else if (pair.Value is Monster)
+                        else if (unit is Monster)
                         {
                             GameEvents.AchTriggered(Trigger.TriggerType.MonsterDead);
 
-                            StartCoroutine(HideActors(0.1f, pair.Value, false)); //killing the monster
+                            StartCoroutine(HideActors(0.1f, unit, false)); //killing the monster
                             ShowBoom(ImagesRes.A_ATTACK_BOOM);
                         }
                         break;
@@ -353,11 +347,6 @@ namespace Assets.Scripts.Core
 
             _hero = null;
             _level = null;
-
-            //if (_mill != null)
-            //    _mill.Destroy();
-
-            //_mill = null;
         }
 
     }

@@ -17,7 +17,8 @@ namespace Assets.Scripts.Core
                 {Entity.Type.grass,  typeof(TileObject)},
                 {Entity.Type.water,  typeof(Water) },
                 {Entity.Type.Decor,  typeof(Decor) },
-                {Entity.Type.target_0,  typeof(PathPoint) },
+                {Entity.Type.PathPoint,  typeof(PathPoint) },
+                {Entity.Type.TargetMark,  typeof(TargetMark) },
                 {Entity.Type.pine,  typeof(StaticObject) },
                 {Entity.Type.stone,  typeof(StaticObject) },
                 {Entity.Type.stump,  typeof(StaticObject) },
@@ -31,6 +32,8 @@ namespace Assets.Scripts.Core
                 {Entity.Type.boulder,  typeof(Boulder) },
                 {Entity.Type.boulderMark,  typeof(Direction) },
                 {Entity.Type.trap,  typeof(Trap) },
+                {Entity.Type.wolwpig,  typeof(Monster) },
+                {Entity.Type.hero,  typeof(Hero) },
             };
 
         private EntityConfig _config;

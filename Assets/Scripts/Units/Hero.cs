@@ -4,18 +4,20 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using DG.Tweening;
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class Hero : Unit
+    public class Hero : MovingUnit, IActivatable
     {
-        ////states
-        public const int IDLE = 0;
-        public const int MOVE = 1;
-        public const int DEATH = 2;
+        public enum State : int
+        {
+            Idle,
+            Move,
+            Death,
+        }
 
         private const float SPEED = 0.3f;
 
@@ -25,14 +27,20 @@ namespace Assets.Scripts.Units
         private const float MARGIN_X = -0.3f;
         private const float MARGIN_Y = 0.65f;
 
-        private int _heroState;
+        private State _heroState;
         private bool _hasShield = false;
         private bool _hasSword = false;
         private bool _hasHelmet = false;
 
         private GameObject _inside;
+        private int _index;
+        public new int Index { get => _index; }//hero  isn't static
 
-        public int HeroState { get => _heroState; set => _heroState = value; }
+        private float _x;
+        private float _y;
+        private Tile[] _grid; // TODO don't really need this
+
+        public State HeroState { get => _heroState; set => _heroState = value; }
         public bool HasShield { get => _hasShield; }
         public bool HasSword { get => _hasSword; }
         public bool HasHelmet { get => _hasHelmet; }
@@ -42,29 +50,33 @@ namespace Assets.Scripts.Units
         //private bool _hasSword = true;
         //private bool _hasHelmet = true;
 
-        public Hero(int index, GameObject inside, GameObject view) : base(index, ImagesRes.HERO, view)
+        public Hero(EntityInput config) : base(config)
         {
             _grid = Model.Grid;
-
-            _x = _grid[index].X; //for choosing direction
-            _y = _grid[index].Y;
-
-            _inside = inside;
-
-            view.AddComponent<SpriteRenderer>();
-            view.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            view.GetComponent<SpriteRenderer>().sortingOrder = 100;
-
-            _inside.name = Type;
-            _inside.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            _inside.GetComponent<SpriteRenderer>().sortingOrder = 100;
-
-            view.transform.localPosition = new Vector3(_x, _y);
-            _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
-
-            _heroState = IDLE;
+        }
+        public override void BindToTile(Tile tile)
+        {
+            _tile = tile;
+            _index = tile.Index;
+            _x = tile.X;
+            _y = tile.Y;
         }
 
+        public override void AddView(Sprite[] spites, int spriteIndex)
+        {
+            _view.GetComponent<SpriteRenderer>().sortingOrder = 200;
+
+            _inside = Object.Instantiate(_config.Prefabs[0]);
+            _inside.GetComponent<SpriteRenderer>().sortingLayerName = _config.Layer.ToString();
+            _inside.GetComponent<SpriteRenderer>().sortingOrder = 200;
+            _inside.transform.localPosition = new Vector3(MARGIN_X, MARGIN_Y);
+            _inside.transform.SetParent(_view.transform);
+        }
+
+        public ICollidable Init(Tile tile)
+        {
+            return null;
+        }
         public override void Stop()
         {
             _path.Clear();
@@ -133,7 +145,7 @@ namespace Assets.Scripts.Units
         private void ChangeView()
         {
             Animator a = _inside.GetComponent<Animator>();
-            a.SetInteger("HeroState", _heroState);
+            a.SetInteger("HeroState", (int)_heroState);
             a.SetBool("HasHelmet", _hasHelmet);
             a.SetBool("HasSword", _hasSword);
             a.SetBool("HasShield", _hasShield);
@@ -147,7 +159,7 @@ namespace Assets.Scripts.Units
 
         private void Idle()
         {
-            if (_heroState == Hero.DEATH)
+            if (_heroState == State.Death)
                 return;
 
             if (_grid[_index].IsContainTypes(Entity.Type.star))
@@ -162,11 +174,8 @@ namespace Assets.Scripts.Units
 
             else if (_grid[_index].IsContainType(Entity.Type.trap))
             {
-                Trap trap = _grid[_index].GetEntity(Entity.Type.trap) as Trap;
-                trap.Activate();
-                //Animator anim = trap.GetComponent<Animator>();
-                //anim.enabled = true;
-                
+                (_grid[_index].GetEntity(Entity.Type.trap) as Trap).Activate();
+
                 DOTween.Sequence().AppendInterval(0.4f).AppendCallback(TrapTweenComplete);
 
                 GameEvents.AnimationEndedHandlers += TrapAnimationComplete;
@@ -188,7 +197,7 @@ namespace Assets.Scripts.Units
                 GameEvents.LevelComplete();
             }
 
-            _heroState = Hero.IDLE;
+            _heroState = State.Idle;
 
             ChangeView();
 
@@ -222,7 +231,7 @@ namespace Assets.Scripts.Units
             if (isContinue)
                 handler = KeepMove;
 
-            _heroState = Hero.MOVE;
+            _heroState = State.Move;
 
             _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
             if (_path.Count == 0 && _grid[_index].IsContainType(ImagesRes.EXIT))
@@ -238,7 +247,7 @@ namespace Assets.Scripts.Units
 
         private void KeepMove()
         {
-            if (_heroState == Hero.DEATH)
+            if (_heroState == State.Death)
                 return;
 
             if (_path.Count == 0)
@@ -276,6 +285,11 @@ namespace Assets.Scripts.Units
             base.Destroy();
             _path = null;
             _grid = null;
+        }
+
+        public void Activate()
+        {
+            //empty
         }
     }
 }

@@ -5,72 +5,41 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units
 {
-    public class TargetMark
+    public class TargetMark : Entity
     {
-        private GameObject _center;
-        private GameObject _outer;
 
-        public TargetMark(GameObject container)
+        public TargetMark(EntityInput config) : base(config)
         {
-            GameObject bitmap = new GameObject();
-            bitmap.AddComponent<SpriteRenderer>();
-            bitmap.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.TARGET_MARK + 0);
-            bitmap.transform.SetParent(container.transform);
-            bitmap.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            bitmap.GetComponent<SpriteRenderer>().sortingOrder = 999;
-            _center = bitmap;
-            bitmap.SetActive(false);
 
-            bitmap = new GameObject();
-            bitmap.AddComponent<SpriteRenderer>();
-            bitmap.GetComponent<SpriteRenderer>().sprite = ImagesRes.GetImage(ImagesRes.TARGET_MARK + 1);
-            bitmap.transform.SetParent(container.transform);
-            bitmap.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-            bitmap.GetComponent<SpriteRenderer>().sortingOrder = 999;
-            _outer = bitmap;
-            bitmap.SetActive(false);
         }
-
-        public void PlaceByTap(int index)
+        public override void CreateView(string layer)
         {
-            Tile[] grid = Model.Grid;
-
-            _center.transform.localScale = new Vector3(0.9f, 0.9f);
-            _outer.transform.localScale = new Vector3(0.9f, 0.9f);
-
-
-            _center.transform.localPosition = new Vector3(grid[index].X, grid[index].Y);
-            _center.SetActive(true);
-
-            _outer.transform.localPosition = new Vector3(grid[index].X, grid[index].Y);
-            _outer.SetActive(true);
+            base.CreateView(layer);
+            _view.GetComponent<SpriteRenderer>().sortingOrder = 120;
+        }
+        public override void Deploy(Transform container, Vector3 position)
+        {
+            _view.transform.localScale = new Vector3(0.9f, 0.9f);
+            _view.transform.SetParent(container);
+            _view.transform.localPosition = position;
+            _view.SetActive(true);
 
             Appear();
         }
 
         private void Appear()
         {
-            _center.transform.DOScale(1.0f, 0.08f).SetEase(Ease.InQuart);
-            _outer.transform.DOScale(1.0f, 0.08f).SetEase(Ease.InQuart).OnComplete(Extend);
+            _view.transform.DOScale(1.0f, 0.08f).SetEase(Ease.InQuart).OnComplete(Extend);
         }
 
         private void Extend()
         {
-            _center.transform.DOScale(1.1f, 0.08f).SetEase(Ease.OutQuart);
-            _outer.transform.DOScale(1.2f, 0.08f).SetEase(Ease.OutQuart).OnComplete(Disappear);
+            _view.transform.DOScale(1.2f, 0.08f).SetEase(Ease.OutQuart).OnComplete(Disappear);
         }
 
         private void Disappear()
         {
-            _center.transform.DOScale(0, 0.12f).SetEase(Ease.InQuart);
-            _outer.transform.DOScale(0, 0.12f).SetEase(Ease.InQuart).OnComplete(Hide);
+            _view.transform.DOScale(0, 0.12f).SetEase(Ease.InQuart).OnComplete(Withdraw);
         }
-
-        private void Hide()
-        {
-            _center.SetActive(false);
-            _outer.SetActive(false);
-        }
-
     }
 }

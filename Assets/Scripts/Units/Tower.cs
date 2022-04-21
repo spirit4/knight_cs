@@ -49,16 +49,15 @@ namespace Assets.Scripts.Units
         {
             _arrow = new TowerArrow(new EntityInput());
             _arrow.AddView(_config.Sprites, 1);
+            _arrow.BindToTile(_tile);
 
             DOTween.Sequence().AppendInterval(_speedTime * 7 + 0.7f * _count).AppendCallback(Shoot);
             _arrow.AddView(_config.Sprites, 1);
-            _tile.IsWall = false;
-            _isWall = false;
         }
 
         private void Shoot()
         {
-            if (_arrow == null)//destroyed
+            if (_arrow == null)//level destroyed
                 return;
 
             _arrow.Deploy(_view.transform.parent, new Vector3(_tile.X - 0.01f, _tile.Y + 0.3f));
