@@ -12,8 +12,10 @@ namespace Assets.Scripts.Core
         public Pathfinder Pathfinder { get => _pathfinder; }
 
         private Stack<PathPoint> _poolPoints = new Stack<PathPoint>();
-        private Queue<PathPoint> _activePoints = new Queue<PathPoint>();// TODO make stacks
+        private Queue<PathPoint> _activePoints = new Queue<PathPoint>();
         private Tile[] _grid;
+
+        private TargetMark _targetMark;
 
         public PathKeeper()
         {
@@ -30,6 +32,12 @@ namespace Assets.Scripts.Core
 
                 AppearPoint(0.05f * i, _pathfinder.Path[i], container);
             }
+
+            if(_targetMark == null)
+                _targetMark = creator.GetDefault(Entity.Type.TargetMark) as TargetMark;
+
+            int index = _pathfinder.Path[_pathfinder.Path.Count - 1];
+            _targetMark.Deploy(container, new Vector3(_grid[index].X, _grid[index].Y));
         }
 
         private void AppearPoint(float delay, int index, Transform container)
@@ -68,6 +76,7 @@ namespace Assets.Scripts.Core
             _pathfinder.Destroy();
             _pathfinder = null;
 
+            _targetMark = null;
             _grid = null;
         }
     }

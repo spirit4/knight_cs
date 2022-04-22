@@ -52,7 +52,9 @@ namespace Assets.Scripts.Core
                     digitInt = digitString == "" ? 0 : int.Parse(digitString);
                     generalType = digitString == "" ? types[j] : types[j].Remove(types[j].Length - 1);
 
-                    Enum.TryParse(generalType, out entityType);
+                    if (!Enum.TryParse(generalType, out entityType))
+                        Debug.Log($"[Level]: Incorrect type: {generalType}");
+
                     entity = _creator.GetTileObject(entityType, grid[index], digitInt);
 
                     grid[index].AddEntity(entity);
@@ -60,15 +62,20 @@ namespace Assets.Scripts.Core
                     if (cells[i][types[j]] == null)
                         position = new Vector3(grid[index].X, grid[index].Y);//tile's coordinates
                     else
-                        position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates
+                        position = new Vector3(cells[i][types[j]][0], cells[i][types[j]][1]);//specified coordinates (Decor)
 
                     if (entity is IActivatable)
                         _items.Add(entity as IActivatable);
                     else
                         entity.Deploy(container, position);
                 }
-            }//TODO extract methods
+            }
 
+            InitActiveItems(container, grid);
+        }
+
+        private void InitActiveItems(Transform container, Tile[] grid)
+        {
             ICollidable unit;
             Monster monster1;
             Monster monster2;
@@ -98,7 +105,7 @@ namespace Assets.Scripts.Core
                     _items.RemoveAt(i);
                     _hero.Deploy(container, new Vector3(grid[_hero.Index].X, grid[_hero.Index].Y));
                 }
-                else
+                else //items with Direction
                 {
                     unit = _items[i].Init(GridUtils.FindDirection(grid, (_items[i] as TileObject).Index));
                     if (unit != null)

@@ -3,7 +3,8 @@ namespace Assets.Scripts.Core
 {
     public class Model
     {
-        private static Tile[] _grid; //TODO not the best way, but fine for now
+        private static Tile[] _grid;
+        public static Tile[] Grid { get => _grid; }
 
         public Model()
         {
@@ -22,14 +23,6 @@ namespace Assets.Scripts.Core
                 yCell = (i / Config.WIDTH) * Config.SIZE_H;
                 xCell = (i - i / Config.WIDTH * Config.WIDTH) * Config.SIZE_W;
                 _grid[i] = new Tile(xCell, -yCell, i);
-            }
-        }
-
-        public static Tile[] Grid
-        {
-            get
-            {
-                return _grid;
             }
         }
 

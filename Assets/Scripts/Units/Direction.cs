@@ -17,7 +17,7 @@ namespace Assets.Scripts.Units
         {
             //empty
         }
-        public override void CreateView(string layer)//TODO name better
+        public override void CreateView(string layer)
         {
             //empty
         }

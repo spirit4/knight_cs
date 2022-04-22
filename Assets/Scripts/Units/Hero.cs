@@ -38,7 +38,7 @@ namespace Assets.Scripts.Units
 
         private float _x;
         private float _y;
-        private Tile[] _grid; // TODO don't really need this
+        private Tile[] _grid; 
 
         public State HeroState { get => _heroState; set => _heroState = value; }
         public bool HasShield { get => _hasShield; }

@@ -27,7 +27,6 @@ namespace Assets.Scripts.Core
         private List<IActivatable> _items;
 
         private GameObject _help;
-        private TargetMark _targetMark;
         private GameObject _boom;
 
         private bool _isStartArrowCheck = false;
@@ -59,8 +58,6 @@ namespace Assets.Scripts.Core
             GameEvents.HeroOneCellAwayHandlers += _path.HideLastPoint;
 
             GameEvents.GameQuitHandlers += Destroy;//leaving game, from UIManager
-
-            _targetMark = _level.Creator.GetDefault(Entity.Type.TargetMark) as TargetMark;
 
             _units = _level.Units;
             _items = _level.Items;
@@ -113,7 +110,6 @@ namespace Assets.Scripts.Core
                 {
                     RemoveHint();
 
-                    _targetMark.Deploy(this.transform, new Vector3(_grid[index].X, _grid[index].Y));//TODO move to pathKeeper
                     _path.ShowPath(this.transform, _level.Creator);
 
                     TowerArrow arrow;
@@ -124,7 +120,6 @@ namespace Assets.Scripts.Core
                             continue;
 
                         arrow = unit as TowerArrow;
-                        //TODO position instead of index ?
                         if (GridUtils.GetPoint(arrow.Index).y == GridUtils.GetPoint(_hero.Index).y && arrow.IsShooted())
                         {
                             _isStartArrowCheck = true;
@@ -219,7 +214,7 @@ namespace Assets.Scripts.Core
                 CheckCollision(_units, 0.25f, 0.25f, 0.25f, 0.15f);
         }
 
-        public void CheckCollision(List<ICollidable> vector, float w1, float w2, float h1, float h2)//TODO optimize
+        public void CheckCollision(List<ICollidable> vector, float w1, float w2, float h1, float h2)
         {
             GameObject dObject;
 
@@ -273,7 +268,7 @@ namespace Assets.Scripts.Core
             {
                 unit.Stop();
                 _hero.Stop();
-                unit.View.SetActive(false);// TODO withdraw
+                (unit as Entity).Withdraw();
                 (unit as IDestroyable).Destroy();
             }
 
@@ -342,7 +337,6 @@ namespace Assets.Scripts.Core
             _units = null;
             _items = null;
 
-            _targetMark = null;
             _grid = null;
 
             _hero = null;

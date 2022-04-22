@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Units;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Core
 {
@@ -40,9 +41,6 @@ namespace Assets.Scripts.Core
 
         public TileObject GetTileObject(Entity.Type type, Tile tile, int spriteIndex)
         {
-            if (!_factory.ContainsKey(type)) //TODO TEMP
-                return null;
-
             TileObject entity = Activator.CreateInstance(_factory[type], _config.GetConfig(type)) as TileObject;
             entity.AddView(_config.GetConfig(type).Sprites, spriteIndex);
             entity.BindToTile(tile);
