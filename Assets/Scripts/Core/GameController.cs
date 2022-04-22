@@ -103,9 +103,9 @@ namespace Assets.Scripts.Core
             if (_path.Pathfinder.Path.Count > 0)
             {
                 List<int> path = _path.Pathfinder.Path;
-                if (_grid[index].IsContainType(Entity.Type.mill))
+                if (_grid[index].IsContainType(Entity.Type.Mill))
                 {
-                    (_grid[index].GetEntity(Entity.Type.mill) as MillPress).Activate();
+                    (_grid[index].GetEntity(Entity.Type.Mill) as MillPress).Activate();
                     path.RemoveAt(path.Count - 1);
                 }
 
@@ -159,11 +159,11 @@ namespace Assets.Scripts.Core
             if (Progress.CurrentLevel == 0 && _hero.Index == 54) //to guide
                 CreateHintAfterAction();
 
-            int millIndex = GridUtils.FindAround(_grid, _hero.Index, Entity.Type.mill);
+            int millIndex = GridUtils.FindAround(_grid, _hero.Index, Entity.Type.Mill);
 
             if (millIndex != -1)
             {
-                MillPress mill = _grid[millIndex].GetEntity(Entity.Type.mill) as MillPress;
+                MillPress mill = _grid[millIndex].GetEntity(Entity.Type.Mill) as MillPress;
                 if (!mill.IsActive)
                 {
                     mill.StartRotateMill();

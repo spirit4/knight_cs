@@ -7,26 +7,26 @@ namespace Assets.Scripts.Units
     {
         public enum Type
         {
-            grass,//TODO PascalCase
-            water,
-            Decor,//case is important for now
+            Grass,
+            Water,
+            Decor,
             PathPoint,
-            pine,
-            stone,
-            star,
-            stump,
-            brige,//artist's spelling
-            exit,
-            mill,
-            spikes,
-            tower,
-            arrow,
-            boulder,
-            boulderMark,
-            trap,
-            wolwpig,
-            hero,
-            TargetMark, //TODO rename them
+            Pine,
+            Stone,
+            Star,
+            Stump,
+            Bridge,
+            Exit,
+            Mill,
+            Spikes,
+            Tower,
+            Arrow,
+            Boulder,
+            BoulderMark,
+            Trap,
+            Monster,
+            Hero,
+            TargetMark,
         }
 
         //this should be in TileObject

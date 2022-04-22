@@ -128,7 +128,7 @@ namespace Assets.Scripts.Units
             {
                 currentIndex += step;
 
-                if (_grid[currentIndex].IsContainType(Entity.Type.star) || _grid[currentIndex].IsContainType(Entity.Type.trap))
+                if (_grid[currentIndex].IsContainType(Entity.Type.Star) || _grid[currentIndex].IsContainType(Entity.Type.Trap))
                 {
                     _index = currentIndex;
                     _path.Clear();
@@ -162,25 +162,25 @@ namespace Assets.Scripts.Units
             if (_heroState == State.Death)
                 return;
 
-            if (_grid[_index].IsContainType(Entity.Type.star))
+            if (_grid[_index].IsContainType(Entity.Type.Star))
             {
                 //string type = _grid[_index].GetConcreteType(ImagesRes.STAR);
                 //int index = _grid[_index].Types.IndexOf(type);
 
-                Star star = _grid[_index].GetEntity(Entity.Type.star) as Star;// _grid[_index].Objects[index];
+                Star star = _grid[_index].GetEntity(Entity.Type.Star) as Star;// _grid[_index].Objects[index];
 
                 star.View.transform.DOScale(0, 0.1f).SetEase(Ease.OutQuad).OnComplete(() => StarTweenComplete(star.StarType));
             }
 
-            else if (_grid[_index].IsContainType(Entity.Type.trap))
+            else if (_grid[_index].IsContainType(Entity.Type.Trap))
             {
-                (_grid[_index].GetEntity(Entity.Type.trap) as Trap).Activate();
+                (_grid[_index].GetEntity(Entity.Type.Trap) as Trap).Activate();
 
                 DOTween.Sequence().AppendInterval(0.4f).AppendCallback(TrapTweenComplete);
 
                 GameEvents.AnimationEndedHandlers += TrapAnimationComplete;
             }
-            else if (_grid[_index].IsContainType(Entity.Type.exit))
+            else if (_grid[_index].IsContainType(Entity.Type.Exit))
             {
                 if (_hasHelmet)
                     Progress.StarsAllLevels[Progress.CurrentLevel, 0] = 1;
@@ -206,7 +206,7 @@ namespace Assets.Scripts.Units
 
         private void StarTweenComplete(Star.Kind type)
         {
-            _grid[_index].RemoveEntity(Entity.Type.star);
+            _grid[_index].RemoveEntity(Entity.Type.Star);
             Reclothe(type);
         }
 
@@ -214,7 +214,7 @@ namespace Assets.Scripts.Units
         {
             GameEvents.AnimationEndedHandlers -= TrapAnimationComplete;
 
-            Trap trap = _grid[_index].GetEntity(Entity.Type.trap) as Trap;
+            Trap trap = _grid[_index].GetEntity(Entity.Type.Trap) as Trap;
             trap.Stop();
             _grid[_index].RemoveEntity(trap);
         }
@@ -234,7 +234,7 @@ namespace Assets.Scripts.Units
             _heroState = State.Move;
 
             _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y), SPEED).SetEase(Ease.Linear).OnComplete(handler);
-            if (_path.Count == 0 && _grid[_index].IsContainType(Entity.Type.exit))
+            if (_path.Count == 0 && _grid[_index].IsContainType(Entity.Type.Exit))
             {
                 _view.transform.DOKill();
                 _view.transform.DOLocalMove(new Vector3(_grid[_index].X, _grid[_index].Y - 0.25f), SPEED * 2).SetEase(Ease.Linear).OnComplete(handler);

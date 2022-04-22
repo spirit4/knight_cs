@@ -6,32 +6,28 @@ namespace Assets.Scripts.Core
 {
     public class Creator : IDestroyable
     {
-        //TODO rename in JSON
-        /// <summary>
-        /// Naming is such, cause this is how it was serialized in JSON levels once ago
-        /// </summary>
         public Dictionary<Entity.Type, Type> _factory = new Dictionary<Entity.Type, Type>
             {
-                {Entity.Type.grass,  typeof(TileObject)},
-                {Entity.Type.water,  typeof(Water) },
+                {Entity.Type.Grass,  typeof(TileObject)},
+                {Entity.Type.Water,  typeof(Water) },
                 {Entity.Type.Decor,  typeof(Decor) },
                 {Entity.Type.PathPoint,  typeof(PathPoint) },
                 {Entity.Type.TargetMark,  typeof(TargetMark) },
-                {Entity.Type.pine,  typeof(StaticObject) },
-                {Entity.Type.stone,  typeof(StaticObject) },
-                {Entity.Type.stump,  typeof(StaticObject) },
-                {Entity.Type.brige,  typeof(StaticObject) },
-                {Entity.Type.exit,  typeof(StaticObject) },
-                {Entity.Type.star,  typeof(Star) },
-                {Entity.Type.mill,  typeof(MillPress) },
-                {Entity.Type.spikes,  typeof(Spikes) },
-                {Entity.Type.tower,  typeof(Tower) },
-                {Entity.Type.arrow,  typeof(Direction) },//tower create actual arrow
-                {Entity.Type.boulder,  typeof(Boulder) },
-                {Entity.Type.boulderMark,  typeof(Direction) },
-                {Entity.Type.trap,  typeof(Trap) },
-                {Entity.Type.wolwpig,  typeof(Monster) },
-                {Entity.Type.hero,  typeof(Hero) },
+                {Entity.Type.Pine,  typeof(StaticObject) },
+                {Entity.Type.Stone,  typeof(StaticObject) },
+                {Entity.Type.Stump,  typeof(StaticObject) },
+                {Entity.Type.Bridge,  typeof(StaticObject) },
+                {Entity.Type.Exit,  typeof(StaticObject) },
+                {Entity.Type.Star,  typeof(Star) },
+                {Entity.Type.Mill,  typeof(MillPress) },
+                {Entity.Type.Spikes,  typeof(Spikes) },
+                {Entity.Type.Tower,  typeof(Tower) },
+                {Entity.Type.Arrow,  typeof(Direction) },//tower creates actual arrow
+                {Entity.Type.Boulder,  typeof(Boulder) },
+                {Entity.Type.BoulderMark,  typeof(Direction) },
+                {Entity.Type.Trap,  typeof(Trap) },
+                {Entity.Type.Monster,  typeof(Monster) },
+                {Entity.Type.Hero,  typeof(Hero) },
             };
 
         private EntityConfig _config;

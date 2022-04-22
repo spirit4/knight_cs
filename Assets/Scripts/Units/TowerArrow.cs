@@ -15,7 +15,7 @@ namespace Assets.Scripts.Units
 
         public override void CreateView(string layer)
         {
-            _type = Entity.Type.arrow;
+            _type = Entity.Type.Arrow;
 
             base.CreateView(layer);
             _view.GetComponent<SpriteRenderer>().sortingLayerName = EntityInput.SortingLayer.Action.ToString();
