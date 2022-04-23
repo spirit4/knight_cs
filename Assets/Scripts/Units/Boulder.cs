@@ -31,5 +31,11 @@ namespace Assets.Scripts.Units
             _tile.SetCost(Cost.Normal);
             _activeTile.SetCost(Cost.Wall);
         }
+
+        public override void Destroy()
+        {
+            _activeTile = null;
+            base.Destroy();
+        }
     }
 }

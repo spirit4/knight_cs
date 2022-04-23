@@ -131,5 +131,10 @@ namespace Assets.Scripts.Units
             //empty
         }
 
+        public override void Destroy()
+        {
+            _activeTile = null;
+            base.Destroy();
+        }
     }
 }

@@ -7,7 +7,6 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -282,7 +281,7 @@ namespace Assets.Scripts.Core
             float boomX = _hero.View.transform.localPosition.x;
             float boomY = _hero.View.transform.localPosition.y + 0.25f;
 
-            GameObject gameObject = GameObject.Instantiate(AddressablesLoader.GetObject(boomType));
+            GameObject gameObject = GameObject.Instantiate(AddressablesLoader.GetObject<GameObject>(boomType));
             gameObject.transform.SetParent(this.gameObject.transform);
 
             gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
@@ -313,8 +312,7 @@ namespace Assets.Scripts.Core
             GameEvents.GameQuitHandlers -= Destroy;//manual
             GameEvents.Clear();//auto
 
-            if (_hero != null)
-                _hero.Destroy();
+            _hero?.Destroy();
 
             RemoveHint();
 
@@ -325,16 +323,14 @@ namespace Assets.Scripts.Core
             _achController.Destroy();
             _achController = null;
 
-            //TODO clear grid here?
-
-            if (_level != null)
-            {
-                _level.Destroy();
-                _level = null;
-            }
+            _level?.Destroy();
+            _level = null;
 
             _units = null;
             _items = null;
+
+            foreach (Tile tile in _grid)
+                tile.Destroy();
 
             _grid = null;
 

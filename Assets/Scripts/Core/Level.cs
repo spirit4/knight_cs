@@ -131,6 +131,7 @@ namespace Assets.Scripts.Core
 
             _creator.Destroy();
             _creator = null;
+            _hero = null;
         }
     }
 }

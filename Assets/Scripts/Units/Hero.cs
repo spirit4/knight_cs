@@ -4,7 +4,6 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Events;
 using Assets.Scripts.Utils;
 using DG.Tweening;
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -282,9 +281,11 @@ namespace Assets.Scripts.Units
 
         public override void Destroy()
         {
-            base.Destroy();
             _path = null;
             _grid = null;
+            _inside = null;
+            base.Destroy();
+            UnityEngine.Object.Destroy(_inside);
         }
 
         public void Activate()

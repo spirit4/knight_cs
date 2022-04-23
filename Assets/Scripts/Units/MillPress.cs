@@ -77,8 +77,8 @@ namespace Assets.Scripts.Units
         {
             _vane.transform.DOKill();
             UnityEngine.Object.Destroy(_vane);
-            base.Destroy();
             _vane = null;
+            base.Destroy();
         }
     }
 }

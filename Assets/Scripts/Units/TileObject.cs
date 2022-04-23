@@ -41,6 +41,7 @@ namespace Assets.Scripts.Units
         {
             base.Destroy();
             _config = null;
+            _tile = null;
         }
 
 

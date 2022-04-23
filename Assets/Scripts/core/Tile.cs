@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Assets.Scripts.Core
 {
-    public class Tile
+    public class Tile : IDestroyable
     {
 
         private float _x;
@@ -67,6 +67,15 @@ namespace Assets.Scripts.Core
 
             return false;
         }
-       
+
+        public void Destroy()
+        {
+            foreach (Entity e in _entities)
+            {
+                e.Destroy();
+            }
+            _entities.Clear();
+            _entities = null;
+        }
     }
 }

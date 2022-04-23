@@ -97,6 +97,12 @@ namespace Assets.Scripts.Core
 
             //Debug.Log($"w: {Screen.width} h: {Screen.height} size: {Camera.main.orthographicSize}" );
         }
+
+        private void OnDestroy()
+        {
+            _windows?.Clear();
+            _windows = null;
+        }
     }
 }
 

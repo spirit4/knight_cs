@@ -15,7 +15,6 @@ namespace Assets.Scripts.Data
 
         public static readonly Dictionary<string, float> NumberImages = new Dictionary<string, float>();
         public static Dictionary<string, Sprite> TileSprites = new Dictionary<string, Sprite>(); 
-        public static Dictionary<string, GameObject> Prefabs = new Dictionary<string, GameObject>(); 
 
         public static void Init()
         {
@@ -43,12 +42,6 @@ namespace Assets.Scripts.Data
                     TileSprites.Add(s.name, s);
                 }
 
-                //GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
-                
-                //foreach (var prefab in clips)
-                //{
-                //    Prefabs.Add(prefab.name, prefab);
-                //}
             }
             catch (Exception e)
             {

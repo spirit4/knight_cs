@@ -80,7 +80,7 @@ namespace Assets.Scripts.Units
 
         public override void Destroy()
         {
-            _arrow.Destroy();
+            _arrow?.Destroy();
             _arrow = null;
             base.Destroy();
         }

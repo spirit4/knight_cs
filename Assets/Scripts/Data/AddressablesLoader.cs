@@ -8,9 +8,9 @@ namespace Assets.Scripts.Data
         /// <summary>
         /// Synchronous loading
         /// </summary>
-        public static GameObject GetObject(string key)
+        public static T GetObject<T>(string key)
         {
-            var handle = Addressables.LoadAssetAsync<GameObject>(key);
+            var handle = Addressables.LoadAssetAsync<T>(key);
             return  handle.WaitForCompletion();
         }
 
