@@ -7,6 +7,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -281,16 +282,13 @@ namespace Assets.Scripts.Core
             float boomX = _hero.View.transform.localPosition.x;
             float boomY = _hero.View.transform.localPosition.y + 0.25f;
 
-            if (_boom == null)
-            {
-                GameObject gameObject = GameObject.Instantiate(ImagesRes.Prefabs[boomType], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                gameObject.transform.SetParent(this.gameObject.transform);
+            GameObject gameObject = GameObject.Instantiate(AddressablesLoader.GetObject(boomType));
+            gameObject.transform.SetParent(this.gameObject.transform);
 
-                gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
-                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 200;//works fine
-                _boom = gameObject;
-                _boom.name = ImagesRes.A_BOOM;
-            }
+            gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Action";
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 300;
+            _boom = gameObject;
+            _boom.name = boomType;
 
             _boom.transform.localPosition = new Vector3(boomX, boomY);
             _boom.SetActive(true);
@@ -302,7 +300,8 @@ namespace Assets.Scripts.Core
         {
             GameEvents.AnimationEndedHandlers -= BoomCompleteHandler;
 
-            _boom.SetActive(false);
+            AddressablesLoader.ReleaseObject(_boom);
+            _boom = null;
 
             if (_hero == null || !_hero.HasHelmet || !_hero.HasShield || !_hero.HasSword)//TODO flags?
                 RestartHandler();

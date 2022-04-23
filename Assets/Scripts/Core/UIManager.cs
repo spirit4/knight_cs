@@ -16,7 +16,7 @@ namespace Assets.Scripts.Core
 
         private void Awake()
         {
-            if (ImagesRes.Prefabs.Count == 0) // loading resources to static
+            if (ImagesRes.TileSprites.Count == 0) // loading resources to static
                 ImagesRes.Init();
 
             this.gameObject.AddComponent<AudioSource>();

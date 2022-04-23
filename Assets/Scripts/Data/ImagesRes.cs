@@ -43,12 +43,12 @@ namespace Assets.Scripts.Data
                     TileSprites.Add(s.name, s);
                 }
 
-                GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
+                //GameObject[] clips = Resources.LoadAll<GameObject>("Prefabs");
                 
-                foreach (var prefab in clips)
-                {
-                    Prefabs.Add(prefab.name, prefab);
-                }
+                //foreach (var prefab in clips)
+                //{
+                //    Prefabs.Add(prefab.name, prefab);
+                //}
             }
             catch (Exception e)
             {
@@ -56,6 +56,8 @@ namespace Assets.Scripts.Data
                 Debug.Log(e);
             }
         }
+
+
 
         /** <summary>type0 or type_0 are okay</summary> */
         public static Sprite GetImage(string name)
