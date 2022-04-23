@@ -21,24 +21,12 @@ namespace Assets.Scripts.Achievements
             AwayFromArrow
         }
 
-        private TriggerType _type;
-        private int _maxValue;
+        private readonly TriggerType _type;
+        private readonly int _maxValue;
         private int _currentValue;
 
-        public int TypeInt
-        {
-            get
-            {
-                return (int)_type;
-            }
-        }
-        public TriggerType Type
-        {
-            get
-            {
-                return _type;
-            }
-        }
+        public int TypeInt { get => (int)_type; }
+        public TriggerType Type { get => _type; }
 
         public Trigger(TriggerType type, int maxValue, int currentValue)
         {

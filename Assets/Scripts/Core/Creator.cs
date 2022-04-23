@@ -7,7 +7,7 @@ namespace Assets.Scripts.Core
 {
     public class Creator : IDestroyable
     {
-        public Dictionary<Entity.Type, Type> _factory = new Dictionary<Entity.Type, Type>
+        public Dictionary<Entity.Type, Type> _factory = new ()
             {
                 {Entity.Type.Grass,  typeof(TileObject)},
                 {Entity.Type.Water,  typeof(Water) },

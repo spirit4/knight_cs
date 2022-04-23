@@ -35,11 +35,10 @@ namespace Assets.Scripts.UnityEditor
                     int index = int.Parse(Regex.Match(hit.collider.name, @"\d+").Value);
                     _text.text = Progress.HintAchievements[index - 1];
 
-                    Vector2 movePos;
                     RectTransformUtility.ScreenPointToLocalPointInRectangle(
                         this.transform as RectTransform,
                         Input.mousePosition, Camera.main,
-                        out movePos);
+                        out Vector2 movePos);
 
                     _hint.enabled = true;
                     _text.enabled = true;

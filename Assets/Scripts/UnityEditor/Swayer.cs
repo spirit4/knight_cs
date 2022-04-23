@@ -37,7 +37,10 @@ namespace Assets.Scripts.UnityEditor
             float deltaY = deltaPivot.y * rectTransform.sizeDelta.y * rectTransform.localScale.y;
 
             float rot = rectTransform.rotation.eulerAngles.z * Mathf.PI / 180;
-            Vector3 deltaPosition = new Vector3(Mathf.Cos(rot) * deltaX - Mathf.Sin(rot) * deltaY, Mathf.Sin(rot) * deltaX + Mathf.Cos(rot) * deltaY);
+            Vector3 deltaPosition = new (
+                Mathf.Cos(rot) * deltaX - Mathf.Sin(rot) * deltaY,
+                Mathf.Sin(rot) * deltaX + Mathf.Cos(rot) * deltaY
+                );
 
             rectTransform.pivot = pivot;
             rectTransform.localPosition -= deltaPosition;

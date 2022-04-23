@@ -24,27 +24,15 @@ namespace Assets.Scripts.Achievements
         }
 
         private List<Trigger> _triggers;
-        private bool _isAnd = true; //&& or ||
+        private readonly bool _isAnd = true; //&& or ||
         private Sprite _icon;
 
-        private AchType _achType;
+        private readonly AchType _achType;
 
         public List<Trigger> Triggers { get => _triggers; }
         public Sprite Icon { get => _icon; }
-        public int TypeInt
-        {
-            get
-            {
-                return (int)_achType;
-            }
-        }
-        public AchType Type
-        {
-            get
-            {
-                return _achType;
-            }
-        }
+        public int TypeInt { get => (int)_achType; }
+        public AchType Type { get => _achType; }
 
         public Achievement(AchType type, bool isAnd, Sprite icon)
         {
@@ -62,7 +50,7 @@ namespace Assets.Scripts.Achievements
                 tData = triggers[i];
                 _triggers.Add(new Trigger(tData.Type, tData.MaxValue, Progress.AchTriggers[(int)tData.Type]));
                 _triggers[i].TriggerHandler += MaxReachedHandler;
-               // Debug.Log($"atyp = {_achType} ----- tData.Type = {tData.Type}");
+                // Debug.Log($"atyp = {_achType} ----- tData.Type = {tData.Type}");
             }
         }
 
@@ -71,9 +59,9 @@ namespace Assets.Scripts.Achievements
         {
             trigger.TriggerHandler -= MaxReachedHandler;
 
-                _triggers.Remove(trigger);
-                if (!_isAnd) //if one trigger of many is enough
-                    _triggers.Clear();
+            _triggers.Remove(trigger);
+            if (!_isAnd) //if one trigger of many is enough
+                _triggers.Clear();
 
             if (_triggers.Count == 0)
                 UnlockingHandler.Invoke(this);

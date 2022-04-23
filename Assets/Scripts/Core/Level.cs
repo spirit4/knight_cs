@@ -12,8 +12,8 @@ namespace Assets.Scripts.Core
     public class Level : IDestroyable
     {
         private Hero _hero;
-        private List<ICollidable> _units;
-        private List<IActivatable> _items;
+        private readonly List<ICollidable> _units;
+        private readonly List<IActivatable> _items;
 
         private Creator _creator;
 
@@ -32,7 +32,6 @@ namespace Assets.Scripts.Core
 
             Tile[] grid = Model.Grid;
             Entity entity;
-            Entity.Type entityType;
 
             string digitString;
             int digitInt;
@@ -52,7 +51,7 @@ namespace Assets.Scripts.Core
                     digitInt = digitString == "" ? 0 : int.Parse(digitString);
                     generalType = digitString == "" ? types[j] : types[j].Remove(types[j].Length - 1);
 
-                    if (!Enum.TryParse(generalType, out entityType))
+                    if (!Enum.TryParse(generalType, out Entity.Type entityType))
                         Debug.Log($"[Level]: Incorrect type: {generalType}");
 
                     entity = _creator.GetTileObject(entityType, grid[index], digitInt);

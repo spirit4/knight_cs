@@ -13,8 +13,8 @@ namespace Assets.Scripts.Data
         public const string A_BOOM = "Boom";
         public const string A_ATTACK_BOOM = "BoomSword";
 
-        public static readonly Dictionary<string, float> NumberImages = new Dictionary<string, float>();
-        public static Dictionary<string, Sprite> TileSprites = new Dictionary<string, Sprite>(); 
+        public static readonly Dictionary<string, float> NumberImages = new ();
+        public static Dictionary<string, Sprite> TileSprites = new (); 
 
         public static void Init()
         {

@@ -6,9 +6,9 @@ namespace Assets.Scripts.Core
     public class Tile : IDestroyable
     {
 
-        private float _x;
-        private float _y;
-        private int _index;
+        private readonly float _x;
+        private readonly float _y;
+        private readonly int _index;
 
         private List<Entity> _entities;
 

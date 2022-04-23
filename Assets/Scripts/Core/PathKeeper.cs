@@ -11,8 +11,8 @@ namespace Assets.Scripts.Core
         private Pathfinder _pathfinder;
         public Pathfinder Pathfinder { get => _pathfinder; }
 
-        private Stack<PathPoint> _poolPoints = new Stack<PathPoint>();
-        private Queue<PathPoint> _activePoints = new Queue<PathPoint>();
+        private Stack<PathPoint> _poolPoints = new();
+        private Queue<PathPoint> _activePoints = new ();
         private Tile[] _grid;
 
         private TargetMark _targetMark;
@@ -36,7 +36,7 @@ namespace Assets.Scripts.Core
             if(_targetMark == null)
                 _targetMark = creator.GetDefault(Entity.Type.TargetMark) as TargetMark;
 
-            int index = _pathfinder.Path[_pathfinder.Path.Count - 1];
+            int index = _pathfinder.Path[^1];
             _targetMark.Deploy(container, new Vector3(_grid[index].X, _grid[index].Y));
         }
 

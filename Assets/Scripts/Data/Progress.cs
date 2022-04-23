@@ -54,7 +54,7 @@ namespace Assets.Scripts.Data
             0
         };
 
-        public static bool isUnlocked(int type)
+        public static bool IsUnlocked(int type)
         {
             return Convert.ToBoolean(Achievements[type]);
         }
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Data
         public static int[] DeadOnLevel = new int[20]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        public static List<string> HintAchievements = new List<string>()
+        public static List<string> HintAchievements = new ()
         {
             "Let an arrow \nkill the knight",
             "Obtain the entire outfit \nand kill the beast",

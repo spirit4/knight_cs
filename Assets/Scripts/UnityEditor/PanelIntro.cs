@@ -7,7 +7,7 @@ namespace Assets.Scripts.UnityEditor
 {
     public class PanelIntro : BasePanel
     {
-        private readonly List<Image> _frames = new List<Image>(3);
+        private readonly List<Image> _frames = new (3);
 
         [SerializeField]
         private Image _intro1;

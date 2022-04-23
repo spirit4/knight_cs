@@ -8,7 +8,7 @@ namespace Assets.Scripts.Core
 {
     public class SoundManager : Singleton<SoundManager> 
     {
-        public static Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
+        public static Dictionary<string, AudioClip> tracks = new ();
 
         //music
         public const string MUSIC_MENU = "Menu";
@@ -20,7 +20,7 @@ namespace Assets.Scripts.Core
         private string _currentLocation = ""; //menu or game
         private AudioSource _audioSource;
 
-        private Dictionary<string, float> _musicPositions = new Dictionary<string, float>();
+        private readonly Dictionary<string, float> _musicPositions = new ();
 
         private SoundManager()
         {

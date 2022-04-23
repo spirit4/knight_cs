@@ -41,7 +41,7 @@ namespace Assets.Scripts.Achievements
             AchInput aData;
             for (int i = 0; i < Progress.Achievements.Length; i++)
             {
-                if (!Progress.isUnlocked(i))
+                if (!Progress.IsUnlocked(i))
                 {
                     aData = config.Achievements[i];
                     //Debug.Log($"CreateLists {aData.Type}");
